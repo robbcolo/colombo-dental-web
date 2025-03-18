@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
@@ -6,25 +5,12 @@ import { cn } from '@/lib/utils';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(true); // Inizializzato a true per mostrare la navbar con sfondo fin dall'inizio
+  const [scrolled, setScrolled] = useState(true); // Sempre true per mantenere lo sfondo
   const location = useLocation();
 
   const toggleMenu = () => setIsOpen(!isOpen);
   
-  useEffect(() => {
-    // Manteniamo comunque l'effetto di scroll per aggiornare lo stato durante lo scrolling
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 10;
-      if (isScrolled !== scrolled && !isScrolled) {
-        // Aggiorniamo solo se stiamo tornando in cima alla pagina
-        setScrolled(isScrolled);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [scrolled]);
-
+  // Rimuoviamo l'effetto di scroll poiché vogliamo che la navbar rimanga sempre con sfondo
   useEffect(() => {
     // Close mobile menu when changing routes
     setIsOpen(false);
@@ -41,7 +27,7 @@ const Navbar = () => {
     <nav 
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        scrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-3" : "bg-transparent py-5"
+        "bg-white/90 backdrop-blur-md shadow-sm py-3" // Sempre con sfondo bianco
       )}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">

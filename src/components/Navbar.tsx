@@ -6,15 +6,17 @@ import { cn } from '@/lib/utils';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(true); // Inizializzato a true per mostrare la navbar con sfondo fin dall'inizio
   const location = useLocation();
 
   const toggleMenu = () => setIsOpen(!isOpen);
   
   useEffect(() => {
+    // Manteniamo comunque l'effetto di scroll per aggiornare lo stato durante lo scrolling
     const handleScroll = () => {
       const isScrolled = window.scrollY > 10;
-      if (isScrolled !== scrolled) {
+      if (isScrolled !== scrolled && !isScrolled) {
+        // Aggiorniamo solo se stiamo tornando in cima alla pagina
         setScrolled(isScrolled);
       }
     };

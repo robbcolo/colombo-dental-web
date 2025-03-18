@@ -14,6 +14,7 @@ const Index = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Studio Dentistico Colombo | Home";
+    console.log("Index page loaded!"); // Aggiungiamo un log per il debug
   }, []);
 
   return (

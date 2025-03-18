@@ -1,9 +1,8 @@
-
 import React, { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import BookAppointment from '../components/BookAppointment';
-import { ArrowRight, Smile, Syringe, BadgeCheck, HeartPulse, UserCheck, Stethoscope, X, Tooth } from 'lucide-react';
+import { ArrowRight, Smile, Syringe, BadgeCheck, HeartPulse, UserCheck, Stethoscope, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const serviceDetails = [
@@ -87,7 +86,7 @@ const serviceDetails = [
   },
   {
     id: "protesi-dentali",
-    icon: <Tooth className="w-10 h-10 text-dental" />,
+    icon: <Stethoscope className="w-10 h-10 text-dental" />,
     title: "Protesi Dentali",
     description: "Realizziamo protesi fisse e mobili di alta qualità, personalizzate per adattarsi perfettamente all'anatomia del paziente. Utilizziamo materiali biocompatibili che garantiscono comfort, funzionalità ed estetica naturale.",
     benefits: [
@@ -117,6 +116,7 @@ const Servizi = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Studio Dentistico Colombo | Servizi";
+    console.log("Servizi page loaded!"); // Aggiungiamo un log per il debug
   }, []);
 
   return (
@@ -133,7 +133,7 @@ const Servizi = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-slide-down opacity-0" style={{ animationDelay: '100ms' }}>
               Cure dentali complete e personalizzate
             </h1>
-            <p className="text-muted-foreground text-lg animate-slide-down opacity-0" style={{ animationDelay: '200ms' }}>
+            <p className="text-xl text-muted-foreground mb-8 animate-slide-down opacity-0" style={{ animationDelay: '200ms' }}>
               Offriamo una gamma completa di trattamenti odontoiatrici avanzati per ogni esigenza, dall'estetica alla funzionalità.
             </p>
           </div>

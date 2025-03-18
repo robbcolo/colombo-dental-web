@@ -10,8 +10,9 @@ import Servizi from "./pages/Servizi";
 import Contatti from "./pages/Contatti";
 import Prenota from "./pages/Prenota";
 import NotFound from "./pages/NotFound";
-import './App.css'; // Rimuoviamo questo stile se causa problemi
+import './App.css';
 
+// Create a new query client
 const queryClient = new QueryClient();
 
 const App = () => (

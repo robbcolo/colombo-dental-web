@@ -2,6 +2,7 @@
 import React from 'react';
 import { Calendar, Clock, User, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { IMAGES } from '../utils/imageUtils';
 
 const BookAppointment = () => {
   return (
@@ -41,7 +42,7 @@ const BookAppointment = () => {
             
             <div className="hidden lg:block relative">
               <img 
-                src="https://images.unsplash.com/photo-1629909614087-fd2453fc51d9?q=80&w=2062&auto=format&fit=crop" 
+                src={IMAGES.bookAppointment.dentistWithPatient}
                 alt="Dentista con paziente" 
                 className="h-full w-full object-cover"
               />

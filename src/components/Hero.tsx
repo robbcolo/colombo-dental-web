@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { IMAGES } from '../utils/imageUtils';
 
 const Hero = () => {
   return (
@@ -9,7 +10,7 @@ const Hero = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{
-          backgroundImage: 'url("https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2068&auto=format&fit=crop")',
+          backgroundImage: `url("${IMAGES.hero.background}")`,
           backgroundSize: 'cover',
           filter: 'brightness(0.2)'
         }}
@@ -58,7 +59,7 @@ const Hero = () => {
             <div className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden animate-slide-up opacity-0" style={{ animationDelay: '500ms' }}>
               <div className="glass absolute inset-0 rotate-3 transform-gpu rounded-2xl"></div>
               <img 
-                src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=1974&auto=format&fit=crop" 
+                src={IMAGES.hero.teamImage}
                 alt="Team di dentisti" 
                 className="w-full h-full object-cover rounded-2xl z-10 relative"
               />

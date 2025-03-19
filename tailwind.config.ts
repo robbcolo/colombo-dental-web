@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -54,19 +53,19 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				dental: {
-					DEFAULT: '#1EAEDB',
-					light: '#33C3F0',
-					dark: '#0D8CB9',
-					50: '#F0F9FD',
-					100: '#D0EBF7',
-					200: '#A0D7EF',
-					300: '#70C3E7',
-					400: '#41AFDF',
-					500: '#1EAEDB',
-					600: '#0D8CB9',
-					700: '#086A8C',
-					800: '#04485F',
-					900: '#022533'
+					DEFAULT: '#182642',  // Nuovo colore blu principale
+					light: '#2E3E61',    // Versione più chiara
+					dark: '#0E1A2F',     // Versione più scura
+					50: '#E9ECF2',
+					100: '#C7CFE0',
+					200: '#9EAAC6',
+					300: '#7685AC',
+					400: '#576999',
+					500: '#3F4E75',
+					600: '#2E3E61',
+					700: '#24304C',
+					800: '#182642',
+					900: '#0E1A2F'
 				}
 			},
 			borderRadius: {

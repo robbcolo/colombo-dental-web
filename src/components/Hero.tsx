@@ -12,7 +12,7 @@ const Hero = () => {
         style={{
           backgroundImage: `url("/images/about/studio2.jpg")`,
           backgroundSize: 'cover',
-          filter: 'brightness(0.60)'
+          filter: 'brightness(0.50)'
         }}
       />
       

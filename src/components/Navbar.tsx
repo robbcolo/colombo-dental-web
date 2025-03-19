@@ -34,7 +34,7 @@ const Navbar = () => {
       <div className="container mx-auto px-6 flex justify-between items-center">
         <Link to="/" className="relative flex items-center z-10">
           <span className="text-2xl font-bold text-dental">Studio Dentistico</span>
-          <span className="text-2xl font-bold ml-2 text-dental-light">Colombo</span>
+          <span className="text-2xl font-bold ml-2 text-foreground">Colombo</span>
         </Link>
         
         {/* Desktop Menu */}

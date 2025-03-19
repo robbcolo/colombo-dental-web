@@ -39,7 +39,7 @@ const ChiSiamo = () => {
             <div className="animate-slide-in-left opacity-0">
               <h2 className="heading-lg mb-6">La nostra storia</h2>
               <p className="text-muted-foreground mb-6">
-                Lo Studio Dentistico Colombo ha aperto le sue porte nel 1990, quando il Dott. Roberto Colombo decise di creare un ambiente dove ogni paziente potesse ricevere cure odontoiatriche di alta qualità in un'atmosfera familiare e accogliente.
+                Lo Studio Dentistico Colombo ha aperto le sue porte nel 1990, quando il Dott. Alfredo Colombo decise di creare un ambiente dove ogni paziente potesse ricevere cure odontoiatriche di alta qualità in un'atmosfera familiare e accogliente.
               </p>
               <p className="text-muted-foreground mb-6">
                 Nel corso degli anni, lo studio è cresciuto insieme ai pazienti, molti dei quali ci seguono da generazioni. L'arrivo dei figli Marco e Laura come membri del team medico ha portato nuove competenze e tecniche innovative, mantenendo intatta la filosofia di cura personalizzata che ha sempre contraddistinto il nostro approccio.
@@ -148,7 +148,7 @@ const ChiSiamo = () => {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold mb-1">Indirizzo</h3>
-                    <p className="text-muted-foreground">Via Esempio 123, Milano, 20100</p>
+                    <p className="text-muted-foreground">Via Fontanelle, SNC</p>
                     <p className="text-muted-foreground mt-2">A 5 minuti dalla fermata della metropolitana Centrale.</p>
                   </div>
                 </div>

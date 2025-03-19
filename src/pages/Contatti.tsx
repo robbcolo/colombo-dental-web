@@ -84,7 +84,7 @@ const Contatti = () => {
         <div className="container mx-auto">
           <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-border">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3138.044415270208!2d14.968479299999998!3d38.1391602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13169c5bac9ea239%3A0xd3cf9836a4ca3755!2sStudio%20Dentistico%20Colombo!5e0!3m2!1sit!2sit!4v1742413070628!5m2!1sit!2sit" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2798.3296442444736!2d9.1846913!3d45.4641013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c6aec34636a1%3A0xab7f4e27d467fd89!2sMilano%20MI!5e0!3m2!1sit!2sit!4v1650000000000!5m2!1sit!2sit" 
               width="100%" 
               height="500" 
               style={{ border: 0 }} 

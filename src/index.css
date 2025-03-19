@@ -1,10 +1,10 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
+    /* Modifica questi valori di colore per cambiare l'aspetto del sito */
     --background: 210 40% 98%;
     --foreground: 222 47% 11%;
 
@@ -14,7 +14,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    --primary: 219 51% 18%;
+    /* Colore primario principale */
+    --primary: 210 75% 30%;  /* Cambiato da 219 51% 18% a un blu più vivace */
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96%;
@@ -23,7 +24,7 @@
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
 
-    --accent: 219 51% 18%;
+    --accent: 210 75% 30%;  /* Aggiornato per corrispondere al primario */
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 84% 60%;
@@ -31,9 +32,17 @@
 
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 219 51% 18%;
+    --ring: 210 75% 30%;  /* Aggiornato per corrispondere al primario */
 
     --radius: 0.75rem;
+    
+    /* Colori specifici per il tema dentale */
+    --dental: 210 75% 30%;  /* Cambiato da 219 38% 17% a un blu più vivace */
+    --dental-light: 210 75% 40%;
+    --dental-dark: 210 75% 20%;
+    --dental-50: 210 75% 95%;
+    --dental-100: 210 75% 90%;
+    --dental-900: 210 75% 10%;
   }
 
   * {

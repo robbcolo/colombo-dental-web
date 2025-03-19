@@ -95,7 +95,7 @@ const ContactSection = () => {
                     <input
                       type="text"
                       id="name"
-                      className="w-full px-4 py-3 rounded-lg border border-border focus:border-dental focus:ring-1 focus:ring-dental outline-none transition"
+                      className="w-full px-4 py-3 rounded-lg border border-border focus:border-dental focus:ring-1 focus:ring-dental outline-none transition text-foreground"
                       placeholder="Il tuo nome"
                     />
                   </div>
@@ -107,7 +107,7 @@ const ContactSection = () => {
                     <input
                       type="email"
                       id="email"
-                      className="w-full px-4 py-3 rounded-lg border border-border focus:border-dental focus:ring-1 focus:ring-dental outline-none transition"
+                      className="w-full px-4 py-3 rounded-lg border border-border focus:border-dental focus:ring-1 focus:ring-dental outline-none transition text-foreground"
                       placeholder="La tua email"
                     />
                   </div>
@@ -120,7 +120,7 @@ const ContactSection = () => {
                   <input
                     type="tel"
                     id="phone"
-                    className="w-full px-4 py-3 rounded-lg border border-border focus:border-dental focus:ring-1 focus:ring-dental outline-none transition"
+                    className="w-full px-4 py-3 rounded-lg border border-border focus:border-dental focus:ring-1 focus:ring-dental outline-none transition text-foreground"
                     placeholder="Il tuo numero di telefono"
                   />
                 </div>
@@ -131,7 +131,7 @@ const ContactSection = () => {
                   </label>
                   <select
                     id="service"
-                    className="w-full px-4 py-3 rounded-lg border border-border focus:border-dental focus:ring-1 focus:ring-dental outline-none transition"
+                    className="w-full px-4 py-3 rounded-lg border border-border focus:border-dental focus:ring-1 focus:ring-dental outline-none transition text-foreground"
                   >
                     <option value="" disabled selected>Seleziona un servizio</option>
                     <option value="igiene">Igiene Dentale</option>
@@ -150,7 +150,7 @@ const ContactSection = () => {
                   <textarea
                     id="message"
                     rows={4}
-                    className="w-full px-4 py-3 rounded-lg border border-border focus:border-dental focus:ring-1 focus:ring-dental outline-none transition"
+                    className="w-full px-4 py-3 rounded-lg border border-border focus:border-dental focus:ring-1 focus:ring-dental outline-none transition text-foreground"
                     placeholder="Descrivi la tua richiesta..."
                   ></textarea>
                 </div>

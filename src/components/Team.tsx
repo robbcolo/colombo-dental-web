@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Mail, Phone, Linkedin } from 'lucide-react';
+import { Mail, Phone, Linkedin, Instagram } from 'lucide-react';
 
 const teamMembers = [
   {
@@ -15,7 +15,10 @@ const teamMembers = [
     name: "Dott. Roberto Colombo",
     role: "Odontoiatra",
     bio: "Il Dott. Roberto Colombo, laureato presso l'Università degli Studi di Messina con il massimo dei voti, ha portato nello studio tecniche moderne e innovative, arricchendo l’approccio con freschezza e attenzione al dettaglio.",
-    image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=2070&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=2070&auto=format&fit=crop",
+    email: "ybor69@ymail.com",
+    phone: "+393291592938",
+    instagram: "https://www.instagram.com/robcolo_/"
   },
   {
     id: 3,
@@ -56,14 +59,14 @@ const Team = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-dental-900/80 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
                   <div className="p-6 w-full">
                     <div className="flex justify-center space-x-4">
-                      <a href="#" className="bg-white/10 p-2 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors">
+                      <a href={`mailto:${member.email}`} className="bg-white/10 p-2 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors">
                         <Mail className="w-5 h-5 text-white" />
                       </a>
-                      <a href="#" className="bg-white/10 p-2 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors">
+                      <a href={`tel:${member.phone}`} className="bg-white/10 p-2 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors">
                         <Phone className="w-5 h-5 text-white" />
                       </a>
-                      <a href="#" className="bg-white/10 p-2 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors">
-                        <Linkedin className="w-5 h-5 text-white" />
+                      <a href={member.instagram} className="bg-white/10 p-2 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors">
+                        <Instagram className="w-5 h-5 text-white" />
                       </a>
                     </div>
                   </div>

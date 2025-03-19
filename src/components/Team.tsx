@@ -14,7 +14,7 @@ const teamMembers = [
     id: 2,
     name: "Dott. Roberto Colombo",
     role: "Odontoiatra",
-    bio: "Specializzato in ortodonzia e odontoiatria estetica, il Dott. Marco Colombo ha portato nello studio tecniche innovative per allineamenti dentali invisibili.",
+    bio: "Il Dott. Roberto Colombo, laureato presso l'Università degli Studi di Messina con il massimo dei voti, ha portato nello studio tecniche moderne e innovative, arricchendo l’approccio con freschezza e attenzione al dettaglio.",
     image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=2070&auto=format&fit=crop"
   },
   {

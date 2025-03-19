@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
+import { MapPinned, Phone, Mail, Clock, Send, Smartphone } from 'lucide-react';
 
 const ContactSection = () => {
   return (
@@ -8,7 +8,7 @@ const ContactSection = () => {
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <div className="animate-slide-in-left opacity-0">
-            <span className="inline-block bg-dental/20 text-dental py-1 px-3 rounded-full text-sm font-medium mb-4">
+            <span className="inline-block bg-dental/20 text-blue-500 py-1 px-3 rounded-full text-sm font-medium mb-4">
               Contattaci
             </span>
             <h2 className="heading-lg mb-6 text-white">Siamo qui per aiutarti</h2>
@@ -19,27 +19,49 @@ const ContactSection = () => {
             <div className="space-y-8">
               <div className="flex items-start space-x-4">
                 <div className="bg-dental/20 rounded-lg p-3">
-                  <MapPin className="w-6 h-6 text-dental" />
+                  <MapPinned className="w-6 h-6 text-blue-500" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-1 text-white">Indirizzo</h3>
-                  <p className="text-white/80">Via Esempio 123, Milano, 20100</p>
+                  <p className="text-white/80">
+                   <a href="https://www.google.com/maps/place/Studio+Dentistico+Colombo/@38.1391643,14.9636084,17z/data=!3m1!4b1!4m6!3m5!1s0x13169c5bac9ea239:0xd3cf9836a4ca3755!8m2!3d38.1391602!4d14.9684793!16s%2Fg%2F1hc47jp95?entry=ttu&g_ep=EgoyMDI1MDMxNy4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                   Via Fontanelle, SNC, Patti (ME)
+                   </a>
+                  </p>
                 </div>
               </div>
               
               <div className="flex items-start space-x-4">
                 <div className="bg-dental/20 rounded-lg p-3">
-                  <Phone className="w-6 h-6 text-dental" />
+                  <Phone className="w-6 h-6 text-blue-500" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-1 text-white">Telefono</h3>
-                  <p className="text-white/80">+39 02 1234567</p>
+                  <p className="text-white/80">
+                  <a href="tel:094122749" className="hover:underline">
+                  0941 22749
+                  </a>
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="bg-dental/20 rounded-lg p-3">
+                  <Smartphone className="w-6 h-6 text-blue-500" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold mb-1 text-white">Whatsapp</h3>
+                  <p className="text-white/80">
+                  <a href="https://wa.me/3791523085" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                  379 1523085
+                  </a>
+                  </p>
                 </div>
               </div>
               
               <div className="flex items-start space-x-4">
                 <div className="bg-dental/20 rounded-lg p-3">
-                  <Mail className="w-6 h-6 text-dental" />
+                  <Mail className="w-6 h-6 text-blue-500" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-1 text-white">Email</h3>
@@ -49,7 +71,7 @@ const ContactSection = () => {
               
               <div className="flex items-start space-x-4">
                 <div className="bg-dental/20 rounded-lg p-3">
-                  <Clock className="w-6 h-6 text-dental" />
+                  <Clock className="w-6 h-6 text-blue-500" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-1 text-white">Orari</h3>

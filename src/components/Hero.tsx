@@ -83,9 +83,9 @@ const Hero = () => {
         </div>
         
         {/* Bottom CTA */}
-        <div className="mt-12 text-center animate-slide-up opacity-0" style={{ animationDelay: '700ms' }}>
-          <Link to="/chi-siamo" className="btn-secondary inline-flex items-center justify-center">
-            Scopri chi siamo
+        <div className="mt-12 text-center animate-fade-in" style={{ animationDelay: '700ms' }}>
+          <Link to="/chi-siamo" className="inline-flex items-center justify-center px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-lg font-medium transition-colors">
+            Scopri chi siamo <ArrowRight size={16} className="ml-2" />
           </Link>
         </div>
       </div>

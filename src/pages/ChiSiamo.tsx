@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Team from '../components/Team';
-import { MapPin, Phone, Mail, Clock, Award, Heart, Shield } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Award, Heart, Shield, Smartphone } from 'lucide-react';
 
 const ChiSiamo = () => {
   useEffect(() => {
@@ -129,7 +129,7 @@ const ChiSiamo = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-border">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2798.3296442444736!2d9.1846913!3d45.4641013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c6aec34636a1%3A0xab7f4e27d467fd89!2sMilano%20MI!5e0!3m2!1sit!2sit!4v1650000000000!5m2!1sit!2sit" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3138.044415270208!2d14.968479299999998!3d38.1391602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13169c5bac9ea239%3A0xd3cf9836a4ca3755!2sStudio%20Dentistico%20Colombo!5e0!3m2!1sit!2sit!4v1742413070628!5m2!1sit!2sit"
                 width="100%" 
                 height="450" 
                 style={{ border: 0 }} 
@@ -154,14 +154,32 @@ const ChiSiamo = () => {
                 </div>
                 
                 <div className="flex items-start space-x-4">
-                  <div className="bg-dental-50 rounded-lg p-3">
-                    <Phone className="w-6 h-6 text-dental" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold mb-1">Telefono</h3>
-                    <p className="text-muted-foreground">+39 02 1234567</p>
-                  </div>
+                <div className="bg-dental-50 rounded-lg p-3">
+                  <Phone className="w-6 h-6 text-dental" />
                 </div>
+                <div>
+                  <h3 className="text-lg font-bold mb-1">Telefono</h3>
+                  <p className="text-muted-foreground">
+                  <a href="tel:094122749" className="hover:underline">
+                  0941 22749
+                  </a>
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+              <div className="bg-dental-50 rounded-lg p-3">
+                  <Smartphone className="w-6 h-6 text-dental" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold mb-1">Whatsapp</h3>
+                  <p className="text-muted-foreground">
+                  <a href="https://wa.me/3791523085" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                  379 1523085
+                  </a>
+                  </p>
+                </div>
+              </div>
                 
                 <div className="flex items-start space-x-4">
                   <div className="bg-dental-50 rounded-lg p-3">
@@ -179,8 +197,8 @@ const ChiSiamo = () => {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold mb-1">Orari</h3>
-                    <p className="text-muted-foreground">Lun-Ven: 9:00-19:00</p>
-                    <p className="text-muted-foreground">Sab: 9:00-13:00</p>
+                    <p className="text-muted-foreground">Lunedì-Giovedì: 8:30-12:30; 16:00-20:00</p>
+                    <p className="text-muted-foreground">Venerdì: 8:30-12:30</p>
                   </div>
                 </div>
               </div>

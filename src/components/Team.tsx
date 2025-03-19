@@ -5,21 +5,21 @@ import { Mail, Phone, Linkedin } from 'lucide-react';
 const teamMembers = [
   {
     id: 1,
-    name: "Dott. Roberto Colombo",
-    role: "Fondatore e Odontoiatra",
-    bio: "Con oltre 30 anni di esperienza, il Dott. Roberto Colombo ha fondato lo studio nel 1990. Specializzato in implantologia avanzata e chirurgia orale.",
+    name: "Dott. Alfredo Colombo",
+    role: "Fondatore e Medico-Odontoiatra",
+    bio: "Con oltre 30 anni di esperienza, il Dott. Alfredo Colombo ha fondato lo studio nel 1990. Specializzato in implantologia avanzata e chirurgia orale.",
     image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1964&auto=format&fit=crop"
   },
   {
     id: 2,
-    name: "Dott. Marco Colombo",
+    name: "Dott. Roberto Colombo",
     role: "Odontoiatra",
     bio: "Specializzato in ortodonzia e odontoiatria estetica, il Dott. Marco Colombo ha portato nello studio tecniche innovative per allineamenti dentali invisibili.",
     image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=2070&auto=format&fit=crop"
   },
   {
     id: 3,
-    name: "Dott.ssa Laura Colombo",
+    name: "Dott.ssa Aurora Colombo",
     role: "Odontoiatra",
     bio: "Specializzata in odontoiatria pediatrica e preventiva, la Dott.ssa Laura Colombo è particolarmente abile nel mettere a loro agio i pazienti più giovani.",
     image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=1974&auto=format&fit=crop"

@@ -1,70 +1,92 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Phone, Clock } from 'lucide-react';
 import { IMAGES } from '../utils/imageUtils';
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      <div 
+      {/* Full-width background image with overlay */}
+      <div
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{
-          backgroundImage: `url("${IMAGES.hero.background}")`,
+          backgroundImage: `url("${IMAGES.hero.teamImage}")`,
           backgroundSize: 'cover',
-          filter: 'brightness(0.2)'
+          filter: 'brightness(0.60)'
         }}
       />
       
-      <div className="absolute inset-0 bg-gradient-to-r from-dental-900/90 to-dental-900/70 z-1"></div>
-      
+      {/* Gradient overlay on top of the image */}
+      <div className="absolute inset-0 bg-gradient-to-br from-dental-900/90 via-dental-800/80 to-dental-700/70 z-1"></div>
+
       <div className="container mx-auto px-6 z-10 pt-10 md:pt-0">
-        <div className="flex flex-col md:flex-row items-center">
-          <div className="w-full md:w-1/2 md:pr-12 mb-10 md:mb-0">
-            <div
-              className="animate-slide-down opacity-0"
-              style={{ animationDelay: '100ms' }}
-            >
-              <span className="inline-block bg-dental/20 text-dental py-1 px-3 rounded-full text-sm font-medium mb-4">
-                Studio Dentistico Colombo
-              </span>
-            </div>
-            <h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate-slide-down opacity-0"
-              style={{ animationDelay: '200ms' }}
-            >
-              Il sorriso della tua famiglia in mani sicure
-            </h1>
-            <p 
-              className="text-lg text-white/80 mb-8 max-w-lg animate-slide-down opacity-0"
-              style={{ animationDelay: '300ms' }}
-            >
-              Uno studio dentistico a conduzione familiare, dove professionalità e attenzione al paziente si fondono in un unico approccio per la salute del tuo sorriso.
-            </p>
-            <div 
-              className="flex flex-col sm:flex-row gap-4 animate-slide-down opacity-0"
-              style={{ animationDelay: '400ms' }}
-            >
-              <Link to="/prenota" className="btn-primary flex items-center justify-center">
-                Prenota una visita
-                <ArrowRight size={18} className="ml-2" />
-              </Link>
-              <Link to="/servizi" className="btn-secondary flex items-center justify-center">
-                Scopri i nostri servizi
+        {/* Centered content approach */}
+        <div className="flex flex-col items-center text-center mb-16">
+          <div className="animate-slide-down opacity-0" style={{ animationDelay: '100ms' }}>
+            <span className="inline-block bg-dental-light/20 text-blue-500 py-2 px-3 rounded-full text-sm font-medium mb-3">
+              Studio Dentistico Colombo
+            </span>
+          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate-slide-down opacity-0 max-w-3xl"
+              style={{ animationDelay: '200ms' }}>
+            Il sorriso della tua famiglia in mani sicure
+          </h1>
+          <p className="text-lg text-white/80 mb-8 max-w-xl animate-slide-down opacity-0"
+             style={{ animationDelay: '300ms' }}>
+            Studio Dentistico Colombo, realtà familiare che unisce professionalità e cura per offrirti il sorriso che meriti.
+          </p>
+        </div>
+
+        {/* Three column layout with info cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Left card */}
+          <div className="md:col-span-1 animate-slide-up opacity-0" style={{ animationDelay: '400ms' }}>
+            <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl h-full flex flex-col justify-center items-center">
+              <div className="rounded-full bg-dental-light/20 p-4 mb-4">
+                <Phone size={32} className="text-blue-500" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">Contattaci</h3>
+              <p className="text-white/80 text-center mb-4">Siamo disponibili per ogni tua esigenza</p>
+              <Link to="/contatti" className="px-4 py-2 text-sm bg-blue-500/20 hover:bg-blue-600 text-white rounded-lg font-medium transition-colors flex items-center">
+                Chiamaci ora <ArrowRight size={14} className="ml-1" />
               </Link>
             </div>
           </div>
           
-          <div className="w-full md:w-1/2">
-            <div className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden animate-slide-up opacity-0" style={{ animationDelay: '500ms' }}>
-              <div className="glass absolute inset-0 rotate-3 transform-gpu rounded-2xl"></div>
-              <img 
-                src={IMAGES.hero.teamImage}
-                alt="Team di dentisti" 
-                className="w-full h-full object-cover rounded-2xl z-10 relative"
-              />
+          {/* Central card */}
+          <div className="md:col-span-1 animate-slide-up opacity-0" style={{ animationDelay: '500ms' }}>
+            <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl h-full flex flex-col justify-center items-center">
+              <div className="rounded-full bg-dental-light/20 p-4 mb-4">
+                <ArrowRight size={32} className="text-blue-500" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">I nostri servizi</h3>
+              <p className="text-white/80 text-center mb-4">Scopri tutti i trattamenti disponibili</p>
+              <Link to="/servizi" className="px-4 py-2 text-sm bg-blue-500/20 hover:bg-blue-600 text-white rounded-lg font-medium transition-colors flex items-center">
+                Scopri di più <ArrowRight size={14} className="ml-1" />
+              </Link>
             </div>
           </div>
+          
+          {/* Right card */}
+          <div className="md:col-span-1 animate-slide-up opacity-0" style={{ animationDelay: '600ms' }}>
+            <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl h-full flex flex-col justify-center items-center">
+              <div className="rounded-full bg-dental-light/20 p-4 mb-4">
+                <Clock size={32} className="text-blue-500" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">Prenota ora</h3>
+              <p className="text-white/80 text-center mb-4">Fissa un appuntamento in pochi click</p>
+              <Link to="/prenota" className="px-4 py-2 text-sm bg-blue-500/20 hover:bg-blue-600 text-white rounded-lg font-medium transition-colors flex items-center">
+                Prenota visita <ArrowRight size={14} className="ml-1" />
+              </Link>
+            </div>
+          </div>
+        </div>
+        
+        {/* Bottom CTA */}
+        <div className="mt-12 text-center animate-slide-up opacity-0" style={{ animationDelay: '700ms' }}>
+          <Link to="/chi-siamo" className="btn-secondary inline-flex items-center justify-center">
+            Scopri chi siamo
+          </Link>
         </div>
       </div>
     </section>

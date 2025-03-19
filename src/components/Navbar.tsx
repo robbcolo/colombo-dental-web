@@ -34,7 +34,7 @@ const Navbar = () => {
       <div className="container mx-auto px-6 flex justify-between items-center">
         <Link to="/" className="relative flex items-center z-10">
           <span className="text-2xl font-bold text-dental">Studio Dentistico</span>
-          <span className="text-2xl font-bold ml-2 text-dental-light">Colombo</span>
+          <span className="text-2xl font-bold ml-2 text-blue-500">Colombo</span>
         </Link>
         
         {/* Desktop Menu */}
@@ -44,8 +44,8 @@ const Navbar = () => {
               key={item.name}
               to={item.path}
               className={cn(
-                "nav-item",
-                location.pathname === item.path && "active"
+                "nav-item text-blue-900",
+                location.pathname === item.path && "active text-blue-500"
               )}
             >
               {item.name}
@@ -72,8 +72,8 @@ const Navbar = () => {
               key={item.name}
               to={item.path}
               className={cn(
-                "text-xl font-medium hover:text-dental transition-colors",
-                location.pathname === item.path ? "text-dental" : "text-foreground"
+                "text-xl font-medium text-blue-900 hover:text-dental transition-colors",
+                location.pathname === item.path ? "text-blue-900" : "text-blue-500"
               )}
               onClick={() => setIsOpen(false)}
             >

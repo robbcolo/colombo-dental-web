@@ -10,7 +10,7 @@ const Hero = () => {
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{
-          backgroundImage: `url("/images/about/studio2.jpg")`,
+          backgroundImage: `url(${import.meta.env.BASE_URL}images/about/studio2.jpg)`,
           backgroundSize: 'cover',
           filter: 'brightness(0.50)'
         }}

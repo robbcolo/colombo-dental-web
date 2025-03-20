@@ -53,7 +53,7 @@ const ChiSiamo = () => {
               <div className="relative">
                 <div className="absolute top-4 left-4 w-full h-full bg-dental/10 rounded-2xl"></div>
                 <img 
-                  src="https://images.unsplash.com/photo-1607326957431-29d25d2b386f?q=80&w=2070&auto=format&fit=crop" 
+                  src="public/images/about/famiglia.jpg"
                   alt="Studio dentistico" 
                   className="relative z-10 rounded-2xl w-full h-auto"
                 />

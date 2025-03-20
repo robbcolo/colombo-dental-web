@@ -29,7 +29,7 @@ const Hero = () => {
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate-slide-down opacity-0 max-w-3xl"
               style={{ animationDelay: '200ms' }}>
-            Il sorriso della tua famiglia in mani sicure
+            Ciao
           </h1>
           <p className="text-lg text-white/80 mb-8 max-w-xl animate-slide-down opacity-0"
              style={{ animationDelay: '300ms' }}>

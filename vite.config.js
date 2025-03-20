@@ -5,7 +5,7 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
-  base: './', // Cambiato da '/' a './' per supportare path relativi
+  base: './', // Path relativi per supportare GitHub Pages
   build: {
     outDir: 'docs', // Output della build nella cartella docs per GitHub Pages
   },

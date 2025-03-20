@@ -5,31 +5,31 @@ import { ArrowRight, Smile, Syringe, BadgeCheck, HeartPulse, UserCheck } from 'l
 
 const serviceItems = [
   {
-    icon: <img src="/images/services/dentista.png" className="w-12 h-12"/>,
+    icon: <img src="public/images/services/dentista.png" className="w-12 h-12"/>,
     title: "Odontoiatria Generale",
     description: "Check-up completi, pulizia dei denti, trattamenti canalari e otturazioni per mantenere la tua bocca sana.",
     link: "/servizi/odontoiatria-generale"
   },
   {
-    icon: <img src="/images/services/impla.png" className="w-12 h-12"/>,
+    icon: <img src="public/images/services/impla.png" className="w-12 h-12"/>,
     title: "Implantologia",
     description: "Soluzioni permanenti per denti mancanti con impianti di alta qualità e tecniche minimamente invasive.",
     link: "/servizi/implantologia"
   },
   {
-    icon: <img src="/images/services/orto1.png" className="w-12 h-12"/>,
+    icon: <img src="public/images/services/orto1.png" className="w-12 h-12"/>,
     title: "Ortodonzia",
     description: "Apparecchi tradizionali e invisibili per correggere l'allineamento dei denti e migliorare il tuo sorriso.",
     link: "/servizi/ortodonzia"
   },
   {
-    icon: <img src="/images/services/sbiancamento.png" className="w-12 h-12"/>,
+    icon: <img src="public/images/services/sbiancamento.png" className="w-12 h-12"/>,
     title: "Estetica Dentale",
     description: "Sbiancamento, faccette e trattamenti estetici per un sorriso perfetto e luminoso.",
     link: "/servizi/estetica-dentale"
   },
   {
-    icon: <img src="/images/services/protesi.png" className="w-13 h-12.5"/>,
+    icon: <img src="public/images/services/protesi.png" className="w-13 h-12.5"/>,
     title: "Protesi dentale",
     description: "Cure speciali per i più piccoli in un ambiente accogliente che li mette a loro agio.",
     link: "/servizi/odontoiatria-pediatrica"

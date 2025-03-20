@@ -5,8 +5,8 @@ import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 const testimonials = [
   {
     id: 1,
-    name: "Giacomo",
-    text: "Condivido con orgoglio e realtà uno studio professionale che dedica il suo lavoro nel benessere dei pazienti. Sono precisi, perfetti, con una grande voglia di altruismo. Naturalmente chi ne abbia bisogno contattateli sono dei veri professionisti.",
+    name: "Marco Rossi",
+    text: "Esperienza eccellente con tutto il team dello Studio Colombo. L'atmosfera familiare mi ha fatto sentire subito a mio agio, e il trattamento di implantologia è stato eseguito con grande professionalità. Ora posso sorridere con fiducia!",
     rating: 5,
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop"
   },

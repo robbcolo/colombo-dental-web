@@ -10,7 +10,7 @@ const Hero = () => {
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{
-          backgroundImage: `url(${import.meta.env.BASE_URL}images/about/studio2.jpg)`,
+          backgroundImage: `url("/images/about/studio2.jpg")`,
           backgroundSize: 'cover',
           filter: 'brightness(0.50)'
         }}
@@ -36,7 +36,7 @@ const Hero = () => {
             Studio Dentistico Colombo, realtà familiare che unisce professionalità e cura per offrirti il sorriso che meriti.
           </p>
           <div className="mb-[-35px] animate-slide-down opacity-0" style={{ animationDelay: '400ms' }}>
-        <img src="/images/about/logo.png" alt="Logo Studio Dentistico Colombo" className="max-w-[120px] mx-auto" />
+        <img src="public/images/about/logo.png" alt="Logo Studio Dentistico Colombo" className="max-w-[120px] mx-auto" />
       </div>
         </div>
 

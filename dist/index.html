@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio Dentistico Colombo</title>
+  <meta name="description"
+    content="Studio Dentistico Colombo - Specialisti in odontoiatria, cura e prevenzione dentale per tutta la famiglia." />
+  <meta name="author" content="Studio Dentistico Colombo" />
+
+  <!-- Corretto il percorso dell'immagine OG -->
+  <meta property="og:image" content="/colombo-dental-web/og-image.png" />
+
+  <!-- Aggiunta base URL per GitHub Pages -->
+  <base href="/colombo-dental-web/">
+
+  <!-- Script per gestire il reindirizzamento da 404.html -->
+  <script type="text/javascript">
+    // Gestione del reindirizzamento da 404.html
+    (function (l) {
+      if (l.search.indexOf('?p=') !== -1) {
+        var decoded = l.search.slice(1).split('&').map(function (s) {
+          return s.replace(/~and~/g, '&')
+        }).join('?');
+        window.history.replaceState(null, null,
+          l.pathname.slice(0, -1) + decoded.replace('p=', '') + l.hash
+        );
+      }
+    }(window.location))
+  </script>
+
+  <script type="module" crossorigin src="/colombo-dental-web/assets/index-aU0mfDH1.js"></script>
+  <link rel="stylesheet" crossorigin href="/colombo-dental-web/assets/index-DjHz3hDh.css">
+</head>
+
+<body>
+  <div id="root"></div>
+  <!-- Rimuovi o commenta questo script se non è essenziale -->
+  <!-- <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script> -->
+</body>
+
+</html>

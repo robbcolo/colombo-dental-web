@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Calendar, Clock, CheckCircle, ArrowRight, Phone, MapPin, Smartphone } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const initialFormState = {
   name: '',
@@ -19,6 +20,7 @@ const Prenota = () => {
   const [formData, setFormData] = useState(initialFormState);
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
+  const [formErrors, setFormErrors] = useState<{[key: string]: string}>({});
   
   const availableDates = [
     "2023-06-01", "2023-06-02", "2023-06-05", "2023-06-06", 
@@ -26,8 +28,8 @@ const Prenota = () => {
   ];
   
   const availableTimes = [
-    "09:00", "10:00", "11:00", "12:00", 
-    "14:00", "15:00", "16:00", "17:00", "18:00"
+    "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00",
+    "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30"
   ];
 
   useEffect(() => {
@@ -38,16 +40,56 @@ const Prenota = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    
+    // Clear error for this field when user types
+    if (formErrors[name]) {
+      setFormErrors(prev => {
+        const newErrors = {...prev};
+        delete newErrors[name];
+        return newErrors;
+      });
+    }
   };
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target;
     setFormData(prev => ({ ...prev, [name]: checked }));
+    
+    // Clear error for this checkbox when user checks it
+    if (formErrors[name]) {
+      setFormErrors(prev => {
+        const newErrors = {...prev};
+        delete newErrors[name];
+        return newErrors;
+      });
+    }
+  };
+
+  const validateStep = (currentStep: number): boolean => {
+    const errors: {[key: string]: string} = {};
+    
+    if (currentStep === 1) {
+      // Validate Step 1 fields
+      if (!formData.name.trim()) errors.name = "Il nome è obbligatorio";
+      if (!formData.surname.trim()) errors.surname = "Il cognome è obbligatorio";
+      if (!formData.phone.trim()) errors.phone = "Il numero di telefono è obbligatorio";
+    } 
+    else if (currentStep === 2) {
+      // Validate Step 2 fields
+      if (!formData.service) errors.service = "Seleziona un servizio";
+      if (!formData.date) errors.date = "Seleziona una data";
+      if (!formData.time) errors.time = "Seleziona un orario";
+    }
+    
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
   };
 
   const nextStep = () => {
-    setStep(prev => prev + 1);
-    window.scrollTo(0, 0);
+    if (validateStep(step)) {
+      setStep(prev => prev + 1);
+      window.scrollTo(0, 0);
+    }
   };
 
   const prevStep = () => {
@@ -55,11 +97,52 @@ const Prenota = () => {
     window.scrollTo(0, 0);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
-    window.scrollTo(0, 0);
+
+    // Validate final step
+    const errors: { [key: string]: string } = {};
+    if (!formData.privacy) errors.privacy = "Devi accettare la Privacy Policy";
+
+    setFormErrors(errors);
+
+    if (Object.keys(errors).length === 0) {
+      setIsSubmitting(true); // Attiva l'indicatore di caricamento
+
+      try {
+        // Prepara i parametri per il template
+        const templateParams = {
+          to_email: "studio@dentisticolombo.it", // Inserisci qui l'email dello studio
+          from_name: `${formData.name} ${formData.surname}`,
+          from_email: formData.email || "noemail@provided.com",
+          phone: formData.phone,
+          service: formData.service.replace('-', ' '),
+          appointment_date: formData.date,
+          appointment_time: formData.time,
+          message: formData.message || "Nessuna nota aggiuntiva",
+          reply_to: formData.email || formData.phone,
+        };
+
+        // Invia l'email usando EmailJS
+        const response = await emailjs.send(
+          'service_5tqit2n', // Sostituisci con il tuo Service ID da EmailJS
+          'template_g49zxtd', // Sostituisci con il tuo Template ID da EmailJS
+          templateParams,
+          'IJbOe1xJCjDRxdc-Y' // Sostituisci con la tua Public Key da EmailJS
+        );
+
+        console.log("Form submitted:", formData);
+        console.log("Email sent successfully:", response);
+        setSubmitted(true);
+        window.scrollTo(0, 0);
+      } catch (error) {
+        console.error('Errore durante l\'invio della prenotazione:', error);
+        alert('Si è verificato un errore durante l\'invio della prenotazione. Per favore, riprova più tardi o contattaci direttamente per telefono.');
+      } finally {
+        setIsSubmitting(false); // Disattiva l'indicatore di caricamento
+      }
+    }
   };
 
   return (
@@ -125,18 +208,21 @@ const Prenota = () => {
                       
                       <div>
                         <h3 className="font-medium text-lg mb-3">Orari di apertura</h3>
-                        <ul className="space-y-2">
-                          <li className="flex justify-between">
-                            <span className="text-muted-foreground">Lunedì - Venerdì</span>
-                            <span>9:00 - 19:00</span>
+                        <ul className="space-y-4">
+                          <li>
+                            <div className="text-center text-muted-foreground mb-1">Lunedì - Giovedì</div>
+                            <div className="flex justify-center space-x-4">
+                              <div className="text-center">8:30 - 12:30</div>
+                              <div className="text-center">16:00 - 20:00</div>
+                            </div>
                           </li>
-                          <li className="flex justify-between">
-                            <span className="text-muted-foreground">Sabato</span>
-                            <span>9:00 - 13:00</span>
+                          <li>
+                            <div className="text-center text-muted-foreground mb-1">Venerdì</div>
+                            <div className="text-center">8:30 - 12:30</div>
                           </li>
-                          <li className="flex justify-between">
-                            <span className="text-muted-foreground">Domenica</span>
-                            <span>Chiuso</span>
+                          <li>
+                            <div className="text-center text-muted-foreground mb-1">Sabato - Domenica</div>
+                            <div className="text-center">Chiuso</div>
                           </li>
                         </ul>
                       </div>
@@ -189,7 +275,7 @@ const Prenota = () => {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                               <div>
                                 <label htmlFor="name" className="block text-sm font-medium text-muted-foreground mb-2">
-                                  Nome *
+                                  Nome*
                                 </label>
                                 <input
                                   type="text"
@@ -198,14 +284,17 @@ const Prenota = () => {
                                   value={formData.name}
                                   onChange={handleChange}
                                   required
-                                  className="w-full px-4 py-3 rounded-lg border border-border focus:border-dental focus:ring-1 focus:ring-dental outline-none transition"
+                                  className={`w-full px-4 py-3 rounded-lg border ${formErrors.name ? 'border-red-500' : 'border-border'} focus:border-dental focus:ring-1 focus:ring-dental outline-none transition`}
                                   placeholder="Inserisci il tuo nome"
                                 />
+                                {formErrors.name && (
+                                  <p className="text-red-500 text-sm mt-1">{formErrors.name}</p>
+                                )}
                               </div>
                               
                               <div>
                                 <label htmlFor="surname" className="block text-sm font-medium text-muted-foreground mb-2">
-                                  Cognome *
+                                  Cognome*
                                 </label>
                                 <input
                                   type="text"
@@ -214,16 +303,19 @@ const Prenota = () => {
                                   value={formData.surname}
                                   onChange={handleChange}
                                   required
-                                  className="w-full px-4 py-3 rounded-lg border border-border focus:border-dental focus:ring-1 focus:ring-dental outline-none transition"
+                                  className={`w-full px-4 py-3 rounded-lg border ${formErrors.surname ? 'border-red-500' : 'border-border'} focus:border-dental focus:ring-1 focus:ring-dental outline-none transition`}
                                   placeholder="Inserisci il tuo cognome"
                                 />
+                                {formErrors.surname && (
+                                  <p className="text-red-500 text-sm mt-1">{formErrors.surname}</p>
+                                )}
                               </div>
                             </div>
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                               <div>
                                 <label htmlFor="email" className="block text-sm font-medium text-muted-foreground mb-2">
-                                  Email *
+                                  Email
                                 </label>
                                 <input
                                   type="email"
@@ -232,14 +324,17 @@ const Prenota = () => {
                                   value={formData.email}
                                   onChange={handleChange}
                                   required
-                                  className="w-full px-4 py-3 rounded-lg border border-border focus:border-dental focus:ring-1 focus:ring-dental outline-none transition"
+                                  className={`w-full px-4 py-3 rounded-lg border ${formErrors.email ? 'border-red-500' : 'border-border'} focus:border-dental focus:ring-1 focus:ring-dental outline-none transition`}
                                   placeholder="Inserisci la tua email"
                                 />
+                                {formErrors.email && (
+                                  <p className="text-red-500 text-sm mt-1">{formErrors.email}</p>
+                                )}
                               </div>
                               
                               <div>
                                 <label htmlFor="phone" className="block text-sm font-medium text-muted-foreground mb-2">
-                                  Telefono *
+                                  Telefono*
                                 </label>
                                 <input
                                   type="tel"
@@ -248,9 +343,12 @@ const Prenota = () => {
                                   value={formData.phone}
                                   onChange={handleChange}
                                   required
-                                  className="w-full px-4 py-3 rounded-lg border border-border focus:border-dental focus:ring-1 focus:ring-dental outline-none transition"
+                                  className={`w-full px-4 py-3 rounded-lg border ${formErrors.phone ? 'border-red-500' : 'border-border'} focus:border-dental focus:ring-1 focus:ring-dental outline-none transition`}
                                   placeholder="Inserisci il tuo numero di telefono"
                                 />
+                                {formErrors.phone && (
+                                  <p className="text-red-500 text-sm mt-1">{formErrors.phone}</p>
+                                )}
                               </div>
                             </div>
                           </div>
@@ -259,9 +357,9 @@ const Prenota = () => {
                             <button 
                               type="button" 
                               onClick={nextStep}
-                              className="btn-primary"
+                              className="btn-primary flex items-center"
                             >
-                              Continua
+                              <span>Continua</span>
                               <ArrowRight size={18} className="ml-2" />
                             </button>
                           </div>
@@ -276,7 +374,7 @@ const Prenota = () => {
                           <div className="space-y-6">
                             <div>
                               <label htmlFor="service" className="block text-sm font-medium text-muted-foreground mb-2">
-                                Servizio richiesto *
+                                Servizio richiesto*
                               </label>
                               <select
                                 id="service"
@@ -284,7 +382,7 @@ const Prenota = () => {
                                 value={formData.service}
                                 onChange={handleChange}
                                 required
-                                className="w-full px-4 py-3 rounded-lg border border-border focus:border-dental focus:ring-1 focus:ring-dental outline-none transition"
+                                className={`w-full px-4 py-3 rounded-lg border ${formErrors.service ? 'border-red-500' : 'border-border'} focus:border-dental focus:ring-1 focus:ring-dental outline-none transition`}
                               >
                                 <option value="" disabled>Seleziona un servizio</option>
                                 <option value="igiene-dentale">Igiene Dentale Professionale</option>
@@ -298,12 +396,15 @@ const Prenota = () => {
                                 <option value="prima-visita">Prima Visita</option>
                                 <option value="altro">Altro</option>
                               </select>
+                              {formErrors.service && (
+                                <p className="text-red-500 text-sm mt-1">{formErrors.service}</p>
+                              )}
                             </div>
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                               <div>
                                 <label htmlFor="date" className="block text-sm font-medium text-muted-foreground mb-2">
-                                  Data preferita *
+                                  Data preferita*
                                 </label>
                                 <div className="relative">
                                   <input
@@ -313,15 +414,18 @@ const Prenota = () => {
                                     value={formData.date}
                                     onChange={handleChange}
                                     required
-                                    className="w-full px-4 py-3 rounded-lg border border-border focus:border-dental focus:ring-1 focus:ring-dental outline-none transition pl-10"
+                                    className={`w-full px-4 py-3 rounded-lg border ${formErrors.date ? 'border-red-500' : 'border-border'} focus:border-dental focus:ring-1 focus:ring-dental outline-none transition pl-10`}
                                   />
                                   <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-dental" size={18} />
+                                  {formErrors.date && (
+                                    <p className="text-red-500 text-sm mt-1">{formErrors.date}</p>
+                                  )}
                                 </div>
                               </div>
                               
                               <div>
                                 <label htmlFor="time" className="block text-sm font-medium text-muted-foreground mb-2">
-                                  Orario preferito *
+                                  Orario preferito*
                                 </label>
                                 <div className="relative">
                                   <select
@@ -330,14 +434,17 @@ const Prenota = () => {
                                     value={formData.time}
                                     onChange={handleChange}
                                     required
-                                    className="w-full px-4 py-3 rounded-lg border border-border focus:border-dental focus:ring-1 focus:ring-dental outline-none transition pl-10"
+                                    className={`w-full px-4 py-3 rounded-lg border ${formErrors.time ? 'border-red-500' : 'border-border'} focus:border-dental focus:ring-1 focus:ring-dental outline-none transition pl-10`}
                                   >
-                                    <option value="" disabled>Seleziona un orario</option>
+                                    <option value="" disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Seleziona un orario</option>
                                     {availableTimes.map(time => (
-                                      <option key={time} value={time}>{time}</option>
+                                      <option key={time} value={time}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{time}</option>
                                     ))}
                                   </select>
                                   <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-dental" size={18} />
+                                  {formErrors.time && (
+                                    <p className="text-red-500 text-sm mt-1">{formErrors.time}</p>
+                                  )}
                                 </div>
                               </div>
                             </div>
@@ -370,9 +477,9 @@ const Prenota = () => {
                             <button 
                               type="button" 
                               onClick={nextStep}
-                              className="btn-primary"
+                              className="btn-primary flex items-center"
                             >
-                              Continua
+                              <span>Continua</span>
                               <ArrowRight size={18} className="ml-2" />
                             </button>
                           </div>
@@ -426,7 +533,7 @@ const Prenota = () => {
                               checked={formData.privacy}
                               onChange={handleCheckboxChange}
                               required
-                              className="h-5 w-5 text-dental border-border rounded focus:ring-dental mt-1"
+                              className={`h-5 w-5 text-dental ${formErrors.privacy ? 'border-red-500' : 'border-border'} rounded focus:ring-dental mt-1`}
                             />
                             <label htmlFor="privacy" className="ml-3 block text-muted-foreground">
                               Acconsento al trattamento dei dati personali secondo la {' '}
@@ -435,6 +542,9 @@ const Prenota = () => {
                               </a>
                               . *
                             </label>
+                            {formErrors.privacy && (
+                              <p className="text-red-500 text-sm mt-1">{formErrors.privacy}</p>
+                            )}
                           </div>
                           
                           <div className="flex justify-between mt-10">
@@ -446,12 +556,19 @@ const Prenota = () => {
                               Indietro
                             </button>
                             
-                            <button 
-                              type="submit" 
-                              className="btn-primary"
-                              disabled={!formData.privacy}
+                            <button
+                              type="submit"
+                              className="btn-primary flex items-center"
+                              disabled={isSubmitting}
                             >
-                              Conferma prenotazione
+                              {isSubmitting ? (
+                                <>
+                                  <span>Invio in corso...</span>
+                                  <div className="ml-2 w-5 h-5 rounded-full border-2 border-white border-t-transparent animate-spin"></div>
+                                </>
+                              ) : (
+                                <span>Conferma prenotazione</span>
+                              )}
                             </button>
                           </div>
                         </div>

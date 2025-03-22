@@ -33,11 +33,11 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
                 <MapPin size={20} className="text-dental mt-1 flex-shrink-0" />
-                <p className="text-dental-100">Via Esempio 123, Milano, 20100</p>
+                <p className="text-dental-100">Via Fontanelle, SNC, Patti (ME), 98066</p>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone size={20} className="text-dental flex-shrink-0" />
-                <p className="text-dental-100">+39 02 1234567</p>
+                <p className="text-dental-100">0941 22749</p>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail size={20} className="text-dental flex-shrink-0" />
@@ -46,8 +46,8 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <Clock size={20} className="text-dental mt-1 flex-shrink-0" />
                 <div>
-                  <p className="text-dental-100">Lun-Ven: 9:00-19:00</p>
-                  <p className="text-dental-100">Sab: 9:00-13:00</p>
+                  <p className="text-dental-100">Lun-Giov: 8:30-12:30 ; 16:00-20:00</p>
+                  <p className="text-dental-100">Ven: 8:30-12:30</p>
                 </div>
               </div>
             </div>

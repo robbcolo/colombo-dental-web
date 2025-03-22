@@ -205,9 +205,26 @@ const ContactSection = () => {
                   <Clock className="w-6 h-6 text-blue-500" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold mb-1 text-white">Orari</h3>
-                  <p className="text-white/80">Lun-Ven: 9:00-19:00</p>
-                  <p className="text-white/80">Sab: 9:00-13:00</p>
+                  <div>
+                    <h3 className="font-medium text-lg mb-3">Orari di apertura</h3>
+                    <ul className="space-y-4">
+                      <li>
+                        <div className="text-center text-muted-foreground mb-1">Lunedì - Giovedì</div>
+                        <div className="flex justify-center space-x-4">
+                          <div className="text-center">8:30 - 12:30</div>
+                          <div className="text-center">16:00 - 20:00</div>
+                        </div>
+                      </li>
+                      <li>
+                        <div className="text-center text-muted-foreground mb-1">Venerdì</div>
+                        <div className="text-center">8:30 - 12:30</div>
+                      </li>
+                      <li>
+                        <div className="text-center text-muted-foreground mb-1">Sabato - Domenica</div>
+                        <div className="text-center">Chiuso</div>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>

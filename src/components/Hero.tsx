@@ -28,7 +28,7 @@ const Hero = () => {
               <img src="/images/about/logo.png" alt="Logo Studio Dentistico Colombo" className="h-24 w-auto mb-3" />
               <div className="bg-white/15 backdrop-blur-sm px-6 py-2 rounded-md">
                 <span className="text-white text-lg font-medium tracking-wider">
-                  <span className="text-blue-300 mr-1">STUDIO DENTISTICO</span>
+                  <span className="text-blue-300 mr-1">PROVA</span>
                   <span className="font-bold">COLOMBO</span>
                 </span>
               </div>

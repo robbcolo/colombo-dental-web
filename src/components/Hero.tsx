@@ -36,7 +36,7 @@ const Hero = () => {
             Studio Dentistico Colombo, realtà familiare che unisce professionalità e cura per offrirti il sorriso che meriti.
           </p>
           <div className="mb-[-35px] animate-slide-down opacity-0" style={{ animationDelay: '400ms' }}>
-        <img src="public/images/about/logo.png" alt="Logo Studio Dentistico Colombo" className="max-w-[120px] mx-auto" />
+        <img src="/images/about/logo.png" alt="Logo Studio Dentistico Colombo" className="max-w-[120px] mx-auto" />
       </div>
         </div>
 

@@ -5,7 +5,7 @@ import { IMAGES } from '../utils/imageUtils';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center pt-16 sm:pt-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-start sm:items-center pt-8 sm:pt-20 overflow-hidden">
       {/* Background image and overlay rimangono uguali */}
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
@@ -17,19 +17,19 @@ const Hero = () => {
       />
       <div className="absolute inset-0 bg-gradient-to-br from-dental-900/90 via-dental-800/80 to-dental-700/70 z-1"></div>
 
-      <div className="container mx-auto px-3 sm:px-6 z-10 pt-6 sm:pt-10 md:pt-0">
+      <div className="container mx-auto px-3 sm:px-6 z-10">
         {/* Contenuto centrale - ridotto spacing e dimensioni testo */}
-        <div className="flex flex-col items-center text-center mb-6 sm:mb-10">
+        <div className="flex flex-col items-center text-center mb-8 sm:mb-10">
           {/* Logo più piccolo su mobile */}
-          <div className="animate-slide-down opacity-0 mb-3 sm:mb-6" style={{ animationDelay: '100ms' }}>
+          <div className="animate-slide-down opacity-0 mb-4 sm:mb-6" style={{ animationDelay: '100ms' }}>
             <div className="flex flex-col items-center">
               <img
                 src={`${import.meta.env.BASE_URL}images/about/logo.png`}
                 alt="Logo Studio Dentistico Colombo"
-                className="h-14 sm:h-20 md:h-24 w-auto mb-2 sm:mb-3"
+                className="h-24 sm:h-20 md:h-24 w-auto mb-3 sm:mb-3" // Aumentato h-24 su mobile
               />
-              <div className="bg-white/15 backdrop-blur-sm px-3 sm:px-6 py-1 sm:py-2 rounded-md">
-                <span className="text-white text-sm sm:text-lg font-medium tracking-wider">
+              <div className="bg-white/15 backdrop-blur-sm px-4 sm:px-6 py-1.5 sm:py-2 rounded-md">
+                <span className="text-white text-base sm:text-lg font-medium tracking-wider">
                   <span className="text-blue-300 mr-1">STUDIO DENTISTICO</span>
                   <span className="font-bold">COLOMBO</span>
                 </span>
@@ -37,21 +37,21 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Titolo principale - ridotto su mobile */}
-          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-3 sm:mb-6 animate-slide-down opacity-0 max-w-3xl px-4"
+          {/* Titolo principale - aumentato margin */}
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 sm:mb-6 animate-slide-down opacity-0 max-w-3xl px-4"
             style={{ animationDelay: '200ms' }}>
             La salute del tuo sorriso è la nostra priorità
           </h1>
 
-          {/* Sottotitolo - ridotto su mobile */}
-          <p className="text-sm sm:text-lg text-white/80 mb-4 sm:mb-6 max-w-xl px-4 animate-slide-down opacity-0"
+          {/* Sottotitolo - aumentato margin */}
+          <p className="text-sm sm:text-lg text-white/80 mb-8 sm:mb-6 max-w-xl px-4 animate-slide-down opacity-0"
             style={{ animationDelay: '300ms' }}>
             Da oltre 25 anni ci prendiamo cura della salute orale dei nostri pazienti con competenza, tecnologie all'avanguardia e un approccio umano e familiare.
           </p>
         </div>
 
         {/* Card layout - modificato per visualizzazione orizzontale su mobile */}
-        <div className="grid grid-cols-3 gap-2 sm:grid-cols-3 md:grid-cols-3 sm:gap-6 md:gap-8 mb-6 sm:mb-8 px-2 sm:px-4">
+        <div className="grid grid-cols-3 gap-2 sm:grid-cols-3 md:grid-cols-3 sm:gap-6 md:gap-8 mb-6 sm:mb-8 px-2 sm:px-4 mt-auto">
           {/* Card Contattaci */}
           <div className="animate-slide-up opacity-0" style={{ animationDelay: '400ms' }}>
             <div className="bg-white/10 backdrop-blur-sm p-2 sm:p-6 rounded-lg sm:rounded-2xl h-full flex flex-col justify-center items-center">

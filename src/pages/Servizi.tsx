@@ -21,7 +21,7 @@ const serviceDetails = [
   },
   {
     id: "implantologia",
-    icon: <img src="/images/services/impla.png" className="w-12 h-12"/>,
+    icon: <img src={`${import.meta.env.BASE_URL}images/services/impla.png`} className="w-12 h-12"/>,
     title: "Implantologia Dentale",
     description: "Gli impianti dentali rappresentano la soluzione più avanzata per sostituire i denti mancanti. Realizziamo impianti di alta qualità che si integrano perfettamente con l'osso mandibolare, offrendo una soluzione permanente ed esteticamente naturale.",
     benefits: [
@@ -34,7 +34,7 @@ const serviceDetails = [
   },
   {
     id: "ortodonzia",
-    icon: <img src="/images/services/orto1.png" className="w-12 h-12"/>,
+    icon: <img src={`${import.meta.env.BASE_URL}images/services/orto1.png`} className="w-12 h-12"/>,
     title: "Ortodonzia",
     description: "Offriamo diverse soluzioni ortodontiche per allineare i denti e correggere problemi di morso. Dalle tradizionali apparecchiature fisse agli allineatori trasparenti, personalizziamo il trattamento in base alle esigenze estetiche e funzionali di ogni paziente.",
     benefits: [

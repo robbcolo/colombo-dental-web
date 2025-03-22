@@ -33,7 +33,11 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         <Link to="/" className="relative flex items-center z-10">
-        <img src="/images/about/logo.png" alt="Logo Studio Dentistico Colombo" className="h-10 w-auto mr-2" />
+          <img
+            src={`${import.meta.env.BASE_URL}images/about/logo.png`}
+            alt="Logo Studio Dentistico Colombo"
+            className="h-10 w-auto mr-2"
+          />
           <span className="text-2xl font-bold text-dental">Studio Dentistico</span>
           <span className="text-2xl font-bold ml-2 text-blue-500">Colombo</span>
         </Link>

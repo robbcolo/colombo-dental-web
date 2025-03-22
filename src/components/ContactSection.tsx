@@ -139,91 +139,117 @@ const ContactSection = () => {
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <div className="animate-slide-in-left opacity-0">
-            <span className="inline-block bg-dental/20 text-blue-500 py-1 px-3 rounded-full text-sm font-medium mb-4">
-              Contattaci
-            </span>
-            <h2 className="heading-lg mb-6 text-white">Siamo qui per aiutarti</h2>
-            <p className="text-white/80 mb-12 max-w-md">
-              Hai domande sui nostri servizi o vuoi prenotare un appuntamento? Contattaci usando uno dei metodi qui sotto o compila il modulo.
-            </p>
+            {/* Header Section */}
+            <div className="mb-12">
+              <span className="inline-block bg-dental/20 text-blue-500 py-1 px-3 rounded-full text-sm font-medium mb-4">
+                Contattaci
+              </span>
+              <h2 className="heading-lg mb-6 text-white">Siamo qui per aiutarti</h2>
+              <p className="text-white/80 max-w-md">
+                Hai domande sui nostri servizi o vuoi prenotare un appuntamento?
+                Contattaci usando uno dei metodi qui sotto o compila il modulo.
+              </p>
+            </div>
 
-            <div className="space-y-8">
-              <div className="flex items-start space-x-4">
-                <div className="bg-dental/20 rounded-lg p-3">
+            {/* Contact Information */}
+            <div className="space-y-6">
+              {/* Indirizzo */}
+              <div className="flex items-start space-x-4 p-4 hover:bg-dental/10 rounded-lg transition-colors">
+                <div className="bg-dental/20 rounded-lg p-3 shrink-0">
                   <MapPinned className="w-6 h-6 text-blue-500" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold mb-1 text-white">Indirizzo</h3>
-                  <p className="text-white/80">
-                    <a href="https://www.google.com/maps/place/Studio+Dentistico+Colombo/@38.1391643,14.9636084,17z/data=!3m1!4b1!4m6!3m5!1s0x13169c5bac9ea239:0xd3cf9836a4ca3755!8m2!3d38.1391602!4d14.9684793!16s%2Fg%2F1hc47jp95?entry=ttu&g_ep=EgoyMDI1MDMxNy4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" className="hover:underline">
-                      Via Fontanelle, SNC, Patti (ME)
-                    </a>
-                  </p>
+                  <h3 className="text-lg font-bold mb-2 text-white">Indirizzo</h3>
+                  <a
+                    href="https://www.google.com/maps/place/Studio+Dentistico+Colombo/@38.1391643,14.9636084,17z/data=!3m1!4b1!4m6!3m5!1s0x13169c5bac9ea239:0xd3cf9836a4ca3755!8m2!3d38.1391602!4d14.9684793!16s%2Fg%2F1hc47jp95?entry=ttu"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/80 hover:text-blue-500 transition-colors"
+                  >
+                    Via Fontanelle, SNC, Patti (ME)
+                  </a>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-4">
-                <div className="bg-dental/20 rounded-lg p-3">
+              {/* Telefono */}
+              <div className="flex items-start space-x-4 p-4 hover:bg-dental/10 rounded-lg transition-colors">
+                <div className="bg-dental/20 rounded-lg p-3 shrink-0">
                   <Phone className="w-6 h-6 text-blue-500" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold mb-1 text-white">Telefono</h3>
-                  <p className="text-white/80">
-                    <a href="tel:094122749" className="hover:underline">
-                      0941 22749
-                    </a>
-                  </p>
+                  <h3 className="text-lg font-bold mb-2 text-white">Telefono</h3>
+                  <a
+                    href="tel:094122749"
+                    className="text-white/80 hover:text-blue-500 transition-colors"
+                  >
+                    0941 22749
+                  </a>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-4">
-                <div className="bg-dental/20 rounded-lg p-3">
+              {/* WhatsApp */}
+              <div className="flex items-start space-x-4 p-4 hover:bg-dental/10 rounded-lg transition-colors">
+                <div className="bg-dental/20 rounded-lg p-3 shrink-0">
                   <Smartphone className="w-6 h-6 text-blue-500" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold mb-1 text-white">Whatsapp</h3>
-                  <p className="text-white/80">
-                    <a href="https://wa.me/3791523085" target="_blank" rel="noopener noreferrer" className="hover:underline">
-                      379 1523085
-                    </a>
-                  </p>
+                  <h3 className="text-lg font-bold mb-2 text-white">WhatsApp</h3>
+                  <a
+                    href="https://wa.me/3791523085"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/80 hover:text-blue-500 transition-colors"
+                  >
+                    379 1523085
+                  </a>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-4">
-                <div className="bg-dental/20 rounded-lg p-3">
+              {/* Email */}
+              <div className="flex items-start space-x-4 p-4 hover:bg-dental/10 rounded-lg transition-colors">
+                <div className="bg-dental/20 rounded-lg p-3 shrink-0">
                   <Mail className="w-6 h-6 text-blue-500" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold mb-1 text-white">Email</h3>
-                  <p className="text-white/80">info@studiodentisticocolombo.it</p>
+                  <h3 className="text-lg font-bold mb-2 text-white">Email</h3>
+                  <a
+                    href="mailto:colombostudiodentistico@gmail.com"
+                    className="text-white/80 hover:text-blue-500 transition-colors break-words"
+                  >
+                    colombostudiodentistico@gmail.com
+                  </a>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-4">
-                <div className="bg-dental/20 rounded-lg p-3">
+              {/* Orari */}
+              <div className="flex items-start space-x-4 p-4 hover:bg-dental/10 rounded-lg transition-colors">
+                <div className="bg-dental/20 rounded-lg p-3 shrink-0">
                   <Clock className="w-6 h-6 text-blue-500" />
                 </div>
-                <div>
-                  <div>
-                    <h3 className="font-medium text-lg mb-3">Orari di apertura</h3>
-                    <ul className="space-y-4">
-                      <li>
-                        <div className="text-center text-muted-foreground mb-1">Lunedì - Giovedì</div>
-                        <div className="flex justify-center space-x-4">
-                          <div className="text-center">8:30 - 12:30</div>
-                          <div className="text-center">16:00 - 20:00</div>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="text-center text-muted-foreground mb-1">Venerdì</div>
-                        <div className="text-center">8:30 - 12:30</div>
-                      </li>
-                      <li>
-                        <div className="text-center text-muted-foreground mb-1">Sabato - Domenica</div>
-                        <div className="text-center">Chiuso</div>
-                      </li>
-                    </ul>
+                <div className="w-full">
+                  <h3 className="text-lg font-bold mb-4 text-white">Orari di apertura</h3>
+                  <div className="space-y-4">
+                    {/* Lunedì - Giovedì */}
+                    <div className="flex justify-between items-center border-b border-dental/20 pb-3">
+                      <span className="text-white/80">Lunedì - Giovedì</span>
+                      <div className="text-white">
+                        <span>8:30 - 12:30</span>
+                        <span className="mx-2">|</span>
+                        <span>16:00 - 20:00</span>
+                      </div>
+                    </div>
+
+                    {/* Venerdì */}
+                    <div className="flex justify-between items-center border-b border-dental/20 pb-3">
+                      <span className="text-white/80">Venerdì</span>
+                      <span className="text-white">8:30 - 12:30</span>
+                    </div>
+
+                    {/* Weekend */}
+                    <div className="flex justify-between items-center">
+                      <span className="text-white/80">Sabato - Domenica</span>
+                      <span className="text-white">Chiuso</span>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -231,7 +231,7 @@ const Prenota = () => {
                         <h3 className="font-medium text-lg mb-3">Indirizzo</h3>
                         <div className="flex items-start">
                           <MapPin size={20} className="text-dental mr-2 mt-1 flex-shrink-0" />
-                          <p>Via Roma 123<br />98123 Sant'Agata di Militello (ME)</p>
+                          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Via Fontanelle, SNC<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Patti (ME)</p>
                         </div>
                       </div>
                     </div>

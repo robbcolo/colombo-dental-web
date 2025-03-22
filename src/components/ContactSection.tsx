@@ -135,17 +135,18 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="py-20 px-6 bg-dental-900 text-white">
+    <section className="py-20 px-6 bg-gradient-to-r from-dental to-dental-light text-white relative"> {/* Sostituito bg-dental-900 con il gradiente */}
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <div className="animate-slide-in-left opacity-0">
             {/* Header Section */}
             <div className="mb-12">
-              <span className="inline-block bg-dental/20 text-blue-500 py-1 px-3 rounded-full text-sm font-medium mb-4">
+              <span className="inline-block bg-white/10 text-white py-1 px-3 rounded-full text-sm font-medium mb-4">
+                {/* Modificato bg-dental/20 e text-blue-500 per corrispondere allo stile */}
                 Contattaci
               </span>
               <h2 className="heading-lg mb-6 text-white">Siamo qui per aiutarti</h2>
-              <p className="text-white/80 max-w-md">
+              <p className="text-white/90 max-w-md"> {/* Modificato text-white/80 a text-white/90 per corrispondere */}
                 Hai domande sui nostri servizi o vuoi prenotare un appuntamento?
                 Contattaci usando uno dei metodi qui sotto o compila il modulo.
               </p>
@@ -416,6 +417,7 @@ const ContactSection = () => {
           </div>
         </div>
       </div>
+      <div className="absolute bottom-0 left-0 w-full h-1 bg-dental-900"></div>
     </section>
   );
 };

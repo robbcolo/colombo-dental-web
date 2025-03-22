@@ -124,16 +124,16 @@ const Servizi = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-6 bg-dental-50">
+      <section className="pt-32 pb-16 px-6 bg-gradient-to-r from-dental to-dental-light">
         <div className="container mx-auto">
           <div className="max-w-2xl mx-auto text-center">
-            <span className="inline-block bg-dental/10 text-dental py-1 px-3 rounded-full text-sm font-medium mb-4 animate-fade-in opacity-0">
+            <span className="inline-block bg-white/10 text-white py-1 px-3 rounded-full text-sm font-medium mb-4 animate-fade-in opacity-0">
               I Nostri Servizi
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-slide-down opacity-0" style={{ animationDelay: '100ms' }}>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-slide-down opacity-0" style={{ animationDelay: '100ms' }}>
               Cure dentali complete e personalizzate
             </h1>
-            <p className="text-xl text-muted-foreground mb-8 animate-slide-down opacity-0" style={{ animationDelay: '200ms' }}>
+            <p className="text-white/90 text-lg animate-slide-down opacity-0" style={{ animationDelay: '200ms' }}>
               Offriamo una gamma completa di trattamenti odontoiatrici avanzati per ogni esigenza, dall'estetica alla funzionalità.
             </p>
           </div>

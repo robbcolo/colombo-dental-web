@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="bg-dental-900 text-white pt-16 pb-8">
+    <footer className="bg-gradient-to-r from-dental to-dental-light text-white pt-16 pb-8"> {/* Stesso gradiente del BookAppointment */}
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Column 1 - Info */}
           <div className="space-y-4">
             <h3 className="text-xl font-bold mb-4">Studio Dentistico Colombo</h3>
-            <p className="text-dental-100 max-w-xs">
+            <p className="text-white/90 max-w-xs"> {/* Stessa opacità del testo del BookAppointment */}
               Specialisti in odontoiatria con approccio familiare, cura e professionalità per il sorriso di tutti.
             </p>
             <div className="flex space-x-4 pt-2">

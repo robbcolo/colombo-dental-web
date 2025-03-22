@@ -10,7 +10,7 @@ const Hero = () => {
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{
-          backgroundImage: `url("/images/about/studio2.jpg")`,
+          backgroundImage: `url("${import.meta.env.BASE_URL}images/about/studio2.jpg")`,
           backgroundSize: 'cover',
           filter: 'brightness(0.50)'
         }}
@@ -25,7 +25,11 @@ const Hero = () => {
           {/* Logo e nome studio - logo ingrandito */}
           <div className="animate-slide-down opacity-0 mb-6" style={{ animationDelay: '100ms' }}>
             <div className="flex flex-col items-center">
-              <img src="/images/about/logo.png" alt="Logo Studio Dentistico Colombo" className="h-24 w-auto mb-3" />
+              <img
+                src={`${import.meta.env.BASE_URL}images/about/logo.png`}
+                alt="Logo Studio Dentistico Colombo"
+                className="h-24 w-auto mb-3"
+              />
               <div className="bg-white/15 backdrop-blur-sm px-6 py-2 rounded-md">
                 <span className="text-white text-lg font-medium tracking-wider">
                   <span className="text-blue-300 mr-1">PROVA</span>

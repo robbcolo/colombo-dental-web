@@ -23,7 +23,7 @@ const Hero = () => {
         {/* Centered content approach */}
         <div className="flex flex-col items-center text-center mb-16">
           <div className="animate-slide-down opacity-0" style={{ animationDelay: '100ms' }}>
-            <span className="inline-block bg-dental-light/20 text-blue-500 py-2 px-3 rounded-full text-sm font-medium mb-3">
+            <span className="inline-block bg-white py-3 px-8 rounded-full text-xl font-bold text-dental shadow-xl border-2 border-dental/30 tracking-wide uppercase">
               Studio Dentistico Colombo
             </span>
           </div>

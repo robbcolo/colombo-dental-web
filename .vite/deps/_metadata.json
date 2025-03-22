@@ -1,103 +1,58 @@
 {
-  "hash": "2cf413d6",
+  "hash": "d6d4f791",
   "configHash": "a0e5c3aa",
-  "lockfileHash": "f4411784",
-  "browserHash": "e4f28229",
+  "lockfileHash": "aaace779",
+  "browserHash": "4376f2ef",
   "optimized": {
     "react/jsx-dev-runtime": {
       "src": "../../node_modules/react/jsx-dev-runtime.js",
       "file": "react_jsx-dev-runtime.js",
-      "fileHash": "f4190fc9",
+      "fileHash": "708d6812",
       "needsInterop": true
     },
     "react-dom/client": {
       "src": "../../node_modules/react-dom/client.js",
       "file": "react-dom_client.js",
-      "fileHash": "784c2fc1",
+      "fileHash": "aa9654b2",
       "needsInterop": true
     },
     "@tanstack/react-query": {
       "src": "../../node_modules/@tanstack/react-query/build/modern/index.js",
       "file": "@tanstack_react-query.js",
-      "fileHash": "d48b392c",
+      "fileHash": "8b252c3f",
       "needsInterop": false
     },
     "react-router-dom": {
       "src": "../../node_modules/react-router-dom/dist/index.js",
       "file": "react-router-dom.js",
-      "fileHash": "dc648d61",
+      "fileHash": "37e5d166",
       "needsInterop": false
     },
     "react": {
       "src": "../../node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "34716e33",
+      "fileHash": "377ed263",
       "needsInterop": true
     },
     "lucide-react": {
       "src": "../../node_modules/lucide-react/dist/esm/lucide-react.js",
       "file": "lucide-react.js",
-      "fileHash": "5982eb15",
+      "fileHash": "768c6e8d",
       "needsInterop": false
     },
-    "@radix-ui/react-tooltip": {
-      "src": "../../node_modules/@radix-ui/react-tooltip/dist/index.mjs",
-      "file": "@radix-ui_react-tooltip.js",
-      "fileHash": "55f7e76b",
-      "needsInterop": false
-    },
-    "next-themes": {
-      "src": "../../node_modules/next-themes/dist/index.mjs",
-      "file": "next-themes.js",
-      "fileHash": "764275cc",
-      "needsInterop": false
-    },
-    "sonner": {
-      "src": "../../node_modules/sonner/dist/index.mjs",
-      "file": "sonner.js",
-      "fileHash": "9a4e6f92",
-      "needsInterop": false
-    },
-    "clsx": {
-      "src": "../../node_modules/clsx/dist/clsx.mjs",
-      "file": "clsx.js",
-      "fileHash": "ad43a322",
-      "needsInterop": false
-    },
-    "tailwind-merge": {
-      "src": "../../node_modules/tailwind-merge/dist/bundle-mjs.mjs",
-      "file": "tailwind-merge.js",
-      "fileHash": "47cf09b9",
-      "needsInterop": false
-    },
-    "@radix-ui/react-toast": {
-      "src": "../../node_modules/@radix-ui/react-toast/dist/index.mjs",
-      "file": "@radix-ui_react-toast.js",
-      "fileHash": "ecafc1de",
-      "needsInterop": false
-    },
-    "class-variance-authority": {
-      "src": "../../node_modules/class-variance-authority/dist/index.mjs",
-      "file": "class-variance-authority.js",
-      "fileHash": "d75e9ef4",
+    "@emailjs/browser": {
+      "src": "../../node_modules/@emailjs/browser/es/index.js",
+      "file": "@emailjs_browser.js",
+      "fileHash": "9050ff88",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-LSGK3H3V": {
-      "file": "chunk-LSGK3H3V.js"
+    "chunk-I2MCD6RR": {
+      "file": "chunk-I2MCD6RR.js"
     },
-    "chunk-XIX2TFUB": {
-      "file": "chunk-XIX2TFUB.js"
-    },
-    "chunk-BQI7ZBI7": {
-      "file": "chunk-BQI7ZBI7.js"
-    },
-    "chunk-KDVGFZWC": {
-      "file": "chunk-KDVGFZWC.js"
-    },
-    "chunk-TBKXTGHY": {
-      "file": "chunk-TBKXTGHY.js"
+    "chunk-E55NSNTN": {
+      "file": "chunk-E55NSNTN.js"
     },
     "chunk-4MBMRILA": {
       "file": "chunk-4MBMRILA.js"

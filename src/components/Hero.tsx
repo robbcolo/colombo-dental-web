@@ -96,7 +96,7 @@ const Hero = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mb-6 sm:mb-16 text-center animate-fade-in px-4" style={{ animationDelay: '700ms' }}>
+        <div className="mb-4 sm:mb-16 text-center animate-fade-in px-4" style={{ animationDelay: '700ms' }}>
           <Link to="/chi-siamo" className="inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 border border-white/30 bg-white/10 hover:bg-white/20 text-white rounded-lg text-sm sm:text-base font-medium transition-colors">
             Scopri la nostra storia <ArrowRight size={14} className="ml-2" />
           </Link>

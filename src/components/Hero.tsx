@@ -8,13 +8,13 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       {/* Full-width background image with overlay */}
       <div
-        className="absolute inset-0 bg-cover bg-center z-0"
-        style={{
-          backgroundImage: `url("${import.meta.env.BASE_URL}images/about/studio2.jpg")`,
-          backgroundSize: 'cover',
-          filter: 'brightness(0.50)'
-        }}
-      />
+  className="absolute inset-0 bg-cover bg-center z-0"
+  style={{
+    backgroundImage: `url("${import.meta.env.BASE_URL}images/about/studio2.jpg")`,
+    backgroundSize: 'cover',
+    filter: 'brightness(0.50)'
+  }}
+/>
 
       {/* Gradient overlay on top of the image */}
       <div className="absolute inset-0 bg-gradient-to-br from-dental-900/90 via-dental-800/80 to-dental-700/70 z-1"></div>
@@ -32,7 +32,7 @@ const Hero = () => {
               />
               <div className="bg-white/15 backdrop-blur-sm px-6 py-2 rounded-md">
                 <span className="text-white text-lg font-medium tracking-wider">
-                  <span className="text-blue-300 mr-1">PROVA</span>
+                  <span className="text-blue-300 mr-1">STUDIO DENTISTICO</span>
                   <span className="font-bold">COLOMBO</span>
                 </span>
               </div>

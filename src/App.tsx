@@ -15,10 +15,14 @@ import './App.css';
 // Create a new query client
 const queryClient = new QueryClient();
 
+const basename = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? '/'
+  : '/colombo-dental-web/';
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/chi-siamo" element={<ChiSiamo />} />

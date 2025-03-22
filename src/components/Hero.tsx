@@ -15,33 +15,41 @@ const Hero = () => {
           filter: 'brightness(0.50)'
         }}
       />
-      
+
       {/* Gradient overlay on top of the image */}
       <div className="absolute inset-0 bg-gradient-to-br from-dental-900/90 via-dental-800/80 to-dental-700/70 z-1"></div>
 
       <div className="container mx-auto px-6 z-10 pt-10 md:pt-0">
-        {/* Centered content approach */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <div className="animate-slide-down opacity-0" style={{ animationDelay: '100ms' }}>
-            <span className="inline-block bg-white py-3 px-8 rounded-full text-xl font-bold text-dental shadow-xl border-2 border-dental/30 tracking-wide uppercase">
-              Studio Dentistico Colombo
-            </span>
+        {/* Centered content approach - ridotto il margin-bottom */}
+        <div className="flex flex-col items-center text-center mb-10">
+          {/* Logo e nome studio - logo ingrandito */}
+          <div className="animate-slide-down opacity-0 mb-6" style={{ animationDelay: '100ms' }}>
+            <div className="flex flex-col items-center">
+              <img src="/images/about/logo.png" alt="Logo Studio Dentistico Colombo" className="h-24 w-auto mb-3" />
+              <div className="bg-white/15 backdrop-blur-sm px-6 py-2 rounded-md">
+                <span className="text-white text-lg font-medium tracking-wider">
+                  <span className="text-blue-300 mr-1">STUDIO DENTISTICO</span>
+                  <span className="font-bold">COLOMBO</span>
+                </span>
+              </div>
+            </div>
           </div>
+
+          {/* Titolo principale */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate-slide-down opacity-0 max-w-3xl"
-              style={{ animationDelay: '200ms' }}>
-            Il sorriso della tua famiglia in mani sicure
+            style={{ animationDelay: '200ms' }}>
+            La salute del tuo sorriso è la nostra priorità
           </h1>
-          <p className="text-lg text-white/80 mb-8 max-w-xl animate-slide-down opacity-0"
-             style={{ animationDelay: '300ms' }}>
-            Studio Dentistico Colombo, realtà familiare che unisce professionalità e cura per offrirti il sorriso che meriti.
+
+          {/* Sottotitolo - ridotto il margin-bottom */}
+          <p className="text-lg text-white/80 mb-6 max-w-xl animate-slide-down opacity-0"
+            style={{ animationDelay: '300ms' }}>
+            Da oltre 25 anni ci prendiamo cura della salute orale dei nostri pazienti con competenza, tecnologie all'avanguardia e un approccio umano e familiare.
           </p>
-          <div className="mb-[-35px] animate-slide-down opacity-0" style={{ animationDelay: '400ms' }}>
-        <img src="/images/about/logo.png" alt="Logo Studio Dentistico Colombo" className="max-w-[120px] mx-auto" />
-      </div>
         </div>
 
-        {/* Three column layout with info cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Three column layout with info cards - dimensioni originali ripristinate */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Left card */}
           <div className="md:col-span-1 animate-slide-up opacity-0" style={{ animationDelay: '400ms' }}>
             <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl h-full flex flex-col justify-center items-center">
@@ -55,7 +63,7 @@ const Hero = () => {
               </Link>
             </div>
           </div>
-          
+
           {/* Central card */}
           <div className="md:col-span-1 animate-slide-up opacity-0" style={{ animationDelay: '500ms' }}>
             <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl h-full flex flex-col justify-center items-center">
@@ -69,7 +77,7 @@ const Hero = () => {
               </Link>
             </div>
           </div>
-          
+
           {/* Right card */}
           <div className="md:col-span-1 animate-slide-up opacity-0" style={{ animationDelay: '600ms' }}>
             <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl h-full flex flex-col justify-center items-center">
@@ -84,11 +92,11 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        
-        {/* Bottom CTA */}
-        <div className="mt-12 text-center animate-fade-in" style={{ animationDelay: '700ms' }}>
-          <Link to="/chi-siamo" className="inline-flex items-center justify-center px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-lg font-medium transition-colors">
-            Scopri chi siamo <ArrowRight size={16} className="ml-2" />
+
+        {/* Bottom CTA - spostato più in alto con spazio sotto */}
+        <div className="mb-16 text-center animate-fade-in" style={{ animationDelay: '700ms' }}>
+          <Link to="/chi-siamo" className="inline-flex items-center justify-center px-6 py-3 border border-white/30 bg-white/10 hover:bg-white/20 text-white rounded-lg font-medium transition-colors">
+            Scopri la nostra storia <ArrowRight size={16} className="ml-2" />
           </Link>
         </div>
       </div>

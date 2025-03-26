@@ -78,7 +78,7 @@ const Navbar = () => {
         {/* Mobile Menu con Overlay */}
         <div
           className={cn(
-            "fixed inset-0 bg-black/75 z-40 md:hidden",
+            "fixed inset-0 bg-black/0 z-40 md:hidden",
             "transition-opacity duration-500 ease-in-out",
             isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
           )}
@@ -88,9 +88,9 @@ const Navbar = () => {
           <div
             className={cn(
               "absolute inset-x-0 top-[4.5rem] min-h-[calc(100vh-4.5rem)] flex flex-col items-center",
-              "bg-gradient-to-b from-black/40 to-black/0",
+              "bg-gradient-to-b from-black/90 to-black/60",
               "transform transition-all duration-500 ease-in-out",
-              isOpen ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0"
+              isOpen ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-50"
             )}
             onClick={(e) => e.stopPropagation()}
           >

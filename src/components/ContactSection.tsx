@@ -88,7 +88,7 @@ const ContactSection = () => {
       try {
         // Prepara i parametri per il template
         const templateParams = {
-          to_email: "studio@dentisticolombo.it", // Inserisci qui l'email dello studio
+          to_email: "studio@dentisticolombo.it",
           from_name: formData.name,
           from_email: formData.email,
           phone: formData.phone,
@@ -99,16 +99,16 @@ const ContactSection = () => {
 
         // Invia l'email usando EmailJS
         const response = await emailjs.send(
-          'service_5tqit2n', // Il tuo Service ID da EmailJS
-          'template_g49zxtd', // Il tuo Template ID da EmailJS
+          'service_5tqit2n',
+          'template_g49zxtd',
           templateParams,
-          'IJbOe1xJCjDRxdc-Y' // La tua Public Key da EmailJS
+          'IJbOe1xJCjDRxdc-Y'
         );
 
         console.log("Form submitted:", formData);
         console.log("Email sent successfully:", response);
 
-        // Reset del form e mostra messaggio di successo
+        // Reset del form
         setFormData({
           name: '',
           email: '',
@@ -120,7 +120,6 @@ const ContactSection = () => {
 
         setSubmitted(true);
 
-        // Dopo 5 secondi, ripristina il form per consentire un nuovo invio
         setTimeout(() => {
           setSubmitted(false);
         }, 5000);
@@ -135,132 +134,25 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="py-20 px-6 bg-gradient-to-r from-dental to-dental-light text-white relative"> {/* Sostituito bg-dental-900 con il gradiente */}
+    <section className="py-12 sm:py-20 px-4 sm:px-6 bg-gradient-to-br from-dental to-dental-light text-white relative">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          <div className="animate-slide-in-left opacity-0">
-            {/* Header Section */}
-            <div className="mb-12">
-              <span className="inline-block bg-white/10 text-white py-1 px-3 rounded-full text-sm font-medium mb-4">
-                {/* Modificato bg-dental/20 e text-blue-500 per corrispondere allo stile */}
-                Contattaci
-              </span>
-              <h2 className="heading-lg mb-6 text-white">Siamo qui per aiutarti</h2>
-              <p className="text-white/90 max-w-md"> {/* Modificato text-white/80 a text-white/90 per corrispondere */}
-                Hai domande sui nostri servizi o vuoi prenotare un appuntamento?
-                Contattaci usando uno dei metodi qui sotto o compila il modulo.
-              </p>
-            </div>
-
-            {/* Contact Information */}
-            <div className="space-y-6">
-              {/* Indirizzo */}
-              <div className="flex items-start space-x-4 p-4 hover:bg-dental/10 rounded-lg transition-colors">
-                <div className="bg-dental/20 rounded-lg p-3 shrink-0">
-                  <MapPinned className="w-6 h-6 text-blue-500" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold mb-2 text-white">Indirizzo</h3>
-                  <a
-                    href="https://www.google.com/maps/place/Studio+Dentistico+Colombo/@38.1391643,14.9636084,17z/data=!3m1!4b1!4m6!3m5!1s0x13169c5bac9ea239:0xd3cf9836a4ca3755!8m2!3d38.1391602!4d14.9684793!16s%2Fg%2F1hc47jp95?entry=ttu"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white/80 hover:text-blue-500 transition-colors"
-                  >
-                    Via Fontanelle, SNC, Patti (ME)
-                  </a>
-                </div>
-              </div>
-
-              {/* Telefono */}
-              <div className="flex items-start space-x-4 p-4 hover:bg-dental/10 rounded-lg transition-colors">
-                <div className="bg-dental/20 rounded-lg p-3 shrink-0">
-                  <Phone className="w-6 h-6 text-blue-500" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold mb-2 text-white">Telefono</h3>
-                  <a
-                    href="tel:094122749"
-                    className="text-white/80 hover:text-blue-500 transition-colors"
-                  >
-                    0941 22749
-                  </a>
-                </div>
-              </div>
-
-              {/* WhatsApp */}
-              <div className="flex items-start space-x-4 p-4 hover:bg-dental/10 rounded-lg transition-colors">
-                <div className="bg-dental/20 rounded-lg p-3 shrink-0">
-                  <Smartphone className="w-6 h-6 text-blue-500" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold mb-2 text-white">WhatsApp</h3>
-                  <a
-                    href="https://wa.me/3791523085"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white/80 hover:text-blue-500 transition-colors"
-                  >
-                    379 1523085
-                  </a>
-                </div>
-              </div>
-
-              {/* Email */}
-              <div className="flex items-start space-x-4 p-4 hover:bg-dental/10 rounded-lg transition-colors">
-                <div className="bg-dental/20 rounded-lg p-3 shrink-0">
-                  <Mail className="w-6 h-6 text-blue-500" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold mb-2 text-white">Email</h3>
-                  <a
-                    href="mailto:colombostudiodentistico@gmail.com"
-                    className="text-white/80 hover:text-blue-500 transition-colors break-words"
-                  >
-                    colombostudiodentistico@gmail.com
-                  </a>
-                </div>
-              </div>
-
-              {/* Orari */}
-              <div className="flex items-start space-x-4 p-4 hover:bg-dental/10 rounded-lg transition-colors">
-                <div className="bg-dental/20 rounded-lg p-3 shrink-0">
-                  <Clock className="w-6 h-6 text-blue-500" />
-                </div>
-                <div className="w-full">
-                  <h3 className="text-lg font-bold mb-4 text-white">Orari di apertura</h3>
-                  <div className="space-y-4">
-                    {/* Lunedì - Giovedì */}
-                    <div className="flex justify-between items-center border-b border-dental/20 pb-3">
-                      <span className="text-white/80">Lunedì - Giovedì</span>
-                      <div className="text-white">
-                        <span>8:30 - 12:30</span>
-                        <span className="mx-2">|</span>
-                        <span>16:00 - 20:00</span>
-                      </div>
-                    </div>
-
-                    {/* Venerdì */}
-                    <div className="flex justify-between items-center border-b border-dental/20 pb-3">
-                      <span className="text-white/80">Venerdì</span>
-                      <span className="text-white">8:30 - 12:30</span>
-                    </div>
-
-                    {/* Weekend */}
-                    <div className="flex justify-between items-center">
-                      <span className="text-white/80">Sabato - Domenica</span>
-                      <span className="text-white">Chiuso</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+          {/* Header Section - Visibile su mobile */}
+          <div className="lg:hidden text-center mb-8">
+            <span className="inline-block bg-white/10 text-white py-1 px-3 rounded-full text-sm font-medium mb-4">
+              Contattaci
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4">Siamo qui per aiutarti</h2>
+            <p className="text-white/90">
+              Hai domande sui nostri servizi o vuoi prenotare un appuntamento?
+              Contattaci usando uno dei metodi qui sotto o compila il form.
+            </p>
           </div>
 
-          <div className="animate-slide-in-right opacity-0">
+          {/* Form Section */}
+          <div className="animate-slide-in-right opacity-0 order-2 lg:order-none">
             {submitted ? (
-              // Messaggio di successo quando il form è stato inviato
-              <div className="bg-white rounded-2xl shadow-xl p-8">
+              <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl p-6 sm:p-8">
                 <div className="text-center">
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-4">
                     <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -274,12 +166,13 @@ const ContactSection = () => {
                 </div>
               </div>
             ) : (
-              // Form normale quando non è stato ancora inviato
-              <form className="bg-white rounded-2xl shadow-xl p-8" onSubmit={handleSubmit}>
-                <h3 className="text-2xl font-bold mb-6 text-foreground">Inviaci un messaggio</h3>
+              <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl p-6 sm:p-8">
+                <h3 className="text-xl sm:text-2xl font-bold mb-6 text-foreground">
+                  Inviaci un messaggio
+                </h3>
 
-                <div className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-muted-foreground mb-2">
                         Nome completo
@@ -374,25 +267,27 @@ const ContactSection = () => {
                     )}
                   </div>
 
-                  <div className="flex items-center">
-                    <input
-                      type="checkbox"
-                      id="privacy"
-                      name="privacy"
-                      checked={formData.privacy}
-                      onChange={handleCheckboxChange}
-                      className={`h-4 w-4 text-dental border-border rounded focus:ring-dental ${formErrors.privacy ? 'border-red-500' : ''}`}
-                    />
-                    <label htmlFor="privacy" className="ml-2 block text-sm text-muted-foreground">
-                      Acconsento al trattamento dei dati personali secondo la {' '}
-                      <a href="/privacy" className="text-dental hover:underline">
-                        Privacy Policy
-                      </a>
-                    </label>
+                  <div>
+                    <div className="flex items-center">
+                      <input
+                        type="checkbox"
+                        id="privacy"
+                        name="privacy"
+                        checked={formData.privacy}
+                        onChange={handleCheckboxChange}
+                        className={`h-4 w-4 text-dental border-border rounded focus:ring-dental ${formErrors.privacy ? 'border-red-500' : ''}`}
+                      />
+                      <label htmlFor="privacy" className="ml-2 block text-sm text-muted-foreground">
+                        Acconsento al trattamento dei dati personali secondo la{' '}
+                        <a href="/privacy" className="text-dental hover:underline">
+                          Privacy Policy
+                        </a>
+                      </label>
+                    </div>
+                    {formErrors.privacy && (
+                      <p className="text-red-500 text-sm mt-1">{formErrors.privacy}</p>
+                    )}
                   </div>
-                  {formErrors.privacy && (
-                    <p className="text-red-500 text-sm">{formErrors.privacy}</p>
-                  )}
 
                   <button
                     type="submit"
@@ -411,9 +306,128 @@ const ContactSection = () => {
                       </>
                     )}
                   </button>
-                </div>
-              </form>
+                </form>
+              </div>
             )}
+          </div>
+
+          {/* Info Section */}
+          <div className="animate-slide-in-left opacity-0 order-1 lg:order-none">
+            {/* Header Section - Visibile solo su desktop */}
+            <div className="hidden lg:block mb-12">
+              <span className="inline-block bg-white/10 text-white py-1 px-3 rounded-full text-sm font-medium mb-4">
+                Contattaci
+              </span>
+              <h2 className="heading-lg mb-6 text-white">Siamo qui per aiutarti</h2>
+              <p className="text-white/90 max-w-md">
+                Hai domande sui nostri servizi o vuoi prenotare un appuntamento?
+                Contattaci usando uno dei metodi qui sotto o compila il modulo.
+              </p>
+            </div>
+
+            {/* Quick Contact Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 lg:mb-12">
+              {/* Telefono */}
+              <a
+                href="tel:094122749"
+                className="flex items-center space-x-3 p-4 bg-dental/10 rounded-xl hover:bg-dental/20 transition-colors"
+              >
+                <div className="bg-dental/20 rounded-lg p-2.5">
+                  <Phone className="w-5 h-5 text-blue-500" />
+                </div>
+                <div>
+                  <div className="text-sm font-medium opacity-80">Chiamaci</div>
+                  <div className="text-base font-bold">0941 22749</div>
+                </div>
+              </a>
+
+              {/* WhatsApp */}
+              <a
+                href="https://wa.me/3791523085"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-3 p-4 bg-dental/10 rounded-xl hover:bg-dental/20 transition-colors"
+              >
+                <div className="bg-dental/20 rounded-lg p-2.5">
+                  <Smartphone className="w-5 h-5 text-blue-500" />
+                </div>
+                <div>
+                  <div className="text-sm font-medium opacity-80">WhatsApp</div>
+                  <div className="text-base font-bold">379 1523085</div>
+                </div>
+              </a>
+            </div>
+
+            {/* Info Cards */}
+            <div className="space-y-4">
+              {/* Indirizzo */}
+              <div className="p-4 bg-dental/10 rounded-xl">
+                <div className="flex items-start space-x-4">
+                  <div className="bg-dental/20 rounded-lg p-2.5 shrink-0">
+                    <MapPinned className="w-5 h-5 text-blue-500" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold mb-1">Dove siamo</h3>
+                    <a
+                      href="https://www.google.com/maps/place/Studio+Dentistico+Colombo/@38.1391643,14.9636084,17z/data=!3m1!4b1!4m6!3m5!1s0x13169c5bac9ea239:0xd3cf9836a4ca3755!8m2!3d38.1391602!4d14.9684793!16s%2Fg%2F1hc47jp95?entry=ttu"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-white/80 hover:text-blue-300"
+                    >
+                      Via Fontanelle, SNC, Patti (ME)
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Email */}
+              <div className="p-4 bg-dental/10 rounded-xl">
+                <div className="flex items-start space-x-4">
+                  <div className="bg-dental/20 rounded-lg p-2.5 shrink-0">
+                    <Mail className="w-5 h-5 text-blue-500" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold mb-1">Email</h3>
+                    <a
+                      href="mailto:colombostudiodentistico@gmail.com"
+                      className="text-sm text-white/80 hover:text-blue-300 break-words"
+                    >
+                      colombostudiodentistico@gmail.com
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Orari */}
+              <div className="p-4 bg-dental/10 rounded-xl">
+                <div className="flex items-start space-x-4 mb-4">
+                  <div className="bg-dental/20 rounded-lg p-2.5 shrink-0">
+                    <Clock className="w-5 h-5 text-blue-500" />
+                  </div>
+                  <h3 className="text-base font-bold">Orari di apertura</h3>
+                </div>
+
+                <div className="space-y-3 text-sm">
+                  <div className="flex justify-between items-center">
+                    <span className="text-white/80">Lun - Gio</span>
+                    <div className="text-right">
+                      <div>8:30 - 12:30</div>
+                      <div>16:00 - 20:00</div>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-between items-center pt-2 border-t border-white/10">
+                    <span className="text-white/80">Venerdì</span>
+                    <span>8:30 - 12:30</span>
+                  </div>
+
+                  <div className="flex justify-between items-center pt-2 border-t border-white/10">
+                    <span className="text-white/80">Sab - Dom</span>
+                    <span>Chiuso</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

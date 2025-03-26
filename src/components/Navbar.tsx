@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
@@ -6,16 +5,25 @@ import { cn } from '@/lib/utils';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(true); // Sempre true per mantenere lo sfondo
+  const [scrolled, setScrolled] = useState(true);
   const location = useLocation();
 
   const toggleMenu = () => setIsOpen(!isOpen);
-  
-  // Rimuoviamo l'effetto di scroll poiché vogliamo che la navbar rimanga sempre con sfondo
+
   useEffect(() => {
-    // Close mobile menu when changing routes
     setIsOpen(false);
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
   const navItems = [
     { name: 'Home', path: '/' },
@@ -25,10 +33,10 @@ const Navbar = () => {
   ];
 
   return (
-    <nav 
+    <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        "bg-white/90 backdrop-blur-md shadow-sm py-3" // Sempre con sfondo bianco
+        "bg-white/90 backdrop-blur-md shadow-sm py-3"
       )}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
@@ -41,7 +49,7 @@ const Navbar = () => {
           <span className="text-2xl font-bold text-dental">Studio Dentistico</span>
           <span className="text-2xl font-bold ml-2 text-blue-500">Colombo</span>
         </Link>
-        
+
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8">
           {navItems.map((item) => (
@@ -57,43 +65,71 @@ const Navbar = () => {
             </Link>
           ))}
         </div>
-        
+
         {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden z-10 text-foreground hover:text-dental transition-colors"
+        <button
+          className="md:hidden z-50 text-foreground hover:text-dental transition-colors"
           onClick={toggleMenu}
           aria-label={isOpen ? "Chiudi menu" : "Apri menu"}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
-        
-        {/* Mobile Menu */}
-        <div className={cn(
-          "fixed inset-0 bg-white flex flex-col items-center justify-center space-y-8 transition-transform duration-300 ease-in-out md:hidden",
-          isOpen ? "transform translate-x-0" : "transform translate-x-full"
-        )}>
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              to={item.path}
-              className={cn(
-                "text-xl font-medium text-blue-900 hover:text-dental transition-colors",
-                location.pathname === item.path ? "text-blue-900" : "text-blue-500"
-              )}
-              onClick={() => setIsOpen(false)}
-            >
-              {item.name}
-            </Link>
-          ))}
-          <Link 
-            to="/prenota" 
-            className="btn-primary mt-6"
-            onClick={() => setIsOpen(false)}
+
+        {/* Mobile Menu con Overlay */}
+        <div
+          className={cn(
+            "fixed inset-0 bg-black/75 z-40 md:hidden",
+            "transition-opacity duration-500 ease-in-out",
+            isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          )}
+          onClick={() => setIsOpen(false)}
+        >
+          {/* Menu Content */}
+          <div
+            className={cn(
+              "absolute inset-x-0 top-[4.5rem] min-h-[calc(100vh-4.5rem)] flex flex-col items-center",
+              "bg-gradient-to-b from-black/40 to-black/0",
+              "transform transition-all duration-500 ease-in-out",
+              isOpen ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0"
+            )}
+            onClick={(e) => e.stopPropagation()}
           >
-            Prenota Visita
-          </Link>
+            <div className="flex flex-col items-center pt-16 pb-8 w-full px-6">
+              {navItems.map((item, index) => (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className={cn(
+                    "w-full text-center py-4 text-2xl font-medium",
+                    "text-white/90 hover:text-blue-300 transition-colors",
+                    "border-b border-white/10",
+                    location.pathname === item.path && "text-blue-300",
+                    "transform transition-all duration-300",
+                    isOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
+                  )}
+                  style={{ transitionDelay: `${150 + index * 50}ms` }}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <Link
+                to="/prenota"
+                className={cn(
+                  "mt-8 px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white",
+                  "rounded-full font-medium text-lg transition-all duration-300",
+                  "transform hover:scale-105 active:scale-95",
+                  isOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                )}
+                style={{ transitionDelay: `${150 + navItems.length * 50}ms` }}
+                onClick={() => setIsOpen(false)}
+              >
+                Prenota Visita
+              </Link>
+            </div>
+          </div>
         </div>
-        
+
         {/* Contact Button (Desktop) */}
         <Link to="/prenota" className="hidden md:block btn-primary">
           Prenota Visita

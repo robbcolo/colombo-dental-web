@@ -44,7 +44,7 @@ const Contatti = () => {
                 href="https://maps.app.goo.gl/JeyRSCc4687bBpMS8"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-dental transition-colors"
+                className="text-muted-foreground hover:text-blue-500 transition-colors"
               >
                 <p>Via Fontanelle, SNC</p>
                 <p>Patti (ME)</p>
@@ -58,14 +58,14 @@ const Contatti = () => {
               <h3 className="text-xl font-bold mb-3">Telefono</h3>
               <a
                 href="tel:094122749"
-                className="text-muted-foreground hover:text-dental transition-colors block"
+                className="text-muted-foreground hover:text-blue-500 transition-colors block"
               >
                 0941 22749
               </a>
               <p className="text-xl font-bold mt-2">Cellulare</p>
               <a
                 href="tel:+393791523085"
-                className="text-muted-foreground hover:text-dental transition-colors block"
+                className="text-muted-foreground hover:text-blue-500 transition-colors block"
               >
                 379 1523085
               </a>
@@ -78,7 +78,7 @@ const Contatti = () => {
               <h3 className="text-xl font-bold mb-3">Email</h3>
               <a
                 href="mailto:colombostudiodentistico@gmail.com"
-                className="text-muted-foreground hover:text-dental transition-colors break-words"
+                className="text-muted-foreground hover:text-blue-500 transition-colors break-words"
               >
                 colombostudiodentistico@gmail.com
               </a>

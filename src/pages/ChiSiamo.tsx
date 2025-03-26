@@ -148,8 +148,14 @@ const ChiSiamo = () => {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold mb-1">Indirizzo</h3>
-                    <p className="text-muted-foreground">Via Esempio 123, Milano, 20100</p>
-                    <p className="text-muted-foreground mt-2">A 5 minuti dalla fermata della metropolitana Centrale.</p>
+                    <a
+                      href="https://maps.app.goo.gl/JeyRSCc4687bBpMS8"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-blue-500 transition-colors"
+                    >
+                      Via Fontanelle, SNC, Patti (ME)
+                    </a>
                   </div>
                 </div>
                 
@@ -160,7 +166,7 @@ const ChiSiamo = () => {
                 <div>
                   <h3 className="text-lg font-bold mb-1">Telefono</h3>
                   <p className="text-muted-foreground">
-                  <a href="tel:094122749" className="hover:underline">
+                      <a href="tel:094122749" className="hover:text-blue-500">
                   0941 22749
                   </a>
                   </p>
@@ -174,7 +180,7 @@ const ChiSiamo = () => {
                 <div>
                   <h3 className="text-lg font-bold mb-1">Whatsapp</h3>
                   <p className="text-muted-foreground">
-                  <a href="https://wa.me/3791523085" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                      <a href="https://wa.me/3791523085" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500">
                   379 1523085
                   </a>
                   </p>
@@ -187,7 +193,12 @@ const ChiSiamo = () => {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold mb-1">Email</h3>
-                    <p className="text-muted-foreground">info@studiodentisticocolombo.it</p>
+                    <a
+                      href="mailto:colombostudiodentistico@gmail.com"
+                      className="text-muted-foreground hover:text-blue-500 transition-colors break-words"
+                    >
+                      colombostudiodentistico@gmail.com
+                    </a>
                   </div>
                 </div>
                 

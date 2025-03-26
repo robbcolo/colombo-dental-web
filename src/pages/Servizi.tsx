@@ -157,7 +157,7 @@ const Servizi = () => {
                 <p className="text-muted-foreground line-clamp-3 mb-6">{service.description}</p>
                 <a 
                   href={`#${service.id}`} 
-                  className="inline-flex items-center text-dental font-medium hover:text-dental-dark transition-colors"
+                  className="inline-flex items-center text-dental font-medium hover:text-blue-500 transition-colors"
                 >
                   Scopri di più
                   <ArrowRight size={16} className="ml-2" />

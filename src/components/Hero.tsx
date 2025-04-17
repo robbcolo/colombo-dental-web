@@ -4,6 +4,7 @@ import { ArrowRight, Phone, Clock } from 'lucide-react';
 
 const Hero = () => {
   const [backgroundPosition, setBackgroundPosition] = useState(0);
+  const [activeCard, setActiveCard] = useState(null);
 
   useEffect(() => {
     const duration = 30000;
@@ -76,9 +77,13 @@ const Hero = () => {
           <div className="flex flex-col gap-3 mb-2">
             {/* Card Contattaci - Mobile */}
             <div className="animate-slide-up opacity-0" style={{ animationDelay: '400ms' }}>
-              <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl flex items-center justify-between">
+              <div
+                className="bg-white/10 backdrop-blur-sm p-4 rounded-xl flex items-center justify-between transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105"
+                onMouseEnter={() => setActiveCard('contattaci-mobile')}
+                onMouseLeave={() => setActiveCard(null)}
+              >
                 <div className="flex items-center">
-                  <div className="rounded-full bg-dental-light/20 p-3 mr-4">
+                  <div className={`rounded-full bg-dental-light/20 p-3 mr-4 transition-all duration-300 ${activeCard === 'contattaci-mobile' ? 'bg-dental' : ''}`}>
                     <Phone size={20} className="text-blue-500" />
                   </div>
                   <h3 className="text-base font-semibold text-white">Contattaci</h3>
@@ -92,9 +97,13 @@ const Hero = () => {
 
             {/* Card Servizi - Mobile */}
             <div className="animate-slide-up opacity-0" style={{ animationDelay: '500ms' }}>
-              <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl flex items-center justify-between">
+              <div
+                className="bg-white/10 backdrop-blur-sm p-4 rounded-xl flex items-center justify-between transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105"
+                onMouseEnter={() => setActiveCard('servizi-mobile')}
+                onMouseLeave={() => setActiveCard(null)}
+              >
                 <div className="flex items-center">
-                  <div className="rounded-full bg-dental-light/20 p-3 mr-4">
+                  <div className={`rounded-full bg-dental-light/20 p-3 mr-4 transition-all duration-300 ${activeCard === 'servizi-mobile' ? 'bg-dental' : ''}`}>
                     <ArrowRight size={20} className="text-blue-500" />
                   </div>
                   <h3 className="text-base font-semibold text-white">Servizi</h3>
@@ -108,9 +117,13 @@ const Hero = () => {
 
             {/* Card Prenota - Mobile */}
             <div className="animate-slide-up opacity-0" style={{ animationDelay: '600ms' }}>
-              <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl flex items-center justify-between">
+              <div
+                className="bg-white/10 backdrop-blur-sm p-4 rounded-xl flex items-center justify-between transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105"
+                onMouseEnter={() => setActiveCard('prenota-mobile')}
+                onMouseLeave={() => setActiveCard(null)}
+              >
                 <div className="flex items-center">
-                  <div className="rounded-full bg-dental-light/20 p-3 mr-4">
+                  <div className={`rounded-full bg-dental-light/20 p-3 mr-4 transition-all duration-300 ${activeCard === 'prenota-mobile' ? 'bg-dental' : ''}`}>
                     <Clock size={20} className="text-blue-500" />
                   </div>
                   <h3 className="text-base font-semibold text-white">Prenota</h3>
@@ -129,8 +142,12 @@ const Hero = () => {
           <div className="grid grid-cols-3 gap-6 md:gap-8 mb-8 px-4">
             {/* Card Contattaci - Desktop */}
             <div className="animate-slide-up opacity-0" style={{ animationDelay: '400ms' }}>
-              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl h-full flex flex-col justify-center items-center">
-                <div className="rounded-full bg-dental-light/20 p-4 mb-4">
+              <div
+                className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl h-full flex flex-col justify-center items-center transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105"
+                onMouseEnter={() => setActiveCard('contattaci-desktop')}
+                onMouseLeave={() => setActiveCard(null)}
+              >
+                <div className={`rounded-full bg-dental-light/20 p-4 mb-4 transition-all duration-300 ${activeCard === 'contattaci-desktop' ? 'bg-dental' : ''}`}>
                   <Phone size={24} className="text-blue-500" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Contattaci</h3>
@@ -145,8 +162,12 @@ const Hero = () => {
 
             {/* Card Servizi - Desktop */}
             <div className="animate-slide-up opacity-0" style={{ animationDelay: '500ms' }}>
-              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl h-full flex flex-col justify-center items-center">
-                <div className="rounded-full bg-dental-light/20 p-4 mb-4">
+              <div
+                className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl h-full flex flex-col justify-center items-center transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105"
+                onMouseEnter={() => setActiveCard('servizi-desktop')}
+                onMouseLeave={() => setActiveCard(null)}
+              >
+                <div className={`rounded-full bg-dental-light/20 p-4 mb-4 transition-all duration-300 ${activeCard === 'servizi-desktop' ? 'bg-dental' : ''}`}>
                   <ArrowRight size={24} className="text-blue-500" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Servizi</h3>
@@ -161,8 +182,12 @@ const Hero = () => {
 
             {/* Card Prenota - Desktop */}
             <div className="animate-slide-up opacity-0" style={{ animationDelay: '600ms' }}>
-              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl h-full flex flex-col justify-center items-center">
-                <div className="rounded-full bg-dental-light/20 p-4 mb-4">
+              <div
+                className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl h-full flex flex-col justify-center items-center transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105"
+                onMouseEnter={() => setActiveCard('prenota-desktop')}
+                onMouseLeave={() => setActiveCard(null)}
+              >
+                <div className={`rounded-full bg-dental-light/20 p-4 mb-4 transition-all duration-300 ${activeCard === 'prenota-desktop' ? 'bg-dental' : ''}`}>
                   <Clock size={24} className="text-blue-500" />
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-2">Prenota</h3>
@@ -179,7 +204,12 @@ const Hero = () => {
 
         {/* Bottom CTA */}
         <div className="mb-4 sm:mb-16 text-center animate-slide-up opacity-0" style={{ animationDelay: '700ms' }}>
-          <Link to="/chi-siamo" className="inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 border border-white/30 bg-white/10 hover:bg-white/20 text-white rounded-lg text-sm sm:text-base font-medium transition-colors">
+          <Link
+            to="/chi-siamo"
+            className="inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 border border-white/30 bg-white/10 hover:bg-white/20 text-white rounded-lg text-sm sm:text-base font-medium transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105"
+            onMouseEnter={() => setActiveCard('storia')}
+            onMouseLeave={() => setActiveCard(null)}
+          >
             Scopri la nostra storia <ArrowRight size={14} className="ml-2" />
           </Link>
         </div>

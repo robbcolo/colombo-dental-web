@@ -7,6 +7,7 @@ const About = () => {
   const [expandedCard, setExpandedCard] = useState(null);
   const [showFullText, setShowFullText] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Controlla solo se il dispositivo è mobile
   useEffect(() => {
@@ -55,49 +56,104 @@ const About = () => {
   // Gestisce il clic sulle card su mobile
   const handleCardClick = (id) => {
     if (isMobile) {
-      // Se clicchiamo sulla stessa card, la chiude, altrimenti apre la nuova e chiude la precedente
+      setIsTransitioning(true);
+
       if (expandedCard === id) {
-        // Animazione di chiusura
-        setExpandedCard(null);
-      } else {
-        // Transizione fluida: prima chiudiamo la precedente, poi apriamo la nuova
+        // Chiudi la scheda
         setExpandedCard(null);
         setTimeout(() => {
+          setIsTransitioning(false);
+        }, 300);
+      } else {
+        // Chiudi la scheda precedente (se aperta) e apri la nuova
+        setExpandedCard(null);
+
+        setTimeout(() => {
           setExpandedCard(id);
-        }, 100); // Un breve delay per permettere alla prima animazione di iniziare
+          setTimeout(() => {
+            setIsTransitioning(false);
+          }, 300);
+        }, 200);
       }
     }
   };
-
-  // Stili CSS per l'animazione
-  const expandAnimation = {
-    transition: "all 400ms cubic-bezier(0.34, 1.56, 0.64, 1)",
-    overflow: "hidden",
-  };
-
-  const expandContentAnimation = {
-    animation: "fadeSlideIn 500ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards",
-    opacity: 0,
-    transform: "translateY(10px)"
-  };
-
-  // Stile CSS da inserire direttamente nel componente per l'animazione
-  const animationStyle = `
-    @keyframes fadeSlideIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  `;
 
   return (
     <section className="py-16 px-6 bg-dental-50 overflow-hidden">
-      <style>{animationStyle}</style>
+      {/* CSS per le animazioni */}
+      <style>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        
+        @keyframes fadeUp {
+          from { 
+            opacity: 0; 
+            transform: translateY(10px);
+          }
+          to { 
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes scaleUp {
+          from { 
+            transform: scale(0.95); 
+            opacity: 0.8;
+          }
+          to { 
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+        
+        .fade-in {
+          animation: fadeIn 0.3s ease-in-out forwards;
+        }
+        
+        .fade-up {
+          animation: fadeUp 0.4s ease-out forwards;
+        }
+        
+        .scale-up {
+          animation: scaleUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        
+        .card-active {
+          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                     0 4px 6px -2px rgba(0, 0, 0, 0.05);
+          transform: scale(1.02);
+        }
+        
+        .icon-bg-active {
+          background-color: var(--dental-color, #3b82f6);
+          transform: scale(1.1);
+        }
+        
+        .card-click-effect {
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .card-click-effect::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(255, 255, 255, 0.3);
+          opacity: 0;
+          transition: opacity 0.3s;
+        }
+        
+        .card-click-effect:active::after {
+          opacity: 1;
+        }
+      `}</style>
+
       <div className="container mx-auto max-w-5xl">
         <div className="mb-12 relative text-center">
           <span className="inline-block bg-dental/15 text-dental py-2 px-4 rounded-full text-md font-medium mb-4 animate-fade-in opacity-0">
@@ -161,13 +217,15 @@ const About = () => {
             {cards.map((card) => (
               <div
                 key={card.id}
-                style={expandedCard === card.id ? { ...expandAnimation, height: 'auto' } : expandAnimation}
-                className={`bg-white rounded-lg p-4 shadow-sm border border-border cursor-pointer ${expandedCard === card.id ? 'col-span-2 shadow-md' : ''}`}
-                onClick={() => handleCardClick(card.id)}
+                className={`bg-white rounded-lg p-4 shadow-sm border border-border card-click-effect
+                  ${expandedCard === card.id ? 'col-span-2 card-active' : ''}
+                  ${isTransitioning ? 'transition-all duration-300' : ''}`}
+                onClick={() => !isTransitioning && handleCardClick(card.id)}
               >
                 <div className="flex flex-col items-center text-center">
                   <div
-                    className={`bg-dental-50 w-12 h-12 rounded-lg flex items-center justify-center mb-3 transition-all duration-300 ${expandedCard === card.id ? 'bg-dental' : ''}`}
+                    className={`bg-dental-50 w-12 h-12 rounded-lg flex items-center justify-center mb-3 transition-all duration-300
+                      ${expandedCard === card.id ? 'icon-bg-active' : ''}`}
                   >
                     {React.cloneElement(card.icon, {
                       className: `w-5 h-5 text-dental`
@@ -176,11 +234,11 @@ const About = () => {
                   <h3 className="text-base font-bold mb-2">{card.title}</h3>
 
                   {expandedCard === card.id && (
-                    <div style={expandContentAnimation}>
+                    <div className="fade-up" style={{ animationDelay: '150ms' }}>
                       <p className="text-muted-foreground text-sm mb-4">
                         {card.content}
                       </p>
-                      <div className="mt-2 pt-2 border-t border-gray-100 font-medium text-xs text-dental w-full">
+                      <div className="mt-2 pt-2 border-t border-gray-100 font-medium text-xs text-dental w-full fade-in" style={{ animationDelay: '300ms' }}>
                         {card.stats}
                       </div>
                     </div>
@@ -200,23 +258,22 @@ const About = () => {
               <h3 className="text-2xl font-bold mb-4">Vieni a conoscerci</h3>
               {isMobile ? (
                 <p
-                  className="text-base cursor-pointer"
+                  className={`text-base cursor-pointer card-click-effect ${showFullText ? 'scale-up' : ''}`}
                   onClick={() => setShowFullText(!showFullText)}
-                  style={showFullText ? expandContentAnimation : {}}
                 >
                   {showFullText
                     ? "Che tu abbia bisogno di una visita di controllo o semplicemente voglia farti un'idea dello studio, ti aspettiamo per accoglierti con cura e professionalità."
-                    : "Ti aspettiamo per accoglierti con cura e professionalità."}
+                    : ""}
                 </p>
               ) : (
                 <p className="text-base md:text-lg">
-                  Che tu abbia bisogno di una visita di controllo o semplicemente voglia farti un'idea dello studio, ti aspettiamo per accoglierti con cura e professionalità
+                  Che tu abbia bisogno di una visita di controllo o semplicemente voglia farti un'idea dello studio.
                 </p>
               )}
             </div>
             <Link
               to="/contatti"
-              className="inline-flex items-center justify-center gap-2 bg-dental text-white px-8 py-4 rounded-xl font-medium hover:bg-dental-600 transition-all hover:scale-105 shadow-sm hover:shadow-md"
+              className="inline-flex items-center justify-center gap-2 bg-dental text-white px-8 py-4 rounded-xl font-medium hover:bg-dental-600 transition-all hover:scale-105 shadow-sm hover:shadow-md card-click-effect"
             >
               <span className="text-lg">Contattaci</span>
               <ArrowRight className="w-5 h-5" />

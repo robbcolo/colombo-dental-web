@@ -56,118 +56,24 @@ const About = () => {
   // Gestisce il clic sulle card su mobile
   const handleCardClick = (id) => {
     if (isMobile) {
-      setIsTransitioning(true);
-
+      // Semplice toggle senza animazioni e transizioni
       if (expandedCard === id) {
-        // Chiudi la scheda
         setExpandedCard(null);
-        setTimeout(() => {
-          setIsTransitioning(false);
-        }, 300);
       } else {
-        // Chiudi la scheda precedente (se aperta) e apri la nuova
-        setExpandedCard(null);
-
-        setTimeout(() => {
-          setExpandedCard(id);
-          setTimeout(() => {
-            setIsTransitioning(false);
-          }, 300);
-        }, 200);
+        setExpandedCard(id);
       }
     }
   };
 
   return (
     <section className="py-16 px-6 bg-dental-50 overflow-hidden">
-      <style>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        
-        @keyframes slideDown {
-          from { 
-            max-height: 0;
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to { 
-            max-height: 300px;
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        @keyframes scaleUp {
-          from { 
-            transform: scale(0.95); 
-            opacity: 0.8;
-          }
-          to { 
-            transform: scale(1);
-            opacity: 1;
-          }
-        }
-        
-        .animate-fade-in {
-          animation: fadeIn 0.3s ease-in-out forwards;
-        }
-        
-        .slide-down {
-          animation: slideDown 0.4s ease-out forwards;
-          overflow: hidden;
-        }
-        
-        .scale-up {
-          animation: scaleUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-        }
-        
-        .card-active {
-          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-                     0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        
-        .card-click-effect {
-          position: relative;
-          overflow: hidden;
-        }
-        
-        .card-click-effect::after {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: rgba(255, 255, 255, 0.3);
-          opacity: 0;
-          transition: opacity 0.3s;
-        }
-        
-        .card-click-effect:active::after {
-          opacity: 1;
-        }
-
-        /* Animazione per lo scorrimento delle card */
-        .expanded-content {
-          max-height: 0;
-          overflow: hidden;
-          transition: max-height 0.3s ease-out;
-        }
-        
-        .expanded-content.open {
-          max-height: 300px;
-        }
-      `}</style>
-
       <div className="container mx-auto max-w-5xl">
         <div className="mb-12 relative text-center">
-          <span className="inline-block bg-dental/15 text-dental py-2 px-4 rounded-full text-md font-medium mb-4 animate-fade-in">
+          <span className="inline-block bg-dental/15 text-dental py-2 px-4 rounded-full text-md font-medium mb-4">
             CHI SIAMO
           </span>
 
-          <h2 className="heading-lg mb-6 animate-fade-in text-3xl md:text-4xl font-bold" style={{ animationDelay: '100ms' }}>
+          <h2 className="heading-lg mb-6 text-3xl md:text-4xl font-bold">
             Uno studio di famiglia, <span className="text-dental">per davvero</span>
           </h2>
 
@@ -187,7 +93,7 @@ const About = () => {
             </div>
           </div>
 
-          <p className="text-muted-foreground text-base md:text-lg leading-relaxed mx-auto max-w-3xl animate-fade-in" style={{ animationDelay: '200ms' }}>
+          <p className="text-muted-foreground text-base md:text-lg leading-relaxed mx-auto max-w-3xl">
             Lo <span className="font-semibold">Studio Dentistico Colombo</span> nasce da una storia semplice e personale: Alfredo, dentista con oltre 30 anni di esperienza,
             ha trasmesso la sua passione ai figli, Roberto e Aurora, oggi anche loro odontoiatri.
             {(!isMobile || showFullText) && " Lavoriamo insieme perché crediamo in un'odontoiatria che mette le "}
@@ -203,16 +109,14 @@ const About = () => {
             {cards.slice(0, 3).map((card) => (
               <div
                 key={card.id}
-                className={`bg-white rounded-xl p-6 transition-all duration-300 shadow-sm hover:shadow-md transform ${activeCard === card.id ? 'scale-105' : ''}`}
-                onMouseEnter={() => setActiveCard(card.id)}
-                onMouseLeave={() => setActiveCard(null)}
+                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md"
               >
-                <div className={`bg-dental-100 rounded-lg p-3 inline-flex mb-4 transition-all duration-300`}>
+                <div className="bg-dental-50 rounded-lg p-3 inline-flex mb-4">
                   {card.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-3">{card.title}</h3>
                 <p className="text-muted-foreground text-base">{card.content}</p>
-                <div className={`mt-4 pt-3 border-t border-gray-100 font-medium text-sm ${activeCard === card.id ? 'text-dental' : 'text-gray-500'}`}>
+                <div className="mt-4 pt-3 border-t border-gray-100 font-medium text-sm text-gray-500">
                   {card.stats}
                 </div>
               </div>
@@ -224,13 +128,11 @@ const About = () => {
             {cards.map((card) => (
               <div
                 key={card.id}
-                className={`bg-white rounded-lg p-4 shadow-sm border border-border card-click-effect
-                  ${expandedCard === card.id ? 'col-span-2 card-active' : ''}
-                  ${isTransitioning ? 'transition-all duration-300' : ''}`}
-                onClick={() => !isTransitioning && handleCardClick(card.id)}
+                className={`bg-white rounded-lg p-4 shadow-sm border border-border
+                  ${expandedCard === card.id ? 'col-span-2' : ''}`}
+                onClick={() => handleCardClick(card.id)}
               >
                 <div className="flex flex-col items-center text-center">
-                  {/* Icona - mantiene lo stesso aspetto anche quando premuta */}
                   <div className="bg-dental-50 w-12 h-12 rounded-lg flex items-center justify-center mb-3">
                     {React.cloneElement(card.icon, {
                       className: `w-5 h-5 text-dental`
@@ -239,11 +141,11 @@ const About = () => {
                   <h3 className="text-base font-bold mb-2">{card.title}</h3>
 
                   {expandedCard === card.id && (
-                    <div className="slide-down w-full" style={{ animationDelay: '50ms' }}>
+                    <div className="w-full">
                       <p className="text-muted-foreground text-sm mb-4">
                         {card.content}
                       </p>
-                      <div className="mt-2 pt-2 border-t border-gray-100 font-medium text-xs text-dental w-full animate-fade-in" style={{ animationDelay: '300ms' }}>
+                      <div className="mt-2 pt-2 border-t border-gray-100 font-medium text-xs text-dental w-full">
                         {card.stats}
                       </div>
                     </div>
@@ -263,7 +165,7 @@ const About = () => {
               <h3 className="text-2xl font-bold mb-4">Vieni a conoscerci</h3>
               {isMobile ? (
                 <p
-                  className={`text-base cursor-pointer card-click-effect ${showFullText ? 'scale-up' : ''}`}
+                  className="text-base cursor-pointer"
                   onClick={() => setShowFullText(!showFullText)}
                 >
                   {showFullText
@@ -278,7 +180,7 @@ const About = () => {
             </div>
             <Link
               to="/contatti"
-              className="inline-flex items-center justify-center gap-2 bg-dental text-white px-8 py-4 rounded-xl font-medium hover:bg-dental-600 transition-all hover:scale-105 shadow-sm hover:shadow-md card-click-effect"
+              className="inline-flex items-center justify-center gap-2 bg-dental text-white px-8 py-4 rounded-xl font-medium hover:bg-dental-600"
             >
               <span className="text-lg">Contattaci</span>
               <ArrowRight className="w-5 h-5" />

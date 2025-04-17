@@ -210,7 +210,7 @@ const About = () => {
                 </p>
               ) : (
                 <p className="text-base md:text-lg">
-                  Che tu abbia bisogno di una visita di controllo o semplicemente voglia farti un'idea dello studio, ti aspettiamo per accoglierti con cura e professionalità.
+                  Che tu abbia bisogno di una visita di controllo o semplicemente voglia farti un'idea dello studio, ti aspettiamo per accoglierti con cura e professionalità
                 </p>
               )}
             </div>

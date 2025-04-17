@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 const About = () => {
   const [activeCard, setActiveCard] = useState(null);
   const [expandedCard, setExpandedCard] = useState(null);
+  const [showFullText, setShowFullText] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   // Controlla solo se il dispositivo è mobile
@@ -54,12 +55,49 @@ const About = () => {
   // Gestisce il clic sulle card su mobile
   const handleCardClick = (id) => {
     if (isMobile) {
-      setExpandedCard(expandedCard === id ? null : id);
+      // Se clicchiamo sulla stessa card, la chiude, altrimenti apre la nuova e chiude la precedente
+      if (expandedCard === id) {
+        // Animazione di chiusura
+        setExpandedCard(null);
+      } else {
+        // Transizione fluida: prima chiudiamo la precedente, poi apriamo la nuova
+        setExpandedCard(null);
+        setTimeout(() => {
+          setExpandedCard(id);
+        }, 100); // Un breve delay per permettere alla prima animazione di iniziare
+      }
     }
   };
 
+  // Stili CSS per l'animazione
+  const expandAnimation = {
+    transition: "all 400ms cubic-bezier(0.34, 1.56, 0.64, 1)",
+    overflow: "hidden",
+  };
+
+  const expandContentAnimation = {
+    animation: "fadeSlideIn 500ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards",
+    opacity: 0,
+    transform: "translateY(10px)"
+  };
+
+  // Stile CSS da inserire direttamente nel componente per l'animazione
+  const animationStyle = `
+    @keyframes fadeSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  `;
+
   return (
     <section className="py-16 px-6 bg-dental-50 overflow-hidden">
+      <style>{animationStyle}</style>
       <div className="container mx-auto max-w-5xl">
         <div className="mb-12 relative text-center">
           <span className="inline-block bg-dental/15 text-dental py-2 px-4 rounded-full text-md font-medium mb-4 animate-fade-in opacity-0">
@@ -89,8 +127,8 @@ const About = () => {
           <p className="text-muted-foreground text-base md:text-lg leading-relaxed mx-auto max-w-3xl animate-fade-in opacity-0" style={{ animationDelay: '200ms' }}>
             Lo <span className="font-semibold">Studio Dentistico Colombo</span> nasce da una storia semplice e personale: Alfredo, dentista con oltre 30 anni di esperienza,
             ha trasmesso la sua passione ai figli, Roberto e Aurora, oggi anche loro odontoiatri.
-            {!isMobile && " Lavoriamo insieme perché crediamo in un'odontoiatria che mette le "}
-            {isMobile && " Mettiamo le "}
+            {(!isMobile || showFullText) && " Lavoriamo insieme perché crediamo in un'odontoiatria che mette le "}
+            {isMobile && !showFullText && " Mettiamo le "}
             <span className="font-semibold">persone prima dei denti</span>.
           </p>
         </div>
@@ -123,11 +161,14 @@ const About = () => {
             {cards.map((card) => (
               <div
                 key={card.id}
-                className={`bg-white rounded-lg p-4 shadow-sm transition-all duration-300 border border-border ${expandedCard === card.id ? 'col-span-2 shadow-md' : ''}`}
+                style={expandedCard === card.id ? { ...expandAnimation, height: 'auto' } : expandAnimation}
+                className={`bg-white rounded-lg p-4 shadow-sm border border-border cursor-pointer ${expandedCard === card.id ? 'col-span-2 shadow-md' : ''}`}
                 onClick={() => handleCardClick(card.id)}
               >
                 <div className="flex flex-col items-center text-center">
-                  <div className={`bg-dental-50 w-12 h-12 rounded-lg flex items-center justify-center mb-3 transition-all duration-300 ${expandedCard === card.id ? 'bg-dental' : ''}`}>
+                  <div
+                    className={`bg-dental-50 w-12 h-12 rounded-lg flex items-center justify-center mb-3 transition-all duration-300 ${expandedCard === card.id ? 'bg-dental' : ''}`}
+                  >
                     {React.cloneElement(card.icon, {
                       className: `w-5 h-5 text-dental`
                     })}
@@ -135,15 +176,14 @@ const About = () => {
                   <h3 className="text-base font-bold mb-2">{card.title}</h3>
 
                   {expandedCard === card.id && (
-                    <>
-                      <p className="text-muted-foreground text-sm mb-4 animate-fade-in opacity-0"
-                        style={{ animationDelay: '50ms', animationFillMode: 'forwards' }}>
+                    <div style={expandContentAnimation}>
+                      <p className="text-muted-foreground text-sm mb-4">
                         {card.content}
                       </p>
                       <div className="mt-2 pt-2 border-t border-gray-100 font-medium text-xs text-dental w-full">
                         {card.stats}
                       </div>
-                    </>
+                    </div>
                   )}
                 </div>
               </div>
@@ -158,12 +198,21 @@ const About = () => {
           <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
             <div className="flex-1">
               <h3 className="text-2xl font-bold mb-4">Vieni a conoscerci</h3>
-              <p className="text-base md:text-lg">
-                {isMobile
-                  ? "Ti aspettiamo per accoglierti con cura e professionalità."
-                  : "Che tu abbia bisogno di una visita di controllo o semplicemente voglia farti un'idea dello studio, ti aspettiamo per accoglierti con cura e professionalità."
-                }
-              </p>
+              {isMobile ? (
+                <p
+                  className="text-base cursor-pointer"
+                  onClick={() => setShowFullText(!showFullText)}
+                  style={showFullText ? expandContentAnimation : {}}
+                >
+                  {showFullText
+                    ? "Che tu abbia bisogno di una visita di controllo o semplicemente voglia farti un'idea dello studio, ti aspettiamo per accoglierti con cura e professionalità."
+                    : "Ti aspettiamo per accoglierti con cura e professionalità."}
+                </p>
+              ) : (
+                <p className="text-base md:text-lg">
+                  Che tu abbia bisogno di una visita di controllo o semplicemente voglia farti un'idea dello studio, ti aspettiamo per accoglierti con cura e professionalità.
+                </p>
+              )}
             </div>
             <Link
               to="/contatti"

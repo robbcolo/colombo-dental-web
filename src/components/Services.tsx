@@ -70,7 +70,7 @@ const Services = () => {
       <div className="container mx-auto">
         <div className="text-center mb-8 md:mb-16">
           <span className="inline-block bg-dental-50 text-dental py-1 px-3 rounded-full text-sm font-medium mb-3 md:mb-4">
-            I Nostri Servizi
+            I NOSTRI SERVIZI
           </span>
           <h2 className="heading-lg mb-3 md:mb-6">Trattamenti specializzati per ogni esigenza</h2>
           <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto hidden md:block">

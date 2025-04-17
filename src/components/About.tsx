@@ -7,7 +7,6 @@ const About = () => {
   const [expandedCard, setExpandedCard] = useState(null);
   const [showFullText, setShowFullText] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Controlla solo se il dispositivo è mobile
   useEffect(() => {
@@ -56,7 +55,7 @@ const About = () => {
   // Gestisce il clic sulle card su mobile
   const handleCardClick = (id) => {
     if (isMobile) {
-      // Semplice toggle senza animazioni e transizioni
+      // Semplice toggle senza animazioni
       if (expandedCard === id) {
         setExpandedCard(null);
       } else {
@@ -106,17 +105,19 @@ const About = () => {
         {!isMobile ? (
           // Layout desktop: 3 schede in riga
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            {cards.slice(0, 3).map((card) => (
+            {cards.slice(0, 3).map((card, index) => (
               <div
                 key={card.id}
-                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md"
+                className={`bg-white rounded-xl p-6 shadow-sm border border-border transition-all duration-300 ${activeCard === index ? 'shadow-md transform scale-105' : 'hover:shadow-md'}`}
+                onMouseEnter={() => setActiveCard(index)}
+                onMouseLeave={() => setActiveCard(null)}
               >
-                <div className="bg-dental-50 rounded-lg p-3 inline-flex mb-4">
+                <div className={`bg-dental-50 w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 ${activeCard === index ? 'bg-dental' : ''}`}>
                   {card.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-3">{card.title}</h3>
                 <p className="text-muted-foreground text-base">{card.content}</p>
-                <div className="mt-4 pt-3 border-t border-gray-100 font-medium text-sm text-gray-500">
+                <div className={`mt-4 pt-3 border-t border-gray-100 font-medium text-sm ${activeCard === index ? 'text-dental' : 'text-gray-500'}`}>
                   {card.stats}
                 </div>
               </div>
@@ -157,7 +158,7 @@ const About = () => {
         )}
 
         {/* Sezione "Vieni a conoscerci" con sfumatura che parte da blue-300 */}
-        <div className="relative overflow-hidden bg-gradient-to-r from-blue-300/50 to-dental-50 rounded-xl p-8">
+        <div className="relative overflow-hidden bg-gradient-to-r from-blue-300/50 to-dental-50 rounded-xl p-8 shadow-sm border border-border transition-all duration-300 hover:shadow-md">
           <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -mt-10 -mr-10"></div>
           <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full -mb-10 -ml-10"></div>
           <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
@@ -180,7 +181,7 @@ const About = () => {
             </div>
             <Link
               to="/contatti"
-              className="inline-flex items-center justify-center gap-2 bg-dental text-white px-8 py-4 rounded-xl font-medium hover:bg-dental-600"
+              className="inline-flex items-center justify-center gap-2 bg-dental text-white px-8 py-4 rounded-xl font-medium hover:bg-dental-600 transition-all shadow-sm hover:shadow-md transform hover:scale-105"
             >
               <span className="text-lg">Contattaci</span>
               <ArrowRight className="w-5 h-5" />

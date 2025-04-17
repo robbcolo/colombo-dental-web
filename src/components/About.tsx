@@ -86,12 +86,14 @@ const About = () => {
           to { opacity: 1; }
         }
         
-        @keyframes fadeUp {
+        @keyframes slideDown {
           from { 
-            opacity: 0; 
-            transform: translateY(10px);
+            max-height: 0;
+            opacity: 0;
+            transform: translateY(-10px);
           }
           to { 
+            max-height: 300px;
             opacity: 1;
             transform: translateY(0);
           }
@@ -112,8 +114,9 @@ const About = () => {
           animation: fadeIn 0.3s ease-in-out forwards;
         }
         
-        .fade-up {
-          animation: fadeUp 0.4s ease-out forwards;
+        .slide-down {
+          animation: slideDown 0.4s ease-out forwards;
+          overflow: hidden;
         }
         
         .scale-up {
@@ -123,12 +126,6 @@ const About = () => {
         .card-active {
           box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
                      0 4px 6px -2px rgba(0, 0, 0, 0.05);
-          transform: scale(1.02);
-        }
-        
-        .icon-bg-active {
-          background-color: var(--dental-color, #3b82f6);
-          transform: scale(1.1);
         }
         
         .card-click-effect {
@@ -150,6 +147,17 @@ const About = () => {
         
         .card-click-effect:active::after {
           opacity: 1;
+        }
+
+        /* Animazione per lo scorrimento delle card */
+        .expanded-content {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease-out;
+        }
+        
+        .expanded-content.open {
+          max-height: 300px;
         }
       `}</style>
 
@@ -199,7 +207,7 @@ const About = () => {
                 onMouseEnter={() => setActiveCard(card.id)}
                 onMouseLeave={() => setActiveCard(null)}
               >
-                <div className={`bg-dental-100 rounded-lg p-3 inline-flex mb-4 transition-all duration-300 ${activeCard === card.id ? 'bg-dental' : ''}`}>
+                <div className={`bg-dental-100 rounded-lg p-3 inline-flex mb-4 transition-all duration-300`}>
                   {card.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-3">{card.title}</h3>
@@ -222,10 +230,8 @@ const About = () => {
                 onClick={() => !isTransitioning && handleCardClick(card.id)}
               >
                 <div className="flex flex-col items-center text-center">
-                  <div
-                    className={`bg-dental-50 w-12 h-12 rounded-lg flex items-center justify-center mb-3 transition-all duration-300
-                      ${expandedCard === card.id ? 'icon-bg-active' : ''}`}
-                  >
+                  {/* Icona - mantiene lo stesso aspetto anche quando premuta */}
+                  <div className="bg-dental-50 w-12 h-12 rounded-lg flex items-center justify-center mb-3">
                     {React.cloneElement(card.icon, {
                       className: `w-5 h-5 text-dental`
                     })}
@@ -233,11 +239,11 @@ const About = () => {
                   <h3 className="text-base font-bold mb-2">{card.title}</h3>
 
                   {expandedCard === card.id && (
-                    <div className="fade-up" style={{ animationDelay: '150ms' }}>
+                    <div className="slide-down w-full" style={{ animationDelay: '50ms' }}>
                       <p className="text-muted-foreground text-sm mb-4">
                         {card.content}
                       </p>
-                      <div className="mt-2 pt-2 border-t border-gray-100 font-medium text-xs text-dental w-full fade-in" style={{ animationDelay: '300ms' }}>
+                      <div className="mt-2 pt-2 border-t border-gray-100 font-medium text-xs text-dental w-full animate-fade-in" style={{ animationDelay: '300ms' }}>
                         {card.stats}
                       </div>
                     </div>

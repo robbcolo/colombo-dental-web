@@ -7,14 +7,14 @@ const teamMembers = [
     id: 1,
     name: "Dott. Alfredo Colombo",
     role: "Fondatore e Medico-Odontoiatra",
-    bio: "Con oltre 30 anni di esperienza, il Dott. Alfredo Colombo ha fondato lo studio nel 1990. Specializzato in implantologia avanzata e chirurgia orale.",
+    bio: "Fondatore dello studio, il Dott. Alfredo esercita da oltre 30 anni, costruendo un rapporto di fiducia con intere famiglie di pazienti. Ama il suo lavoro, soprattutto quando può risolvere situazioni complesse con semplicità e chiarezza.",
     image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1964&auto=format&fit=crop"
   },
   {
     id: 2,
     name: "Dott. Roberto Colombo",
     role: "Odontoiatra",
-    bio: "Il Dott. Roberto Colombo, laureato presso l'Università degli Studi di Messina con il massimo dei voti, ha portato nello studio tecniche moderne e innovative, arricchendo l’approccio con freschezza e attenzione al dettaglio.",
+    bio: "Il Dott. Roberto, laureato presso l'Università degli Studi di Messina con il massimo dei voti, lavora con un approccio preciso e attento al dettaglio, cercando sempre soluzioni efficaci e sostenibili per il paziente, mettendo al primo posto ascolto e trasparenza.",
     image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=2070&auto=format&fit=crop",
     email: "ybor69@ymail.com",
     phone: "+393291592938",
@@ -24,7 +24,7 @@ const teamMembers = [
     id: 3,
     name: "Dott.ssa Aurora Colombo",
     role: "Odontoiatra",
-    bio: "Specializzata in odontoiatria pediatrica e preventiva, la Dott.ssa Laura Colombo è particolarmente abile nel mettere a loro agio i pazienti più giovani.",
+    bio: "La Dott.ssa Aurora ha scelto questa professione con passione e si occupa dei pazienti con empatia e cura. È molto attenta al lato umano del lavoro, soprattutto con i pazienti più ansiosi o i bambini.",
     image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=1974&auto=format&fit=crop"
   }
 ];

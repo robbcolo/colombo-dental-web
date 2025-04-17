@@ -80,7 +80,6 @@ const About = () => {
 
   return (
     <section className="py-16 px-6 bg-dental-50 overflow-hidden">
-      {/* CSS per le animazioni */}
       <style>{`
         @keyframes fadeIn {
           from { opacity: 0; }
@@ -109,7 +108,7 @@ const About = () => {
           }
         }
         
-        .fade-in {
+        .animate-fade-in {
           animation: fadeIn 0.3s ease-in-out forwards;
         }
         
@@ -156,11 +155,11 @@ const About = () => {
 
       <div className="container mx-auto max-w-5xl">
         <div className="mb-12 relative text-center">
-          <span className="inline-block bg-dental/15 text-dental py-2 px-4 rounded-full text-md font-medium mb-4 animate-fade-in opacity-0">
+          <span className="inline-block bg-dental/15 text-dental py-2 px-4 rounded-full text-md font-medium mb-4 animate-fade-in">
             CHI SIAMO
           </span>
 
-          <h2 className="heading-lg mb-6 animate-fade-in opacity-0 text-3xl md:text-4xl font-bold" style={{ animationDelay: '100ms' }}>
+          <h2 className="heading-lg mb-6 animate-fade-in text-3xl md:text-4xl font-bold" style={{ animationDelay: '100ms' }}>
             Uno studio di famiglia, <span className="text-dental">per davvero</span>
           </h2>
 
@@ -180,7 +179,7 @@ const About = () => {
             </div>
           </div>
 
-          <p className="text-muted-foreground text-base md:text-lg leading-relaxed mx-auto max-w-3xl animate-fade-in opacity-0" style={{ animationDelay: '200ms' }}>
+          <p className="text-muted-foreground text-base md:text-lg leading-relaxed mx-auto max-w-3xl animate-fade-in" style={{ animationDelay: '200ms' }}>
             Lo <span className="font-semibold">Studio Dentistico Colombo</span> nasce da una storia semplice e personale: Alfredo, dentista con oltre 30 anni di esperienza,
             ha trasmesso la sua passione ai figli, Roberto e Aurora, oggi anche loro odontoiatri.
             {(!isMobile || showFullText) && " Lavoriamo insieme perché crediamo in un'odontoiatria che mette le "}
@@ -262,12 +261,12 @@ const About = () => {
                   onClick={() => setShowFullText(!showFullText)}
                 >
                   {showFullText
-                    ? "Che tu abbia bisogno di una visita di controllo o semplicemente voglia farti un'idea dello studio, ti aspettiamo per accoglierti con cura e professionalità."
+                    ? "Che tu abbia bisogno di una visita di controllo o semplicemente voglia farti un'idea dello studio."
                     : ""}
                 </p>
               ) : (
                 <p className="text-base md:text-lg">
-                    Che tu abbia bisogno di una visita di controllo o semplicemente voglia farti un'idea dello studio, ti aspettiamo per accoglierti con cura e professionalità.
+                  Che tu abbia bisogno di una visita di controllo o semplicemente voglia farti un'idea dello studio, ti aspettiamo per accoglierti con cura e professionalità.
                 </p>
               )}
             </div>

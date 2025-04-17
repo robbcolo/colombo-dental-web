@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
@@ -35,13 +35,15 @@ const serviceItems = [
   }
 ];
 
-const ServiceCard = ({ service, index }) => (
+const ServiceCard = ({ service, index, activeCard, setActiveCard }) => (
   <div
-    className="bg-white rounded-xl p-4 md:p-6 shadow-sm border border-border hover:shadow-md transition-shadow duration-300 animate-fade-in opacity-0 flex flex-col"
+    className={`bg-white rounded-xl p-4 md:p-6 shadow-sm border border-border transition-all duration-300 animate-fade-in opacity-0 flex flex-col ${activeCard === index ? 'shadow-md transform scale-105' : 'hover:shadow-md'}`}
     style={{ animationDelay: `${index * 100}ms` }}
+    onMouseEnter={() => setActiveCard(index)}
+    onMouseLeave={() => setActiveCard(null)}
   >
     <div className="flex flex-col items-center text-center">
-      <div className="bg-dental-50 w-12 h-12 md:w-16 md:h-16 rounded-lg flex items-center justify-center mb-3">
+      <div className={`bg-dental-50 w-12 h-12 md:w-16 md:h-16 rounded-lg flex items-center justify-center mb-3 transition-all duration-300 ${activeCard === index ? 'bg-dental' : ''}`}>
         {service.icon}
       </div>
       <h3 className="text-base md:text-xl font-bold mb-2">{service.title}</h3>
@@ -52,7 +54,7 @@ const ServiceCard = ({ service, index }) => (
     </div>
     <Link
       to={service.link}
-      className="mt-auto inline-flex items-center justify-center text-dental font-medium hover:text-dental-dark transition-colors text-sm md:text-base"
+      className={`mt-auto inline-flex items-center justify-center font-medium transition-colors text-sm md:text-base ${activeCard === index ? 'text-dental' : 'text-dental hover:text-dental-dark'}`}
     >
       Scopri di più
       <ArrowRight size={14} className="ml-1 md:ml-2 md:w-4 md:h-4" />
@@ -61,6 +63,8 @@ const ServiceCard = ({ service, index }) => (
 );
 
 const Services = () => {
+  const [activeCard, setActiveCard] = useState(null);
+
   return (
     <section className="py-10 md:py-20 px-4 md:px-6" id="servizi">
       <div className="container mx-auto">
@@ -76,12 +80,23 @@ const Services = () => {
 
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 lg:gap-8">
           {serviceItems.map((service, index) => (
-            <ServiceCard key={index} service={service} index={index} />
+            <ServiceCard
+              key={index}
+              service={service}
+              index={index}
+              activeCard={activeCard}
+              setActiveCard={setActiveCard}
+            />
           ))}
         </div>
 
         <div className="mt-8 md:mt-16 text-center">
-          <Link to="/servizi" className="btn-primary inline-flex items-center text-sm md:text-base">
+          <Link
+            to="/servizi"
+            className="btn-primary inline-flex items-center text-sm md:text-base transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105"
+            onMouseEnter={() => setActiveCard('all-services')}
+            onMouseLeave={() => setActiveCard(null)}
+          >
             Vedi tutti i servizi
             <ArrowRight size={16} className="ml-2" />
           </Link>

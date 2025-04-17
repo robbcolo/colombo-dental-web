@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Shield, Award, Heart, ArrowRight, Users, Smile, Zap, ChevronDown, Clock } from 'lucide-react';
+import { Shield, Award, Heart, ArrowRight, Users, Smile, Zap, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const About = () => {
@@ -7,12 +7,11 @@ const About = () => {
   const [expandedCard, setExpandedCard] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Controlla solo se il dispositivo è mobile senza alterare il desktop
+  // Controlla solo se il dispositivo è mobile
   useEffect(() => {
     const checkDevice = () => {
       const width = window.innerWidth;
-      // iPhone 16 Pro: ~390px, iPhone 16 Pro Max: ~430px
-      setIsMobile(width <= 430);
+      setIsMobile(width <= 767); // Considera mobile fino a 767px
     };
 
     checkDevice();
@@ -47,12 +46,12 @@ const About = () => {
       id: 4,
       icon: <Clock className="w-6 h-6 text-dental" />,
       title: "Tempi rapidi",
-      content: "Sappiamo quanto sia prezioso il tuo tempo. Organizziamo le visite in modo efficiente, rispettiamo gli appuntamenti e minimizziamo le attese. Quando possibile, combiniamo più interventi in un'unica seduta per ottimizzare le tue visite.",
+      content: "Sappiamo quanto sia prezioso il tuo tempo. Organizziamo le visite in modo efficiente, rispettiamo gli appuntamenti e minimizziamo le attese. Quando possibile, combiniamo più interventi in un'unica seduta.",
       stats: "Rispetto dei tuoi tempi"
     }
   ];
 
-  // Gestisce il clic sulle card in mobile
+  // Gestisce il clic sulle card su mobile
   const handleCardClick = (id) => {
     if (isMobile) {
       setExpandedCard(expandedCard === id ? null : id);
@@ -63,7 +62,6 @@ const About = () => {
     <section className="py-16 px-6 bg-dental-50 overflow-hidden">
       <div className="container mx-auto max-w-5xl">
         <div className="mb-12 relative text-center">
-
           <span className="inline-block bg-dental/15 text-dental py-2 px-4 rounded-full text-md font-medium mb-4 animate-fade-in opacity-0">
             CHI SIAMO
           </span>
@@ -91,11 +89,13 @@ const About = () => {
           <p className="text-muted-foreground text-base md:text-lg leading-relaxed mx-auto max-w-3xl animate-fade-in opacity-0" style={{ animationDelay: '200ms' }}>
             Lo <span className="font-semibold">Studio Dentistico Colombo</span> nasce da una storia semplice e personale: Alfredo, dentista con oltre 30 anni di esperienza,
             ha trasmesso la sua passione ai figli, Roberto e Aurora, oggi anche loro odontoiatri.
-            Lavoriamo insieme perché crediamo in un'odontoiatria che mette le <span className="font-semibold">persone prima dei denti</span>.
+            {!isMobile && " Lavoriamo insieme perché crediamo in un'odontoiatria che mette le "}
+            {isMobile && " Mettiamo le "}
+            <span className="font-semibold">persone prima dei denti</span>.
           </p>
         </div>
 
-        {/* Schede interattive - Layout desktop normale, mobile griglia 2x2 */}
+        {/* Schede interattive - Layout diverso su mobile/desktop */}
         {!isMobile ? (
           // Layout desktop: 3 schede in riga
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
@@ -118,38 +118,34 @@ const About = () => {
             ))}
           </div>
         ) : (
-          // Layout mobile: griglia 2x2 con schede compatte
-          <div className="grid grid-cols-2 gap-3 mb-10">
+          // Layout mobile: griglia 2x2 come i servizi
+          <div className="grid grid-cols-2 gap-3 mb-8">
             {cards.map((card) => (
               <div
                 key={card.id}
-                className={`bg-white rounded-lg p-4 transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer ${expandedCard === card.id ? 'col-span-2 row-span-2' : ''}`}
+                className={`bg-white rounded-lg p-4 shadow-sm transition-all duration-300 border border-border ${expandedCard === card.id ? 'col-span-2 shadow-md' : ''}`}
                 onClick={() => handleCardClick(card.id)}
               >
-                <div className="flex items-center justify-between mb-2">
-                  <div className={`bg-dental-100 rounded-lg p-2 inline-flex transition-all duration-300 ${expandedCard === card.id ? 'bg-dental' : ''}`}>
+                <div className="flex flex-col items-center text-center">
+                  <div className={`bg-dental-50 w-12 h-12 rounded-lg flex items-center justify-center mb-3 transition-all duration-300 ${expandedCard === card.id ? 'bg-dental' : ''}`}>
                     {React.cloneElement(card.icon, {
                       className: `w-5 h-5 text-dental`
                     })}
                   </div>
+                  <h3 className="text-base font-bold mb-2">{card.title}</h3>
 
-                  <ChevronDown
-                    className={`w-4 h-4 text-dental transition-transform duration-300 ${expandedCard === card.id ? 'rotate-180' : ''}`}
-                  />
+                  {expandedCard === card.id && (
+                    <>
+                      <p className="text-muted-foreground text-sm mb-4 animate-fade-in opacity-0"
+                        style={{ animationDelay: '50ms', animationFillMode: 'forwards' }}>
+                        {card.content}
+                      </p>
+                      <div className="mt-2 pt-2 border-t border-gray-100 font-medium text-xs text-dental w-full">
+                        {card.stats}
+                      </div>
+                    </>
+                  )}
                 </div>
-
-                <h3 className="text-lg font-bold">{card.title}</h3>
-
-                {expandedCard === card.id && (
-                  <>
-                    <p className="text-muted-foreground text-sm mt-3 animate-fadeIn">
-                      {card.content}
-                    </p>
-                    <div className="mt-3 pt-2 border-t border-gray-100 font-medium text-xs text-dental">
-                      {card.stats}
-                    </div>
-                  </>
-                )}
               </div>
             ))}
           </div>

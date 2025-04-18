@@ -1,6 +1,5 @@
-
-import React from 'react';
-import { Mail, Phone, Linkedin, Instagram } from 'lucide-react';
+import React, { useRef, useEffect, useState } from 'react';
+import { Mail, Phone, Instagram } from 'lucide-react';
 
 const teamMembers = [
   {
@@ -30,6 +29,85 @@ const teamMembers = [
 ];
 
 const Team = () => {
+  const scrollContainerRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  // Verifica se è mobile
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkIfMobile);
+    };
+  }, []);
+
+  // Monitora lo scroll per aggiornare gli indicatori
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!scrollContainerRef.current || !isMobile) return;
+
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      // Calcola quale card è più visibile basandosi sulla posizione di scroll
+      const cardWidth = clientWidth * 0.85; // 85% della larghezza del viewport su mobile
+      const index = Math.round(scrollLeft / cardWidth);
+      setActiveIndex(Math.min(index, teamMembers.length - 1));
+    };
+
+    const container = scrollContainerRef.current;
+    if (container && isMobile) {
+      container.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      if (container && isMobile) {
+        container.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, [isMobile]);
+
+  // Gestione drag
+  const handleMouseDown = (e) => {
+    if (!isMobile) return;
+    setIsDragging(true);
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+  };
+
+  const handleTouchStart = (e) => {
+    if (!isMobile) return;
+    setIsDragging(true);
+    setStartX(e.touches[0].pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging || !isMobile) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isDragging || !isMobile) return;
+    const x = e.touches[0].pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const stopDragging = () => {
+    setIsDragging(false);
+  };
+
   return (
     <section className="py-20 px-6" id="team">
       <div className="container mx-auto">
@@ -43,36 +121,120 @@ const Team = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Layout Mobile: Scrollabile orizzontalmente */}
+        <div className="md:hidden overflow-hidden">
+          <div
+            className="flex gap-4 overflow-x-auto no-scrollbar pb-6 snap-x snap-mandatory"
+            ref={scrollContainerRef}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={stopDragging}
+            onMouseLeave={stopDragging}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={stopDragging}
+            style={{
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+              WebkitOverflowScrolling: 'touch',
+              paddingLeft: '1.5rem', // Aggiunge spazio a sinistra
+              paddingRight: '5rem'   // Aggiunge spazio a destra per mostrare che ci sono più elementi
+            }}
+          >
+            {teamMembers.map((member, index) => (
+              <div
+                key={member.id}
+                className={`team-card flex-shrink-0 w-[85%] snap-start bg-white rounded-xl overflow-hidden shadow-sm border border-border hover:shadow-md transition-shadow duration-300 animate-fade-in opacity-0 ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="relative h-80">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                    draggable="false"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dental-900/80 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div className="p-6 w-full">
+                      <div className="flex justify-center space-x-4">
+                        {member.email && (
+                          <a href={`mailto:${member.email}`} className="bg-white/10 p-2 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors">
+                            <Mail className="w-5 h-5 text-white" />
+                          </a>
+                        )}
+                        {member.phone && (
+                          <a href={`tel:${member.phone}`} className="bg-white/10 p-2 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors">
+                            <Phone className="w-5 h-5 text-white" />
+                          </a>
+                        )}
+                        {member.instagram && (
+                          <a href={member.instagram} className="bg-white/10 p-2 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors">
+                            <Instagram className="w-5 h-5 text-white" />
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-1">{member.name}</h3>
+                  <p className="text-dental mb-4">{member.role}</p>
+                  <p className="text-muted-foreground">{member.bio}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Indicatori di scorrimento in stile Apple solo su mobile */}
+          <div className="flex justify-center mt-4">
+            {teamMembers.map((_, index) => (
+              <div
+                key={index}
+                className={`h-1.5 mx-1 rounded transition-all duration-300 ${activeIndex === index ? 'w-6 bg-dental' : 'w-1.5 bg-gray-300'
+                  }`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Layout Desktop: Griglia standard */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member, index) => (
-            <div 
-              key={member.id} 
+            <div
+              key={member.id}
               className="bg-white rounded-xl overflow-hidden shadow-sm border border-border hover:shadow-md transition-shadow duration-300 animate-fade-in opacity-0"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="relative h-80">
-                <img 
-                  src={member.image} 
-                  alt={member.name} 
+                <img
+                  src={member.image}
+                  alt={member.name}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dental-900/80 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
                   <div className="p-6 w-full">
                     <div className="flex justify-center space-x-4">
-                      <a href={`mailto:${member.email}`} className="bg-white/10 p-2 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors">
-                        <Mail className="w-5 h-5 text-white" />
-                      </a>
-                      <a href={`tel:${member.phone}`} className="bg-white/10 p-2 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors">
-                        <Phone className="w-5 h-5 text-white" />
-                      </a>
-                      <a href={member.instagram} className="bg-white/10 p-2 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors">
-                        <Instagram className="w-5 h-5 text-white" />
-                      </a>
+                      {member.email && (
+                        <a href={`mailto:${member.email}`} className="bg-white/10 p-2 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors">
+                          <Mail className="w-5 h-5 text-white" />
+                        </a>
+                      )}
+                      {member.phone && (
+                        <a href={`tel:${member.phone}`} className="bg-white/10 p-2 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors">
+                          <Phone className="w-5 h-5 text-white" />
+                        </a>
+                      )}
+                      {member.instagram && (
+                        <a href={member.instagram} className="bg-white/10 p-2 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors">
+                          <Instagram className="w-5 h-5 text-white" />
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
               </div>
-              
+
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-1">{member.name}</h3>
                 <p className="text-dental mb-4">{member.role}</p>

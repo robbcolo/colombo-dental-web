@@ -31,9 +31,6 @@ const teamMembers = [
 const Team = () => {
   const scrollContainerRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
 
   // Verifica se è mobile
@@ -41,10 +38,10 @@ const Team = () => {
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkIfMobile();
     window.addEventListener('resize', checkIfMobile);
-    
+
     return () => {
       window.removeEventListener('resize', checkIfMobile);
     };
@@ -54,19 +51,19 @@ const Team = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (!scrollContainerRef.current || !isMobile) return;
-      
-      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+
+      const { scrollLeft, clientWidth } = scrollContainerRef.current;
       // Calcola quale card è più visibile basandosi sulla posizione di scroll
-      const cardWidth = clientWidth * 0.75; // 75% della larghezza del viewport su mobile
+      const cardWidth = clientWidth * 0.75 + 16; // 75% larghezza + margine
       const index = Math.round(scrollLeft / cardWidth);
       setActiveIndex(Math.min(index, teamMembers.length - 1));
     };
 
     const container = scrollContainerRef.current;
     if (container && isMobile) {
-      container.addEventListener('scroll', handleScroll);
+      container.addEventListener('scroll', handleScroll, { passive: true });
     }
-    
+
     return () => {
       if (container && isMobile) {
         container.removeEventListener('scroll', handleScroll);
@@ -74,38 +71,17 @@ const Team = () => {
     };
   }, [isMobile]);
 
-  // Gestione drag
-  const handleMouseDown = (e) => {
-    if (!isMobile) return;
-    setIsDragging(true);
-    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
-    setScrollLeft(scrollContainerRef.current.scrollLeft);
-  };
+  // Navigazione con i pallini
+  const scrollToIndex = (index) => {
+    if (!scrollContainerRef.current) return;
 
-  const handleTouchStart = (e) => {
-    if (!isMobile) return;
-    setIsDragging(true);
-    setStartX(e.touches[0].pageX - scrollContainerRef.current.offsetLeft);
-    setScrollLeft(scrollContainerRef.current.scrollLeft);
-  };
+    const cardWidth = scrollContainerRef.current.clientWidth * 0.75 + 16; // 75% larghezza + margine
+    const newScrollLeft = cardWidth * index;
 
-  const handleMouseMove = (e) => {
-    if (!isDragging || !isMobile) return;
-    e.preventDefault();
-    const x = e.pageX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
-  };
-
-  const handleTouchMove = (e) => {
-    if (!isDragging || !isMobile) return;
-    const x = e.touches[0].pageX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
-  };
-
-  const stopDragging = () => {
-    setIsDragging(false);
+    scrollContainerRef.current.scrollTo({
+      left: newScrollLeft,
+      behavior: 'smooth'
+    });
   };
 
   return (
@@ -123,46 +99,39 @@ const Team = () => {
 
         {/* Layout Mobile: Scrollabile orizzontalmente in stile Apple */}
         <div className="md:hidden w-full px-5">
-          <div 
-            className="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-4 w-full"
+          <div
+            className="flex overflow-x-auto no-scrollbar snap-x snap-mandatory pb-4 w-full scroll-smooth"
             ref={scrollContainerRef}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={stopDragging}
-            onMouseLeave={stopDragging}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={stopDragging}
-            style={{ 
+            style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
-              WebkitOverflowScrolling: 'touch'
+              WebkitOverflowScrolling: 'touch',
+              paddingLeft: '20px',
+              paddingRight: '20px'
             }}
           >
-            {/* Elemento invisibile per creare spazio a sinistra */}
-            <div className="flex-shrink-0 w-[5px]" aria-hidden="true"></div>
-            
             {teamMembers.map((member, index) => (
-              <div 
-                key={member.id} 
-                className={`team-card flex-shrink-0 w-[75%] snap-start bg-white rounded-2xl overflow-hidden shadow-md border-0 transition-all duration-300 animate-fade-in opacity-0 ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+              <div
+                key={member.id}
+                className={`team-card flex-shrink-0 w-[75%] snap-center bg-white rounded-2xl overflow-hidden shadow-md border-0 transition-all duration-300 animate-fade-in opacity-0 ${index < teamMembers.length - 1 ? 'mr-4' : ''
+                  }`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 {/* Foto in primo piano */}
                 <div className="relative">
-                  <img 
-                    src={member.image} 
-                    alt={member.name} 
+                  <img
+                    src={member.image}
+                    alt={member.name}
                     className="w-full aspect-[5/6] object-cover object-center"
                     draggable="false"
                   />
                 </div>
-                
+
                 {/* Contenuto testuale sotto - RIMOSSA LA BIO */}
                 <div className="p-6 text-center">
                   <h3 className="text-2xl font-bold mb-1">{member.name}</h3>
                   <p className="text-dental text-lg">{member.role}</p>
-                  
+
                   {/* Icone social solo se presenti */}
                   {(member.email || member.phone || member.instagram) && (
                     <div className="flex justify-center space-x-4 mt-6">
@@ -186,19 +155,17 @@ const Team = () => {
                 </div>
               </div>
             ))}
-            
-            {/* Elemento per creare l'effetto peek a destra con la giusta dimensione */}
-            <div className="flex-shrink-0" aria-hidden="true"></div>
           </div>
-          
+
           {/* Indicatori di scorrimento in stile Apple solo su mobile */}
           <div className="flex justify-center mt-4">
             {teamMembers.map((_, index) => (
-              <div 
-                key={index} 
-                className={`h-1.5 mx-1 rounded transition-all duration-300 ${
-                  activeIndex === index ? 'w-6 bg-dental' : 'w-1.5 bg-gray-300'
-                }`}
+              <button
+                key={index}
+                onClick={() => scrollToIndex(index)}
+                className={`h-1.5 mx-1 rounded transition-all duration-300 ${activeIndex === index ? 'w-6 bg-dental' : 'w-1.5 bg-gray-300'
+                  }`}
+                aria-label={`Vai al profilo ${index + 1}`}
               />
             ))}
           </div>
@@ -207,15 +174,15 @@ const Team = () => {
         {/* Layout Desktop: Griglia standard (con bio) */}
         <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6">
           {teamMembers.map((member, index) => (
-            <div 
-              key={member.id} 
+            <div
+              key={member.id}
               className="bg-white rounded-xl overflow-hidden shadow-sm border border-border hover:shadow-md transition-shadow duration-300 animate-fade-in opacity-0"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="relative h-80">
-                <img 
-                  src={member.image} 
-                  alt={member.name} 
+                <img
+                  src={member.image}
+                  alt={member.name}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dental-900/80 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
@@ -240,7 +207,7 @@ const Team = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-1">{member.name}</h3>
                 <p className="text-dental mb-4">{member.role}</p>

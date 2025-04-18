@@ -37,9 +37,9 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-dental-900/90 via-dental-800/80 to-dental-700/70 z-1"></div>
 
       {/* Removed container class and adjusted padding for mobile */}
-      <div className="w-full mx-auto sm:container sm:px-6 z-10 flex flex-col justify-between h-screen py-8 sm:py-0">
+      <div className="w-full mx-auto sm:container sm:px-6 z-10 flex flex-col justify-between h-screen pt-[5vh] sm:py-0">
         {/* Header Content */}
-        <div className="flex flex-col items-center text-center mt-4 sm:mt-20">
+        <div className="flex flex-col items-center text-center mt-[5vh] sm:mt-20">
           {/* Logo Section */}
           <div className="animate-slide-down opacity-0 mb-6 sm:mb-6" style={{ animationDelay: '100ms' }}>
             <div className="flex flex-col items-center">

@@ -41,10 +41,10 @@ const Team = () => {
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-
+    
     checkIfMobile();
     window.addEventListener('resize', checkIfMobile);
-
+    
     return () => {
       window.removeEventListener('resize', checkIfMobile);
     };
@@ -54,10 +54,10 @@ const Team = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (!scrollContainerRef.current || !isMobile) return;
-
+      
       const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
       // Calcola quale card è più visibile basandosi sulla posizione di scroll
-      const cardWidth = clientWidth * 0.85; // 85% della larghezza del viewport su mobile
+      const cardWidth = clientWidth * 0.75; // 75% della larghezza del viewport su mobile
       const index = Math.round(scrollLeft / cardWidth);
       setActiveIndex(Math.min(index, teamMembers.length - 1));
     };
@@ -66,7 +66,7 @@ const Team = () => {
     if (container && isMobile) {
       container.addEventListener('scroll', handleScroll);
     }
-
+    
     return () => {
       if (container && isMobile) {
         container.removeEventListener('scroll', handleScroll);
@@ -109,11 +109,11 @@ const Team = () => {
   };
 
   return (
-    <section className="py-20 px-6" id="team">
-      <div className="container mx-auto">
-        <div className="text-center mb-16">
+    <section className="py-20 pb-36 px-0 bg-gray-50 w-full max-w-[100vw] overflow-hidden" id="team">
+      <div className="md:container md:mx-auto">
+        <div className="text-center mb-12 px-6">
           <span className="inline-block bg-dental-50 text-dental py-1 px-3 rounded-full text-sm font-medium mb-4">
-            Il Nostro Team
+            IL NOSTRO TEAM
           </span>
           <h2 className="heading-lg mb-6">Professionisti al tuo servizio</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -121,10 +121,10 @@ const Team = () => {
           </p>
         </div>
 
-        {/* Layout Mobile: Scrollabile orizzontalmente */}
-        <div className="md:hidden overflow-hidden">
-          <div
-            className="flex gap-4 overflow-x-auto no-scrollbar pb-6 snap-x snap-mandatory"
+        {/* Layout Mobile: Scrollabile orizzontalmente in stile Apple */}
+        <div className="md:hidden w-full px-5">
+          <div 
+            className="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-4 w-full"
             ref={scrollContainerRef}
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
@@ -133,83 +133,89 @@ const Team = () => {
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={stopDragging}
-            style={{
+            style={{ 
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
-              WebkitOverflowScrolling: 'touch',
-              paddingLeft: '1.5rem', // Aggiunge spazio a sinistra
-              paddingRight: '5rem'   // Aggiunge spazio a destra per mostrare che ci sono più elementi
+              WebkitOverflowScrolling: 'touch'
             }}
           >
+            {/* Elemento invisibile per creare spazio a sinistra */}
+            <div className="flex-shrink-0 w-[5px]" aria-hidden="true"></div>
+            
             {teamMembers.map((member, index) => (
-              <div
-                key={member.id}
-                className={`team-card flex-shrink-0 w-[85%] snap-start bg-white rounded-xl overflow-hidden shadow-sm border border-border hover:shadow-md transition-shadow duration-300 animate-fade-in opacity-0 ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+              <div 
+                key={member.id} 
+                className={`team-card flex-shrink-0 w-[75%] snap-start bg-white rounded-2xl overflow-hidden shadow-md border-0 transition-all duration-300 animate-fade-in opacity-0 ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="relative h-80">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
+                {/* Foto in primo piano */}
+                <div className="relative">
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    className="w-full aspect-[5/6] object-cover object-center"
                     draggable="false"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-dental-900/80 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <div className="p-6 w-full">
-                      <div className="flex justify-center space-x-4">
-                        {member.email && (
-                          <a href={`mailto:${member.email}`} className="bg-white/10 p-2 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors">
-                            <Mail className="w-5 h-5 text-white" />
-                          </a>
-                        )}
-                        {member.phone && (
-                          <a href={`tel:${member.phone}`} className="bg-white/10 p-2 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors">
-                            <Phone className="w-5 h-5 text-white" />
-                          </a>
-                        )}
-                        {member.instagram && (
-                          <a href={member.instagram} className="bg-white/10 p-2 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors">
-                            <Instagram className="w-5 h-5 text-white" />
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  </div>
                 </div>
-
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-                  <p className="text-dental mb-4">{member.role}</p>
-                  <p className="text-muted-foreground">{member.bio}</p>
+                
+                {/* Contenuto testuale sotto - RIMOSSA LA BIO */}
+                <div className="p-6 text-center">
+                  <h3 className="text-2xl font-bold mb-1">{member.name}</h3>
+                  <p className="text-dental text-lg">{member.role}</p>
+                  
+                  {/* Icone social solo se presenti */}
+                  {(member.email || member.phone || member.instagram) && (
+                    <div className="flex justify-center space-x-4 mt-6">
+                      {member.email && (
+                        <a href={`mailto:${member.email}`} className="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition-colors">
+                          <Mail className="w-5 h-5 text-dental" />
+                        </a>
+                      )}
+                      {member.phone && (
+                        <a href={`tel:${member.phone}`} className="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition-colors">
+                          <Phone className="w-5 h-5 text-dental" />
+                        </a>
+                      )}
+                      {member.instagram && (
+                        <a href={member.instagram} className="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition-colors">
+                          <Instagram className="w-5 h-5 text-dental" />
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
+            
+            {/* Elemento per creare l'effetto peek a destra con la giusta dimensione */}
+            <div className="flex-shrink-0" aria-hidden="true"></div>
           </div>
-
+          
           {/* Indicatori di scorrimento in stile Apple solo su mobile */}
           <div className="flex justify-center mt-4">
             {teamMembers.map((_, index) => (
-              <div
-                key={index}
-                className={`h-1.5 mx-1 rounded transition-all duration-300 ${activeIndex === index ? 'w-6 bg-dental' : 'w-1.5 bg-gray-300'
-                  }`}
+              <div 
+                key={index} 
+                className={`h-1.5 mx-1 rounded transition-all duration-300 ${
+                  activeIndex === index ? 'w-6 bg-dental' : 'w-1.5 bg-gray-300'
+                }`}
               />
             ))}
           </div>
         </div>
 
-        {/* Layout Desktop: Griglia standard */}
-        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Layout Desktop: Griglia standard (con bio) */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6">
           {teamMembers.map((member, index) => (
-            <div
-              key={member.id}
+            <div 
+              key={member.id} 
               className="bg-white rounded-xl overflow-hidden shadow-sm border border-border hover:shadow-md transition-shadow duration-300 animate-fade-in opacity-0"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="relative h-80">
-                <img
-                  src={member.image}
-                  alt={member.name}
+                <img 
+                  src={member.image} 
+                  alt={member.name} 
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dental-900/80 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
@@ -234,7 +240,7 @@ const Team = () => {
                   </div>
                 </div>
               </div>
-
+              
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-1">{member.name}</h3>
                 <p className="text-dental mb-4">{member.role}</p>

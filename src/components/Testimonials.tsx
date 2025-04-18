@@ -42,7 +42,7 @@ const Testimonials = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <span className="inline-block bg-dental-50 text-dental py-1 px-3 rounded-full text-sm font-medium mb-4">
-            Testimonianze
+            TESTIMONIANZE
           </span>
           <h2 className="heading-lg mb-6">Cosa dicono i nostri pazienti</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">

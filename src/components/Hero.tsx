@@ -36,7 +36,8 @@ const Hero = () => {
       />
       <div className="absolute inset-0 bg-gradient-to-br from-dental-900/90 via-dental-800/80 to-dental-700/70 z-1"></div>
 
-      <div className="container mx-auto px-4 sm:px-6 z-10 flex flex-col justify-between h-screen py-8 sm:py-0">
+      {/* Removed container class and adjusted padding for mobile */}
+      <div className="w-full mx-auto sm:container sm:px-6 z-10 flex flex-col justify-between h-screen py-8 sm:py-0">
         {/* Header Content */}
         <div className="flex flex-col items-center text-center mt-4 sm:mt-20">
           {/* Logo Section */}
@@ -73,8 +74,9 @@ const Hero = () => {
         </div>
 
         {/* Cards Section - Mobile Version */}
-        <div className="mt-auto w-full max-w-md mx-auto sm:hidden">
-          <div className="flex flex-col gap-3 mb-2">
+        <div className="mt-auto w-full sm:hidden">
+          {/* Removed max-w-md and mx-auto to allow full width */}
+          <div className="flex flex-col gap-3 mb-2 px-4">
             {/* Card Contattaci - Mobile */}
             <div className="animate-slide-up opacity-0" style={{ animationDelay: '400ms' }}>
               <div

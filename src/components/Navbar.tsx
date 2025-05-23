@@ -62,19 +62,21 @@ const Navbar = () => {
       )}>
         <div className="container mx-auto px-6 flex justify-between items-center relative">
 
-          {/* Icona sola a sinistra */}
-          <Link to="/" className="flex items-center z-20 md:z-10">
+          {/* Logo e testo desktop */}
+          <Link to="/" className="flex items-center z-20">
             <img
               src={`${import.meta.env.BASE_URL}images/about/logo.png`}
               alt="Logo"
-              className="h-8 w-auto"
+              className="h-8 w-auto mr-2"
             />
+            <span className="hidden md:block text-2xl font-bold text-dental">Studio Dentistico</span>
+            <span className="hidden md:block text-2xl font-bold ml-2 text-blue-500">Colombo</span>
           </Link>
 
           {/* Testo centrale solo su mobile */}
           <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center md:hidden">
-            <span className="block text-lg font-bold text-dental leading-tight">Studio Dentistico</span>
-            <span className="block text-lg font-bold text-blue-500">Colombo</span>
+            <span className="block text-base font-semibold text-dental">Studio Dentistico</span>
+            <span className="block text-base font-semibold text-blue-500 -mt-0.5">Colombo</span>
           </div>
 
           {/* Menu desktop */}

@@ -76,7 +76,7 @@ const Navbar = () => {
           {/* Testo centrale solo su mobile */}
           <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center md:hidden">
             <span className="block text-base font-semibold text-dental">Studio Dentistico</span>
-            <span className="block text-base font-semibold text-blue-500 -mt-0.5">Colombo</span>
+            <span className="block text-base font-semibold text-blue-500 -mt-0.5 -ml-3">Colombo</span>
           </div>
 
           {/* Menu desktop */}

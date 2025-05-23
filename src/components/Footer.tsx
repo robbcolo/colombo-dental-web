@@ -203,11 +203,12 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-4 border-b border-white/20 pb-2">Servizi</h3>
             <div className="grid grid-cols-1 gap-y-1.5">
-              <Link to="/servizi/igiene-dentale" className="text-sm text-dental-100 hover:text-blue-300 transition-colors">Igiene Dentale</Link>
-              <Link to="/servizi/implantologia" className="text-sm text-dental-100 hover:text-blue-300 transition-colors">Implantologia</Link>
-              <Link to="/servizi/ortodonzia" className="text-sm text-dental-100 hover:text-blue-300 transition-colors">Ortodonzia</Link>
-              <Link to="/servizi/estetica-dentale" className="text-sm text-dental-100 hover:text-blue-300 transition-colors">Estetica Dentale</Link>
-              <Link to="/servizi/odontoiatria-pediatrica" className="text-sm text-dental-100 hover:text-blue-300 transition-colors">Odontoiatria Pediatrica</Link>
+              <Link to="/trattamenti/conservativa" className="text-sm text-dental-100 hover:text-blue-300 transition-colors">Odontoiatria Conservativa</Link>
+              <Link to="/trattamenti/igiene-dentale" className="text-sm text-dental-100 hover:text-blue-300 transition-colors">Igiene Dentale</Link>
+              <Link to="/trattamenti/implantologia" className="text-sm text-dental-100 hover:text-blue-300 transition-colors">Implantologia</Link>
+              <Link to="/trattamenti/ortodonzia" className="text-sm text-dental-100 hover:text-blue-300 transition-colors">Ortodonzia</Link>
+              <Link to="/trattamenti/protesi-dentali" className="text-sm text-dental-100 hover:text-blue-300 transition-colors">Protesi</Link>
+              <Link to="/servizi" className="text-sm text-dental-100 hover:text-blue-300 transition-colors">Tutti i trattamenti</Link>
             </div>
           </div>
         </div>

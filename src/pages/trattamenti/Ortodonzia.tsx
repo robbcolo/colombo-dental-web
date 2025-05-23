@@ -10,8 +10,8 @@ const jsonLd = {
     "@type": "Dentist",
     name: "Studio Dentistico Colombo",
     description: "Ortodonzia Invisalign® a Patti: allineatori trasparenti per un sorriso perfetto.",
-    url: "https://robbcolo.github.io/colombo-dental-web/",
-    logo: "https://robbcolo.github.io/colombo-dental-web/images/about/logo.png",
+    url: "https://studiodentisticocolombo.com",
+    logo: "https://studiodentisticocolombo.com/images/about/logo.png",
     telephone: "+39094122749",
     address: {
         "@type": "PostalAddress",

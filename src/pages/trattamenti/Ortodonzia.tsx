@@ -5,10 +5,42 @@ import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    name: "Studio Dentistico Colombo",
+    description: "Ortodonzia Invisalign® a Patti: allineatori trasparenti per un sorriso perfetto.",
+    url: "https://robbcolo.github.io/colombo-dental-web/",
+    logo: "https://robbcolo.github.io/colombo-dental-web/images/about/logo.png",
+    telephone: "+39094122749",
+    address: {
+        "@type": "PostalAddress",
+        streetAddress: "Via Fontanelle, SNC",
+        addressLocality: "Patti",
+        addressRegion: "ME",
+        postalCode: "98066"
+    },
+    geo: {
+        "@type": "GeoCoordinates",
+        latitude: 38.1391602,
+        longitude: 14.9684793
+    },
+    openingHoursSpecification: [
+        {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: [
+                "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
+            ],
+            opens: "08:30",
+            closes: "20:00"
+        }
+    ]
+};
+
 const Ortodonzia = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
-        document.title = 'Ortodonzia | Studio Dentistico Colombo a Patti';
+        document.title = 'Ortodonzia e Invisalign® a Patti | Studio Dentistico Colombo a Patti';
     }, []);
 
     const items = [
@@ -21,11 +53,14 @@ const Ortodonzia = () => {
     return (
         <>
             <Helmet>
-                <title>Ortodonzia | Studio Dentistico Colombo a Patti</title>
+                <title>Ortodonzia e Invisalign® a Patti | Studio Dentistico Colombo a Patti</title>
                 <meta
                     name="description"
-                    content="Soluzioni ortodontiche per tutti, dagli apparecchi fissi agli aligner trasparenti, per un sorriso perfetto."
+                    content="Soluzioni ortodontiche per tutti, dagli apparecchi fissi agli aligner trasparenti con Invisalign® a Patti presso lo Studio Dentistico Colombo."
                 />
+                <script type="application/ld+json">
+                    {JSON.stringify(jsonLd)}
+                </script>
             </Helmet>
 
             <Navbar />
@@ -52,7 +87,7 @@ const Ortodonzia = () => {
                         Tipologie di Ortodonzia
                     </h2>
                     <p className="text-muted-foreground mb-6 animate-slide-in-left">
-                        Dall'apparecchio fisso ai moderni aligner trasparenti, scegli la soluzione più adatta.
+                        Dall'apparecchio fisso ai moderni aligner trasparenti Invisalign®, scegli la soluzione più adatta.
                     </p>
                     <ul className="list-disc pl-5">
                         {items.map((item, idx) => (

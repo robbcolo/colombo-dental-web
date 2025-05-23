@@ -149,20 +149,44 @@ const Prenota = () => {
     <div className="overflow-x-hidden">
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 px-6 bg-gradient-to-r from-dental to-dental-light">
-        <div className="container mx-auto">
-          <div className="max-w-2xl mx-auto text-center">
-            <span className="inline-block bg-white/10 text-white py-1 px-3 rounded-full text-sm font-medium mb-4 animate-fade-in opacity-0">
-              Prenotazione
-            </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-slide-down opacity-0" style={{ animationDelay: '100ms' }}>
-              Prenota la tua visita
-            </h1>
-            <p className="text-white/90 text-lg animate-slide-down opacity-0" style={{ animationDelay: '200ms' }}>
-              Compila il form per prenotare un appuntamento con uno dei nostri specialisti.
-            </p>
-          </div>
+      {/* Hero Section Prenotazione con logo in trasparenza */}
+      <section className="relative pt-32 pb-16 px-4 sm:px-6 overflow-hidden">
+        {/* Logo di sfondo ridotto e centrato */}
+        <img
+          src="/images/about/logo.png"
+          alt="Studio Dentistico Colombo"
+          className="
+       absolute left-1/2 top-1/2
+    w-2/3 sm:w-1/3 md:w-1/3  /* 66% mobile → 33% small/superiore */
+    h-auto object-contain opacity-90
+    transform -translate-x-1/2 -translate-y-1/2
+  "
+        />
+
+        {/* Gradient overlay per contrasto */}
+        <div className="absolute inset-0 bg-gradient-to-r from-dental to-dental-light mix-blend-multiply"></div>
+
+        {/* Contenuto in primo piano */}
+        <div className="relative z-10 container mx-auto text-center">
+          <span
+            className="inline-block bg-white/10 text-white py-1 px-3 rounded-full text-sm font-medium mb-4
+                 animate-fade-in opacity-0"
+            style={{ animationDelay: '100ms' }}
+          >
+            Prenotazione
+          </span>
+          <h1
+            className="text-4xl md:text-5xl font-bold text-white mb-6 animate-slide-down opacity-0"
+            style={{ animationDelay: '200ms' }}
+          >
+            Prenota la tua visita
+          </h1>
+          <p
+            className="text-white/90 text-lg animate-slide-down opacity-0"
+            style={{ animationDelay: '300ms' }}
+          >
+            Compila il form per prenotare un appuntamento con uno dei nostri specialisti.
+          </p>
         </div>
       </section>
       

@@ -572,7 +572,7 @@ const ContactSection = () => {
                       href="https://www.google.com/maps/place/Studio+Dentistico+Colombo/@38.1391643,14.9636084,17z/data=!3m1!4b1!4m6!3m5!1s0x13169c5bac9ea239:0xd3cf9836a4ca3755!8m2!3d38.1391602!4d14.9684793!16s%2Fg%2F1hc47jp95?entry=ttu"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-white/80 hover:text-blue-300"
+                      className="text-sm text-white/80 hover:text-blue-400"
                     >
                       Via Fontanelle, SNC, Patti (ME)
                     </a>
@@ -590,7 +590,7 @@ const ContactSection = () => {
                     <h3 className="text-base font-bold mb-1">Email</h3>
                     <a
                       href="mailto:colombostudiodentistico@gmail.com"
-                      className="text-sm text-white/80 hover:text-blue-300 break-words"
+                      className="text-sm text-white/80 hover:text-blue-400 break-words"
                     >
                       colombostudiodentistico@gmail.com
                     </a>

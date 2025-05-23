@@ -62,7 +62,7 @@ const Hero = () => {
             <div className="sm:block my-auto">
               <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 sm:mb-6 animate-slide-down opacity-0 max-w-3xl px-4"
                 style={{ animationDelay: '200ms' }}>
-                La salute del tuo sorriso è la nostra priorità
+                Il tuo studio di fiducia, un sorriso alla volta
               </h1>
 
               <p className="text-sm sm:text-lg text-white/80 mb-8 sm:mb-6 max-w-xl px-4 mx-auto animate-slide-down opacity-0"

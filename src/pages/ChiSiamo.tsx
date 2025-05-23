@@ -16,19 +16,39 @@ const ChiSiamo = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-6 bg-gradient-to-r from-dental to-dental-light">
-        <div className="container mx-auto">
-          <div className="max-w-2xl mx-auto text-center">
-            <span className="inline-block bg-white/10 text-white py-1 px-3 rounded-full text-sm font-medium mb-4 animate-fade-in opacity-0">
-              Chi Siamo
-            </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-slide-down opacity-0" style={{ animationDelay: '100ms' }}>
-              La nostra storia e i nostri valori
-            </h1>
-            <p className="text-white/90 text-lg animate-slide-down opacity-0" style={{ animationDelay: '200ms' }}>
-              Conoscici meglio e scopri perché mettiamo al centro il paziente in ogni trattamento.
-            </p>
-          </div>
+      <section className="relative pt-32 pb-16 px-4 sm:px-6 overflow-hidden">
+        {/* Logo di sfondo ridotto e centrato */}
+        <img
+          src="/images/about/logo.png"
+          alt="Studio Dentistico Colombo"
+          className="
+       absolute left-1/2 top-1/2
+    w-2/3 sm:w-1/3 md:w-1/3  /* 66% mobile → 33% small/superiore */
+    h-auto object-contain opacity-90
+    transform -translate-x-1/2 -translate-y-1/2
+  "
+    />
+
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-dental to-dental-light mix-blend-multiply"></div>
+
+        {/* Contenuto in primo piano */}
+        <div className="relative z-10 container mx-auto text-center">
+          <span className="inline-block bg-white/20 text-white py-1 px-3 rounded-full text-sm font-medium mb-4 animate-fade-in">
+            Chi Siamo
+          </span>
+          <h1
+            className="text-4xl md:text-5xl font-bold text-white mb-6 animate-slide-down"
+            style={{ animationDelay: '100ms' }}
+          >
+            La nostra storia e i nostri valori
+          </h1>
+          <p
+            className="text-white/90 text-lg animate-slide-down"
+            style={{ animationDelay: '200ms' }}
+          >
+            Conoscici meglio e scopri perché mettiamo al centro il paziente in ogni trattamento.
+          </p>
         </div>
       </section>
       
@@ -113,107 +133,52 @@ const ChiSiamo = () => {
       {/* Team Section */}
       <Team />
       
-      {/* Location Section */}
-      <section className="py-20 px-6">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-dental-50 text-dental py-1 px-3 rounded-full text-sm font-medium mb-4">
-              Dove Siamo
-            </span>
-            <h2 className="heading-lg mb-6">Vieni a trovarci</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Lo studio è situato in una posizione centrale facilmente raggiungibile con mezzi pubblici e con ampia disponibilità di parcheggio nelle vicinanze.
-            </p>
+      {/* Location & Contact Section */}
+      <section className="py-20 px-6 bg-gray-50">
+        <div className="container mx-auto text-center mb-12">
+          <span className="inline-block bg-dental/10 text-dental py-1 px-4 rounded-full text-sm font-medium mb-4">
+            Dove Siamo
+          </span>
+          <h2 className="heading-lg mb-4">Vieni a trovarci</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Lo studio è facilmente raggiungibile con mezzi pubblici
+          </p>
+        </div>
+        <div className="container mx-auto grid lg:grid-cols-2 gap-12">
+          {/* mappa */}
+          <div className="rounded-2xl overflow-hidden shadow-lg">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3138.044415270208!2d14.968479299999998!3d38.1391602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13169c5bac9ea239%3A0xd3cf9836a4ca3755!2sStudio%20Dentistico%20Colombo!5e0!3m2!1sit!2sit!4v1742413070628!5m2!1sit!2sit"
+              width="100%" height="400"
+              className="border-0"
+              allowFullScreen loading="lazy" title="Mappa"
+            />
           </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-border">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3138.044415270208!2d14.968479299999998!3d38.1391602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13169c5bac9ea239%3A0xd3cf9836a4ca3755!2sStudio%20Dentistico%20Colombo!5e0!3m2!1sit!2sit!4v1742413070628!5m2!1sit!2sit"
-                width="100%" 
-                height="450" 
-                style={{ border: 0 }} 
-                allowFullScreen 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Mappa Studio Dentistico Colombo"
-              ></iframe>
-            </div>
-            
-            <div>
-              <div className="space-y-8">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-dental-50 rounded-lg p-3">
-                    <MapPin className="w-6 h-6 text-dental" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold mb-1">Indirizzo</h3>
-                    <a
-                      href="https://maps.app.goo.gl/JeyRSCc4687bBpMS8"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-blue-500 transition-colors"
-                    >
-                      Via Fontanelle, SNC, Patti (ME)
-                    </a>
-                  </div>
+          {/* contatti */}
+          <div className="space-y-6">
+            {[
+              { Icon: MapPin, label: "Via Fontanelle, SNC, Patti (ME)", href: "https://maps.app.goo.gl/JeyRSCc4687bBpMS8" },
+              { Icon: Phone, label: "0941 22749", href: "tel:094122749" },
+              { Icon: Smartphone, label: "379 1523085", href: "https://wa.me/3791523085" },
+              { Icon: Mail, label: "colombostudiodentistico@gmail.com", href: "mailto:colombostudiodentistico@gmail.com" },
+            ].map((c, i) => (
+              <a
+                key={i}
+                href={c.href}
+                target={c.href.startsWith("http") ? "_blank" : undefined}
+                rel="noopener noreferrer"
+                className="group flex items-center space-x-4 p-4 bg-white rounded-xl shadow-sm border border-border
+                           hover:shadow-lg hover:scale-105 transform transition-all duration-300"
+                style={{ transitionDelay: `${i * 100}ms` }}
+              >
+                <div className="bg-dental-50 p-3 rounded-lg group-hover:bg-dental/10 transition-colors duration-300">
+                  <c.Icon className="w-5 h-5 text-dental group-hover:text-dental-dark transition-colors duration-300" />
                 </div>
-                
-                <div className="flex items-start space-x-4">
-                <div className="bg-dental-50 rounded-lg p-3">
-                  <Phone className="w-6 h-6 text-dental" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold mb-1">Telefono</h3>
-                  <p className="text-muted-foreground">
-                      <a href="tel:094122749" className="hover:text-blue-500">
-                  0941 22749
-                  </a>
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-              <div className="bg-dental-50 rounded-lg p-3">
-                  <Smartphone className="w-6 h-6 text-dental" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold mb-1">Whatsapp</h3>
-                  <p className="text-muted-foreground">
-                      <a href="https://wa.me/3791523085" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500">
-                  379 1523085
-                  </a>
-                  </p>
-                </div>
-              </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="bg-dental-50 rounded-lg p-3">
-                    <Mail className="w-6 h-6 text-dental" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold mb-1">Email</h3>
-                    <a
-                      href="mailto:colombostudiodentistico@gmail.com"
-                      className="text-muted-foreground hover:text-blue-500 transition-colors break-words"
-                    >
-                      colombostudiodentistico@gmail.com
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="bg-dental-50 rounded-lg p-3">
-                    <Clock className="w-6 h-6 text-dental" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold mb-1">Orari</h3>
-                    <p className="text-muted-foreground">Lunedì-Giovedì: 8:30-12:30; 16:00-20:00</p>
-                    <p className="text-muted-foreground">Venerdì: 8:30-12:30</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+                <span className="text-foreground group-hover:text-primary transition-colors duration-200">
+                  {c.label}
+                </span>
+              </a>
+            ))}
           </div>
         </div>
       </section>

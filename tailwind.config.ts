@@ -74,7 +74,7 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				sans: ['Helvetica Neue', 'Arial', 'sans-serif'],
+				sans: ['Poppins', 'Helvetica Neue', 'Arial', 'sans-serif'],
 				serif: ['Georgia', 'serif'],
 			},
 			keyframes: {

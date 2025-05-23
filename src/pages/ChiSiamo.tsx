@@ -8,7 +8,7 @@ import { MapPin, Phone, Mail, Clock, Award, Heart, Shield, Smartphone } from 'lu
 const ChiSiamo = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Studio Dentistico Colombo | Chi Siamo";
+    document.title = "Studio Dentistico Colombo Patti | Chi Siamo";
   }, []);
 
   return (
@@ -59,23 +59,25 @@ const ChiSiamo = () => {
             <div className="animate-slide-in-left opacity-0">
               <h2 className="heading-lg mb-6">La nostra storia</h2>
               <p className="text-muted-foreground mb-6">
-                Lo Studio Dentistico Colombo ha aperto le sue porte nel 1990, quando il Dott. Roberto Colombo decise di creare un ambiente dove ogni paziente potesse ricevere cure odontoiatriche di alta qualità in un'atmosfera familiare e accogliente.
+                Era il 1993 quando il Dott. Alfredo Colombo, dopo diverse esperienze professionali, ha deciso di aprire il suo studio a Patti. Fin dal primo giorno, il suo desiderio è stato creare un ambiente dove il paziente fosse sempre al centro, accolto e curato con professionalità e calore umano.
               </p>
               <p className="text-muted-foreground mb-6">
-                Nel corso degli anni, lo studio è cresciuto insieme ai pazienti, molti dei quali ci seguono da generazioni. L'arrivo dei figli Marco e Laura come membri del team medico ha portato nuove competenze e tecniche innovative, mantenendo intatta la filosofia di cura personalizzata che ha sempre contraddistinto il nostro approccio.
+                Nel tempo, lo studio è diventato un riferimento per tante famiglie della zona, che continuano a sceglierci di generazione in generazione. Negli ultimi anni si sono aggiunti anche i figli Roberto e Aurora, che dopo gli studi universitari presso gli atenei di Messina e Torino hanno portato freschezza, modernità e nuove tecnologie.
+              </p>
+              <p className="text-muted-foreground mb-6">
+                A completare questa piccola realtà familiare ci sono Daniela e Tonina, le nostre storiche ASO. Da oltre vent'anni, con la loro gentilezza e simpatia, fanno sentire ogni paziente davvero speciale.
               </p>
               <p className="text-muted-foreground">
-                Oggi, lo Studio Dentistico Colombo rappresenta un punto di riferimento per l'odontoiatria di qualità, dove tradizione familiare e innovazione tecnologica si fondono per offrire trattamenti all'avanguardia in un ambiente che fa sentire ogni paziente parte della famiglia.
+                Oggi, come ieri, ciò che più ci sta a cuore è far star bene le persone, restituendo sorrisi con competenza, attenzione e affetto. Per noi ogni paziente è prima di tutto una persona, parte integrante della grande famiglia dello Studio Dentistico Colombo.
               </p>
             </div>
             
             <div className="animate-slide-in-right opacity-0">
               <div className="relative">
-                <div className="absolute top-4 left-4 w-full h-full bg-dental/10 rounded-2xl"></div>
-                <img 
+                <img
                   src="/images/about/famiglia.jpg"
-                  alt="Studio dentistico" 
-                  className="relative z-10 rounded-2xl w-full h-auto"
+                  alt="Studio dentistico"
+                  className="rounded-2xl w-full h-auto shadow-lg transition-transform duration-500 hover:scale-105"
                 />
               </div>
             </div>

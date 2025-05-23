@@ -34,7 +34,7 @@ const Prenota = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Studio Dentistico Colombo | Prenota";
+    document.title = "Studio Dentistico Colombo Patti | Prenota";
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {

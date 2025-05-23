@@ -181,7 +181,7 @@ const serviceDetails = [
 const Servizi = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Studio Dentistico Colombo | I Nostri Servizi";
+    document.title = "Studio Dentistico Colombo Patti | I Nostri Servizi";
   }, []);
 
   return (

@@ -7,7 +7,7 @@ import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Linkedin } from 'lucid
 const Contatti = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Studio Dentistico Colombo | Contatti";
+    document.title = "Studio Dentistico Colombo Patti | Contatti";
   }, []);
 
   return (

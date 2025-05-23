@@ -286,64 +286,6 @@ const Servizi = () => {
         </div>
       </section>
 
-      {/* Detailed Services - Rendendo ogni sezione più coinvolgente */}
-      {serviceDetails.map((service, index) => (
-        <section
-          id={service.id}
-          key={service.id}
-          className={`py-16 sm:py-24 px-4 sm:px-6 scroll-mt-24 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
-        >
-          <div className="container mx-auto">
-            <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center ${index % 2 === 0 ? '' : 'lg:grid-flow-dense'}`}>
-              <div className={`${index % 2 !== 0 ? 'lg:order-2' : ''} animate-slide-in-right opacity-0`} style={{ animationDelay: '200ms' }}>
-                <div className="flex items-center mb-4">
-                  <div className="bg-dental-50 w-12 h-12 rounded-lg flex items-center justify-center mr-4">
-                    {service.icon}
-                  </div>
-                  <h2 className="text-2xl sm:text-3xl font-bold">{service.title}</h2>
-                </div>
-
-                <p className="text-muted-foreground text-lg mb-8">
-                  {service.description}
-                </p>
-
-                <h3 className="text-lg font-semibold mb-4 text-dental">Benefici del trattamento:</h3>
-                <ul className="space-y-3 mb-8">
-                  {service.benefits.map((benefit, idx) => (
-                    <li key={idx} className="flex items-start space-x-3">
-                      <div className="bg-dental-100 rounded-full p-1 mt-1">
-                        <BadgeCheck className="w-4 h-4 text-dental" />
-                      </div>
-                      <span className="text-muted-foreground">{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Link to="/prenota" className="btn-primary inline-flex items-center">
-                  Prenota una visita
-                  <ArrowRight size={18} className="ml-2" />
-                </Link>
-              </div>
-
-              <div className={`${index % 2 !== 0 ? 'lg:order-1' : ''} animate-slide-in-left opacity-0`} style={{ animationDelay: '100ms' }}>
-                <div className="relative">
-                  <div className="absolute -top-4 -left-4 w-full h-full bg-dental/10 rounded-2xl"></div>
-                  <img
-                    src={service.image}
-                    alt={service.alt}
-                    className="relative z-10 rounded-2xl w-full h-auto object-cover shadow-lg aspect-[4/3]"
-                  />
-                  <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm p-4 rounded-lg shadow-sm z-20 hidden lg:block">
-                    <h4 className="font-medium text-dental">{service.title}</h4>
-                    <p className="text-sm text-muted-foreground line-clamp-1">{service.shortDescription}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      ))}
-
       {/* Call to Action prima del Book Appointment */}
       <section className="py-16 px-4 sm:px-6 bg-dental-50">
         <div className="container mx-auto max-w-4xl text-center">

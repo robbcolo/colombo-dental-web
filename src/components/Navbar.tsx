@@ -10,23 +10,19 @@ const Navbar = () => {
   const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Toggle sidebar menu
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  // Close menu on route change
   useEffect(() => {
     setIsOpen(false);
     setMobileServicesOpen(false);
     setServicesOpen(false);
   }, [location.pathname]);
 
-  // Prevent scroll when sidebar open
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'unset';
     return () => { document.body.style.overflow = 'unset'; };
   }, [isOpen]);
 
-  // Close desktop dropdown clicking outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
@@ -62,23 +58,26 @@ const Navbar = () => {
   return (
     <>
       <nav className={cn(
-        'fixed top-0 left-0 right-0 z-40 transition-all duration-300',
-        'bg-white/90 backdrop-blur-md shadow-sm py-3'
+        'fixed top-0 left-0 right-0 z-40 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm py-3'
       )}>
-        <div className="container mx-auto px-6 flex justify-between items-center">
+        <div className="container mx-auto px-6 flex justify-between items-center relative">
 
-          {/* Logo */}
-          <Link to="/" className="relative flex items-center z-10">
+          {/* Icona sola a sinistra */}
+          <Link to="/" className="flex items-center z-20 md:z-10">
             <img
               src={`${import.meta.env.BASE_URL}images/about/logo.png`}
-              alt="Logo Studio Dentistico Colombo"
-              className="h-10 w-auto mr-2"
+              alt="Logo"
+              className="h-8 w-auto"
             />
-            <span className="text-2xl font-bold text-dental">Studio Dentistico</span>
-            <span className="text-2xl font-bold ml-2 text-blue-500">Colombo</span>
           </Link>
 
-          {/* Desktop Links */}
+          {/* Testo centrale solo su mobile */}
+          <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center md:hidden">
+            <span className="block text-lg font-bold text-dental leading-tight">Studio Dentistico</span>
+            <span className="block text-lg font-bold text-blue-500">Colombo</span>
+          </div>
+
+          {/* Menu desktop */}
           <div className="hidden md:flex items-center space-x-6">
             {navItems.filter(i => i.name !== 'Servizi').map(item => (
               <Link
@@ -90,18 +89,12 @@ const Navbar = () => {
                 )}
               >{item.name}</Link>
             ))}
-
-            {/* Desktop Servizi Dropdown */}
             <div className="relative" ref={dropdownRef}>
               <button
                 className="nav-item text-blue-900 flex items-center hover:text-blue-500"
                 onClick={() => setServicesOpen(prev => !prev)}
               >
-                Servizi
-                <ChevronDown
-                  size={16}
-                  className={cn('ml-1 transition-transform', servicesOpen && 'rotate-180')}
-                />
+                Servizi<ChevronDown size={16} className={cn('ml-1 transition-transform', servicesOpen && 'rotate-180')} />
               </button>
               {servicesOpen && (
                 <div className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-lg py-2 min-w-[220px] z-10">
@@ -115,16 +108,13 @@ const Navbar = () => {
                   ))}
                 </div>
               )}
-
             </div>
-
-            {/* Prenota Desktop */}
             <Link to="/prenota" className="btn-primary ml-4">Prenota Visita</Link>
           </div>
 
-          {/* Mobile Burger Button */}
+          {/* Burger mobile */}
           <button
-            className="md:hidden z-50 text-foreground hover:text-dental transition-colors"
+            className="md:hidden z-20 text-foreground hover:text-dental transition-colors"
             onClick={toggleMenu}
             aria-label={isOpen ? 'Chiudi menu' : 'Apri menu'}
           >

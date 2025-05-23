@@ -171,19 +171,16 @@ const Prenota = () => {
           <span
             className="inline-block bg-white/10 text-white py-1 px-3 rounded-full text-sm font-medium mb-4
                  animate-fade-in opacity-0"
-            style={{ animationDelay: '100ms' }}
           >
             Prenotazione
           </span>
           <h1
             className="text-4xl md:text-5xl font-bold text-white mb-6 animate-slide-down opacity-0"
-            style={{ animationDelay: '200ms' }}
           >
             Prenota la tua visita
           </h1>
           <p
             className="text-white/90 text-lg animate-slide-down opacity-0"
-            style={{ animationDelay: '300ms' }}
           >
             Compila il form per prenotare un appuntamento con uno dei nostri specialisti.
           </p>

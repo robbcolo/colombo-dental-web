@@ -39,13 +39,11 @@ const ChiSiamo = () => {
           </span>
           <h1
             className="text-4xl md:text-5xl font-bold text-white mb-6 animate-slide-down"
-            style={{ animationDelay: '100ms' }}
           >
             La nostra storia e i nostri valori
           </h1>
           <p
             className="text-white/90 text-lg animate-slide-down"
-            style={{ animationDelay: '200ms' }}
           >
             Conoscici meglio e scopri perché mettiamo al centro il paziente in ogni trattamento.
           </p>
@@ -99,7 +97,7 @@ const ChiSiamo = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl p-8 shadow-sm border border-border animate-fade-in opacity-0" style={{ animationDelay: '100ms' }}>
+            <div className="bg-white rounded-xl p-8 shadow-sm border border-border animate-fade-in opacity-0">
               <div className="bg-dental-100 w-16 h-16 rounded-lg flex items-center justify-center mb-6">
                 <Heart className="w-8 h-8 text-dental" />
               </div>
@@ -109,7 +107,7 @@ const ChiSiamo = () => {
               </p>
             </div>
             
-            <div className="bg-white rounded-xl p-8 shadow-sm border border-border animate-fade-in opacity-0" style={{ animationDelay: '200ms' }}>
+            <div className="bg-white rounded-xl p-8 shadow-sm border border-border animate-fade-in opacity-0">
               <div className="bg-dental-100 w-16 h-16 rounded-lg flex items-center justify-center mb-6">
                 <Award className="w-8 h-8 text-dental" />
               </div>

@@ -210,19 +210,16 @@ const Servizi = () => {
           <span
             className="inline-block bg-white/10 text-white py-1 px-3 rounded-full text-sm font-medium mb-4
                  animate-fade-in opacity-0"
-            style={{ animationDelay: '100ms' }}
           >
             I Nostri Servizi
           </span>
           <h1
             className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6 animate-slide-down opacity-0"
-            style={{ animationDelay: '200ms' }}
           >
             Cure dentali complete e personalizzate
           </h1>
           <p
             className="text-white/90 text-base sm:text-lg animate-slide-down opacity-0"
-            style={{ animationDelay: '300ms' }}
           >
             Offriamo trattamenti odontoiatrici avanzati per ogni esigenza, combinando competenza, tecnologia e un approccio orientato al paziente.
           </p>

@@ -5,33 +5,33 @@ import { ArrowRight } from 'lucide-react';
 const serviceItems = [
   {
     icon: <img src={`${import.meta.env.BASE_URL}images/services/dentista.png`} className="w-10 h-10 md:w-12 md:h-12" alt="Odontoiatria Generale" />,
-    title: "Odontoiatria Generale",
+    title: "Igiene Dentale",
     description: "Check-up completi, pulizia dei denti, trattamenti canalari e otturazioni per mantenere la tua bocca sana.",
-    link: "/servizi/odontoiatria-generale"
+    link: "/trattamenti/igiene-dentale"
   },
   {
     icon: <img src={`${import.meta.env.BASE_URL}images/services/impla.png`} className="w-10 h-10 md:w-12 md:h-12" alt="Implantologia" />,
     title: "Implantologia",
     description: "Soluzioni permanenti per denti mancanti con impianti di alta qualità e tecniche minimamente invasive.",
-    link: "/servizi/implantologia"
+    link: "/trattamenti/implantologia"
   },
   {
     icon: <img src={`${import.meta.env.BASE_URL}images/services/orto1.png`} className="w-10 h-10 md:w-12 md:h-12" alt="Ortodonzia" />,
     title: "Ortodonzia",
     description: "Apparecchi tradizionali e invisibili per correggere l'allineamento dei denti e migliorare il tuo sorriso.",
-    link: "/servizi/ortodonzia"
+    link: "/trattamenti/ortodonzia"
   },
   {
     icon: <img src={`${import.meta.env.BASE_URL}images/services/sbiancamento.png`} className="w-10 h-10 md:w-12 md:h-12" alt="Estetica Dentale" />,
     title: "Estetica Dentale",
     description: "Sbiancamento, faccette e trattamenti estetici per un sorriso perfetto e luminoso.",
-    link: "/servizi/estetica-dentale"
+    link: "/trattamenti/estetica-dentale"
   },
   {
     icon: <img src={`${import.meta.env.BASE_URL}images/services/protesi.png`} className="w-10 h-10 md:w-12 md:h-12" alt="Protesi dentale" />,
     title: "Protesi dentale",
     description: "Cure speciali per i più piccoli in un ambiente accogliente che li mette a loro agio.",
-    link: "/servizi/odontoiatria-pediatrica"
+    link: "/trattamenti/odontoiatria-pediatrica"
   }
 ];
 

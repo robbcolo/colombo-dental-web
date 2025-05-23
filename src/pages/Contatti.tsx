@@ -36,19 +36,16 @@ const Contatti = () => {
           <span
             className="inline-block bg-white/10 text-white py-1 px-3 rounded-full text-sm font-medium mb-4
                  animate-fade-in opacity-0"
-            style={{ animationDelay: '100ms' }}
           >
             Contatti
           </span>
           <h1
             className="text-4xl md:text-5xl font-bold text-white mb-6 animate-slide-down opacity-0"
-            style={{ animationDelay: '200ms' }}
           >
             Siamo qui per aiutarti
           </h1>
           <p
             className="text-white/90 text-lg animate-slide-down opacity-0"
-            style={{ animationDelay: '300ms' }}
           >
             Contattaci per informazioni, appuntamenti o per qualsiasi domanda sui nostri servizi.
           </p>
@@ -64,7 +61,6 @@ const Contatti = () => {
             <div
               className="group bg-white rounded-xl p-8 shadow-sm border border-border
                    hover:shadow-lg hover:scale-105 transform transition-all duration-300"
-              style={{ animationDelay: '100ms' }}
             >
               <div
                 className="w-16 h-16 rounded-full flex items-center justify-center mb-6
@@ -90,7 +86,6 @@ const Contatti = () => {
             <div
               className="group bg-white rounded-xl p-8 shadow-sm border border-border
                    hover:shadow-lg hover:scale-105 transform transition-all duration-300"
-              style={{ animationDelay: '200ms' }}
             >
               <div
                 className="w-16 h-16 rounded-full flex items-center justify-center mb-6
@@ -120,7 +115,6 @@ const Contatti = () => {
             <div
               className="group bg-white rounded-xl p-8 shadow-sm border border-border
                    hover:shadow-lg hover:scale-105 transform transition-all duration-300"
-              style={{ animationDelay: '300ms' }}
             >
               <div
                 className="w-16 h-16 rounded-full flex items-center justify-center mb-6
@@ -144,7 +138,6 @@ const Contatti = () => {
             <div
               className="group bg-white rounded-xl p-8 shadow-sm border border-border
                    hover:shadow-lg hover:scale-105 transform transition-all duration-300"
-              style={{ animationDelay: '400ms' }}
             >
               <div
                 className="w-16 h-16 rounded-full flex items-center justify-center mb-6

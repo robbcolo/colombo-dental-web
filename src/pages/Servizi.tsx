@@ -192,8 +192,8 @@ const Servizi = () => {
       <section className="relative pt-32 pb-16 px-4 sm:px-6 overflow-hidden">
         {/* Logo di sfondo ridotto e centrato */}
         <img
-          src="/images/about/logo.png"
-          alt="Studio Dentistico Colombo"
+          src={`${import.meta.env.BASE_URL}images/about/logo.png`}
+          alt="Logo Studio Dentistico Colombo"
           className="
       absolute left-1/2 top-1/2
     w-2/3 sm:w-1/3 md:w-1/3  /* 66% mobile → 33% small/superiore */

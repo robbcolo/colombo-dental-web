@@ -21,6 +21,7 @@ import Parodontologia from "./pages/trattamenti/Parodontologia"
 import Protesi from "./pages/trattamenti/Protesi"
 import Restaurativa from "./pages/trattamenti/Restaurativa"
 import Pedodonzia from "./pages/trattamenti/Pedodonzia"
+import ScrollToTop from "./components/ScrollToTop";
 import './App.css';
 
 // Create a new query client
@@ -34,6 +35,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <BrowserRouter basename={basename}>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/chi-siamo" element={<ChiSiamo />} />

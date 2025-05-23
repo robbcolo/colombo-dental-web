@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, Home, Users, BookOpen, Mail, Calendar } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -7,6 +7,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(true);
   const location = useLocation();
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -24,6 +26,22 @@ const Navbar = () => {
       document.body.style.overflow = 'unset';
     };
   }, [isOpen]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setServicesOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const navItems = [
     { name: 'Home', path: '/', icon: <Home size={20} /> },
@@ -52,20 +70,68 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={cn(
-                  "nav-item text-blue-900",
-                  location.pathname === item.path && "active text-blue-500"
-                )}
+          <>
+          {navItems.filter(i => i.name !== 'Servizi').map((item) => (
+            <Link
+              key={item.name}
+              to={item.path}
+              className={cn(
+                "nav-item text-blue-900",
+                location.pathname === item.path && "active text-blue-500"
+              )}
+            >
+              {item.name}
+            </Link>
+          ))}
+
+          {/* Dropdown Servizi */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                className="nav-item text-blue-900 flex items-center relative z-20"
+                onClick={() => setServicesOpen((prev) => !prev)}
               >
-                {item.name}
-              </Link>
-            ))}
-          </div>
+                Servizi
+                <svg
+                  className={`ml-1 w-4 h-4 text-blue-500 transition-transform ${servicesOpen ? 'rotate-180' : ''
+                    }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {servicesOpen && (
+                <div className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-lg py-2 min-w-[160px] sm:min-w-[220px] z-10">
+                  {[
+                    { name: 'Tutti i trattamenti', path: '/servizi' },
+                    { name: 'Chirurgia Orale', path: '/trattamenti/chirurgia-orale' },
+                    { name: 'Endodonzia', path: '/trattamenti/endodonzia' },
+                    { name: 'Estetica Dentale', path: '/trattamenti/estetica-dentale' },
+                    { name: 'Gnatologia', path: '/trattamenti/gnatologia' },
+                    { name: 'Igiene Dentale', path: '/trattamenti/igiene-dentale' },
+                    { name: 'Implantologia', path: '/trattamenti/implantologia' },
+                    { name: 'Ortodonzia', path: '/trattamenti/ortodonzia' },
+                    { name: 'Parodontologia', path: '/trattamenti/parodontologia' },
+                    { name: 'Pedodonzia', path: '/trattamenti/odontoiatria-pediatrica' },
+                    { name: 'Protesi', path: '/trattamenti/protesi-dentali' },
+                    { name: 'Restaurativa', path: '/trattamenti/conservativa' },
+                    ].map((service) => (
+                      <Link
+                        key={service.path}
+                        to={service.path}
+                        onClick={() => setServicesOpen(false)} // chiude il menu al click
+                        className="block px-4 py-2 text-sm text-gray-800 hover:bg-dental/10 hover:text-dental transition-colors"
+                      >
+                      {service.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+        </>
 
           {/* Mobile Menu Button */}
           <button

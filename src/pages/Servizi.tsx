@@ -265,8 +265,8 @@ const Servizi = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {serviceDetails.map((service, index) => (
-              <a
-                href={`#${service.id}`}
+              <Link
+                to={`/trattamenti/${service.id}`}
                 key={service.id}
                 className="bg-white rounded-xl p-6 sm:p-8 shadow-sm border border-border hover:shadow-md transition-all duration-300 animate-fade-in opacity-0 group flex flex-col"
                 style={{ animationDelay: `${index * 100}ms` }}
@@ -280,7 +280,7 @@ const Servizi = () => {
                   Scopri di più
                   <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

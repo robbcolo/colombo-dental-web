@@ -9,11 +9,23 @@ import {
   Microscope, Activity
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import {
+  FaTooth,          // dente     
+  FaFillDrip,       // goccia (conservativa)
+  FaMicroscope,     // microscopio (endodonzia)
+  FaBone,           // osso (implantologia)
+  FaSmileBeam,      // sorriso (ortodonzia)
+  FaSmile,          // sorriso semplice (estetica)
+  FaChild,          // bimbo (pediatrica)
+  FaSyringe,        // siringa (chirurgia)
+  FaBalanceScale,   // bilancia (gnatologia ≃ “occlusione”)
+  FaWater           // goccia (parodontologia)
+} from 'react-icons/fa';
 
 const serviceDetails = [
   {
     id: "igiene-dentale",
-    icon: <Smile className="w-8 h-8 text-dental" />,
+    icon: <FaTooth className="w-8 h-8 text-dental" />,
     title: "Igiene Dentale Professionale",
     shortDescription: "Prevenzione e pulizia profonda per mantenere denti e gengive in salute.",
     description: "La prevenzione è la chiave per una buona salute orale a lungo termine. La nostra igiene dentale professionale include una detartrasi completa che rimuove placca e tartaro, seguita da una lucidatura accurata e consigli personalizzati per ottimizzare la tua igiene domiciliare.",
@@ -28,7 +40,7 @@ const serviceDetails = [
   },
   {
     id: "conservativa",
-    icon: <Scale className="w-8 h-8 text-dental" />,
+    icon: <FaFillDrip className="w-8 h-8 text-dental" />,
     title: "Conservativa e Restaurativa",
     shortDescription: "Ripristino e preservazione della struttura dentale compromessa.",
     description: "I trattamenti conservativi e restaurativi mirano a ripristinare la funzione e l'estetica dei denti danneggiati da carie, fratture o usura. Utilizziamo materiali estetici di ultima generazione che garantiscono risultati naturali e duraturi, preservando il più possibile la struttura dentale sana.",

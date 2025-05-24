@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -11,10 +10,38 @@ const ChiSiamo = () => {
     document.title = "Studio Dentistico Colombo Patti | Chi Siamo";
   }, []);
 
+  // array dei contatti con label desktop e mobile
+  const contacts = [
+    {
+      Icon: MapPin,
+      label: "Via Fontanelle, SNC, Patti (ME)",
+      mobileLabel: "Via Fontanelle, Patti",
+      href: "https://maps.app.goo.gl/JeyRSCc4687bBpMS8"
+    },
+    {
+      Icon: Phone,
+      label: "0941 22749",
+      mobileLabel: "0941 22749",
+      href: "tel:094122749"
+    },
+    {
+      Icon: Smartphone,
+      label: "379 1523085",
+      mobileLabel: "379 1523085",
+      href: "https://wa.me/3791523085"
+    },
+    {
+      Icon: Mail,
+      label: "colombostudiodentistico@gmail.com",
+      mobileLabel: "colombo@gmail.com",
+      href: "mailto:colombostudiodentistico@gmail.com"
+    },
+  ];
+
   return (
     <div className="overflow-x-hidden">
       <Navbar />
-      
+
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 px-4 sm:px-6 overflow-hidden">
         {/* Logo di sfondo ridotto e centrato */}
@@ -23,11 +50,11 @@ const ChiSiamo = () => {
           alt="Logo Studio Dentistico Colombo"
           className="
        absolute left-1/2 top-1/2
-    w-2/3 sm:w-1/3 md:w-1/3  /* 66% mobile → 33% small/superiore */
-    h-auto object-contain opacity-90
-    transform -translate-x-1/2 -translate-y-1/2
-  "
-    />
+       w-2/3 sm:w-1/3 md:w-1/3
+       h-auto object-contain opacity-90
+       transform -translate-x-1/2 -translate-y-1/2
+      "
+        />
 
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-dental to-dental-light mix-blend-multiply"></div>
@@ -37,19 +64,15 @@ const ChiSiamo = () => {
           <span className="inline-block bg-white/20 text-white py-1 px-3 rounded-full text-sm font-medium mb-4 animate-fade-in">
             Chi Siamo
           </span>
-          <h1
-            className="text-4xl md:text-5xl font-bold text-white mb-6 animate-slide-down"
-          >
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-slide-down">
             La nostra storia e i nostri valori
           </h1>
-          <p
-            className="text-white/90 text-lg animate-slide-down"
-          >
+          <p className="text-white/90 text-lg animate-slide-down">
             Conoscici meglio e scopri perché mettiamo al centro il paziente in ogni trattamento.
           </p>
         </div>
       </section>
-      
+
       {/* Story Section */}
       <section className="py-20 px-6">
         <div className="container mx-auto">
@@ -69,7 +92,7 @@ const ChiSiamo = () => {
                 Oggi, come ieri, ciò che più ci sta a cuore è far star bene le persone, restituendo sorrisi con competenza, attenzione e affetto. Per noi ogni paziente è prima di tutto una persona, parte integrante della grande famiglia dello Studio Dentistico Colombo.
               </p>
             </div>
-            
+
             <div className="animate-slide-in-right opacity-0">
               <div className="relative">
                 <img
@@ -82,7 +105,7 @@ const ChiSiamo = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Values Section */}
       <section className="py-20 px-6 bg-dental-50">
         <div className="container mx-auto">
@@ -106,7 +129,7 @@ const ChiSiamo = () => {
                 Mettiamo il paziente al centro di ogni trattamento, ascoltando attentamente le sue esigenze e preoccupazioni per creare un'esperienza il più possibile serena e confortevole.
               </p>
             </div>
-            
+
             <div className="bg-white rounded-xl p-8 shadow-sm border border-border animate-fade-in opacity-0">
               <div className="bg-dental-100 w-16 h-16 rounded-lg flex items-center justify-center mb-6">
                 <Award className="w-8 h-8 text-dental" />
@@ -116,7 +139,7 @@ const ChiSiamo = () => {
                 Ci impegniamo a offrire trattamenti di altissima qualità, investendo costantemente in formazione continua e tecnologie all'avanguardia per garantire i migliori risultati.
               </p>
             </div>
-            
+
             <div className="bg-white rounded-xl p-8 shadow-sm border border-border animate-fade-in opacity-0" style={{ animationDelay: '300ms' }}>
               <div className="bg-dental-100 w-16 h-16 rounded-lg flex items-center justify-center mb-6">
                 <Shield className="w-8 h-8 text-dental" />
@@ -129,10 +152,10 @@ const ChiSiamo = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Team Section */}
       <Team />
-      
+
       {/* Location & Contact Section */}
       <section className="py-20 px-6 bg-gray-50">
         <div className="container mx-auto text-center mb-12">
@@ -149,40 +172,40 @@ const ChiSiamo = () => {
           <div className="rounded-2xl overflow-hidden shadow-lg">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3138.044415270208!2d14.968479299999998!3d38.1391602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13169c5bac9ea239%3A0xd3cf9836a4ca3755!2sStudio%20Dentistico%20Colombo!5e0!3m2!1sit!2sit!4v1742413070628!5m2!1sit!2sit"
-              width="100%" height="400"
+              width="100%"
+              height="400"
               className="border-0"
-              allowFullScreen loading="lazy" title="Mappa"
+              allowFullScreen
+              loading="lazy"
+              title="Mappa"
             />
           </div>
           {/* contatti */}
           <div className="space-y-6">
-            {[
-              { Icon: MapPin, label: "Via Fontanelle, SNC, Patti (ME)", href: "https://maps.app.goo.gl/JeyRSCc4687bBpMS8" },
-              { Icon: Phone, label: "0941 22749", href: "tel:094122749" },
-              { Icon: Smartphone, label: "379 1523085", href: "https://wa.me/3791523085" },
-              { Icon: Mail, label: "colombostudiodentistico@gmail.com", href: "mailto:colombostudiodentistico@gmail.com" },
-            ].map((c, i) => (
+            {contacts.map((c, i) => (
               <a
                 key={i}
                 href={c.href}
                 target={c.href.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
-                className="group flex items-center space-x-4 p-4 bg-white rounded-xl shadow-sm border border-border
-                           hover:shadow-lg hover:scale-105 transform transition-all duration-300"
+                className="group flex items-center space-x-4 p-4 bg-white rounded-xl shadow-sm border border-border hover:shadow-lg hover:scale-105 transform transition-all duration-300"
                 style={{ transitionDelay: `${i * 100}ms` }}
               >
                 <div className="bg-dental-50 p-3 rounded-lg group-hover:bg-dental/10 transition-colors duration-300">
                   <c.Icon className="w-5 h-5 text-dental group-hover:text-dental-dark transition-colors duration-300" />
                 </div>
                 <span className="text-foreground group-hover:text-primary transition-colors duration-200">
-                  {c.label}
+                  {/* desktop */}
+                  <span className="hidden sm:inline">{c.label}</span>
+                  {/* mobile */}
+                  <span className="inline sm:hidden">{c.mobileLabel}</span>
                 </span>
               </a>
             ))}
           </div>
         </div>
       </section>
-      
+
       <Footer />
     </div>
   );

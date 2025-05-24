@@ -34,7 +34,7 @@ const Hero = () => {
           transform: `scale(1.1) translate3d(${backgroundPosition}%, 0, 0)`
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-dental-900/90 via-dental-800/80 to-dental-700/70 z-1"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-dental-100/100 via-dental-900/80 to-dental-700/70 z-1"></div>
 
       {/* Removed container class and adjusted padding for mobile */}
       <div className="w-full mx-auto sm:container sm:px-6 z-10 flex flex-col justify-between h-screen py-8 sm:py-0">

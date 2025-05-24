@@ -210,7 +210,7 @@ const Navbar = () => {
           <div className="bg-blue-50 rounded-lg p-4">
             <h3 className="font-bold text-dental">Prenota una visita</h3>
             <p className="text-sm text-gray-600 mt-1 mb-3">
-              Fissa un appuntamento con uno dei nostri specialisti
+              Fissa il tuo prossimo appuntamento
             </p>
             <Link
               to="/prenota"

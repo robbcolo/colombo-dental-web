@@ -73,8 +73,8 @@ const ChiSiamo = () => {
             <div className="animate-slide-in-right opacity-0">
               <div className="relative">
                 <img
-                  src="/images/about/famiglia.jpg"
-                  alt="Studio dentistico"
+                  src={`${import.meta.env.BASE_URL}images/about/famiglia.jpg`}
+                  alt="Famiglia studio dentistico"
                   className="rounded-2xl w-full h-auto shadow-lg transition-transform duration-500 hover:scale-105"
                 />
               </div>

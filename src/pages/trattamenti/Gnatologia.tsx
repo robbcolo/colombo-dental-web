@@ -5,6 +5,38 @@ import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    name: "Studio Dentistico Colombo",
+    description: "Gnatologia a Patti: niente più dolori.",
+    url: "https://studiodentisticocolombo.com",
+    logo: "https://studiodentisticocolombo.com/images/about/logo.png",
+    telephone: "+39094122749",
+    address: {
+        "@type": "PostalAddress",
+        streetAddress: "Via Fontanelle, SNC",
+        addressLocality: "Patti",
+        addressRegion: "ME",
+        postalCode: "98066"
+    },
+    geo: {
+        "@type": "GeoCoordinates",
+        latitude: 38.1391602,
+        longitude: 14.9684793
+    },
+    openingHoursSpecification: [
+        {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: [
+                "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
+            ],
+            opens: "08:30",
+            closes: "20:00"
+        }
+    ]
+};
+
 const Gnatologia = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -26,6 +58,9 @@ const Gnatologia = () => {
                     name="description"
                     content="Studio e trattamento dei disturbi dell’articolazione temporo-mandibolare e dell’occlusione."
                 />
+                <script type="application/ld+json">
+                    {JSON.stringify(jsonLd)}
+                </script>
             </Helmet>
 
             <Navbar />
@@ -64,7 +99,7 @@ const Gnatologia = () => {
                 <Link
                     to="/servizi"
                     className="
-      block sm:inline-flex items-center justify-center
+      flex sm:inline-flex items-center justify-center
       w-full sm:w-auto
       bg-dental text-white
       px-5 py-3

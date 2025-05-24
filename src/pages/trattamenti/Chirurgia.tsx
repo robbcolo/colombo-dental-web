@@ -121,7 +121,7 @@ const Chirurgia = () => {
                 <Link
                     to="/servizi"
                     className="
-      block sm:inline-flex items-center justify-center
+      flex sm:inline-flex items-center justify-center
       w-full sm:w-auto
       bg-dental text-white
       px-5 py-3

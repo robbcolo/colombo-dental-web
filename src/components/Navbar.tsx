@@ -7,22 +7,26 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  // chiude i menu al cambio di pagina
   useEffect(() => {
     setIsOpen(false);
     setMobileServicesOpen(false);
     setServicesOpen(false);
   }, [location.pathname]);
 
+  // disabilità scroll body quando sidebar aperta
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'unset';
     return () => { document.body.style.overflow = 'unset'; };
   }, [isOpen]);
 
+  // click fuori dropdown desktop
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
@@ -31,6 +35,15 @@ const Navbar = () => {
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // gestione scroll per trasparenza / background solido
+  useEffect(() => {
+    const onScroll = () => {
+      setIsScrolled(window.scrollY > 40);
+    };
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   const navItems = [
@@ -57,25 +70,30 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={cn(
-        'fixed top-0 left-0 right-0 z-40 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm py-3'
-      )}>
+      <nav
+        className={cn(
+          'fixed top-0 left-0 right-0 z-40 transition-colors duration-300 py-3',
+          isScrolled
+            ? 'bg-white/90 text-gray-800 shadow-sm backdrop-blur-md'
+            : 'bg-transparent text-white'
+        )}
+      >
         <div className="container mx-auto px-6 flex justify-between items-center relative">
 
-          {/* Logo e testo desktop */}
+          {/* Logo desktop */}
           <Link to="/" className="flex items-center z-20">
             <img
               src={`${import.meta.env.BASE_URL}images/about/logo.png`}
               alt="Logo"
               className="h-8 w-auto mr-2"
             />
-            <span className="hidden md:block text-2xl font-bold text-dental">Studio Dentistico</span>
+            <span className="hidden md:block text-2xl font-bold">Studio Dentistico</span>
             <span className="hidden md:block text-2xl font-bold ml-2 text-blue-500">Colombo</span>
           </Link>
 
-          {/* Testo centrale solo su mobile */}
+          {/* Logo mobile center */}
           <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center md:hidden">
-            <span className="block text-base font-semibold text-dental">Studio Dentistico</span>
+            <span className="block text-base font-semibold">Studio Dentistico</span>
             <span className="block text-base font-semibold text-blue-500 -mt-0.5 -ml-3">Colombo</span>
           </div>
 
@@ -86,17 +104,29 @@ const Navbar = () => {
                 key={item.name}
                 to={item.path}
                 className={cn(
-                  'nav-item text-blue-900 hover:text-blue-500',
-                  location.pathname === item.path && 'active text-blue-500'
+                  'nav-item hover:text-blue-500',
+                  location.pathname === item.path
+                    ? isScrolled ? 'text-blue-900' : 'text-white'
+                    : isScrolled ? 'text-gray-800' : 'text-white'
                 )}
-              >{item.name}</Link>
+              >
+                {item.name}
+              </Link>
             ))}
+
             <div className="relative" ref={dropdownRef}>
               <button
-                className="nav-item text-blue-900 flex items-center hover:text-blue-500"
-                onClick={() => setServicesOpen(prev => !prev)}
+                className={cn(
+                  'nav-item flex items-center hover:text-blue-500',
+                  isScrolled ? 'text-gray-800' : 'text-white'
+                )}
+                onClick={() => setServicesOpen(o => !o)}
               >
-                Servizi<ChevronDown size={16} className={cn('ml-1 transition-transform', servicesOpen && 'rotate-180')} />
+                Servizi
+                <ChevronDown
+                  size={16}
+                  className={cn('ml-1 transition-transform', servicesOpen && 'rotate-180')}
+                />
               </button>
               {servicesOpen && (
                 <div className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-lg py-2 min-w-[220px] z-10">
@@ -105,18 +135,32 @@ const Navbar = () => {
                       key={s.path}
                       to={s.path}
                       onClick={() => setServicesOpen(false)}
-                      className="block px-4 py-2 text-sm text-gray-800 hover:bg-dental/10 hover:text-dental transition-colors"
-                    >{s.name}</Link>
+                      className="block px-4 py-2 text-sm text-gray-800 hover:bg-dental/10 transition-colors"
+                    >
+                      {s.name}
+                    </Link>
                   ))}
                 </div>
               )}
             </div>
-            <Link to="/prenota" className="btn-primary ml-4">Prenota Visita</Link>
+
+            <Link
+              to="/prenota"
+              className={cn(
+                'btn-primary ml-4',
+                isScrolled ? 'bg-blue-600 text-white' : 'bg-blue-600 text-white'
+              )}
+            >
+              Prenota Visita
+            </Link>
           </div>
 
           {/* Burger mobile */}
           <button
-            className="md:hidden z-20 text-foreground hover:text-dental transition-colors"
+            className={cn(
+              'md:hidden z-20 transition-colors',
+              isScrolled ? 'text-gray-800' : 'text-white'
+            )}
             onClick={toggleMenu}
             aria-label={isOpen ? 'Chiudi menu' : 'Apri menu'}
           >
@@ -126,12 +170,12 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile Sidebar */}
-      <aside className={cn(
-        'fixed inset-y-0 right-0 z-50 w-[335px] md:hidden bg-white',
-        'flex flex-col shadow-xl max-h-screen overflow-y-auto',
-        'transform transition-transform duration-300 ease-out',
-        isOpen ? 'translate-x-0' : 'translate-x-full'
-      )}>
+      <aside
+        className={cn(
+          'fixed inset-y-0 right-0 z-50 w-[335px] md:hidden bg-white flex flex-col shadow-xl transition-transform duration-300 ease-out',
+          isOpen ? 'translate-x-0' : 'translate-x-full'
+        )}
+      >
 
         {/* Sidebar Header */}
         <div className="flex items-center justify-between p-4 border-b border-gray-200">

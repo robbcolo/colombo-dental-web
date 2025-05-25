@@ -83,6 +83,10 @@ const Restaurativa = () => {
 
             <main className="pt-16 pb-16 px-6 overflow-hidden">
                 <div className="container mx-auto max-w-3xl">
+                    {/* Descrizione */}
+                    <p className="text-lg text-muted-foreground mb-6">
+                        L'odontoiatria conservativa è pensata per preservare la salute e la forza dei tuoi denti naturali. Quando una carie si presenta, interveniamo in modo mirato per bloccarla e ripristinare il dente alla sua forma e funzione, senza ricorrere a soluzioni drastiche. È un trattamento delicato che protegge il tuo sorriso, assicurandone la durata nel tempo.
+                    </p>
                     <h2 className="text-3xl font-bold mb-4 text-dental animate-slide-in-left">
                         Trattamenti Restaurativi
                     </h2>
@@ -96,8 +100,43 @@ const Restaurativa = () => {
                             </li>
                         ))}
                     </ul>
+                    {/* FAQ con <details> */}
+                    <details className="mt-8">
+                        <summary
+                            className="
+                flex sm:inline-flex items-center justify-center
+            w-full sm:w-auto
+            bg-dental text-white
+            px-5 py-2
+            rounded-xl
+            shadow-md
+            hover:bg-dental-600
+            focus:outline-none focus:ring-2 focus:ring-dental focus:ring-opacity-50
+            transition-colors duration-200
+              "
+                        >
+                            <span>FAQ</span>
+                        </summary>
+                        <div className="mt-4 bg-white p-6 rounded-lg shadow-sm text-muted-foreground space-y-4">
+                            <p>
+                                <strong>Quanto dura il trattamento conservativo?</strong><br />
+                                La durata dipende dall'estensione della carie, ma generalmente una seduta dura tra i 30 e i 60 minuti.
+                            </p>
+                            <p>
+                                <strong>È doloroso?</strong><br />
+                                No, il trattamento viene eseguito in anestesia locale e risulta indolore.
+
+                            </p>
+                            <p>
+                                <strong>Quanto dura una ricostruzione dentale?</strong><br />
+                                La durata dipende da diversi fattori, come la posizione del dente e l’igiene orale del paziente. Con una buona manutenzione, le ricostruzioni possono durare diversi anni.
+                            </p>
+                        </div>
+                    </details>
                 </div>
             </main>
+
+
             <div className="container mx-auto px-6 mb-8">
                 <Link
                     to="/servizi"

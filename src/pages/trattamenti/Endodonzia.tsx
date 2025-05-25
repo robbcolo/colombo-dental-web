@@ -85,6 +85,10 @@ const Endodonzia = () => {
 
             <main className="pt-16 pb-16 px-6 overflow-hidden">
                 <div className="container mx-auto max-w-3xl">
+                    {/* Descrizione */}
+                    <p className="text-lg text-muted-foreground mb-6">
+                        L’endodonzia è una soluzione per trattare un’infezione profonda all’interno del dente, eliminando il dolore e riportandolo a uno stato di salute. Questo trattamento permette di mantenere il dente e la sua funzionalità, preservando il tuo sorriso in modo sicuro e confortevole.
+                    </p>
                     <h2 className="text-3xl font-bold mb-4 text-dental animate-slide-in-left">
                         I Nostri Servizi
                     </h2>
@@ -98,6 +102,39 @@ const Endodonzia = () => {
                             </li>
                         ))}
                     </ul>
+                    {/* FAQ con <details> */}
+                    <details className="mt-8">
+                        <summary
+                            className="
+                flex sm:inline-flex items-center justify-center
+            w-full sm:w-auto
+            bg-dental text-white
+            px-5 py-2
+            rounded-xl
+            shadow-md
+            hover:bg-dental-600
+            focus:outline-none focus:ring-2 focus:ring-dental focus:ring-opacity-50
+            transition-colors duration-200
+              "
+                        >
+                            <span>FAQ</span>
+                        </summary>
+                        <div className="mt-4 bg-white p-6 rounded-lg shadow-sm text-muted-foreground space-y-4">
+                            <p>
+                                <strong>Cos'è un trattamento canalare (devitalizzazione)?</strong><br />
+                                È una procedura che elimina l'infezione interna del dente e ne permette il recupero senza necessità di estrazione. Consiste nella rimozione del tessuto infetto e nella sigillatura del canale radicolare.
+                            </p>
+                            <p>
+                                <strong>Il trattamento canalare è doloroso?</strong><br />
+                                La devitalizzazione viene eseguita con anestesia locale, quindi il trattamento in sé non è doloroso.
+
+                            </p>
+                            <p>
+                                <strong>Il dente devitalizzato va curato come gli altri?</strong><br />
+                                Sì, anche i denti devitalizzati richiedono una buona igiene orale e controlli regolari. In alcuni casi può essere necessario un restauro con intarsio o corona per proteggerlo nel tempo.
+                            </p>
+                        </div>
+                    </details>
                 </div>
             </main>
 

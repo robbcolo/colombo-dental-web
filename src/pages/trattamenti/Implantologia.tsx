@@ -83,6 +83,10 @@ const Implantologia = () => {
 
             <main className="pt-16 pb-16 px-6 overflow-hidden">
                 <div className="container mx-auto max-w-3xl">
+                    {/* Descrizione */}
+                    <p className="text-lg text-muted-foreground mb-6">
+                        Il trattamento di implantologia è una soluzione sicura e confortevole per riportare il sorriso e la funzionalità ai tuoi denti. Grazie agli impianti dentali, possiamo sostituire i denti mancanti con strutture stabili e resistenti, che si integrano perfettamente con il resto della tua bocca. Potrai masticare, parlare e sorridere senza pensieri, ritrovando la piena comodità e l’estetica di sempre.
+                    </p>
                     <h2 className="text-3xl font-bold mb-4 text-dental animate-slide-in-left">
                         Soluzioni Implantari
                     </h2>
@@ -96,8 +100,38 @@ const Implantologia = () => {
                             </li>
                         ))}
                     </ul>
+                    {/* FAQ con <details> */}
+                    <details className="mt-8">
+                        <summary
+                            className="
+                flex sm:inline-flex items-center justify-center
+            w-full sm:w-auto
+            bg-dental text-white
+            px-5 py-2
+            rounded-xl
+            shadow-md
+            hover:bg-dental-600
+            focus:outline-none focus:ring-2 focus:ring-dental focus:ring-opacity-50
+            transition-colors duration-200
+              "
+                        >
+                            <span>FAQ</span>
+                        </summary>
+                        <div className="mt-4 bg-white p-6 rounded-lg shadow-sm text-muted-foreground space-y-4">
+                            <p>
+                                <strong>Cos'è un impianto dentale e come funziona?</strong><br />
+                                Un impianto dentale è una “radice” artificiale in titanio che viene inserita nell’osso per sostituire un dente mancante. Una volta integrato, è possibile applicare una corona per restituire estetica e funzionalità.
+                            </p>
+                            <p>
+                                <strong>Gli impianti dentali sono permanenti?</strong><br />
+                                Con una corretta manutenzione e igiene orale, gli impianti dentali possono durare anche tutta la vita. È importante sottoporsi a visite regolari per mantenere gli impianti in condizioni ottimali.
+                            </p>
+                        </div>
+                    </details>
                 </div>
             </main>
+
+
             <div className="container mx-auto px-6 mb-8">
                 <Link
                     to="/servizi"

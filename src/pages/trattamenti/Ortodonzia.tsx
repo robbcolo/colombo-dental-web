@@ -45,9 +45,9 @@ const Ortodonzia = () => {
 
     const items = [
         'Apparecchi tradizionali',
-        'Allineatori trasparenti',
+        'Allineatori trasparenti Invisalign®',
         'Ortodonzia funzionale',
-        'Contenzione'
+        'Contenzioni'
     ];
 
     return (
@@ -83,6 +83,10 @@ const Ortodonzia = () => {
 
             <main className="pt-16 pb-16 px-6 overflow-hidden">
                 <div className="container mx-auto max-w-3xl">
+                    {/* Descrizione */}
+                    <p className="text-lg text-muted-foreground mb-6">
+                        L’ortodonzia tradizionale utilizza apparecchi fissi con attacchi e fili metallici per correggere l’allineamento dei denti in modo graduale, stabile e duraturo. È una soluzione affidabile, con controlli periodici che guidano il trattamento passo dopo passo. Invisalign®, invece, è un sistema di allineatori trasparenti, rimovibili e quasi invisibili, che allineano i denti in modo discreto e confortevole, adattandosi facilmente alla vita quotidiana.
+                    </p>
                     <h2 className="text-3xl font-bold mb-4 text-dental animate-slide-in-left">
                         Tipologie di Ortodonzia
                     </h2>
@@ -96,8 +100,51 @@ const Ortodonzia = () => {
                             </li>
                         ))}
                     </ul>
+                    {/* FAQ con <details> */}
+                    <details className="mt-8">
+                        <summary
+                            className="
+                flex sm:inline-flex items-center justify-center
+            w-full sm:w-auto
+            bg-dental text-white
+            px-5 py-2
+            rounded-xl
+            shadow-md
+            hover:bg-dental-600
+            focus:outline-none focus:ring-2 focus:ring-dental focus:ring-opacity-50
+            transition-colors duration-200
+              "
+                        >
+                            <span>FAQ</span>
+                        </summary>
+                        <div className="mt-4 bg-white p-6 rounded-lg shadow-sm text-muted-foreground space-y-4">
+                            <p>
+                                <strong>A che età è consigliato iniziare un trattamento ortodontico?</strong><br />
+                                Dipende dal tipo di problema, ma in genere una prima visita ortodontica è consigliata intorno ai 6-7 anni, per valutare se è necessario un intervento precoce o se attendere la dentizione definitiva.
+                            </p>
+                            <p>
+                                <strong>Gli apparecchi ortodontici sono dolorosi?</strong><br />
+                                L’installazione dell’apparecchio non è dolorosa, ma è normale sentire un po' di fastidio nei giorni successivi all'applicazione o dopo ogni regolazione, un fastidio che diminuisce rapidamente.
+
+                            </p>
+                            <p>
+                                <strong>Posso rimuovere gli allineatori Invisalign in ogni momento?</strong><br />
+                                Sì, uno dei vantaggi principali degli Invisalign è la possibilità di rimuoverli per mangiare, bere e per una pulizia efficace dei denti. L’importante è indossarli 20-22 ore al giorno per ottenere i risultati migliori.
+                            </p>
+                            <p>
+                                <strong>Quanto dura il trattamento Invisalign?</strong><br />
+                                La durata del trattamento varia da persona a persona, ma in media può durare dai 12 ai 18 mesi. Tuttavia, il tempo preciso sarà valutato dallo specialista in base al tuo caso specifico.
+                            </p>
+                            <p>
+                                <strong>Posso fare sport o suonare strumenti musicali con gli Invisalign?</strong>
+                                Certo! Gli Invisalign sono pensati per adattarsi al tuo stile di vita, quindi puoi tranquillamente fare sport o suonare strumenti senza problemi.
+                            </p>
+                        </div>
+                    </details>
                 </div>
             </main>
+
+
             <div className="container mx-auto px-6 mb-8">
                 <Link
                     to="/servizi"

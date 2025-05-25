@@ -83,6 +83,10 @@ const Gnatologia = () => {
 
             <main className="pt-16 pb-16 px-6 overflow-hidden">
                 <div className="container mx-auto max-w-3xl">
+                    {/* Descrizione */}
+                    <p className="text-lg text-muted-foreground mb-6">
+                        La gnatologia si occupa dei disturbi dell’articolazione temporo-mandibolare (ATM) e delle disfunzioni legate alla masticazione, alla postura e al bruxismo. Se avverti dolori alla mandibola, mal di testa frequenti, tensioni muscolari o digrigni i denti durante il sonno, una valutazione gnatologica può aiutarti a individuare la causa e risolverla. Grazie a tecniche diagnostiche mirate e terapie personalizzate — come bite su misura o esercizi riabilitativi — ti accompagniamo nel recupero di un equilibrio funzionale e del benessere quotidiano.
+                    </p>
                     <h2 className="text-3xl font-bold mb-4 text-dental animate-slide-in-left">
                         Servizi Gnatologici
                     </h2>
@@ -93,8 +97,42 @@ const Gnatologia = () => {
                             </li>
                         ))}
                     </ul>
+                    {/* FAQ con <details> */}
+                    <details className="mt-8">
+                        <summary
+                            className="
+                flex sm:inline-flex items-center justify-center
+            w-full sm:w-auto
+            bg-dental text-white
+            px-5 py-2
+            rounded-xl
+            shadow-md
+            hover:bg-dental-600
+            focus:outline-none focus:ring-2 focus:ring-dental focus:ring-opacity-50
+            transition-colors duration-200
+              "
+                        >
+                            <span>FAQ</span>
+                        </summary>
+                        <div className="mt-4 bg-white p-6 rounded-lg shadow-sm text-muted-foreground space-y-4">
+                            <p>
+                                <strong>Quali sono i sintomi di un problema gnatologico?</strong><br />
+                                I più comuni includono dolori alla mandibola, difficoltà a masticare, click o blocchi durante l’apertura della bocca, mal di testa, tensione cervicale e bruxismo (digrignamento dei denti).
+                            </p>
+                            <p>
+                                <strong>In cosa consiste il trattamento gnatologico?</strong><br />
+                                Dopo una visita accurata, il trattamento può prevedere l’uso di bite personalizzati, esercizi mirati o terapie posturali. L’obiettivo è ristabilire l’equilibrio tra articolazione, muscoli e denti.
+                            </p>
+                            <p>
+                                <strong>Il bite si deve portare tutto il giorno?</strong><br />
+                                Dipende dal tipo di disturbo: in molti casi è sufficiente indossarlo di notte. Saremo noi a indicarti tempi e modalità in base alle tue esigenze specifiche.
+                            </p>
+                        </div>
+                    </details>
                 </div>
             </main>
+
+
             <div className="container mx-auto px-6 mb-8">
                 <Link
                     to="/servizi"

@@ -94,6 +94,10 @@ const Chirurgia = () => {
             {/* Main Content with slide-in animations */}
             <main className="pt-16 pb-16 px-6 overflow-hidden">
                 <div className="container mx-auto max-w-3xl">
+                    {/* Descrizione */}
+                    <p className="text-lg text-muted-foreground mb-6">
+                        La chirurgia orale viene eseguita quando un dente non può essere salvato o presenta problematiche, come i denti del giudizio spesso fanno. Ogni procedura viene eseguita con grande attenzione e precisione per rendere l'esperienza il più serena e confortevole possibile.
+                    </p>
                     <h2
                         className="text-3xl font-bold mb-4 text-dental animate-slide-in-left"  
                     >
@@ -114,8 +118,44 @@ const Chirurgia = () => {
                             </li>
                         ))}
                     </ul>
+
+                    {/* FAQ con <details> */}
+                    <details className="mt-8">
+                        <summary
+                            className="
+                flex sm:inline-flex items-center justify-center
+            w-full sm:w-auto
+            bg-dental text-white
+            px-5 py-2
+            rounded-xl
+            shadow-md
+            hover:bg-dental-600
+            focus:outline-none focus:ring-2 focus:ring-dental focus:ring-opacity-50
+            transition-colors duration-200
+              "
+                        >
+                            <span>FAQ</span>
+                        </summary>
+                        <div className="mt-4 bg-white p-6 rounded-lg shadow-sm text-muted-foreground space-y-4">
+                            <p>
+                                <strong>In quali casi è necessaria la chirurgia orale?</strong><br />
+                                La chirurgia orale è necessaria per trattare casi complessi come estrazioni di denti del giudizio. Ogni procedura è personalizzata e preceduta da un’attenta valutazione da parte dello specialista.
+                            </p>
+                            <p>
+                                <strong>Devo preoccuparmi per il dolore post-operatorio?</strong><br />
+                                Dopo l’intervento, è normale avvertire un po' di fastidio, che può essere gestito con farmaci prescritti. Ti forniremo così tutte le indicazioni per un recupero sereno.
+
+                            </p>
+                            <p>
+                                <strong>Quanto tempo serve per riprendersi completamente?</strong><br />
+                                In genere, già in pochi giorni potrai tornare alla tua routine normale. Noi ti seguiremo per tutto il percorso di guarigione.
+                            </p>
+                        </div>
+                    </details>
                 </div>
             </main>
+
+            
 
             <div className="container mx-auto px-6 mb-8">
                 <Link

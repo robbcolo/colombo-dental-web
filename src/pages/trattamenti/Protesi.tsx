@@ -83,6 +83,10 @@ const Protesi = () => {
 
             <main className="pt-16 pb-16 px-6 overflow-hidden">
                 <div className="container mx-auto max-w-3xl">
+                    {/* Descrizione */}
+                    <p className="text-lg text-muted-foreground mb-6">
+                        Le protesi dentali sono una soluzione efficace per restituire funzionalità ed estetica al tuo sorriso. Che si tratti di una protesi fissa o mobile, lavoriamo per creare una soluzione personalizzata che si adatti perfettamente alla tua bocca, permettendoti di masticare, parlare e sorridere con naturalezza, migliorando la qualità della tua vita quotidiana.
+                    </p>
                     <h2 className="text-3xl font-bold mb-4 text-dental animate-slide-in-left">
                         Tipologie di Protesi
                     </h2>
@@ -93,8 +97,42 @@ const Protesi = () => {
                             </li>
                         ))}
                     </ul>
+                    {/* FAQ con <details> */}
+                    <details className="mt-8">
+                        <summary
+                            className="
+                flex sm:inline-flex items-center justify-center
+            w-full sm:w-auto
+            bg-dental text-white
+            px-5 py-2
+            rounded-xl
+            shadow-md
+            hover:bg-dental-600
+            focus:outline-none focus:ring-2 focus:ring-dental focus:ring-opacity-50
+            transition-colors duration-200
+              "
+                        >
+                            <span>FAQ</span>
+                        </summary>
+                        <div className="mt-4 bg-white p-6 rounded-lg shadow-sm text-muted-foreground space-y-4">
+                            <p>
+                                <strong>Quali tipi di protesi dentali sono disponibili?</strong><br />
+                                Protesi fisse (come corone e ponti) e protesi mobili (parziali o totali), che vengono personalizzate per ogni paziente in base alle esigenze estetiche e funzionali.
+                            </p>
+                            <p>
+                                <strong>È difficile adattarsi a una protesi dentale?</strong><br />
+                                All’inizio può esserci un periodo di adattamento, ma la maggior parte dei pazienti si abitua rapidamente, già alla prova in studio. Siamo sempre a disposizione per consigli e aggiustamenti, per garantirti il massimo comfort.
+                            </p>
+                            <p>
+                                <strong>Posso mangiare e parlare normalmente con la protesi?</strong><br />
+                                Assolutamente sì! Una volta adattata, la protesi diventerà parte della tua routine, e non ti accorgerai nemmeno di averla.
+                            </p>
+                        </div>
+                    </details>
                 </div>
             </main>
+
+
             <div className="container mx-auto px-6 mb-8">
                 <Link
                     to="/servizi"

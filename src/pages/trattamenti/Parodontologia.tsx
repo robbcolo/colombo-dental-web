@@ -83,6 +83,10 @@ const Parodontologia = () => {
 
             <main className="pt-16 pb-16 px-6 overflow-hidden">
                 <div className="container mx-auto max-w-3xl">
+                    {/* Descrizione */}
+                    <p className="text-lg text-muted-foreground mb-6">
+                        La parodontologia si occupa della salute dei tessuti che sostengono i denti, prevenendo e trattando problematiche come gengiviti e parodontiti. Un trattamento mirato aiuta a mantenere le gengive sane, evitando infiammazioni e danni ai denti. Con un approccio professionale e delicato, possiamo intervenire tempestivamente per garantire una bocca sana e un sorriso duraturo.
+                    </p>
                     <h2 className="text-3xl font-bold mb-4 text-dental animate-slide-in-left">
                         Servizi Parodontali
                     </h2>
@@ -93,8 +97,43 @@ const Parodontologia = () => {
                             </li>
                         ))}
                     </ul>
+                    {/* FAQ con <details> */}
+                    <details className="mt-8">
+                        <summary
+                            className="
+                flex sm:inline-flex items-center justify-center
+            w-full sm:w-auto
+            bg-dental text-white
+            px-5 py-2
+            rounded-xl
+            shadow-md
+            hover:bg-dental-600
+            focus:outline-none focus:ring-2 focus:ring-dental focus:ring-opacity-50
+            transition-colors duration-200
+              "
+                        >
+                            <span>FAQ</span>
+                        </summary>
+                        <div className="mt-4 bg-white p-6 rounded-lg shadow-sm text-muted-foreground space-y-4">
+                            <p>
+                                <strong>Quali sono i sintomi della parodontite?</strong><br />
+                                I sintomi includono sanguinamento gengivale, alitosi persistente, e mobilità dei denti. Se noti uno di questi segni, è importante intervenire per evitare la progressione della malattia.
+                            </p>
+                            <p>
+                                <strong>Come posso prevenire la parodontite?</strong><br />
+                                Una buona igiene orale quotidiana, un’alimentazione equilibrata, e visite regolari sono fondamentali per prevenire problemi parodontali. Durante la visita, ti forniremo consigli personalizzati per la cura delle gengive.
+
+                            </p>
+                            <p>
+                                <strong>Quanto dura il trattamento per la parodontite?</strong><br />
+                                Dipende dalla situazione individuale, ma in genere servono alcune sedute per migliorare la salute delle gengive. Il nostro obiettivo è rendere il percorso semplice e indolore.
+                            </p>
+                        </div>
+                    </details>
                 </div>
             </main>
+
+
             <div className="container mx-auto px-6 mb-8">
                 <Link
                     to="/servizi"

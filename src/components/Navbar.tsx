@@ -11,16 +11,16 @@ const Navbar = () => {
   const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const isHome = location.pathname === '/';
 
   // chiude i menu al cambio di pagina
   useEffect(() => {
     setIsOpen(false);
-    setMobileServicesOpen(false);
     setServicesOpen(false);
+    setMobileServicesOpen(false);
   }, [location.pathname]);
 
-  // disabilità scroll body quando sidebar aperta
+  // disabilita scroll body quando sidebar aperta
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'unset';
     return () => { document.body.style.overflow = 'unset'; };
@@ -37,14 +37,23 @@ const Navbar = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // gestione scroll per trasparenza / background solido
+  // scroll per background navbar
   useEffect(() => {
-    const onScroll = () => {
-      setIsScrolled(window.scrollY > 40);
-    };
+    const onScroll = () => setIsScrolled(window.scrollY > 40);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  // configurazione classi dinamiche
+  const navBg = isHome && !isScrolled
+    ? 'bg-transparent'
+    : 'bg-white/90';
+  const navShadow = isHome && !isScrolled
+    ? 'shadow-none'
+    : 'shadow-sm backdrop-blur-md';
+  const navText = isHome
+    ? 'text-white'
+    : 'text-gray-800';
 
   const navItems = [
     { name: 'Home', path: '/', icon: <Home size={20} /> },
@@ -73,13 +82,12 @@ const Navbar = () => {
       <nav
         className={cn(
           'fixed top-0 left-0 right-0 z-40 transition-colors duration-300 py-3',
-          isScrolled
-            ? 'bg-white/90 text-gray-800 shadow-sm backdrop-blur-md'
-            : 'bg-transparent text-white'
+          navBg,
+          navShadow,
+          navText
         )}
       >
         <div className="container mx-auto px-6 flex justify-between items-center relative">
-
           {/* Logo desktop */}
           <Link to="/" className="flex items-center z-20">
             <img
@@ -87,40 +95,36 @@ const Navbar = () => {
               alt="Logo"
               className="h-8 w-auto mr-2"
             />
-            <span className="hidden md:block text-2xl font-bold">Studio Dentistico</span>
+            <span className="hidden md:block text-2xl font-bold text-dental">Studio Dentistico</span>
             <span className="hidden md:block text-2xl font-bold ml-2 text-blue-500">Colombo</span>
           </Link>
 
           {/* Logo mobile center */}
           <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center md:hidden">
-            <span className="block text-base font-semibold">Studio Dentistico</span>
+            <span className="block text-base font-semibold text-dental">Studio Dentistico</span>
             <span className="block text-base font-semibold text-blue-500 -mt-0.5 -ml-3">Colombo</span>
           </div>
 
           {/* Menu desktop */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-6 text-dental">
             {navItems.filter(i => i.name !== 'Servizi').map(item => (
               <Link
                 key={item.name}
                 to={item.path}
                 className={cn(
                   'nav-item hover:text-blue-500',
-                  location.pathname === item.path
-                    ? isScrolled ? 'text-blue-900' : 'text-white'
-                    : isScrolled ? 'text-gray-800' : 'text-white'
+                  location.pathname === item.path && 'text-blue-500'
                 )}
               >
                 {item.name}
               </Link>
             ))}
 
+            {/* Dropdown Servizi */}
             <div className="relative" ref={dropdownRef}>
               <button
-                className={cn(
-                  'nav-item flex items-center hover:text-blue-500',
-                  isScrolled ? 'text-gray-800' : 'text-white'
-                )}
-                onClick={() => setServicesOpen(o => !o)}
+                onClick={() => setServicesOpen(v => !v)}
+                className="flex items-center hover:text-blue-500"
               >
                 Servizi
                 <ChevronDown
@@ -146,10 +150,7 @@ const Navbar = () => {
 
             <Link
               to="/prenota"
-              className={cn(
-                'btn-primary ml-4',
-                isScrolled ? 'bg-blue-600 text-white' : 'bg-blue-600 text-white'
-              )}
+              className="btn-primary ml-4 bg-blue-600 text-white"
             >
               Prenota Visita
             </Link>
@@ -157,11 +158,8 @@ const Navbar = () => {
 
           {/* Burger mobile */}
           <button
-            className={cn(
-              'md:hidden z-20 transition-colors',
-              isScrolled ? 'text-gray-800' : 'text-white'
-            )}
-            onClick={toggleMenu}
+            onClick={() => setIsOpen(v => !v)}
+            className="md:hidden text-dental z-20 hover:text-blue-500 transition-colors"
             aria-label={isOpen ? 'Chiudi menu' : 'Apri menu'}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}

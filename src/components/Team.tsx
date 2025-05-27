@@ -179,7 +179,7 @@ const Team = () => {
               className="bg-white rounded-xl overflow-hidden shadow-sm border border-border hover:shadow-md transition-shadow duration-300 animate-fade-in opacity-0"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="relative h-80">
+              <div className="relative h-[450px]">
                 <img
                   src={member.image}
                   alt={member.name}

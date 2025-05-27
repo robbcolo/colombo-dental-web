@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Team from '../components/Team';
-import { MapPin, Phone, Mail, Clock, Award, Heart, Shield, Smartphone } from 'lucide-react';
+import { MapPin, Phone, Mail, Smartphone, Heart, Shield, Award } from 'lucide-react';
 
 const ChiSiamo = () => {
   useEffect(() => {
@@ -38,28 +38,70 @@ const ChiSiamo = () => {
     },
   ];
 
+  // array delle assistenti storiche
+  const assistants = [
+    {
+      id: 1,
+      name: "Daniela",
+      role: "Assistente di Studio (ASO)",
+      bio: "Con oltre 20 anni di esperienza, Daniela accoglie ogni paziente con gentilezza e professionalità.",
+      image: `${import.meta.env.BASE_URL}images/about/daniela.jpg`
+    },
+    {
+      id: 2,
+      name: "Tonina",
+      role: "Assistente di Studio (ASO)",
+      bio: "Tonina, con il suo sorriso e la sua dedizione, rende ogni visita serena e confortevole.",
+      image: `${import.meta.env.BASE_URL}images/about/tonina.jpg`
+    }
+  ];
+
+  // mobile scroll state for assistants
+  const scrollRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // detect mobile
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // handle scroll
+  useEffect(() => {
+    if (!scrollRef.current || !isMobile) return;
+    const el = scrollRef.current;
+    const onScroll = () => {
+      const { scrollLeft, clientWidth } = el;
+      const cardWidth = clientWidth * 0.8 + 16;
+      const idx = Math.round(scrollLeft / cardWidth);
+      setActiveIndex(Math.min(idx, assistants.length - 1));
+    };
+    el.addEventListener('scroll', onScroll, { passive: true });
+    return () => el.removeEventListener('scroll', onScroll);
+  }, [isMobile]);
+
+  const scrollToIndex = (i) => {
+    if (!scrollRef.current) return;
+    const cardWidth = scrollRef.current.clientWidth * 0.8 + 16;
+    scrollRef.current.scrollTo({ left: cardWidth * i, behavior: 'smooth' });
+  };
+
+
   return (
     <div className="overflow-x-hidden">
       <Navbar />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 px-4 sm:px-6 overflow-hidden">
-        {/* Logo di sfondo ridotto e centrato */}
         <img
           src={`${import.meta.env.BASE_URL}images/about/logo.png`}
           alt="Logo Studio Dentistico Colombo"
-          className="
-       absolute left-1/2 top-1/2
-       w-2/3 sm:w-1/3 md:w-1/3
-       h-auto object-contain opacity-90
-       transform -translate-x-1/2 -translate-y-1/2
-      "
+          className="absolute left-1/2 top-1/2 w-2/3 sm:w-1/3 h-auto object-contain opacity-90 transform -translate-x-1/2 -translate-y-1/2"
         />
-
-        {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-dental to-dental-light mix-blend-multiply"></div>
-
-        {/* Contenuto in primo piano */}
         <div className="relative z-10 container mx-auto text-center">
           <span className="inline-block bg-white/20 text-white py-1 px-3 rounded-full text-sm font-medium mb-4 animate-fade-in">
             Chi Siamo
@@ -92,15 +134,12 @@ const ChiSiamo = () => {
                 Oggi, come ieri, ciò che più ci sta a cuore è far star bene le persone, restituendo sorrisi con competenza, attenzione e affetto. Per noi ogni paziente è prima di tutto una persona, parte integrante della grande famiglia dello Studio Dentistico Colombo.
               </p>
             </div>
-
             <div className="animate-slide-in-right opacity-0">
-              <div className="relative">
-                <img
-                  src={`${import.meta.env.BASE_URL}images/about/famiglia.jpg`}
-                  alt="Famiglia studio dentistico"
-                  className="rounded-2xl w-full h-auto shadow-lg transition-transform duration-500 hover:scale-105"
-                />
-              </div>
+              <img
+                src={`${import.meta.env.BASE_URL}images/about/famiglia.jpg`}
+                alt="Famiglia studio dentistico"
+                className="rounded-2xl w-full h-auto shadow-lg transition-transform duration-500 hover:scale-105"
+              />
             </div>
           </div>
         </div>
@@ -118,7 +157,6 @@ const ChiSiamo = () => {
               I principi fondamentali che ispirano il nostro lavoro e il rapporto con i pazienti.
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-xl p-8 shadow-sm border border-border animate-fade-in opacity-0">
               <div className="bg-dental-100 w-16 h-16 rounded-lg flex items-center justify-center mb-6">
@@ -155,6 +193,110 @@ const ChiSiamo = () => {
 
       {/* Team Section */}
       <Team />
+
+      {/* Assistenti Section - identica al Team, ma più piccola */}
+      <section className="py-16 px-6 bg-white">
+        <div className="container mx-auto">
+          <div className="text-center mb-10">
+            <span className="inline-block bg-dental-50 text-dental py-1 px-3 rounded-full text-sm font-medium mb-4">Le nostre Assistenti</span>
+            <h2 className="heading-md">Assistenti di Studio</h2>
+          </div>
+
+          {/* Mobile: scroll orizzontale */}
+          <div className="md:hidden overflow-hidden">
+            <div
+              className="flex no-scrollbar overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6"
+              ref={scrollRef}
+              style={{
+                scrollbarWidth: 'none',
+                msOverflowStyle: 'none'
+              }}
+            >
+              {assistants.map((member, index) => (
+                <div
+                  key={member.id}
+                  className="flex-shrink-0 w-4/5 max-w-sm snap-center mr-4 first:ml-0 last:mr-6"
+                  style={{ transform: 'scale(0.9)' }}
+                >
+                  <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-border hover:shadow-md transition-shadow duration-300 h-full">
+                    <div className="relative h-[430px]">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover"
+                        draggable="false"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-dental-900/80 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div className="p-6">
+                          <h3 className="text-white text-xl font-bold mb-1">{member.name}</h3>
+                          <p className="text-white/90">{member.role}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold mb-1">{member.name}</h3>
+                      <p className="text-dental mb-4">{member.role}</p>
+                      <p className="text-muted-foreground text-sm">{member.bio}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Indicatori di scroll */}
+            <div className="flex justify-center mt-6 space-x-2">
+              {assistants.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollToIndex(index)}
+                  className={`h-2 rounded-full transition-all duration-300 ${activeIndex === index
+                      ? 'w-8 bg-dental'
+                      : 'w-2 bg-gray-300 hover:bg-gray-400'
+                    }`}
+                  aria-label={`Vai alla scheda ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+
+
+        {/* Desktop: griglia centrata e più piccola */}
+        <div className="hidden md:flex md:justify-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl">
+            {assistants.map((member, index) => (
+              <div
+                key={member.id}
+                className="bg-white rounded-xl overflow-hidden shadow-sm border border-border hover:shadow-md transition-shadow duration-300"
+                style={{
+                  transform: 'scale(0.9)',
+                  maxWidth: '450px',
+                  margin: '0 auto'
+                }}
+              >
+                <div className="relative h-[430px]">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dental-900/80 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div className="p-6">
+                      <h3 className="text-white text-xl font-bold mb-1">{member.name}</h3>
+                      <p className="text-white/90">{member.role}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-1">{member.name}</h3>
+                  <p className="text-dental mb-4">{member.role}</p>
+                  <p className="text-muted-foreground text-sm">{member.bio}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
 
       {/* Location & Contact Section */}
       <section className="py-20 px-6 bg-gray-50">

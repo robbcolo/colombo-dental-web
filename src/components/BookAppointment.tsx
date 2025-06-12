@@ -69,7 +69,7 @@ const BookAppointment = () => {
             {/* Immagine Desktop */}
             <div className="hidden lg:block relative">
               <img
-                src={IMAGES.bookAppointment.dentistWithPatient}
+                src="https://thumbs.dreamstime.com/b/dentist-patient-girl-smiling-dentist-patient-girl-smiling-dentist-office-144919393.jpg"
                 alt="Dentista con paziente"
                 className="h-full w-full object-cover"
               />

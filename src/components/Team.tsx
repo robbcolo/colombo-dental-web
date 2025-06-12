@@ -7,14 +7,17 @@ const teamMembers = [
     name: "Dott. Alfredo Colombo",
     role: "Fondatore e Medico-Odontoiatra",
     bio: "Fondatore dello studio, il Dott. Alfredo esercita da oltre 30 anni, costruendo un rapporto di fiducia con intere famiglie di pazienti. Ama il suo lavoro, soprattutto quando può risolvere situazioni complesse con semplicità e chiarezza.",
-    image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1964&auto=format&fit=crop"
+    image: "",
+    email: "alfredocolombo62@gmail.com",
+    phone: "+393319258030",
+    instagram: "https://www.instagram.com/alfredocolombo62/"
   },
   {
     id: 2,
     name: "Dott. Roberto Colombo",
     role: "Odontoiatra",
     bio: "Il Dott. Roberto, laureato presso l'Università degli Studi di Messina con il massimo dei voti, lavora con un approccio preciso e attento al dettaglio, cercando sempre soluzioni efficaci e sostenibili per il paziente, mettendo al primo posto ascolto e trasparenza.",
-    image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=2070&auto=format&fit=crop",
+    image: "",
     email: "ybor69@ymail.com",
     phone: "+393291592938",
     instagram: "https://www.instagram.com/robcolo_/"
@@ -24,7 +27,10 @@ const teamMembers = [
     name: "Dott.ssa Aurora Colombo",
     role: "Odontoiatra",
     bio: "La Dott.ssa Aurora ha scelto questa professione con passione e si occupa dei pazienti con empatia e cura. È molto attenta al lato umano del lavoro, soprattutto con i pazienti più ansiosi o i bambini.",
-    image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=1974&auto=format&fit=crop"
+    image: "",
+    email: "auroracolombo@gmail.com",
+    phone: "+393271967666",
+    instagram: "https://www.instagram.com/aury__colombo/"
   }
 ];
 

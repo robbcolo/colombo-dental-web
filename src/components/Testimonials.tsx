@@ -6,23 +6,23 @@ const testimonials = [
   {
     id: 1,
     name: "Giacomo",
-    text: "Esperienza eccellente con tutto il team dello Studio Colombo. L'atmosfera familiare mi ha fatto sentire subito a mio agio, e il trattamento di implantologia è stato eseguito con grande professionalità. Ora posso sorridere con fiducia!",
+    text: "Condivido con orgoglio e realtà uno studio professionale che dedica il suo lavoro nel benessere dei pazienti. Sono precisi, perfetti, con una grande voglia di altruismo. Naturalmente chi ne abbia bisogno contattateli, sono dei veri PROFESSIONISTI.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop"
+    image: "https://lh3.googleusercontent.com/a-/ALV-UjXfMYQN8gTja34xEyWhQHt4nrekpnMUpZ8pUNymNt_i4AeFRpxc=w144-h144-p-rp-mo-ba4-br100"
   },
   {
     id: 2,
-    name: "Giulia Bianchi",
-    text: "Ho portato mio figlio di 7 anni per la sua prima visita dal dentista e tutti sono stati fantastici con lui. Il Dott. Colombo junior ha una pazienza infinita con i bambini e ha trasformato quella che poteva essere un'esperienza traumatica in un momento di apprendimento divertente.",
+    name: "Francesco",
+    text: "I dottori Colombo sono i miei dentisti di fiducia. Lo studio è moderno e accogliente. Sono sempre cortesi e disponibili, facendo sentire tutti a proprio agio. La loro professionalità è indiscutibile. Consiglio vivamente questo studio a chi cerca un dentista di qualità.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=2071&auto=format&fit=crop"
+    image: "https://lh3.googleusercontent.com/a-/ALV-UjXDELdyuDneCYBk0ug45GAGFmrezynJYnKptwbhhQDxYZDIMaXM=w144-h144-p-rp-mo-ba2-br100"
   },
   {
     id: 3,
-    name: "Alessandro Verdi",
-    text: "Seguo i trattamenti di ortodonzia presso lo studio e sono rimasto colpito dalla competenza e dalla precisione di tutti i dottori. Apprezzo particolarmente la chiarezza nelle spiegazioni e nei preventivi. Nessuna sorpresa di costi aggiuntivi!",
+    name: "Cristina",
+    text: "Super professionali! L'ambiente è  accogliente e curato. Le cure ricevute sono state eseguite con precisione e  con ottimi risultati. Mettono a proprio agio il pz fin dall'inizio  ascoltando i relativi bisogni e illustrando l'iter terapeutico. Assolutamente consigliato!",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=1974&auto=format&fit=crop"
+    image: "https://lh3.googleusercontent.com/a/ACg8ocKJQ9YLgfubFGnGy80XcKmTrnS33U-vnaq3QqOc3kaOnyKVlQ=w144-h144-p-rp-mo-br100"
   }
 ];
 
@@ -121,6 +121,16 @@ const Testimonials = () => {
               aria-label={`Vai alla testimonianza ${index + 1}`}
             />
           ))}
+        </div>
+        <div className="text-center mt-6">
+          <a
+            href="https://g.page/r/CVU3yqQ2mM_TEAE/review"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-dental font-medium underline hover:text-dental-700 transition-colors"
+          >
+            Leggi tutte le recensioni o lasciane una su Google
+          </a>
         </div>
       </div>
     </section>

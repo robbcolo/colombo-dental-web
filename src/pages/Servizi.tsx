@@ -40,7 +40,13 @@ const serviceDetails = [
   },
   {
     id: "conservativa",
-    icon: <FaFillDrip className="w-8 h-8 text-dental" />,
+    icon: (
+      <img
+        src="https://img.icons8.com/ultraviolet/80/tooth-caries.png"
+        alt="Conservativa"
+        className="w-11 h-11"
+      />
+    ),
     title: "Conservativa e Restaurativa",
     shortDescription: "Ripristino e preservazione della struttura dentale compromessa.",
     description: "I trattamenti conservativi e restaurativi mirano a ripristinare la funzione e l'estetica dei denti danneggiati da carie, fratture o usura. Utilizziamo materiali estetici di ultima generazione che garantiscono risultati naturali e duraturi, preservando il più possibile la struttura dentale sana.",
@@ -50,7 +56,6 @@ const serviceDetails = [
       "Tecniche mini-invasive che preservano il dente",
       "Risultati naturali e duraturi nel tempo"
     ],
-    image: "https://images.unsplash.com/photo-1606265752439-1f18756aa8ed?q=80&w=2070&auto=format&fit=crop",
     alt: "Trattamento conservativo dentale"
   },
   {
@@ -85,7 +90,13 @@ const serviceDetails = [
   },
   {
     id: "ortodonzia",
-    icon: <Activity className="w-8 h-8 text-dental" />,
+    icon: (
+      <img
+        src="https://img.icons8.com/ultraviolet/80/dental-braces.png"
+        alt="Ortodonzia"
+        className="w-11 h-11"
+      />
+    ),
     title: "Ortodonzia",
     shortDescription: "Allineamento dentale e correzione dei problemi di morso.",
     description: "Offriamo diverse soluzioni ortodontiche personalizzate per allineare i denti e correggere problemi di morso. Dalle apparecchiature tradizionali agli innovativi allineatori trasparenti removibili, adattiamo il trattamento alle esigenze estetiche e funzionali specifiche di ogni paziente, sia adulto che bambino.",

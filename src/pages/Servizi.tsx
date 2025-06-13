@@ -25,7 +25,7 @@ import {
 const serviceDetails = [
   {
     id: "igiene-dentale",
-    icon: <FaTooth className="w-8 h-8 text-dental" />,
+    icon: <img src={`${import.meta.env.BASE_URL}images/services/abl.png`} className="w-full h-full md:w-full md:h-full" alt="Ablazione" />,
     title: "Igiene Dentale Professionale",
     shortDescription: "Prevenzione e pulizia profonda per mantenere denti e gengive in salute.",
     description: "La prevenzione è la chiave per una buona salute orale a lungo termine. La nostra igiene dentale professionale include una detartrasi completa che rimuove placca e tartaro, seguita da una lucidatura accurata e consigli personalizzati per ottimizzare la tua igiene domiciliare.",
@@ -40,13 +40,7 @@ const serviceDetails = [
   },
   {
     id: "conservativa",
-    icon: (
-      <img
-        src="https://img.icons8.com/ultraviolet/80/tooth-caries.png"
-        alt="Conservativa"
-        className="w-11 h-11"
-      />
-    ),
+    icon: <img src={`${import.meta.env.BASE_URL}images/services/cons.png`} className="w-full h-full md:w-full md:h-full" alt="Conservativa" />,
     title: "Conservativa e Restaurativa",
     shortDescription: "Ripristino e preservazione della struttura dentale compromessa.",
     description: "I trattamenti conservativi e restaurativi mirano a ripristinare la funzione e l'estetica dei denti danneggiati da carie, fratture o usura. Utilizziamo materiali estetici di ultima generazione che garantiscono risultati naturali e duraturi, preservando il più possibile la struttura dentale sana.",
@@ -56,11 +50,10 @@ const serviceDetails = [
       "Tecniche mini-invasive che preservano il dente",
       "Risultati naturali e duraturi nel tempo"
     ],
-    alt: "Trattamento conservativo dentale"
   },
   {
     id: "endodonzia",
-    icon: <Microscope className="w-8 h-8 text-dental" />,
+    icon: <img src={`${import.meta.env.BASE_URL}images/services/endo.png`} className="w-full h-full md:w-full md:h-full" alt="Endodonzia" />,
     title: "Endodonzia",
     shortDescription: "Trattamento dei canali radicolari per salvare i denti compromessi.",
     description: "L'endodonzia si occupa del trattamento dei canali radicolari, salvando denti gravemente compromessi che altrimenti andrebbero estratti. Grazie alle tecniche moderne e alla strumentazione di precisione, interveniamo con efficacia e minimo disagio, preservando l'integrità dentale ed eliminando il dolore.",
@@ -75,7 +68,7 @@ const serviceDetails = [
   },
   {
     id: "implantologia",
-    icon: <Syringe className="w-8 h-8 text-dental" />,
+    icon: <img src={`${import.meta.env.BASE_URL}images/services/impl.png`} className="w-full h-full md:w-full md:h-full" alt="Implantologia" />,
     title: "Implantologia Dentale",
     shortDescription: "Sostituzione permanente di denti mancanti con radici artificiali.",
     description: "Gli impianti dentali rappresentano la soluzione più avanzata per sostituire i denti mancanti. Realizziamo impianti di alta qualità utilizzando tecnologie all'avanguardia che garantiscono una perfetta integrazione con l'osso mandibolare, offrendo una soluzione permanente, stabile ed esteticamente naturale.",
@@ -90,13 +83,7 @@ const serviceDetails = [
   },
   {
     id: "ortodonzia",
-    icon: (
-      <img
-        src="https://img.icons8.com/ultraviolet/80/dental-braces.png"
-        alt="Ortodonzia"
-        className="w-11 h-11"
-      />
-    ),
+    icon: <img src={`${import.meta.env.BASE_URL}images/services/orto.png`} className="w-full h-full md:w-full md:h-full" alt="Ortodonzia" />,
     title: "Ortodonzia",
     shortDescription: "Allineamento dentale e correzione dei problemi di morso.",
     description: "Offriamo diverse soluzioni ortodontiche personalizzate per allineare i denti e correggere problemi di morso. Dalle apparecchiature tradizionali agli innovativi allineatori trasparenti removibili, adattiamo il trattamento alle esigenze estetiche e funzionali specifiche di ogni paziente, sia adulto che bambino.",
@@ -111,7 +98,7 @@ const serviceDetails = [
   },
   {
     id: "estetica-dentale",
-    icon: <HeartPulse className="w-8 h-8 text-dental" />,
+    icon: <img src={`${import.meta.env.BASE_URL}images/services/estetica.png`} className="w-full h-full md:w-full md:h-full" alt="Estetica" />,
     title: "Estetica Dentale",
     shortDescription: "Miglioramento dell'aspetto del sorriso con tecniche avanzate.",
     description: "Trasformiamo il tuo sorriso con trattamenti estetici avanzati e personalizzati. Dallo sbiancamento dentale professionale alle faccette in ceramica e ai restauri metal-free, ogni intervento è progettato con precisione per migliorare l'aspetto dei tuoi denti mantenendo un risultato naturale e armonioso.",
@@ -126,7 +113,7 @@ const serviceDetails = [
   },
   {
     id: "odontoiatria-pediatrica",
-    icon: <UserCheck className="w-8 h-8 text-dental" />,
+    icon: <img src={`${import.meta.env.BASE_URL}images/services/pedo.png`} className="w-full h-full md:w-full md:h-full" alt="Pedodonzia" />,
     title: "Odontoiatria Pediatrica",
     shortDescription: "Cure dentali specializzate per bambini in ambiente accogliente.",
     description: "I bambini hanno esigenze dentali specifiche che richiedono un approccio dedicato. Il nostro team è specializzato nel creare un'esperienza positiva per i più piccoli, con un ambiente accogliente e un approccio delicato e rassicurante che li aiuta a sviluppare un rapporto sereno con le cure dentali fin dalla giovane età.",
@@ -136,12 +123,10 @@ const serviceDetails = [
       "Educazione all'igiene orale adatta ai bambini",
       "Monitoraggio costante dello sviluppo dentale e facciale"
     ],
-    image: "https://images.unsplash.com/photo-1630330432500-810349fb0a27?q=80&w=2070&auto=format&fit=crop",
-    alt: "Bambino durante visita odontoiatrica"
   },
   {
     id: "chirurgia-orale",
-    icon: <Scissors className="w-8 h-8 text-dental" />,
+    icon: <img src={`${import.meta.env.BASE_URL}images/services/chir.png`} className="w-full h-full md:w-full md:h-full" alt="Chirurgia orale" />,
     title: "Chirurgia Orale",
     shortDescription: "Interventi chirurgici mirati con tecniche mini-invasive.",
     description: "Effettuiamo interventi di chirurgia orale con tecniche minimamente invasive, dall'estrazione di denti del giudizio inclusi agli interventi pre-protesici e sui tessuti molli. Utilizziamo protocolli avanzati per garantire la massima precisione e il minor disagio possibile, con un'attenzione particolare al comfort del paziente e al recupero post-operatorio.",
@@ -151,12 +136,10 @@ const serviceDetails = [
       "Minore disagio durante e dopo l'intervento",
       "Tecniche all'avanguardia per risultati ottimali"
     ],
-    image: "https://images.unsplash.com/photo-1579165466914-39adece5f2e4?q=80&w=2070&auto=format&fit=crop",
-    alt: "Strumenti per chirurgia orale di precisione"
   },
   {
     id: "protesi-dentali",
-    icon: <Stethoscope className="w-8 h-8 text-dental" />,
+    icon: <img src={`${import.meta.env.BASE_URL}images/services/pro.png`} className="w-full h-full md:w-full md:h-full" alt="Protesi" />,
     title: "Protesi Dentali",
     shortDescription: "Soluzioni su misura per ripristinare denti mancanti.",
     description: "Realizziamo protesi fisse e mobili di alta qualità, personalizzate per adattarsi perfettamente all'anatomia del paziente. Dalle corone singole ai ponti, dalle protesi parziali a quelle totali, utilizziamo materiali biocompatibili di ultima generazione che garantiscono comfort, funzionalità ed estetica naturale per il massimo benessere.",
@@ -171,7 +154,7 @@ const serviceDetails = [
   },
   {
     id: "gnatologia",
-    icon: <Scale className="w-8 h-8 text-dental" />,
+    icon: <img src={`${import.meta.env.BASE_URL}images/services/gna.png`} className="w-full h-full md:w-full md:h-full" alt="Gnatologia" />,
     title: "Gnatologia",
     shortDescription: "Diagnosi e trattamento dei disturbi dell'articolazione temporo-mandibolare.",
     description: "La gnatologia si occupa dei disturbi dell'articolazione temporo-mandibolare, del bruxismo e dei problemi occlusali. Attraverso una diagnosi accurata e strumenti specifici, offriamo soluzioni personalizzate che alleviano il dolore, migliorano la funzionalità dell'apparato masticatorio e prevengono l'usura dentale, restituendo comfort e benessere.",
@@ -186,7 +169,7 @@ const serviceDetails = [
   },
   {
     id: "parodontologia",
-    icon: <Scale className="w-8 h-8 text-dental" />,
+    icon: <img src={`${import.meta.env.BASE_URL}images/services/paro.png`} className="w-full h-full md:w-full md:h-full" alt="Parodontologia" />,
     title: "Parodontologia",
     shortDescription: "Prevenzione e trattamento delle malattie gengivali e parodontali.",
     description: "La parodontologia si occupa della salute dei tessuti che supportano i denti: gengive, osso alveolare e legamento parodontale. Offriamo terapie mirate per il trattamento e la prevenzione della gengivite e della parodontite, dalla detartrasi profonda alla chirurgia parodontale rigenerativa, per preservare i denti e la salute orale a lungo termine.",

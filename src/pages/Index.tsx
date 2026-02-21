@@ -9,6 +9,7 @@ import BookAppointment from '../components/BookAppointment';
 import ContactSection from '../components/ContactSection';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Intraoralscanner from '../components/Intraoralscanner';
 
 const Index = () => {
   useEffect(() => {
@@ -23,6 +24,7 @@ const Index = () => {
       <Hero />
       <About />
       <Services />
+      <Intraoralscanner />
       <Team />
       <Testimonials />
       <BookAppointment />

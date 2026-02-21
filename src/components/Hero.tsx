@@ -65,7 +65,7 @@ const Hero = () => {
                 Il tuo studio di fiducia, un sorriso alla volta
               </h1>
 
-              <p className="text-sm sm:text-lg text-white/80 mb-8 sm:mb-6 max-w-xl px-4 mx-auto animate-slide-down opacity-0"
+              <p className="text-lg sm:text-lg text-white/80 mb-8 sm:mb-6 max-w-xl px-4 mx-auto animate-slide-down opacity-0"
                 style={{ animationDelay: '300ms' }}>
                 Da oltre 25 anni ci prendiamo cura della salute orale dei nostri pazienti con competenza, tecnologie all'avanguardia e un approccio umano e familiare.
               </p>
@@ -88,11 +88,10 @@ const Hero = () => {
                   <div className={`rounded-full bg-dental-light/20 p-3 mr-4 transition-all duration-300 ${activeCard === 'contattaci-mobile' ? 'bg-dental' : ''}`}>
                     <Phone size={20} className="text-blue-500" />
                   </div>
-                  <h3 className="text-base font-semibold text-white">Contattaci</h3>
+                  <p className="text-white/70 text-sm">Siamo disponibili per ogni tua esigenza</p>
                 </div>
-                <Link to="/contatti" className="bg-blue-500/20 hover:bg-blue-600 text-white rounded-lg font-medium transition-colors px-4 py-2 text-sm flex items-center">
-                  Chiamaci
-                  <ArrowRight size={16} className="ml-2" />
+                <Link to="/contatti" className="bg-blue-500/20 hover:bg-blue-600 text-white rounded-lg font-semibold transition-colors px-4 py-2 text-base flex items-center">
+                  Contattaci <ArrowRight size={16} className="ml-2" />
                 </Link>
               </div>
             </div>
@@ -108,11 +107,10 @@ const Hero = () => {
                   <div className={`rounded-full bg-dental-light/20 p-3 mr-4 transition-all duration-300 ${activeCard === 'servizi-mobile' ? 'bg-dental' : ''}`}>
                     <ArrowRight size={20} className="text-blue-500" />
                   </div>
-                  <h3 className="text-base font-semibold text-white">Servizi</h3>
+                  <p className="text-white/70 text-sm">Scopri tutti i trattamenti disponibili</p>
                 </div>
-                <Link to="/servizi" className="bg-blue-500/20 hover:bg-blue-600 text-white rounded-lg font-medium transition-colors px-4 py-2 text-sm flex items-center">
-                  Scopri
-                  <ArrowRight size={16} className="ml-2" />
+                <Link to="/servizi" className="bg-blue-500/20 hover:bg-blue-600 text-white rounded-lg font-semibold transition-colors px-4 py-2 text-base flex items-center">
+                  Servizi <ArrowRight size={16} className="ml-2" />
                 </Link>
               </div>
             </div>
@@ -128,11 +126,10 @@ const Hero = () => {
                   <div className={`rounded-full bg-dental-light/20 p-3 mr-4 transition-all duration-300 ${activeCard === 'prenota-mobile' ? 'bg-dental' : ''}`}>
                     <Clock size={20} className="text-blue-500" />
                   </div>
-                  <h3 className="text-base font-semibold text-white">Prenota</h3>
+                  <p className="text-white/70 text-sm">Fissa un appuntamento in pochi click</p>
                 </div>
-                <Link to="/prenota" className="bg-blue-500/20 hover:bg-blue-600 text-white rounded-lg font-medium transition-colors px-4 py-2 text-sm flex items-center">
-                  Prenota
-                  <ArrowRight size={16} className="ml-2" />
+                <Link to="/prenota" className="bg-blue-500/20 hover:bg-blue-600 text-white rounded-lg font-semibold transition-colors px-4 py-2 text-base flex items-center">
+                  Prenota <ArrowRight size={16} className="ml-2" />
                 </Link>
               </div>
             </div>
@@ -152,12 +149,11 @@ const Hero = () => {
                 <div className={`rounded-full bg-dental-light/20 p-4 mb-4 transition-all duration-300 ${activeCard === 'contattaci-desktop' ? 'bg-dental' : ''}`}>
                   <Phone size={24} className="text-blue-500" />
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">Contattaci</h3>
                 <p className="text-base text-white/80 text-center mb-4">
                   Siamo disponibili per ogni tua esigenza
                 </p>
-                <Link to="/contatti" className="w-full px-4 py-2 bg-blue-500/20 hover:bg-blue-600 text-white rounded-lg font-medium transition-colors flex items-center justify-center">
-                  Chiamaci <ArrowRight size={16} className="ml-2" />
+                <Link to="/contatti" className="w-full px-4 py-2 bg-blue-500/20 hover:bg-blue-600 text-white rounded-lg font-semibold text-xl transition-colors flex items-center justify-center">
+                  Contattaci <ArrowRight size={16} className="ml-2" />
                 </Link>
               </div>
             </div>
@@ -172,12 +168,11 @@ const Hero = () => {
                 <div className={`rounded-full bg-dental-light/20 p-4 mb-4 transition-all duration-300 ${activeCard === 'servizi-desktop' ? 'bg-dental' : ''}`}>
                   <ArrowRight size={24} className="text-blue-500" />
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">Servizi</h3>
                 <p className="text-base text-white/80 text-center mb-4">
                   Scopri tutti i trattamenti disponibili
                 </p>
-                <Link to="/servizi" className="w-full px-4 py-2 bg-blue-500/20 hover:bg-blue-600 text-white rounded-lg font-medium transition-colors flex items-center justify-center">
-                  Scopri <ArrowRight size={16} className="ml-2" />
+                <Link to="/servizi" className="w-full px-4 py-2 bg-blue-500/20 hover:bg-blue-600 text-white rounded-lg font-semibold text-xl transition-colors flex items-center justify-center">
+                  Servizi <ArrowRight size={16} className="ml-2" />
                 </Link>
               </div>
             </div>
@@ -192,11 +187,10 @@ const Hero = () => {
                 <div className={`rounded-full bg-dental-light/20 p-4 mb-4 transition-all duration-300 ${activeCard === 'prenota-desktop' ? 'bg-dental' : ''}`}>
                   <Clock size={24} className="text-blue-500" />
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">Prenota</h3>
                 <p className="text-base text-white/80 text-center mb-4">
                   Fissa un appuntamento in pochi click
                 </p>
-                <Link to="/prenota" className="w-full px-4 py-2 bg-blue-500/20 hover:bg-blue-600 text-white rounded-lg font-medium transition-colors flex items-center justify-center">
+                <Link to="/prenota" className="w-full px-4 py-2 bg-blue-500/20 hover:bg-blue-600 text-white rounded-lg font-semibold text-xl transition-colors flex items-center justify-center">
                   Prenota <ArrowRight size={16} className="ml-2" />
                 </Link>
               </div>
@@ -205,7 +199,7 @@ const Hero = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mb-4 sm:mb-16 text-center animate-slide-up opacity-0" style={{ animationDelay: '700ms' }}>
+        <div className="mt-6 sm:mt-0 mb-4 sm:mb-16 text-center animate-slide-up opacity-0" style={{ animationDelay: '700ms' }}>
           <Link
             to="/chi-siamo"
             className="inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 border border-white/30 bg-white/10 hover:bg-white/20 text-white rounded-lg text-sm sm:text-base font-medium transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105"

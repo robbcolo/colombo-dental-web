@@ -1,0 +1,4 @@
+Newsreader — Copyright 2020 The Newsreader Project Authors (https://github.com/productiontype/Newsreader)
+Figtree — Copyright 2022 The Figtree Project Authors (https://github.com/erikdkennedy/figtree)
+Both fonts are licensed under the SIL Open Font License, Version 1.1 (https://openfontlicense.org).
+The files in this folder are subset (Latin) and converted to WOFF2 as permitted by the license.

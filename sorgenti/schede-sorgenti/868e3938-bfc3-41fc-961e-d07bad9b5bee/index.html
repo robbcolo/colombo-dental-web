@@ -1,0 +1,1304 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Scheda Ablazione e Scaling</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap">
+<style>
+/* Layout: scheda per il paziente a colonna unica. Le fasi sono un "palco" illustrato con il testo a lato su iPad e sotto su telefono. */
+:root{
+  --ground:#F2F5F4; --surface:#FFFFFF; --surface-2:#E6EDEB; --ink:#13282E; --ink-2:#4B6066; --line:#D2DDDB;
+  --accent:#0B6E69; --accent-ink:#FFFFFF; --accent-soft:#DCEEEB;
+  --warn:#9A4D0C; --warn-soft:#FBEBDC; --alert:#B3261E; --alert-soft:#FBE5E2;
+  --stage:#E3EBE9;
+  --bone:#EBDFC6; --bone-pore:#D9C9A9; --bone-dense:#C8B184;
+  --gum:#E9A3A5; --gum-deep:#D2858A; --lig:#C4887C;
+  --enamel:#FDFCF7; --dentin:#F0E4CD; --pulp:#E29898; --caries:#6E4B2C; --clot:#B4585C;
+  --ti-1:#F0F3F5; --ti-2:#AEB9C0; --ti-3:#66737B; --crown:#FFFFFF; --temp:#F1D6A8; --graft:#FFFDF6; --graft-bg:#E2BFB0; --membrane:#F4EBD2;
+  --nerve:#F1CF6A; --nerve-edge:#C29C36; --outline:#34474D;
+  --qr-bg:#FFFFFF; --qr-fg:#000000;
+  --font-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --font-body:"Atkinson Hyperlegible",Verdana,"Segoe UI",system-ui,sans-serif;
+  --radius:16px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E181B; --surface:#152328; --surface-2:#1C2E33; --ink:#E4EEEC; --ink-2:#9DB2B1; --line:#2A3F44;
+    --accent:#4FC2B8; --accent-ink:#062523; --accent-soft:#143B39;
+    --warn:#F0A35E; --warn-soft:#3A2716; --alert:#FF8A80; --alert-soft:#3D1A18;
+    --stage:#1A2A2F;
+    --bone:#D8CBB0; --bone-pore:#C2B291; --bone-dense:#AE9868;
+    --gum:#D78E92; --gum-deep:#BD7177; --lig:#AE7468;
+    --enamel:#F3F1EA; --dentin:#DED2BA; --pulp:#CC8484; --caries:#5A3D25; --clot:#A04B50;
+    --ti-1:#DCE2E6; --ti-2:#97A3AA; --ti-3:#56636B; --crown:#F7F7F3; --temp:#D9BF8E; --graft:#F3EEE2; --graft-bg:#B98F80; --membrane:#E3D8BC;
+    --nerve:#DDBB55; --nerve-edge:#A8852C; --outline:#0B1214;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E181B; --surface:#152328; --surface-2:#1C2E33; --ink:#E4EEEC; --ink-2:#9DB2B1; --line:#2A3F44;
+  --accent:#4FC2B8; --accent-ink:#062523; --accent-soft:#143B39;
+  --warn:#F0A35E; --warn-soft:#3A2716; --alert:#FF8A80; --alert-soft:#3D1A18;
+  --stage:#1A2A2F;
+  --bone:#D8CBB0; --bone-pore:#C2B291; --bone-dense:#AE9868;
+  --gum:#D78E92; --gum-deep:#BD7177; --lig:#AE7468;
+  --enamel:#F3F1EA; --dentin:#DED2BA; --pulp:#CC8484; --caries:#5A3D25; --clot:#A04B50;
+  --ti-1:#DCE2E6; --ti-2:#97A3AA; --ti-3:#56636B; --crown:#F7F7F3; --temp:#D9BF8E; --graft:#F3EEE2; --graft-bg:#B98F80; --membrane:#E3D8BC;
+  --nerve:#DDBB55; --nerve-edge:#A8852C; --outline:#0B1214;
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:120px}
+body{background:var(--ground);color:var(--ink);font-family:var(--font-body);font-size:1.0625rem;line-height:1.55}
+.wrap{max-width:1140px;margin-inline:auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--font-display);line-height:1.08;letter-spacing:-0.015em;margin:0;text-wrap:balance}
+h2{font-size:clamp(1.75rem,3.4vw,2.4rem);font-weight:720}
+h3{font-size:1.3rem;font-weight:700}
+p{margin:0}
+a{color:var(--accent);text-underline-offset:3px}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:8px}
+.eyebrow{font-size:.8rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
+.muted{color:var(--ink-2)}
+.fine{font-size:.92rem;color:var(--ink-2)}
+.ref{font-size:.72em;font-weight:700;vertical-align:super;line-height:0;text-decoration:none;padding-inline:1px}
+
+/* Header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--ground);background:color-mix(in srgb,var(--ground) 90%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px 6px}
+.brand{font-family:var(--font-display);font-weight:650;font-size:1.05rem;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px;min-width:0}
+.brand-mark{width:28px;height:28px;flex:none}
+.brand .short{display:none}
+.brand span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tools{display:flex;gap:8px;flex:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-weight:700;font-size:.95rem;cursor:pointer;text-decoration:none;white-space:nowrap}
+.btn:hover{border-color:var(--ink-2)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-primary{background:var(--accent);color:var(--accent-ink);border-color:transparent}
+.btn-primary:hover{border-color:transparent;filter:brightness(1.07)}
+.toc{display:flex;gap:2px;overflow-x:auto;padding-block:0 8px;scrollbar-width:none}
+.toc::-webkit-scrollbar{display:none}
+.toc a{flex:none;color:var(--ink-2);text-decoration:none;font-weight:700;font-size:.92rem;padding:6px 12px;border-radius:999px}
+.toc a:hover{background:var(--surface-2);color:var(--ink)}
+@media (max-width:640px){
+  .brand .long{display:none}.brand .short{display:inline}
+  .tools .btn .lbl-long{display:none}
+  .tools .btn{padding:0 12px}
+  #btn-present{width:44px;padding:0}
+  #btn-present > span{display:none}
+}
+
+/* Sezioni */
+main section{padding-block:clamp(48px,7vw,88px);border-top:1px solid var(--line)}
+main section.hero{border-top:0}
+.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px 24px}
+.sec-head > div{display:flex;flex-direction:column;gap:10px;max-width:62ch;min-width:0}
+.sec-intro{font-size:1.125rem;color:var(--ink-2)}
+
+/* Hero */
+.hero{display:grid;gap:36px;padding-block:40px 64px}
+@media (min-width:960px){.hero{grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);align-items:center;gap:56px}}
+.hero-copy{display:flex;flex-direction:column;gap:16px;min-width:0}
+.hero h1{font-size:clamp(2.6rem,6.4vw,4.3rem);font-weight:780;letter-spacing:-0.03em}
+.lead{font-size:1.25rem;line-height:1.5;max-width:40ch}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin:8px 0 0}
+.facts > div{background:var(--surface);padding:14px 16px;min-width:0}
+.facts dt{font-size:.75rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-2)}
+.facts dd{margin:4px 0 0;font-weight:700;font-size:1.05rem;line-height:1.3}
+.compare{margin:0;display:flex;flex-direction:column;gap:14px;min-width:0}
+.compare-stage{background:var(--stage);border-radius:24px;padding:14px 12px 6px}
+.compare svg{display:block;width:100%;height:auto}
+.compare figcaption{font-size:1.02rem;color:var(--ink-2);max-width:62ch}
+
+/* Fasi */
+.stepper{display:grid;gap:24px;margin-top:28px}
+@media (min-width:900px){.stepper{grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);align-items:stretch;gap:36px}}
+.stage{margin:0;background:var(--stage);border-radius:24px;overflow:hidden;touch-action:pan-y;position:relative;min-width:0;user-select:none;-webkit-user-select:none}
+.stage svg{display:block;width:100%;height:auto}
+.step-copy{display:flex;flex-direction:column;gap:14px;min-width:0}
+.step-count{font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-variant-numeric:tabular-nums}
+.step-copy h3{font-size:clamp(1.7rem,3vw,2.2rem);font-weight:740}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0}
+.chips li{background:var(--accent-soft);border-radius:999px;padding:4px 12px;font-size:.92rem;font-weight:700}
+.step-text{font-size:1.15rem;line-height:1.55}
+.step-note{display:flex;flex-direction:column;gap:4px;padding-top:12px;border-top:1px solid var(--line)}
+.label{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.step-ctrl{display:flex;gap:10px;margin-top:auto;padding-top:8px}
+.step-ctrl .btn{min-height:52px;padding:0 22px;font-size:1.02rem}
+.step-ctrl .btn svg{width:22px;height:22px}
+.step-nav{list-style:none;display:grid;grid-template-columns:repeat(var(--n,6),minmax(0,1fr));gap:6px;padding:0;margin:22px 0 0}
+.step-nav button{width:100%;min-height:52px;display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:10px 2px 4px;border:0;border-top:4px solid var(--line);background:none;color:var(--ink-2);font-weight:700;font-size:.9rem;cursor:pointer;text-align:left}
+.step-nav .n{font-size:.78rem;font-variant-numeric:tabular-nums}
+.step-nav button.done{border-top-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.step-nav button[aria-current="step"]{border-top-color:var(--accent);color:var(--ink)}
+@media (max-width:600px){.step-nav .lbl{display:none}.step-nav .n{font-size:.95rem}}
+.stage-foot{font-size:.85rem;color:var(--ink-2);padding:0 4px;margin-top:8px}
+#btn-exit{display:none}
+
+/* Modalità poltrona */
+html.is-present,html.is-present body{overflow:hidden}
+html.is-present #fasi{position:fixed;inset:0;z-index:60;background:var(--ground);overflow:auto;border:0;padding:calc(env(safe-area-inset-top,0px) + 16px) 24px calc(env(safe-area-inset-bottom,0px) + 16px)}
+html.is-present #fasi .wrap{max-width:none;padding-inline:0}
+html.is-present #fasi .sec-intro{display:none}
+html.is-present #btn-exit{display:inline-flex}
+html.is-present .stepper{margin-top:16px}
+html.is-present .step-text{font-size:1.32rem}
+html.is-present .step-copy h3{font-size:clamp(2rem,3.4vw,2.7rem)}
+@media (min-width:900px){html.is-present .stepper{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}html.is-present .stage svg{max-height:calc(100vh - 230px)}}
+
+/* Alternative */
+.alts{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));margin-top:28px}
+.alt{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.alt-head{display:flex;align-items:center;gap:14px}
+.alt-glyph{width:84px;height:56px;flex:none;background:var(--stage);border-radius:12px;padding:4px}
+.alt dl{display:flex;flex-direction:column;gap:12px;margin:0}
+.alt dt{font-size:.75rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-2)}
+.alt dd{margin:2px 0 0;line-height:1.4}
+.alt-none{margin-top:16px;display:grid;gap:8px;padding:18px 20px;border:1px dashed var(--ink-2);border-radius:20px}
+.alt-none p{max-width:75ch}
+.evidence-note{margin-top:14px;max-width:80ch}
+
+/* Durata e rischi */
+.risk-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));margin-top:28px}
+.array-card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.big{font-family:var(--font-display);font-weight:760;font-size:clamp(2.2rem,4vw,2.8rem);line-height:1;letter-spacing:-0.02em;font-variant-numeric:tabular-nums}
+.big small{font-size:.45em;font-weight:650;letter-spacing:0;color:var(--ink-2)}
+.icon-array{display:grid;grid-template-columns:repeat(20,minmax(0,1fr));gap:4px;max-width:420px}
+.icon-array i{display:block;aspect-ratio:1;border-radius:50%;border:1.5px solid var(--line)}
+.icon-array i.on{background:var(--accent);border-color:var(--accent)}
+.icon-array i.warn{background:var(--warn);border-color:var(--warn)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.9rem;color:var(--ink-2);list-style:none;padding:0;margin:0}
+.legend li{display:flex;align-items:center;gap:6px}
+.legend i{width:12px;height:12px;border-radius:50%;border:1.5px solid var(--line);display:inline-block}
+.legend i.on{background:var(--accent);border-color:var(--accent)}
+.legend i.warn{background:var(--warn);border-color:var(--warn)}
+.risks{margin-top:28px;display:grid;gap:12px;max-width:80ch}
+.risks ul{margin:0;padding-left:1.2em;display:grid;gap:8px}
+
+/* Dopo l'intervento */
+.tabs{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-top:28px}
+.tab{min-height:48px;padding:10px 16px;border:0;border-bottom:3px solid transparent;margin-bottom:-1px;background:none;color:var(--ink-2);font-weight:700;font-size:1rem;cursor:pointer}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.tab.tab-alert{color:var(--alert)}
+.tab.tab-alert[aria-selected="true"]{border-bottom-color:var(--alert)}
+.panel{padding-block:24px 8px}
+.do-list{list-style:none;margin:0;padding:0;display:grid;gap:14px;max-width:72ch}
+.do-list li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:baseline;font-size:1.1rem}
+.do-list li::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--accent);transform:translateY(-2px)}
+.do-list b{font-weight:700}
+.alert-box{background:var(--alert-soft);border-radius:20px;padding:20px;display:grid;gap:16px;max-width:820px}
+.alert-box .do-list li::before{background:var(--alert);border-radius:50%}
+.contacts{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.contact{background:var(--surface);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.contact a{font-family:var(--font-display);font-weight:700;font-size:1.35rem;color:var(--ink);text-decoration:none;font-variant-numeric:tabular-nums;user-select:all;-webkit-user-select:all}
+.studio-strip{margin-top:28px;display:flex;flex-wrap:wrap;gap:6px 20px;font-size:.95rem;color:var(--ink-2)}
+.studio-strip b{color:var(--ink)}
+
+/* Domande */
+.faq{margin-top:20px;max-width:80ch}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;font-weight:700;font-size:1.12rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--font-display);font-size:1.6rem;line-height:1;color:var(--accent);flex:none}
+.faq details[open] summary::after{content:"−"}
+.faq details p{padding:0 0 18px;font-size:1.05rem}
+
+/* Footer */
+.foot{border-top:1px solid var(--line);padding-block:40px 56px;display:grid;gap:20px}
+.foot ol{margin:0;padding-left:1.4em;display:grid;gap:10px;font-size:.92rem;color:var(--ink-2);max-width:95ch}
+.foot ol li{overflow-wrap:anywhere}
+.foot ol a{font-weight:700}
+
+/* Pannello di consegna */
+.sheet{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:16px;background:color-mix(in srgb,var(--ink) 48%,transparent)}
+.sheet-card{background:var(--surface);border-radius:24px;width:min(470px,100%);max-height:calc(100% - 24px);overflow:auto;padding:22px;display:flex;flex-direction:column;gap:16px;box-shadow:0 20px 60px color-mix(in srgb,var(--ink) 30%,transparent)}
+.sheet-head{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.icon-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center;cursor:pointer;flex:none}
+.icon-btn svg{width:20px;height:20px}
+.seg{display:grid;gap:6px;border:0;margin:0;padding:0}
+.seg legend{padding:0;margin-bottom:6px}
+.seg label{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;cursor:pointer;font-weight:700}
+.seg label:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+.seg input{accent-color:var(--accent);width:18px;height:18px;margin:0}
+.qr{background:var(--qr-bg);color:var(--qr-fg);padding:12px;border-radius:16px;width:min(230px,100%);margin-inline:auto;aspect-ratio:1;display:grid;place-items:center;text-align:center;font-size:.9rem}
+.qr svg{display:block;width:100%;height:auto}
+.field{display:flex;flex-direction:column;gap:6px}
+.field input{width:100%;min-height:44px;padding:8px 12px;border-radius:12px;border:1px solid var(--line);background:var(--ground);color:var(--ink);font:inherit;font-size:.95rem}
+.sheet-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sheet details summary{cursor:pointer;font-weight:700;font-size:.95rem;color:var(--ink-2)}
+.sheet details[open] summary{margin-bottom:8px}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 20px);transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--ground);padding:10px 18px;border-radius:999px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:90;max-width:calc(100% - 32px);text-align:center}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* Illustrazioni SVG */
+.f-bone{fill:var(--bone)}.f-pore{fill:var(--bone-pore)}.f-dense{fill:var(--bone-dense)}
+.f-gum{fill:var(--gum)}.f-gum-deep{fill:var(--gum-deep)}
+.f-enamel{fill:var(--enamel)}.f-dentin{fill:var(--dentin)}.f-pulp{fill:var(--pulp)}
+.f-caries{fill:var(--caries)}.f-clot{fill:var(--clot)}.f-crown{fill:var(--crown)}
+.f-ti2{fill:var(--ti-2)}.f-ti3{fill:var(--ti-3)}.f-accent{fill:var(--accent)}.f-surface{fill:var(--surface)}
+.f-stage{fill:var(--stage)}
+.o-line{stroke:var(--outline);stroke-opacity:.55;stroke-width:2;stroke-linejoin:round}
+.o-thin{stroke:var(--outline);stroke-opacity:.5;stroke-width:1.2;stroke-linejoin:round}
+.gum-edge{fill:none;stroke:var(--gum-deep);stroke-width:2.5}
+.nerve-out{fill:none;stroke:var(--nerve-edge);stroke-width:30;stroke-linecap:round}
+.nerve-in{fill:none;stroke:var(--nerve);stroke-width:23;stroke-linecap:round}
+.lig{fill:none;stroke:var(--lig);stroke-width:10;stroke-linejoin:round}
+.crack{fill:none;stroke:var(--caries);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.plan-line{fill:var(--accent);fill-opacity:.1;stroke:var(--accent);stroke-width:3;stroke-dasharray:9 7}
+.measure{stroke:var(--accent);stroke-width:3;fill:none}
+.turn{fill:none;stroke:var(--accent);stroke-width:3.5;stroke-linecap:round}
+.beam{fill:var(--accent);fill-opacity:.22}
+.scanner-body{fill:var(--surface);stroke:var(--outline);stroke-opacity:.6;stroke-width:2}
+.scanner-grip{fill:var(--surface-2)}
+.gloss{fill:none;stroke:var(--surface);stroke-opacity:.9;stroke-width:5;stroke-linecap:round}
+.ttl{fill:var(--ink);font:700 25px var(--font-display)}
+.scale-t{fill:var(--ink);font:700 16px var(--font-body)}
+.scale-l{stroke:var(--ink);stroke-width:3}
+.tag .pill{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+.tag .tag-t{fill:var(--ink);font:700 22px var(--font-body);dominant-baseline:central}
+.tag .tag-s{fill:var(--ink-2);font:400 18px var(--font-body);dominant-baseline:central}
+.tag .lead{stroke:var(--ink-2);stroke-width:1.6;fill:none}
+.tag .dot{fill:var(--ink);stroke:var(--surface);stroke-width:2}
+
+.f-temp{fill:var(--temp)}.f-graft-bg{fill:var(--graft-bg)}.f-membrane{fill:var(--membrane)}
+.granule{fill:var(--graft);stroke:var(--bone-dense);stroke-width:1}
+.ghost{fill:none;stroke:var(--ink-2);stroke-width:2;stroke-dasharray:6 6}
+.stump-dash{fill:none;stroke:var(--ink-2);stroke-width:2.2;stroke-dasharray:7 6;stroke-opacity:.8}
+.floss{fill:none;stroke:var(--accent);stroke-width:4.5;stroke-linecap:round;stroke-dasharray:760}
+.suture{fill:none;stroke:var(--ink);stroke-width:2.6;stroke-linecap:round}
+.under-gum{opacity:.6}
+.under-gum path,.under-gum rect{stroke-dasharray:4 3}
+.membrane-line{stroke:var(--outline);stroke-opacity:.45;stroke-width:1.5}
+
+/* Confronto dei tempi */
+.timeline{display:grid;gap:18px;margin-top:28px;max-width:980px}
+.tl-row{display:grid;gap:8px;min-width:0}
+.tl-name{font-weight:700;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+.tl-name span{font-weight:400;color:var(--ink-2);font-size:.92rem}
+.tl-bar{display:flex;gap:4px;min-width:0}
+.tl-seg{flex:var(--w,1) 1 0;min-width:0;padding:8px 10px;border-radius:10px;font-size:.88rem;font-weight:700;line-height:1.25;background:var(--surface-2);color:var(--ink);overflow-wrap:anywhere}
+.tl-seg.op{flex:0 1 auto;background:var(--accent);color:var(--accent-ink)}
+.tl-seg.wait{background:var(--accent-soft)}
+.tl-seg small{display:block;font-weight:400;font-size:.8rem}
+
+/* Rigenerazione ossea */
+.gbr-panels{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));margin-top:28px}
+.gbr-panel{margin:0;background:var(--stage);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--line)}
+.gbr-panel svg{display:block;width:100%;height:auto}
+.gbr-panel figcaption{padding:12px 16px 16px;display:flex;flex-direction:column;gap:2px;background:var(--surface);flex:1}
+.gbr-panel figcaption b{font-size:1.02rem}
+.gbr-facts{display:grid;gap:20px 28px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));margin-top:28px}
+.gbr-facts > div{display:flex;flex-direction:column;gap:6px;min-width:0}
+.gbr-care{margin-top:28px;display:grid;gap:12px}
+.gbr-care h3{font-size:1.15rem}
+
+/* Visibilità delle parti nelle fasi */
+#scene .part,#scene .stag{display:none}
+#scene[data-step="1"] .v1,#scene[data-step="2"] .v2,#scene[data-step="3"] .v3,#scene[data-step="4"] .v4,#scene[data-step="5"] .v5,#scene[data-step="6"] .v6,#scene[data-step="7"] .v7,#scene[data-step="8"] .v8{display:inline}
+#scene[data-step="1"] .s1,#scene[data-step="2"] .s2,#scene[data-step="3"] .s3,#scene[data-step="4"] .s4,#scene[data-step="5"] .s5,#scene[data-step="6"] .s6,#scene[data-step="7"] .s7,#scene[data-step="8"] .s8{display:inline;animation:fadeIn .45s var(--d,.4s) both}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes fadeOut{from{opacity:1}to{opacity:0}}
+@keyframes march{from{stroke-dashoffset:160}to{stroke-dashoffset:0}}
+@keyframes extract{0%{transform:translateY(0);opacity:1}70%{opacity:1}100%{transform:translateY(-250px);opacity:0}}
+@keyframes insert{0%{transform:translateY(-300px);opacity:0}20%{opacity:1}100%{transform:none;opacity:1}}
+@keyframes drop{from{transform:translateY(-90px);opacity:0}to{transform:none;opacity:1}}
+@keyframes seat{from{transform:translateY(-140px);opacity:0}to{transform:none;opacity:1}}
+@keyframes driftL{0%{transform:translateX(0);opacity:0}30%{opacity:1}100%{transform:translateX(14px);opacity:0}}
+@keyframes driftR{0%{transform:translateX(0);opacity:0}30%{opacity:1}100%{transform:translateX(-14px);opacity:0}}
+@keyframes scan{from{transform:translateX(-18px)}to{transform:translateX(18px)}}
+@keyframes sweep{0%{transform:translateX(0);opacity:0}8%{opacity:1}82%{transform:translateX(364px);opacity:1}100%{transform:translateX(364px);opacity:0}}
+@keyframes thread{from{stroke-dashoffset:760}to{stroke-dashoffset:0}}
+@keyframes wiggle{from{transform:translateX(-8px)}to{transform:translateX(8px)}}
+@keyframes pop{0%{transform:scale(.2);opacity:0}100%{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  #scene *,#scene .part{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important}
+  #scene .pl,#scene .pr{animation:none!important;opacity:1}
+  .toast{transition:none}
+}
+@media (max-width:420px){.brand .short{display:none}}
+
+
+:root{--gum-hot:#C33A4A;--cotton:#FFFFFF;--gum-infl:#E27882;--pocket:#7C2E3A;--calc:#E8D9A2;--calc-sub:#5B4A33;--plaque:#EFE2A4;--bact:#7B4FA0;--blood:#C62828;--instr:#C9D2D8;--instr-dark:#6B7780;--water:#7FC4EA;--cup:#8FC3EA;--bristle:#F4F7F9}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--gum-hot:#A8323F;--cotton:#E8ECEE;--gum-infl:#C9636D;--pocket:#5E2029;--calc:#CDBE86;--calc-sub:#8A7656;--plaque:#D9CC8E;--bact:#B58BD6;--blood:#EF5350;--instr:#AEB8BF;--instr-dark:#56626A;--water:#5FA7CF;--cup:#6FA3CC;--bristle:#E4E9EC}}
+:root[data-theme="dark"]{--gum-hot:#A8323F;--cotton:#E8ECEE;--gum-infl:#C9636D;--pocket:#5E2029;--calc:#CDBE86;--calc-sub:#8A7656;--plaque:#D9CC8E;--bact:#B58BD6;--blood:#EF5350;--instr:#AEB8BF;--instr-dark:#56626A;--water:#5FA7CF;--cup:#6FA3CC;--bristle:#E4E9EC}
+.f-gum-infl{fill:var(--gum-infl)}.f-pocket{fill:var(--pocket);fill-opacity:.6}.f-calc{fill:var(--calc)}.f-calc-sub{fill:var(--calc-sub)}
+.f-bact{fill:var(--bact)}.f-blood{fill:var(--blood)}.f-instr{fill:var(--instr)}.f-cup{fill:var(--cup)}.f-water{fill:var(--water)}
+.f-gum-hot{fill:var(--gum-hot)}.f-cotton{fill:var(--cotton)}.f-stip{fill:var(--gum-deep);fill-opacity:.45}
+.vessel{fill:none;stroke:var(--gum-hot);stroke-width:2;stroke-linecap:round;stroke-opacity:.9}
+.biofilm{fill:none;stroke:var(--bact);stroke-width:4;stroke-linecap:round;stroke-opacity:.5}
+.plaque{fill:none;stroke:var(--plaque);stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:.95}
+.gum-line{fill:none;stroke:var(--gum-deep);stroke-width:2.5}
+.instr-body{fill:none;stroke:var(--instr);stroke-width:24;stroke-linecap:round}
+.instr-body-o{fill:none;stroke:var(--instr-dark);stroke-width:28;stroke-linecap:round}
+.instr-tip{fill:none;stroke:var(--instr-dark);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.probe-rod{fill:none;stroke:var(--instr-dark);stroke-width:5;stroke-linecap:round}
+.probe-handle{fill:none;stroke:var(--instr);stroke-width:12;stroke-linecap:round}
+.probe-tick{stroke:var(--ink);stroke-width:2}
+.probe-tick.b{stroke-width:3.5}
+.smooth{fill:none;stroke:var(--accent);stroke-width:4;stroke-linecap:round}
+.zone{fill:none;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:.38}
+.za{stroke:var(--accent)}.zs{stroke:var(--warn)}
+[data-type="abl"] .zone-srp,[data-type="srp"] .zone-abl{opacity:.25}
+.q-arch{fill:none;stroke:var(--surface-2);stroke-width:16;stroke-linecap:round}
+.q-arch.on{stroke:var(--accent)}
+.q-num{fill:var(--ink);font:700 18px var(--font-body);text-anchor:middle;dominant-baseline:central}
+.bristles{stroke:var(--bristle);stroke-width:3;stroke-linecap:round}
+.mobility{fill:none;stroke:var(--warn);stroke-width:3.5;stroke-linecap:round}
+
+.type-pick{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;background:var(--surface-2);border-radius:20px;max-width:100%}
+.type-pick button{min-height:42px;padding:0 16px;border-radius:16px;border:0;background:none;font-weight:700;font-size:.98rem;color:var(--ink-2);cursor:pointer}
+.type-pick button[aria-checked="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 4px color-mix(in srgb,var(--ink) 18%,transparent)}
+.pick-label{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.chip-ok{background:var(--accent-soft)!important}
+.chip-warn{background:var(--warn-soft)!important}
+.chip-alert{background:var(--alert-soft)!important}
+
+/* Stadi della malattia */
+#stages .part,#stages .gtag{display:none}
+#stages[data-stage="1"] .g1,#stages[data-stage="2"] .g2,#stages[data-stage="3"] .g3,#stages[data-stage="4"] .g4,#stages[data-stage="5"] .g5{display:inline;animation:fadeIn .5s both}
+#stages[data-stage="1"] .gtag.g1,#stages[data-stage="2"] .gtag.g2,#stages[data-stage="3"] .gtag.g3,#stages[data-stage="4"] .gtag.g4,#stages[data-stage="5"] .gtag.g5{animation:fadeIn .4s .35s both}
+#stage-nav{--n:5}
+
+/* Fasi: due sequenze diverse */
+#scene[data-type="abl"][data-step="1"] .a1,#scene[data-type="abl"][data-step="2"] .a2,#scene[data-type="abl"][data-step="3"] .a3,#scene[data-type="abl"][data-step="4"] .a4,#scene[data-type="abl"][data-step="5"] .a5,
+#scene[data-type="srp"][data-step="1"] .r1,#scene[data-type="srp"][data-step="2"] .r2,#scene[data-type="srp"][data-step="3"] .r3,#scene[data-type="srp"][data-step="4"] .r4,
+#scene[data-type="srp"][data-step="5"] .r5,#scene[data-type="srp"][data-step="6"] .r6,#scene[data-type="srp"][data-step="7"] .r7,#scene[data-type="srp"][data-step="8"] .r8{display:inline}
+#scene[data-type="abl"][data-step="1"] .xa1,#scene[data-type="abl"][data-step="2"] .xa2,#scene[data-type="abl"][data-step="3"] .xa3,#scene[data-type="abl"][data-step="4"] .xa4,#scene[data-type="abl"][data-step="5"] .xa5,
+#scene[data-type="srp"][data-step="1"] .xr1,#scene[data-type="srp"][data-step="2"] .xr2,#scene[data-type="srp"][data-step="3"] .xr3,#scene[data-type="srp"][data-step="4"] .xr4,
+#scene[data-type="srp"][data-step="5"] .xr5,#scene[data-type="srp"][data-step="6"] .xr6,#scene[data-type="srp"][data-step="7"] .xr7,#scene[data-type="srp"][data-step="8"] .xr8{display:inline;animation:fadeIn .45s var(--d,.4s) both}
+#scene .k-probe{animation:probeIn 1s cubic-bezier(.2,.8,.2,1) .3s both}
+#scene .k-tool{animation:toolIn .9s cubic-bezier(.2,.8,.2,1) .2s both}
+#scene .k-buzz{animation:buzz .12s linear 1.1s infinite}
+#scene .k-drop{animation:spray 1s ease-out 1.1s infinite}
+#scene[data-type="abl"][data-step="2"] .k-clean,#scene[data-type="srp"][data-step="2"] .k-clean{animation:fadeOut 1.6s 1.3s both}
+#scene[data-type="srp"][data-step="4"] .k-clean-sub{animation:fadeOut 1.8s 1.3s both}
+#scene[data-type="srp"][data-step="4"] .k-smooth{animation:fadeIn 1.2s 3s both}
+#scene[data-type="srp"][data-step="5"] .k-old{animation:fadeOut 2s .6s both}
+#scene[data-type="srp"][data-step="5"] .k-new{animation:fadeIn 2s .6s both}
+#scene .k-spin{transform-box:fill-box;transform-origin:center;animation:spin 1s linear 1s infinite}
+@keyframes probeIn{from{transform:translate(-30px,-80px);opacity:0}to{transform:none;opacity:1}}
+@keyframes toolIn{from{transform:translate(-60px,-70px);opacity:0}to{transform:none;opacity:1}}
+@keyframes buzz{0%,100%{transform:translate(0,0)}25%{transform:translate(1.4px,-1px)}75%{transform:translate(-1.4px,1px)}}
+@keyframes spray{0%{transform:translate(0,0);opacity:0}20%{opacity:1}100%{transform:translate(-18px,14px);opacity:0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){#stages *{animation-duration:.01ms!important;animation-delay:0s!important}#scene .k-buzz,#scene .k-drop,#scene .k-spin{animation:none!important}}
+
+</style>
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="#cose"><svg class="brand-mark" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" class="f-accent"/><path d="M8 9.5c0-2 1.6-3 3-3 1.2 0 1.9.7 3 .7s1.8-.7 3-.7c1.4 0 3 1 3 3 0 2.4-1 3.6-1.4 6-.4 2.4-.6 6-1.9 6-1.4 0-1.2-4.6-2.7-4.6S12.6 21.5 11.2 21.5c-1.3 0-1.5-3.6-1.9-6C8.9 13.1 8 11.9 8 9.5Z" class="f-surface"/></svg><span class="long">Studio Dentistico Colombo</span><span class="short">Studio Colombo</span></a>
+    <div class="tools">
+      <button class="btn" id="btn-present" type="button" aria-label="Mostra le fasi a schermo intero">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M10 9.5v4l3.5-2z"/><path d="M8 21h8"/></svg>
+        <span>In poltrona</span>
+      </button>
+      <button class="btn btn-primary" id="btn-share" type="button" aria-label="Consegna la scheda al paziente con QR o link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg>
+        <span>Consegna<span class="lbl-long"> al paziente</span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="wrap toc" aria-label="Sezioni della scheda">
+    <a href="#cose">Cos'è</a> <a href="#malattia">Come si ammala la gengiva</a> <a href="#fasi">Le fasi</a> <a href="#durata">Cosa dicono gli studi</a> <a href="#dopo">Dopo la seduta</a> <a href="#domande">Domande</a>
+  </nav>
+</header>
+
+<main>
+  <section class="wrap hero" id="cose">
+    <div class="hero-copy">
+      <p class="eyebrow">Scheda informativa · Igiene e parodontologia</p>
+      <h1>Ablazione e scaling</h1>
+      <p class="lead">L'ablazione toglie placca e tartaro dai denti, sopra e appena sotto il bordo della gengiva. Lo scaling e root planing pulisce in profondità le radici dentro le tasche, quando la gengiva è malata e l'osso ha iniziato a ritirarsi.</p>
+      <div class="pick-label">
+        <span class="label" id="pick-lbl">Il suo trattamento</span>
+        <div class="type-pick" role="radiogroup" aria-labelledby="pick-lbl">
+          <button type="button" role="radio" data-type="abl" aria-checked="true">Ablazione</button>
+          <button type="button" role="radio" data-type="srp" aria-checked="false">Scaling e root planing</button>
+        </div>
+      </div>
+      <dl class="facts">
+        <div><dt>Anestesia</dt><dd id="fact-an"></dd></div>
+        <div><dt>Durata</dt><dd id="fact-dur"></dd></div>
+        <div><dt>Sedute</dt><dd id="fact-sed"></dd></div>
+        <div><dt>Poi</dt><dd id="fact-poi"></dd></div>
+      </dl>
+      <p class="fine">Valori indicativi. La frequenza dei controlli la decidiamo in base al suo rischio.</p>
+    </div>
+    <figure class="compare">
+      <div class="compare-stage">
+        <svg id="hero-fig" viewBox="0 0 720 540" data-type="abl" role="img" aria-label="Dente in sezione con una tasca gengivale: in evidenza la zona pulita dall'ablazione, sopra la gengiva, e quella pulita dallo scaling, dentro la tasca."></svg>
+      </div>
+      <figcaption id="hero-cap"></figcaption>
+    </figure>
+  </section>
+
+  <section id="malattia">
+    <div class="wrap">
+      <div class="sec-head"><div>
+        <p class="eyebrow">Dalla placca all'osso</p>
+        <h2>Come si ammala la gengiva</h2>
+        <p class="sec-intro">La malattia delle gengive avanza in silenzio, spesso senza dolore. Nel mondo circa 1 adulto su 10 ha una parodontite grave.<a class="ref" href="#f1">1</a> Tocchi le fasi per vedere cosa succede.</p>
+      </div></div>
+      <div class="stepper">
+        <div>
+          <figure class="stage" style="margin:0"><svg id="stages" viewBox="0 0 720 540" data-stage="1" role="img" aria-labelledby="stage-title"></svg></figure>
+          <p class="stage-foot">Il numero in millimetri è la profondità misurata con la sonda parodontale.</p>
+        </div>
+        <div class="step-copy" aria-live="polite">
+          <p class="step-count" id="stage-count">Fase 1 di 5</p>
+          <h3 id="stage-title"></h3>
+          <ul class="chips" id="stage-chips"></ul>
+          <p class="step-text" id="stage-text"></p>
+          <div class="step-note"><span class="label">Cosa fare</span><p id="stage-note"></p></div>
+        </div>
+      </div>
+      <ol class="step-nav" id="stage-nav" aria-label="Fasi della malattia"></ol>
+    </div>
+  </section>
+
+  <section id="fasi">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Passo per passo</p>
+          <h2>Le fasi del trattamento</h2>
+          <p class="sec-intro">Usi le frecce o scorra l'immagine con il dito. Ogni fase mostra cosa succede nella bocca.</p>
+        </div>
+        <button class="btn" id="btn-exit" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>Chiudi</button>
+      </div>
+      <div class="stepper">
+        <div>
+          <figure class="stage" id="stage"><svg id="scene" viewBox="0 0 720 540" data-step="1" role="img" aria-labelledby="step-title"></svg></figure>
+          <p class="stage-foot">Schema semplificato di un dente in sezione, con gengiva e osso sui due lati.</p>
+        </div>
+        <div class="step-copy" aria-live="polite">
+          <p class="step-count" id="step-count">Fase 1</p>
+          <h3 id="step-title"></h3>
+          <ul class="chips" id="step-chips"></ul>
+          <p class="step-text" id="step-text"></p>
+          <div class="step-note"><span class="label">Da sapere</span><p id="step-note"></p></div>
+          <div class="step-ctrl">
+            <button class="btn" id="prev" type="button" aria-label="Fase precedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Indietro</button>
+            <button class="btn btn-primary" id="next" type="button" aria-label="Fase successiva"><span id="next-lbl">Avanti</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <ol class="step-nav" id="step-nav" aria-label="Vai a una fase"></ol>
+    </div>
+  </section>
+
+
+  <section id="durata">
+    <div class="wrap">
+      <div class="sec-head"><div>
+        <p class="eyebrow">Cosa dicono gli studi</p>
+        <h2>Cosa aspettarsi</h2>
+        <p class="sec-intro">I risultati dipendono molto da quanto bene si pulisce a casa tra una seduta e l'altra.</p>
+      </div></div>
+      <div class="risk-grid">
+        <div class="array-card">
+          <p class="big">74 <small>su 100</small></p>
+          <p>Le tasche che si chiudono dopo lo scaling, a 6–8 mesi.<a class="ref" href="#f3">3</a></p>
+          <div class="icon-array" id="arr-close" role="img" aria-label="74 pallini pieni su 100: tasche chiuse dopo lo scaling"></div>
+          <ul class="legend"><li><i class="on"></i>Tasca chiusa</li><li><i></i>Ancora profonda</li></ul>
+          <p class="fine">In media la profondità delle tasche si riduce di 1,4 mm. Gli strumenti a ultrasuoni danno risultati simili a quelli manuali. Le tasche che restano profonde possono richiedere altre cure.</p>
+        </div>
+        <div class="array-card">
+          <p class="big">2–3 <small>settimane</small></p>
+          <p>Bastano senza igiene perché la gengiva si infiammi; riprendendo a pulire, guarisce in pochi giorni.<a class="ref" href="#f2">2</a></p>
+          <p class="fine">La gengivite è reversibile. La parodontite no: l'osso perso non ricresce con queste cure, ma la malattia si può fermare.</p>
+          <p class="big" style="margin-top:8px">−0,4 <small>punti di glicata</small></p>
+          <p>Nelle persone con diabete, curare la parodontite abbassa l'emoglobina glicata (HbA1c) di circa 0,4 punti dopo 3–4 mesi.<a class="ref" href="#f5">5</a></p>
+        </div>
+      </div>
+      <div class="risks">
+        <h3>Effetti possibili dopo il trattamento</h3>
+        <ul>
+          <li>Gengive un po' dolenti e qualche sanguinamento per 1–2 giorni.</li>
+          <li>Sensibilità al freddo per qualche giorno o settimana, soprattutto dopo lo scaling.</li>
+          <li>Quando la gengiva si sgonfia, i denti possono sembrare più lunghi e possono vedersi piccoli spazi tra i denti.</li>
+          <li>Raramente, un piccolo ascesso nella gengiva nei giorni successivi.</li>
+          <li>Se il tartaro era tanto, i denti possono sembrare più mobili per qualche giorno: il tartaro li teneva uniti.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="dopo">
+    <div class="wrap">
+      <div class="sec-head"><div>
+        <p class="eyebrow">Istruzioni dopo la seduta</p>
+        <h2>Dopo la seduta e a casa</h2>
+        <p class="sec-intro">Sono le indicazioni standard dello studio. Se il dentista o l'igienista le hanno dato istruzioni diverse, segua quelle.</p>
+      </div></div>
+      <div class="tabs" role="tablist" aria-label="Istruzioni">
+        <button class="tab" role="tab" id="tab-dopo" aria-controls="p-dopo" aria-selected="true" type="button">Dopo la seduta</button>
+        <button class="tab" role="tab" id="tab-casa" aria-controls="p-casa" aria-selected="false" tabindex="-1" type="button">Pulizia a casa</button>
+        <button class="tab" role="tab" id="tab-tempo" aria-controls="p-tempo" aria-selected="false" tabindex="-1" type="button">Nel tempo</button>
+        <button class="tab tab-alert" role="tab" id="tab-call" aria-controls="p-call" aria-selected="false" tabindex="-1" type="button">Quando chiamarci</button>
+      </div>
+      <div class="panel" role="tabpanel" id="p-dopo" aria-labelledby="tab-dopo">
+        <ul class="do-list">
+          <li><span><b>Se è stato usato l'anestetico spray</b>, aspetti qualche minuto che passi l'effetto prima di mangiare o bere bevande calde.</span></li>
+          <li><span><b>Un po' di sensibilità</b> al freddo e gengive dolenti sono normali per qualche giorno. Un dentifricio per denti sensibili aiuta.</span></li>
+          <li><span><b>Un leggero sanguinamento</b> nei primi 1–2 giorni è normale.</span></li>
+          <li><span><b>Continui a lavare i denti</b> anche nella zona trattata, con delicatezza.</span></li>
+          <li><span><b>Non fumi</b> almeno per il resto della giornata. Il fumo peggiora la guarigione e la malattia delle gengive.</span></li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="p-casa" aria-labelledby="tab-casa" hidden>
+        <ul class="do-list">
+          <li><span><b>Spazzolino</b> morbido o elettrico, due volte al giorno per due minuti, con le setole inclinate verso la gengiva.</span></li>
+          <li><span><b>Ogni giorno tra i denti</b> con scovolini o filo: la misura giusta degli scovolini gliela indichiamo noi.</span></li>
+          <li><span><b>Se la gengiva sanguina</b>, non smetta di pulire: è il segno che in quel punto serve pulire meglio. Di solito il sanguinamento cala in pochi giorni.</span></li>
+          <li><span><b>Collutorio</b> solo se glielo consigliamo: non sostituisce spazzolino e scovolini.</span></li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="p-tempo" aria-labelledby="tab-tempo" hidden>
+        <ul class="do-list">
+          <li><span><b>Igiene professionale</b> con la frequenza decisa per lei. Dopo una parodontite, all'inizio spesso ogni 3–4 mesi.</span></li>
+          <li><span><b>La parodontite non guarisce una volta per tutte</b>: si tiene sotto controllo con la pulizia di ogni giorno e i controlli.</span></li>
+          <li><span><b>Se fuma</b>, smettere è una delle cose che aiutano di più le gengive. Se ha il diabete, tenerlo sotto controllo aiuta anche la gengiva.</span></li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="p-call" aria-labelledby="tab-call" hidden>
+        <div class="alert-box">
+          <ul class="do-list">
+            <li><span>Gonfiore della gengiva o della guancia, pus o dolore pulsante.</span></li>
+            <li><span>Febbre.</span></li>
+            <li><span>Un dente che si muove sempre di più.</span></li>
+            <li><span>Un sanguinamento che non si ferma.</span></li>
+            <li><span>Sensibilità forte che non migliora dopo 2–3 settimane.</span></li>
+          </ul>
+          <div class="contacts">
+            <div class="contact"><span class="label">Telefono dello studio</span><a href="tel:+39094122749">0941 22749</a></div>
+            <div class="contact"><span class="label">WhatsApp</span><a href="https://wa.me/393791523085" target="_blank" rel="noopener">+39 379 152 3085</a></div>
+          </div>
+          <p class="fine">Se ha difficoltà a respirare o a deglutire, o un gonfiore che si estende rapidamente, chiami subito il 118.</p>
+        </div>
+      </div>
+      <p class="studio-strip"><b>Studio Dentistico Colombo</b><span>Tel. 0941 22749</span><span>Lun–gio 8:30–12:30 e 16:00–20:00</span><span>Ven 8:30–12:30</span></p>
+    </div>
+  </section>
+
+  <section id="domande">
+    <div class="wrap">
+      <div class="sec-head"><div>
+        <p class="eyebrow">Domande frequenti</p>
+        <h2>Le domande che ci fanno più spesso</h2>
+      </div></div>
+      <div class="faq">
+        <details><summary>Che differenza c'è tra ablazione e scaling?</summary><p>L'ablazione toglie placca e tartaro sopra la gengiva e appena sotto il bordo. Lo scaling e root planing arriva fino in fondo alle tasche con una punta a ultrasuoni sottile e pulisce le radici. Il secondo serve quando c'è una parodontite.</p></details>
+        <details><summary>Fa male?</summary><p>L'ablazione di solito dà solo un po' di fastidio, soprattutto se i denti sono sensibili o la gengiva è infiammata, e non richiede anestesia. Anche lo scaling di solito si fa senza anestesia; se una zona è sensibile, si appoggia sulla gengiva un batuffolo di cotone con un anestetico spray.</p></details>
+        <details><summary>Perché lo scaling si fa un quadrante alla volta?</summary><p>Così ogni seduta dura 30–45 minuti e si lavora con calma su una zona alla volta. Di solito servono quattro sedute, una per quadrante.</p></details>
+        <details><summary>L'osso perso ricresce?</summary><p>Con lo scaling no: lo scopo è fermare la malattia e far stringere la gengiva intorno al dente. In alcuni difetti dell'osso si può valutare in seguito una chirurgia rigenerativa.</p></details>
+        <details><summary>Dopo lo scaling i denti sembrano più lunghi: è normale?</summary><p>Sì. La gengiva infiammata era gonfia; guarendo si sgonfia e si stringe alla radice, e il dente appare più lungo. È il segno che l'infiammazione è diminuita.</p></details>
+        <details><summary>Ogni quanto devo fare l'ablazione?</summary><p>Dipende dal rischio. Per gli adulti con gengive sane gli studi non mostrano una frequenza migliore delle altre: farla ogni 6 o 12 mesi cambia poco l'infiammazione e riduce un po' di più il tartaro.<a class="ref" href="#f6">6</a> Dopo una parodontite servono controlli più ravvicinati, spesso ogni 3–4 mesi.<a class="ref" href="#f4">4</a></p></details>
+        <details><summary>La parodontite c'entra con il diabete?</summary><p>Sì, le due malattie si influenzano. Nelle persone con diabete, curare la parodontite migliora un po' il controllo della glicemia.<a class="ref" href="#f5">5</a></p></details>
+        <details><summary>Quanto costa?</summary><p>Dipende dal trattamento e dal numero di sedute. Riceve un preventivo prima di iniziare.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <div><p class="label">Fonti</p></div>
+  <ol>
+    <li id="f1">Kassebaum NJ, Bernabé E, Dahiya M, Bhandari B, Murray CJ, Marcenes W. Global burden of severe periodontitis in 1990–2010: a systematic review and meta-regression. <i>J Dent Res</i> 2014;93(11):1045–1053. <a href="https://www.nature.com/articles/6401037" target="_blank" rel="noopener">Sintesi</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Kassebaum+Global+burden+of+severe+periodontitis+1990-2010" target="_blank" rel="noopener">PubMed</a></li>
+    <li id="f2">Löe H, Theilade E, Jensen SB. Experimental gingivitis in man. <i>J Periodontol</i> 1965;36:177–187. <a href="https://www.perioexpertise.co.uk/summary-of-article-experimental-gingivitis-in-man/" target="_blank" rel="noopener">Sintesi</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Loe+Theilade+Jensen+Experimental+gingivitis+in+man+1965" target="_blank" rel="noopener">PubMed</a></li>
+    <li id="f3">Suvan J, Leira Y, Moreno Sancho FM, Graziani F, Derks J, Tomasi C. Subgingival instrumentation for treatment of periodontitis. A systematic review. <i>J Clin Periodontol</i> 2020;47 Suppl 22:155–175. <a href="https://doi.org/10.1111/jcpe.13245" target="_blank" rel="noopener">Articolo</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Suvan+Subgingival+instrumentation+for+treatment+of+periodontitis+systematic+review" target="_blank" rel="noopener">PubMed</a></li>
+    <li id="f4">Sanz M, Herrera D, Kebschull M, et al. Treatment of stage I–III periodontitis – The EFP S3 level clinical practice guideline. <i>J Clin Periodontol</i> 2020;47 Suppl 22:4–60. <a href="https://doi.org/10.1111/jcpe.13290" target="_blank" rel="noopener">Articolo</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Treatment+of+stage+I-III+periodontitis+EFP+S3+level+clinical+practice+guideline" target="_blank" rel="noopener">PubMed</a></li>
+    <li id="f5">Simpson TC, Clarkson JE, Worthington HV, et al. Treatment of periodontitis for glycaemic control in people with diabetes mellitus. <i>Cochrane Database Syst Rev</i> 2022;4:CD004714. <a href="https://doi.org/10.1002/14651858.CD004714.pub4" target="_blank" rel="noopener">Articolo</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/35420698/" target="_blank" rel="noopener">PubMed</a></li>
+    <li id="f6">Lamont T, Worthington HV, Clarkson JE, Beirne PV. Routine scale and polish for periodontal health in adults. <i>Cochrane Database Syst Rev</i> 2018;12:CD004625. <a href="https://doi.org/10.1002/14651858.CD004625.pub5" target="_blank" rel="noopener">Articolo</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Lamont+Routine+scale+and+polish+for+periodontal+health+in+adults+2018" target="_blank" rel="noopener">PubMed</a></li>
+  </ol>
+  <p class="fine">Questa scheda spiega il trattamento in generale e non sostituisce la visita. Le illustrazioni sono schemi semplificati. Aggiornata a ottobre 2026.</p>
+</footer>
+<div class="sheet" id="share" hidden>
+  <div class="sheet-card" role="dialog" aria-modal="true" aria-labelledby="share-title">
+    <div class="sheet-head">
+      <div><p class="eyebrow">Per lo studio</p><h2 id="share-title" style="font-size:1.6rem">Consegna al paziente</h2></div>
+      <button class="icon-btn" id="share-close" type="button" aria-label="Chiudi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <fieldset class="seg">
+      <legend class="label">La pagina si apre su</legend>
+      <label><input type="radio" name="target" id="t-all" value="" checked>Scheda completa</label>
+      <label><input type="radio" name="target" id="t-dopo" value="dopo">Istruzioni dopo la seduta</label>
+      <label><input type="radio" name="target" id="t-fasi" value="fasi">Le fasi del trattamento</label>
+    </fieldset>
+    <div class="qr" id="qr" aria-label="Codice QR del link"></div>
+    <div class="field"><label class="label" for="share-url">Link per il paziente</label><input id="share-url" type="text" readonly></div>
+    <div class="sheet-actions">
+      <button class="btn" id="copy-url" type="button">Copia link</button>
+      <a class="btn btn-primary" id="wa-url" href="#" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <details>
+      <summary>Indirizzo pubblico della pagina</summary>
+      <div class="field">
+        <label class="label" for="base-url">Dove è pubblicata la scheda</label>
+        <input id="base-url" type="url" inputmode="url" autocomplete="off">
+        <p class="fine">Il QR e il link puntano a questo indirizzo. Aggiornalo quando pubblichi la pagina su GitHub Pages o sul sito dello studio.</p>
+      </div>
+    </details>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script>
+/* Schede trattamenti · Studio Dentistico Colombo
+   Codice in comune: geometria dei disegni, etichette, fasi, consegna al paziente. */
+(function(){
+"use strict";
+document.documentElement.lang = "it";
+var T = window.T = {};
+
+/* ===== Geometria (coordinate della scena 720 × 540, circa 18 unità = 1 mm) ===== */
+function crownTop(c){return "M"+(c-62)+" 240 C"+(c-80)+" 206 "+(c-88)+" 160 "+(c-82)+" 130 C"+(c-78)+" 108 "+(c-62)+" 96 "+(c-42)+" 96 C"+(c-24)+" 96 "+(c-14)+" 112 "+c+" 112 C"+(c+14)+" 112 "+(c+24)+" 96 "+(c+42)+" 96 C"+(c+62)+" 96 "+(c+78)+" 108 "+(c+82)+" 130 C"+(c+88)+" 160 "+(c+80)+" 206 "+(c+62)+" 240 ";}
+function rootDown(c){return "C"+(c+56)+" 310 "+(c+40)+" 400 "+(c+18)+" 448 C"+(c+10)+" 462 "+(c-10)+" 462 "+(c-18)+" 448 C"+(c-40)+" 400 "+(c-56)+" 310 ";}
+T.toothBody=function(c){return crownTop(c)+rootDown(c)+(c-62)+" 240 Z";};
+T.crownCap=function(c){return crownTop(c)+"C"+(c+30)+" 230 "+(c-30)+" 230 "+(c-62)+" 240 Z";};
+T.pontic=function(c){return crownTop(c)+"C"+(c+30)+" 254 "+(c-30)+" 254 "+(c-62)+" 240 Z";};
+T.crownCore=function(c){return "M"+(c-52)+" 246 C"+(c-66)+" 210 "+(c-72)+" 168 "+(c-68)+" 142 C"+(c-64)+" 124 "+(c-52)+" 114 "+(c-36)+" 114 C"+(c-22)+" 114 "+(c-12)+" 126 "+c+" 126 C"+(c+12)+" 126 "+(c+22)+" 114 "+(c+36)+" 114 C"+(c+52)+" 114 "+(c+64)+" 124 "+(c+68)+" 142 C"+(c+72)+" 168 "+(c+66)+" 210 "+(c+52)+" 246 Z";};
+T.pulp=function(c){return "M"+(c-28)+" 152 C"+(c-32)+" 134 "+(c-20)+" 128 "+(c-12)+" 136 C"+(c-6)+" 142 "+(c+6)+" 142 "+(c+12)+" 136 C"+(c+20)+" 128 "+(c+32)+" 134 "+(c+28)+" 152 C"+(c+24)+" 182 "+(c+16)+" 212 "+(c+10)+" 242 C"+(c+7)+" 320 "+(c+5)+" 390 "+(c+3)+" 440 L"+(c-3)+" 440 C"+(c-5)+" 390 "+(c-7)+" 320 "+(c-10)+" 242 C"+(c-16)+" 212 "+(c-24)+" 182 "+(c-28)+" 152 Z";};
+T.pulpPrep=function(c){return "M"+(c-20)+" 178 C"+(c-22)+" 164 "+(c-14)+" 160 "+(c-8)+" 166 C"+(c-4)+" 170 "+(c+4)+" 170 "+(c+8)+" 166 C"+(c+14)+" 160 "+(c+22)+" 164 "+(c+20)+" 178 C"+(c+18)+" 198 "+(c+14)+" 218 "+(c+10)+" 242 C"+(c+7)+" 320 "+(c+5)+" 390 "+(c+3)+" 440 L"+(c-3)+" 440 C"+(c-5)+" 390 "+(c-7)+" 320 "+(c-10)+" 242 C"+(c-14)+" 218 "+(c-18)+" 198 "+(c-20)+" 178 Z";};
+T.stump=function(c){return "M"+(c-58)+" 242 L"+(c-50)+" 140 C"+(c-49)+" 128 "+(c-40)+" 122 "+(c-28)+" 122 L"+(c+28)+" 122 C"+(c+40)+" 122 "+(c+49)+" 128 "+(c+50)+" 140 L"+(c+58)+" 242";};
+T.preparedBody=function(c){return "M"+(c-60)+" 244 L"+(c-50)+" 140 C"+(c-49)+" 128 "+(c-40)+" 122 "+(c-28)+" 122 L"+(c+28)+" 122 C"+(c+40)+" 122 "+(c+49)+" 128 "+(c+50)+" 140 L"+(c+60)+" 244 C"+(c+56)+" 310 "+(c+40)+" 400 "+(c+18)+" 448 C"+(c+10)+" 462 "+(c-10)+" 462 "+(c-18)+" 448 C"+(c-40)+" 400 "+(c-56)+" 310 "+(c-60)+" 244 Z";};
+T.rootLine=function(c){return "M"+(c-62)+" 240 "+rootDown(c)+(c-62)+" 240";};
+T.socket=function(c){return "M"+(c-60)+" 266 C"+(c-54)+" 330 "+(c-40)+" 400 "+(c-18)+" 448 C"+(c-10)+" 462 "+(c+10)+" 462 "+(c+18)+" 448 C"+(c+40)+" 400 "+(c+54)+" 330 "+(c+60)+" 266 Z";};
+T.gloss=function(c){return "M"+(c-60)+" 150 C"+(c-60)+" 130 "+(c-52)+" 116 "+(c-38)+" 112";};
+T.IMPLANT={top:272,len:180,r:36};
+T.implant=function(c,o){
+  o=o||T.IMPLANT; var top=o.top, len=o.len, r=o.r, pitch=14, pts=[[c+r,top],[c+r,top+8]], y=top+14;
+  while(y < top+len-30){var t=(y-top)/len, ro=r+3-t*10, ri=ro-7; pts.push([c+ro,y]); pts.push([c+ri,y+pitch/2]); y+=pitch;}
+  var last=pts[pts.length-1], rr=last[0]-c, ly=last[1];
+  var d="M"+(c-r)+" "+top+" ";
+  pts.forEach(function(p){d+="L"+p[0].toFixed(1)+" "+p[1]+" ";});
+  d+="C"+(c+rr).toFixed(1)+" "+(ly+16)+" "+(c+12)+" "+(top+len)+" "+c+" "+(top+len)+" C"+(c-12)+" "+(top+len)+" "+(c-rr).toFixed(1)+" "+(ly+16)+" "+(c-rr).toFixed(1)+" "+ly+" ";
+  for(var i=pts.length-2;i>=0;i--){d+="L"+(2*c-pts[i][0]).toFixed(1)+" "+pts[i][1]+" ";}
+  return d+"Z";
+};
+T.halo=function(c,o){o=o||T.IMPLANT; var t=o.top+4,b=o.top+o.len,r=o.r,e=13,m=(t+b)/2;return "M"+(c-r-e)+" "+t+" L"+(c+r+e)+" "+t+" C"+(c+r+e)+" "+m+" "+(c+r+e-6)+" "+(b-20)+" "+(c+r-4)+" "+(b+8)+" C"+(c+14)+" "+(b+e+4)+" "+(c-14)+" "+(b+e+4)+" "+(c-r+4)+" "+(b+8)+" C"+(c-r-e+6)+" "+(b-20)+" "+(c-r-e)+" "+m+" "+(c-r-e)+" "+t+" Z";};
+T.abutment=function(c,top){top=top||272;return "M"+(c-34)+" "+top+" C"+(c-38)+" "+(top-10)+" "+(c-40)+" "+(top-20)+" "+(c-36)+" "+(top-30)+" L"+(c-28)+" 186 C"+(c-27)+" 178 "+(c-20)+" 174 "+(c-12)+" 174 L"+(c+12)+" 174 C"+(c+20)+" 174 "+(c+27)+" 178 "+(c+28)+" 186 L"+(c+36)+" "+(top-30)+" C"+(c+40)+" "+(top-20)+" "+(c+38)+" "+(top-10)+" "+(c+34)+" "+top+" Z";};
+T.healScrew=function(c,top){top=top||272;return "M"+(c-28)+" "+top+" L"+(c-30)+" 238 C"+(c-30)+" 230 "+(c-26)+" 226 "+(c-18)+" 226 L"+(c+18)+" 226 C"+(c+26)+" 226 "+(c+30)+" 230 "+(c+30)+" 238 L"+(c+28)+" "+top+" Z";};
+T.gumOpening=function(c){return "M"+(c-56)+" 232 C"+(c-30)+" 243 "+(c+30)+" 243 "+(c+56)+" 232 L"+(c+60)+" 286 L"+(c-60)+" 286 Z";};
+T.membrane=function(c){return "M"+(c-66)+" 234 C"+(c-30)+" 250 "+(c+30)+" 250 "+(c+66)+" 234 L"+(c+66)+" 226 C"+(c+30)+" 242 "+(c-30)+" 242 "+(c-66)+" 226 Z";};
+T.GUM="M0 228 C60 226 120 238 178 238 C228 238 250 208 269 208 C288 208 312 240 360 240 C408 240 432 208 451 208 C470 208 492 238 542 238 C600 238 660 226 720 228 L720 284 L0 284 Z";
+T.GUM_TOP="M0 228 C60 226 120 238 178 238 C228 238 250 208 269 208 C288 208 312 240 360 240 C408 240 432 208 451 208 C470 208 492 238 542 238 C600 238 660 226 720 228";
+T.BONE="M0 274 L720 274 L720 540 L0 540 Z";
+
+/* ===== Pezzi di disegno ===== */
+T.defs=function(p){
+  return '<defs>'+
+   '<pattern id="'+p+'pores" width="46" height="38" patternUnits="userSpaceOnUse"><ellipse cx="8" cy="9" rx="5" ry="3.5" class="f-pore"/><ellipse cx="30" cy="6" rx="3" ry="2.2" class="f-pore"/><ellipse cx="22" cy="24" rx="6" ry="4" class="f-pore"/><ellipse cx="41" cy="30" rx="3.6" ry="2.6" class="f-pore"/><ellipse cx="5" cy="31" rx="2.6" ry="2" class="f-pore"/></pattern>'+
+   '<pattern id="'+p+'graft" width="22" height="20" patternUnits="userSpaceOnUse"><rect width="22" height="20" class="f-graft-bg"/><circle cx="5" cy="5" r="3.6" class="granule"/><circle cx="15" cy="7" r="2.8" class="granule"/><circle cx="10" cy="15" r="3.3" class="granule"/><circle cx="19" cy="17" r="2.3" class="granule"/><circle cx="2" cy="16" r="1.9" class="granule"/></pattern>'+
+   '<pattern id="'+p+'graft2" width="30" height="28" patternUnits="userSpaceOnUse"><circle cx="6" cy="6" r="3" class="granule"/><circle cx="20" cy="15" r="2.4" class="granule"/><circle cx="9" cy="22" r="2" class="granule"/></pattern>'+
+   '<linearGradient id="'+p+'ti" x1="0" x2="1"><stop offset="0" style="stop-color:var(--ti-3)"/><stop offset=".35" style="stop-color:var(--ti-1)"/><stop offset=".7" style="stop-color:var(--ti-2)"/><stop offset="1" style="stop-color:var(--ti-3)"/></linearGradient>'+
+   '<linearGradient id="'+p+'ab" x1="0" x2="1"><stop offset="0" style="stop-color:var(--ti-2)"/><stop offset=".4" style="stop-color:var(--ti-1)"/><stop offset="1" style="stop-color:var(--ti-3)"/></linearGradient>'+
+   '<marker id="'+p+'arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="f-accent"/></marker>'+
+  '</defs>';
+};
+T.stageBg=function(){return '<rect x="-400" y="-400" width="1520" height="1340" class="f-stage"/>';};
+T.bone=function(p){return '<path d="'+T.BONE+'" class="f-bone"/><path d="'+T.BONE+'" fill="url(#'+p+'pores)"/>';};
+T.gum=function(){return '<path d="'+T.GUM+'" class="f-gum"/><path d="'+T.GUM_TOP+'" class="gum-edge"/>';};
+T.nerve=function(){return '<path d="M-10 500 C180 494 520 494 730 502" class="nerve-out"/><path d="M-10 500 C180 494 520 494 730 502" class="nerve-in"/>';};
+T.tooth=function(c,extra){
+  return '<path d="'+T.toothBody(c)+'" class="f-dentin o-line"/><path d="'+T.crownCap(c)+'" class="f-enamel o-line"/><path d="'+T.crownCore(c)+'" class="f-dentin"/><path d="'+T.pulp(c)+'" class="f-pulp"/>'+(extra||"");
+};
+T.damagedTooth=function(c){return T.tooth(c,'<ellipse cx="'+(c+32)+'" cy="134" rx="17" ry="13" class="f-caries"/><path d="M'+(c-14)+' 114 L'+(c-6)+' 140 L'+(c-16)+' 162 L'+(c-4)+' 196" class="crack"/>');};
+T.prepared=function(c){return '<path d="'+T.preparedBody(c)+'" class="f-dentin o-line"/><path d="'+T.pulpPrep(c)+'" class="f-pulp"/>';};
+T.bridge=function(cls){
+  return '<rect x="246" y="148" width="50" height="56" rx="16" class="'+cls+' o-line"/><rect x="424" y="148" width="50" height="56" rx="16" class="'+cls+' o-line"/>'+
+    '<path d="'+T.crownCap(178)+'" class="'+cls+' o-line"/><path d="'+T.crownCap(542)+'" class="'+cls+' o-line"/><path d="'+T.pontic(360)+'" class="'+cls+' o-line"/>';
+};
+T.bridgeGloss=function(){return '<path d="'+T.gloss(178)+'" class="gloss"/><path d="'+T.gloss(360)+'" class="gloss"/><path d="'+T.gloss(542)+'" class="gloss"/>';};
+T.implantG=function(p,c,o){return '<path d="'+T.implant(c,o)+'" fill="url(#'+p+'ti)" class="o-line"/>';};
+T.coverScrew=function(c,top,ghost){top=top||272;return '<g'+(ghost?' class="under-gum"':'')+'><rect x="'+(c-31)+'" y="'+(top-9)+'" width="62" height="11" rx="4" class="f-ti2 o-line"/><rect x="'+(c-7)+'" y="'+(top-7)+'" width="14" height="4" rx="1.5" class="f-ti3"/></g>';};
+T.healG=function(p,c,top){return '<path d="'+T.healScrew(c,top)+'" fill="url(#'+p+'ab)" class="o-line"/><rect x="'+(c-9)+'" y="228" width="18" height="6" rx="2" class="f-ti3"/>';};
+T.abutG=function(p,c,top){return '<path d="'+T.abutment(c,top)+'" fill="url(#'+p+'ab)" class="o-line"/>';};
+T.crownG=function(c,cls){return '<path d="'+T.crownCap(c)+'" class="'+(cls||"f-crown")+' o-line"/>'+(cls&&cls!=="f-crown"?'':'<path d="'+T.gloss(c)+'" class="gloss"/>');};
+T.sutures=function(c){
+  var s=""; [c-28,c+28].forEach(function(x){s+='<path d="M'+(x-9)+' 230 L'+(x+9)+' 248 M'+(x+9)+' 230 L'+(x-9)+' 248" class="suture"/>';});
+  return s;
+};
+T.membraneG=function(c){return '<path d="'+T.membrane(c)+'" class="f-membrane membrane-line"/>';};
+T.scanner=function(x0,by,hw){
+  var h=x0+43;
+  return '<path d="M'+(x0+16)+' 68 L'+(x0+70)+' 68 L'+(h+hw)+' '+by+' L'+(h-hw)+' '+by+' Z" class="beam"/>'+
+    '<rect x="'+x0+'" y="22" width="330" height="46" rx="23" class="scanner-body"/><rect x="'+(x0+206)+'" y="28" width="118" height="34" rx="17" class="scanner-grip"/><rect x="'+(x0+14)+'" y="62" width="58" height="8" rx="3" class="f-accent"/>';
+};
+T.particles=function(c,o){
+  o=o||T.IMPLANT; var b=o.top+o.len, s="";
+  var pts=[[c-54,o.top+40,"pl",0],[c-62,o.top+78,"pl",.6],[c-52,o.top+120,"pl",1.2],[c-60,b-22,"pl",.3],[c+54,o.top+50,"pr",.9],[c+62,o.top+90,"pr",.2],[c+50,o.top+132,"pr",1.5],[c+60,b-14,"pr",.7],[c-14,b+18,"pl",1.1],[c+16,b+18,"pr",.4]];
+  pts.forEach(function(q){s+='<circle cx="'+q[0]+'" cy="'+q[1]+'" r="4" class="f-dense '+q[2]+'" style="animation-delay:'+q[3]+'s"/>';});
+  return s;
+};
+T.scaleBar=function(){return '<g><rect x="16" y="512" width="150" height="24" rx="12" class="f-surface" opacity=".92"/><line x1="30" y1="524" x2="120" y2="524" class="scale-l"/><line x1="30" y1="518" x2="30" y2="530" class="scale-l"/><line x1="120" y1="518" x2="120" y2="530" class="scale-l"/><text x="128" y="530" class="scale-t">5 mm</text></g>';};
+
+/* ===== Etichette (pillole con linea guida) ===== */
+var canvas=document.createElement("canvas"), ctx=canvas.getContext("2d");
+var BODY='"Atkinson Hyperlegible", Verdana, sans-serif';
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");}
+T.esc=esc;
+T.tags=function(list){
+  return '<g class="tags">'+list.map(function(t){
+    var leads="", dots="";
+    (t.to||[]).forEach(function(p){leads+='<path class="lead"/>'; dots+='<circle class="dot" cx="'+p[0]+'" cy="'+p[1]+'" r="4.5"/>';});
+    return '<g class="tag '+(t.cls||"")+'" style="--d:'+(t.d||0)+'s">'+leads+dots+'<rect class="pill" rx="'+(t.sub?16:19)+'"/><text class="tag-t">'+esc(t.text)+'</text>'+(t.sub?'<text class="tag-s">'+esc(t.sub)+'</text>':'')+'</g>';
+  }).join("")+'</g>';
+};
+function layoutTags(svg,tags){
+  if(!svg||!tags) return;
+  svg.querySelectorAll(".tags .tag").forEach(function(g,i){
+    var t=tags[i]; if(!t) return;
+    ctx.font="700 22px "+BODY; var w1=ctx.measureText(t.text).width;
+    var w2=0; if(t.sub){ctx.font="400 18px "+BODY; w2=ctx.measureText(t.sub).width;}
+    var w=Math.ceil(Math.max(w1,w2)+30), h=t.sub?64:40;
+    var x0=t.anchor==="end"?t.x-w:t.anchor==="middle"?t.x-w/2:t.x, y0=t.y-h/2;
+    var r=g.querySelector(".pill"); r.setAttribute("x",x0); r.setAttribute("y",y0); r.setAttribute("width",w); r.setAttribute("height",h);
+    var tt=g.querySelector(".tag-t"); tt.setAttribute("x",x0+15); tt.setAttribute("y",t.sub?y0+22:t.y+1);
+    var ts=g.querySelector(".tag-s"); if(ts){ts.setAttribute("x",x0+15); ts.setAttribute("y",y0+45);}
+    g.querySelectorAll(".lead").forEach(function(l,k){
+      var p=t.to[k], sx, sy;
+      if(p[0]<x0){sx=x0; sy=t.y;} else if(p[0]>x0+w){sx=x0+w; sy=t.y;}
+      else {sx=Math.min(Math.max(p[0],x0+16),x0+w-16); sy=p[1]<y0?y0:y0+h;}
+      l.setAttribute("d","M"+sx+" "+sy+" L"+p[0]+" "+p[1]);
+    });
+  });
+}
+
+/* ===== Piccoli schemi delle alternative ===== */
+function mini(x,cls){return '<path d="M'+x+' 34 C'+(x-2)+' 25 '+(x-2)+' 15 '+(x+3)+' 12 C'+(x+7)+' 10 '+(x+9)+' 14 '+(x+12)+' 14 C'+(x+15)+' 14 '+(x+17)+' 10 '+(x+21)+' 12 C'+(x+26)+' 15 '+(x+26)+' 25 '+(x+24)+' 34 Z" class="'+cls+' o-thin"/>';}
+function miniRoot(x){return '<path d="M'+(x+1)+' 34 C'+(x+3)+' 47 '+(x+8)+' 57 '+(x+12)+' 59 C'+(x+16)+' 57 '+(x+21)+' 47 '+(x+23)+' 34 Z" class="f-dentin o-thin"/>';}
+var GLYPH_BASE='<rect x="0" y="40" width="96" height="24" class="f-bone"/>';
+var GLYPH_GUM='<path d="M0 32 C10 32 14 38 18 38 C24 38 26 33 34 33 L62 33 C70 33 72 38 78 38 C82 38 86 32 96 32 L96 44 L0 44 Z" class="f-gum"/>';
+var GLYPHS={
+  impianto: GLYPH_BASE+miniRoot(6)+miniRoot(66)+'<path d="M42 36 L54 36 L53 56 Q48 62 43 56 Z" class="f-ti2 o-thin"/><path d="M42 41 h12 M42 46 h12 M43 51 h10" style="stroke:var(--ti-3)" stroke-width="1.2"/>'+GLYPH_GUM+mini(6,"f-enamel")+mini(66,"f-enamel")+'<rect x="45" y="30" width="6" height="6" class="f-ti2"/>'+mini(36,"f-crown"),
+  ponte: GLYPH_BASE+miniRoot(6)+miniRoot(66)+GLYPH_GUM+'<rect x="18" y="18" width="60" height="10" rx="3" class="f-crown o-thin"/>'+mini(6,"f-crown")+mini(66,"f-crown")+'<path d="M36 33 C34 25 34 15 39 12 C43 10 45 14 48 14 C51 14 53 10 57 12 C62 15 62 25 60 33 Q48 37 36 33 Z" class="f-crown o-thin"/>',
+  mobile: GLYPH_BASE+miniRoot(6)+miniRoot(66)+GLYPH_GUM+mini(6,"f-enamel")+mini(66,"f-enamel")+'<path d="M31 30 Q48 26 65 30 L64 39 Q48 42 32 39 Z" class="f-gum-deep o-thin"/>'+mini(36,"f-crown")+'<path d="M62 30 C66 24 70 22 74 24" fill="none" style="stroke:var(--accent)" stroke-width="2.4" stroke-linecap="round"/>'
+};
+function buildGlyphs(){
+  document.querySelectorAll("svg[data-glyph]").forEach(function(s){ s.innerHTML=GLYPHS[s.getAttribute("data-glyph")]||""; });
+}
+
+/* ===== Fasi ===== */
+var P, step=1, scene;
+function renderStep(){
+  var s=P.steps[step-1]; if(P.resolve) s=P.resolve(s);
+  scene.setAttribute("data-step",step);
+  scene.setAttribute("aria-label","Illustrazione della fase "+step+": "+s.alt);
+  document.getElementById("step-count").textContent="Fase "+step+" di "+P.steps.length;
+  document.getElementById("step-title").textContent=s.title;
+  document.getElementById("step-text").textContent=s.text;
+  document.getElementById("step-note").textContent=s.note;
+  document.getElementById("step-chips").innerHTML=s.chips.map(function(c){return "<li>"+esc(c)+"</li>";}).join("");
+  document.getElementById("next-lbl").textContent=step===P.steps.length?"Ricomincia":"Avanti";
+  document.querySelectorAll("#step-nav button").forEach(function(b,i){
+    var n=i+1;
+    if(n===step) b.setAttribute("aria-current","step"); else b.removeAttribute("aria-current");
+    b.classList.toggle("done",n<step);
+  });
+}
+function go(n){ if(n<1) n=1; if(n>P.steps.length) n=1; step=n; renderStep(); }
+function buildNav(){
+  var nav=document.getElementById("step-nav");
+  nav.style.setProperty("--n",P.steps.length);
+  nav.innerHTML=P.steps.map(function(s,i){
+    return '<li><button type="button" data-n="'+(i+1)+'" aria-label="Fase '+(i+1)+': '+esc(s.title)+'"><span class="n">'+(i+1)+'</span><span class="lbl">'+esc(s.short)+'</span></button></li>';
+  }).join("");
+}
+
+/* ===== Modalità poltrona ===== */
+var wakeLock=null;
+function setPresent(on){
+  document.documentElement.classList.toggle("is-present",on);
+  if(on){
+    try{ var r=document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen(); if(r&&r.catch) r.catch(function(){}); }catch(e){}
+    try{ if(navigator.wakeLock) navigator.wakeLock.request("screen").then(function(l){wakeLock=l;}).catch(function(){}); }catch(e){}
+    document.getElementById("next").focus();
+  } else {
+    try{ if(document.fullscreenElement&&document.exitFullscreen) document.exitFullscreen().catch(function(){}); }catch(e){}
+    try{ if(wakeLock){ wakeLock.release(); wakeLock=null; } }catch(e){}
+    document.getElementById("btn-present").focus();
+  }
+}
+
+/* ===== Schede delle istruzioni ===== */
+function initTabs(){
+  var tabs=[].slice.call(document.querySelectorAll('[role="tab"]'));
+  function select(t){
+    tabs.forEach(function(x){
+      var on=x===t;
+      x.setAttribute("aria-selected",on?"true":"false");
+      x.tabIndex=on?0:-1;
+      document.getElementById(x.getAttribute("aria-controls")).hidden=!on;
+    });
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener("click",function(){select(t);});
+    t.addEventListener("keydown",function(e){
+      var k=e.key, j=null;
+      if(k==="ArrowRight") j=(i+1)%tabs.length; else if(k==="ArrowLeft") j=(i-1+tabs.length)%tabs.length;
+      else if(k==="Home") j=0; else if(k==="End") j=tabs.length-1;
+      if(j!==null){ e.preventDefault(); tabs[j].focus(); select(tabs[j]); }
+    });
+  });
+}
+
+/* ===== Matrici di pallini ===== */
+function iconArray(id,n,cls){
+  var el=document.getElementById(id); if(!el) return;
+  var h=""; for(var i=0;i<100;i++) h+='<i'+(i<n?' class="'+cls+'"':'')+'></i>';
+  el.innerHTML=h;
+}
+
+/* ===== Consegna al paziente ===== */
+var toastT;
+function toast(msg){
+  var t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show");
+  clearTimeout(toastT); toastT=setTimeout(function(){t.classList.remove("show");},2200);
+}
+function defaultBase(){
+  var here=location.href.split("#")[0];
+  if(/^https?:/.test(here)&&/github\.io$|colombo/i.test(location.hostname)) return here;
+  return P.publicUrl;
+}
+function currentUrl(){
+  var base=(document.getElementById("base-url").value||P.publicUrl).trim();
+  var target=(document.querySelector('input[name="target"]:checked')||{}).value||"";
+  var h=P.hashFor?P.hashFor(target):target;
+  return base.split("#")[0]+(h?"#"+h:"");
+}
+function refreshShare(){
+  var url=currentUrl();
+  document.getElementById("share-url").value=url;
+  document.getElementById("wa-url").href="https://wa.me/?text="+encodeURIComponent(P.shareText+" "+url);
+  var box=document.getElementById("qr");
+  if(typeof window.qrcode!=="function"){ box.textContent="Il codice QR non è disponibile senza connessione. Usi il link qui sotto."; return; }
+  try{ var q=window.qrcode(0,"M"); q.addData(url); q.make(); box.innerHTML=q.createSvgTag({cellSize:4,margin:2,scalable:true}); }
+  catch(e){ box.textContent="Link troppo lungo per il QR."; }
+}
+var lastFocus=null;
+function openShare(){ lastFocus=document.activeElement; document.getElementById("share").hidden=false; refreshShare(); document.getElementById("share-close").focus(); }
+function closeShare(){ document.getElementById("share").hidden=true; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+function copyUrl(){
+  var input=document.getElementById("share-url"), url=input.value;
+  function fallback(){ input.focus(); input.select(); toast("Link selezionato: copialo con Copia"); }
+  try{
+    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(function(){toast("Link copiato");},fallback);
+    else fallback();
+  }catch(e){ fallback(); }
+}
+
+/* ===== Avvio ===== */
+T.init=function(page){
+  P=page;
+  scene=document.getElementById("scene");
+  scene.innerHTML=P.scene.build();
+  (P.figures||[]).forEach(function(f){ var el=document.getElementById(f.id); if(el) el.innerHTML=f.build(); });
+  buildGlyphs(); buildNav();
+  T.refresh=renderStep;
+  T.setSteps=function(arr){ P.steps=arr; step=1; buildNav(); renderStep(); };
+  document.getElementById("step-nav").addEventListener("click",function(e){ var b=e.target.closest("button[data-n]"); if(b) go(+b.dataset.n); });
+  T.layoutTags=layoutTags;
+  function relayout(){
+    layoutTags(scene,P.scene.tags);
+    (P.figures||[]).forEach(function(f){ if(f.tags) layoutTags(document.getElementById(f.id),f.tags); });
+  }
+  relayout();
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(relayout);
+  renderStep();
+  (P.arrays||[]).forEach(function(a){ iconArray(a[0],a[1],a[2]); });
+  initTabs();
+
+  document.getElementById("next").addEventListener("click",function(){ go(step+1); });
+  document.getElementById("prev").addEventListener("click",function(){ go(step-1); });
+  document.getElementById("btn-present").addEventListener("click",function(){ setPresent(true); });
+  document.getElementById("btn-exit").addEventListener("click",function(){ setPresent(false); });
+  document.getElementById("btn-share").addEventListener("click",openShare);
+  document.getElementById("share-close").addEventListener("click",closeShare);
+  document.getElementById("share").addEventListener("click",function(e){ if(e.target===this) closeShare(); });
+  document.querySelectorAll('input[name="target"]').forEach(function(r){ r.addEventListener("change",refreshShare); });
+  document.getElementById("base-url").value=defaultBase();
+  document.getElementById("base-url").addEventListener("input",refreshShare);
+  document.getElementById("copy-url").addEventListener("click",copyUrl);
+
+  var stage=document.getElementById("stage"), sx=null, sy=null;
+  stage.addEventListener("pointerdown",function(e){ sx=e.clientX; sy=e.clientY; });
+  stage.addEventListener("pointerup",function(e){
+    if(sx===null) return;
+    var dx=e.clientX-sx, dy=e.clientY-sy; sx=null;
+    if(Math.abs(dx)>48&&Math.abs(dx)>Math.abs(dy)) go(step+(dx<0?1:-1));
+  });
+  stage.addEventListener("pointercancel",function(){ sx=null; });
+
+  document.addEventListener("keydown",function(e){
+    var tag=(e.target.tagName||"").toLowerCase();
+    if(tag==="input"||tag==="textarea"||e.target.getAttribute("role")==="tab") return;
+    if(!document.getElementById("share").hidden){ if(e.key==="Escape") closeShare(); return; }
+    var present=document.documentElement.classList.contains("is-present");
+    var inFasi=document.getElementById("fasi").contains(document.activeElement);
+    if(e.key==="Escape"&&present){ setPresent(false); return; }
+    if(!(present||inFasi)) return;
+    if(e.key==="ArrowRight"){ e.preventDefault(); go(step+1); }
+    else if(e.key==="ArrowLeft"){ e.preventDefault(); go(step-1); }
+  });
+};
+})();
+
+</script>
+<script>
+
+(function(){
+var C=360, TYPE="abl";
+var NAMES={abl:"ablazione", srp:"scaling"};
+var LABELS={abl:"Ablazione", srp:"Scaling e root planing"};
+var FACTS={
+  abl:{an:"Non serve", dur:"Circa 30–45 minuti", sed:"Una", poi:"Controlli a intervalli decisi in base al rischio"},
+  srp:{an:"Di solito non serve; se necessario, anestetico spray sulla gengiva", dur:"Circa 30–45 minuti per seduta", sed:"Di solito 4, un quadrante alla volta", poi:"Rivalutazione e igiene ogni 3–4 mesi"}
+};
+var CAPTIONS={
+  abl:"L'ablazione lavora sulla parte del dente sopra la gengiva e appena sotto il bordo (in verde).",
+  srp:"Lo scaling e root planing lavora sulla radice dentro la tasca, fino al fondo (in arancio)."
+};
+
+/* ===== Geometria della sezione ===== */
+var EDGE=[[96,300],[130,278],[155,276],[184,279],[213,286.4],[240,298],[295,304.3],[352,314],[405,326.7],[448,342],[462,352]];
+function edgeL(y){
+  if(y<=EDGE[0][0]) return EDGE[0][1];
+  for(var i=1;i<EDGE.length;i++){ if(y<=EDGE[i][0]){ var a=EDGE[i-1], b=EDGE[i], t=(y-a[0])/(b[0]-a[0]); return a[1]+(b[1]-a[1])*t; } }
+  return EDGE[EDGE.length-1][1];
+}
+function r1(n){return Math.round(n*10)/10;}
+function mk(side){return side==="L"?function(x){return r1(x);}:function(x){return r1(720-x);};}
+var ST={
+  healthy:{key:"h",my:214,pb:244,cy:278,gap:4,sw:0,infl:false},
+  ging:{key:"g",my:198,pb:246,cy:278,gap:6,sw:10,infl:true,roll:true},
+  perio:{key:"p",my:222,pb:330,cy:344,gap:12,sw:6,infl:true,roll:true},
+  adv:{key:"a",my:262,pb:410,cy:424,gap:14,sw:2,infl:true,roll:true},
+  healed:{key:"r",my:246,pb:300,cy:344,gap:5,sw:0,infl:false}
+};
+function sideParts(s,side){
+  var X=mk(side), mx=edgeL(s.my)-0.5, mid=(s.my+s.pb)/2, cy=s.cy;
+  var outer=s.roll
+    ? "M"+X(0)+" "+(cy+16)+" C"+X(140)+" "+(cy+8)+" "+X(mx-84)+" "+(s.my+46-s.sw)+" "+X(mx-38)+" "+(s.my+16)+" C"+X(mx-52)+" "+(s.my-2)+" "+X(mx-20)+" "+(s.my-22)+" "+X(mx-3)+" "+(s.my-7)+" L"+X(mx)+" "+s.my
+    : "M"+X(0)+" "+(cy+16)+" C"+X(140)+" "+(cy+8)+" "+X(mx-70)+" "+(s.my+34-s.sw)+" "+X(mx-22)+" "+r1(s.my+8-s.sw*.4)+" C"+X(mx-12)+" "+(s.my+2)+" "+X(mx-4)+" "+(s.my-1)+" "+X(mx)+" "+s.my;
+  var gum=outer+" L"+X(edgeL(mid)-s.gap)+" "+mid+" L"+X(edgeL(s.pb))+" "+s.pb+" L"+X(edgeL(cy))+" "+cy+" C"+X(250)+" "+(cy+10)+" "+X(140)+" "+(cy+36)+" "+X(0)+" "+(cy+46)+" Z";
+  var bone="M"+X(0)+" "+(cy+46)+" C"+X(140)+" "+(cy+36)+" "+X(250)+" "+(cy+10)+" "+X(edgeL(cy)-2)+" "+cy+" L"+X(360)+" "+cy+" L"+X(360)+" 540 L"+X(0)+" 540 Z";
+  var pocket="M"+X(mx)+" "+s.my+" L"+X(edgeL(mid)-s.gap)+" "+mid+" L"+X(edgeL(s.pb))+" "+s.pb+" L"+X(edgeL(s.pb)+14)+" "+s.pb+" L"+X(edgeL(s.my)+14)+" "+s.my+" Z";
+  return {outer:outer, gum:gum, bone:bone, pocket:pocket, mx:mx, X:X};
+}
+function boneOf(s,q){var L=sideParts(s,"L"),R=sideParts(s,"R");return '<path d="'+L.bone+'" class="f-bone"/><path d="'+L.bone+'" fill="url(#'+q+'pores)"/><path d="'+R.bone+'" class="f-bone"/><path d="'+R.bone+'" fill="url(#'+q+'pores)"/>';}
+function squiggle(X,x0,y){return '<path d="M'+X(x0)+' '+y+' Q'+X(x0+7)+' '+(y-7)+' '+X(x0+14)+' '+y+' T'+X(x0+28)+' '+y+' T'+X(x0+42)+' '+y+'" class="vessel"/>';}
+function gumOf(s,q){
+  var o="", f=s.infl?"f-gum-infl":"f-gum";
+  ["L","R"].forEach(function(side){
+    var d=sideParts(s,side), X=d.X, mx=d.mx, id=q+"cl"+s.key+side;
+    o+='<clipPath id="'+id+'"><path d="'+d.gum+'"/></clipPath><path d="'+d.gum+'" class="'+f+'"/>';
+    if(s.infl){
+      o+='<g clip-path="url(#'+id+')"><ellipse cx="'+X(mx-28)+'" cy="'+(s.my+8)+'" rx="46" ry="34" class="f-gum-hot" filter="url(#'+q+'blur)" opacity=".75"/>'+
+         squiggle(X,mx-70,s.my+32)+squiggle(X,mx-96,s.my+50)+squiggle(X,mx-56,s.my+12)+'</g>';
+    } else {
+      o+='<path d="'+d.gum+'" fill="url(#'+q+'stip)"/>';
+    }
+    o+='<path d="'+d.pocket+'" class="f-pocket"/><path d="'+d.outer+'" class="gum-line"/>';
+  });
+  return o;
+}
+function condition(s,q){return boneOf(s,q)+gumOf(s,q);}
+function both(fn){return fn(mk("L"),1)+fn(mk("R"),-1);}
+function plaque(s){return both(function(X){var pts=[];for(var y=s.my-58;y<=s.my-2;y+=6) pts.push(X(edgeL(y)-4)+" "+y);return '<polyline points="'+pts.join(" ")+'" class="plaque"/>';});}
+function supra(s){return both(function(X){var y1=s.my-9,y2=s.my-27;return '<ellipse cx="'+X(edgeL(y1)-5)+'" cy="'+y1+'" rx="8" ry="13" class="f-calc o-thin"/><ellipse cx="'+X(edgeL(y2)-4)+'" cy="'+y2+'" rx="6" ry="8" class="f-calc o-thin"/>';});}
+function sub(s){return both(function(X){var o="";for(var y=s.my+18;y<=s.pb-12;y+=24) o+='<ellipse cx="'+X(edgeL(y)-4)+'" cy="'+y+'" rx="6" ry="10" class="f-calc-sub"/>';return o;});}
+function bact(s){return both(function(X){
+  var o="", bf=[]; for(var y=s.my+4;y<=s.pb;y+=6) bf.push(X(edgeL(y)-3)+" "+y);
+  o+='<polyline points="'+bf.join(" ")+'" class="biofilm"/>';
+  for(var y2=s.my+12;y2<=s.pb-8;y2+=15){ var x=edgeL(y2)-s.gap*.5; o+='<circle cx="'+X(x)+'" cy="'+y2+'" r="2.8" class="f-bact"/><circle cx="'+X(x-3)+'" cy="'+(y2+4)+'" r="2.3" class="f-bact"/><circle cx="'+X(x+2)+'" cy="'+(y2+7)+'" r="2" class="f-bact"/>'; }
+  return o;});}
+function drop(X,x,y,h){return '<path d="M'+X(x)+' '+y+' C'+X(x-6)+' '+(y+h*.5)+' '+X(x-6)+' '+(y+h*.9)+' '+X(x)+' '+(y+h)+' C'+X(x+6)+' '+(y+h*.9)+' '+X(x+6)+' '+(y+h*.5)+' '+X(x)+' '+y+' Z" class="f-blood"/>';}
+function bleed(s){var mx=edgeL(s.my);return both(function(X){return drop(X,mx-7,s.my-10,26)+drop(X,mx-24,s.my+2,18);});}
+function smooth(s){return both(function(X){var pts=[];for(var y=s.my+2;y<=s.pb;y+=6) pts.push(X(edgeL(y)-3)+" "+y);return '<polyline points="'+pts.join(" ")+'" class="smooth"/>';});}
+function mm(s){return Math.round((s.pb-s.my)/18);}
+function probeTip(s){return [edgeL(s.pb)-3, s.pb];}
+function probe(s){
+  var tip=probeTip(s), ent=[edgeL(s.my)-s.gap*.5-1, s.my];
+  var dx=ent[0]-tip[0], dy=ent[1]-tip[1], len=Math.sqrt(dx*dx+dy*dy), ux=dx/len, uy=dy/len;
+  var t=(tip[1]-24)/(-uy), top=[tip[0]+ux*t, 24];
+  var hs=[tip[0]+ux*((tip[1]-120)/(-uy)), 120];
+  var o='<path d="M'+r1(hs[0])+' '+hs[1]+' L'+r1(top[0])+' '+top[1]+'" class="probe-handle"/><path d="M'+r1(tip[0])+' '+tip[1]+' L'+r1(top[0])+' '+top[1]+'" class="probe-rod"/>';
+  for(var k=1;k<=10;k++){ var px=tip[0]+ux*18*k, py=tip[1]+uy*18*k, w=(k%5===0)?8:5; o+='<path d="M'+r1(px-uy*w)+' '+r1(py+ux*w)+' L'+r1(px+uy*w)+' '+r1(py-ux*w)+'" class="probe-tick'+(k%5===0?' b':'')+'"/>'; }
+  return o;
+}
+function usTool(points){return '<g class="k-buzz"><path d="M96 -12 L206 126" class="instr-body-o"/><path d="M96 -12 L206 126" class="instr-body"/><path d="M206 126 '+points+'" class="instr-tip"/></g>';}
+function drops(x,y){var o="";[[0,0,0],[8,-6,.3],[-6,6,.55],[4,10,.8]].forEach(function(d){o+='<circle cx="'+(x+d[0])+'" cy="'+(y+d[1])+'" r="3.2" class="f-water k-drop" style="animation-delay:'+(1.1+d[2])+'s"/>';});return o;}
+function cup(){var cx=edgeL(170)-12, cy=170;return '<path d="M90 -12 L190 116" class="instr-body-o" style="stroke-width:24"/><path d="M90 -12 L190 116" class="instr-body" style="stroke-width:20"/><path d="M190 116 L'+(cx-14)+' '+cy+'" class="instr-tip" style="stroke-width:8"/><path d="M'+(cx-14)+' '+(cy-15)+' L'+(cx+3)+' '+(cy-19)+' L'+(cx+3)+' '+(cy+19)+' L'+(cx-14)+' '+(cy+15)+' Z" class="f-cup o-thin"/><path d="M'+(cx-30)+' '+(cy-28)+' A16 16 0 0 1 '+(cx-30)+' '+(cy+28)+'" class="turn k-spin" style="stroke-width:3"/>';}
+function brush(s){
+  var tx=edgeL(s.my)-6, ty=s.my+4, b="";
+  for(var y=-26;y<=26;y+=6) b+='<path d="M-28 '+y+' L-2 '+y+'" class="bristles"/>';
+  return '<g transform="translate('+r1(tx)+' '+ty+') rotate(45)">'+b+'<rect x="-46" y="-34" width="18" height="68" rx="8" class="f-accent"/><rect x="-60" y="-8" width="16" height="16" rx="5" class="f-accent"/></g>';
+}
+function quadrants(){
+  return '<g><rect x="532" y="14" width="176" height="150" rx="16" class="f-surface" opacity=".95"/>'+
+    '<path d="M560 70 C560 46 590 34 620 34" class="q-arch on"/><path d="M620 34 C650 34 680 46 680 70" class="q-arch"/>'+
+    '<path d="M560 96 C560 120 590 132 620 132" class="q-arch"/><path d="M620 132 C650 132 680 120 680 96" class="q-arch"/>'+
+    '<text x="590" y="64" class="q-num">1</text><text x="650" y="64" class="q-num">2</text><text x="650" y="104" class="q-num">3</text><text x="590" y="104" class="q-num">4</text>'+
+    '<text x="620" y="152" class="q-num" style="font-size:15px;font-weight:400">vista dal dentista</text></g>';
+}
+function cotton(s){var x=edgeL(s.my)-34, y=s.my-6, o="";[[0,0,11],[10,-7,9],[9,8,9],[-9,7,8],[-7,-9,8]].forEach(function(c){o+='<circle cx="'+(x+c[0])+'" cy="'+(y+c[1])+'" r="'+c[2]+'" class="f-cotton o-thin"/>';});return o;}
+function cottonPos(s){return [edgeL(s.my)-42, s.my+4];}
+function mobility(){return '<path d="M300 76 C290 64 290 50 300 40" class="mobility"/><path d="M420 76 C430 64 430 50 420 40" class="mobility"/>';}
+function poreDefs(q){return T.defs(q)+'<defs><filter id="'+q+'blur" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="9"/></filter><pattern id="'+q+'stip" width="11" height="10" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".9" class="f-stip"/><circle cx="7.5" cy="6.5" r=".9" class="f-stip"/></pattern></defs>';}
+
+/* ===== Stadi della malattia ===== */
+var STAGES=[
+  {short:"Sana", title:"Gengiva sana", chips:[["Solco di 1–3 mm","chip-ok"]], s:"healthy",
+   text:"La gengiva è rosa, compatta e aderisce al dente. Tra gengiva e dente c'è un piccolo solco di 1–3 mm, che la sonda misura senza far sanguinare.",
+   note:"Spazzolino due volte al giorno, pulizia tra i denti e controlli regolari."},
+  {short:"Placca", title:"Placca batterica", chips:[["Si toglie con lo spazzolino","chip-ok"]], s:"healthy",
+   text:"Ogni giorno sui denti si forma la placca, una pellicola morbida di batteri, soprattutto lungo il bordo della gengiva. Finché è morbida, spazzolino e scovolini la tolgono.",
+   note:"Pulire bene lungo il bordo della gengiva e tra i denti, dove la placca si accumula di più."},
+  {short:"Gengivite", title:"Tartaro e gengivite", chips:[["Reversibile","chip-ok"],["Sondaggio 3 mm","chip-warn"]], s:"ging",
+   text:"La placca non tolta si indurisce e diventa tartaro, che lo spazzolino non stacca più. La gengiva si infiamma: diventa rossa, gonfia e sanguina quando si lavano i denti. L'osso è ancora intatto.",
+   note:"L'ablazione toglie il tartaro; con una buona igiene la gengiva guarisce in pochi giorni."},
+  {short:"Parodontite", title:"Parodontite", chips:[["Non reversibile","chip-alert"],["Tasca di 6 mm","chip-warn"]], s:"perio",
+   text:"I batteri scendono sotto la gengiva: la gengiva si stacca dal dente e si forma una tasca, dove si depositano tartaro e batteri. L'infiammazione distrugge a poco a poco l'osso che tiene il dente. Spesso non fa male.",
+   note:"Serve lo scaling e root planing, per pulire le radici fino in fondo alle tasche, e poi controlli frequenti."},
+  {short:"Avanzata", title:"Parodontite avanzata", chips:[["Non reversibile","chip-alert"],["Tasca di 8 mm","chip-alert"]], s:"adv",
+   text:"Gran parte dell'osso intorno alla radice è andata persa. La gengiva si ritira, il dente si muove e, senza cure, può cadere.",
+   note:"Scaling e root planing ed eventualmente chirurgia parodontale. Prima si interviene, più denti si salvano."}
+];
+var STAGE_TAGS=[
+  {cls:"gtag g1", x:24, y:470, text:"Sondaggio: 2 mm", to:[probeTip(ST.healthy)]},
+  {cls:"gtag g1", x:696, y:150, anchor:"end", text:"Gengiva rosa e aderente", to:[[448,222]]},
+  {cls:"gtag g1", x:696, y:400, anchor:"end", text:"Osso sano", to:[[440,300]]},
+  {cls:"gtag g2", x:696, y:150, anchor:"end", text:"Placca", sub:"una pellicola di batteri", to:[[446,190]]},
+  {cls:"gtag g2", x:696, y:400, anchor:"end", text:"Gengiva ancora sana", to:[[460,236]]},
+  {cls:"gtag g3", x:24, y:470, text:"Sondaggio: 3 mm", to:[probeTip(ST.ging)]},
+  {cls:"gtag g3", x:696, y:110, anchor:"end", text:"Tartaro", to:[[446,189]]},
+  {cls:"gtag g3", x:696, y:330, anchor:"end", text:"Gengiva rossa e gonfia", sub:"sanguina facilmente", to:[[470,236]]},
+  {cls:"gtag g4", x:24, y:470, text:"Sondaggio: 6 mm", to:[probeTip(ST.perio)]},
+  {cls:"gtag g4", x:696, y:180, anchor:"end", text:"Tartaro sotto la gengiva", to:[[426,262]]},
+  {cls:"gtag g4", x:696, y:300, anchor:"end", text:"Tasca", sub:"dove si nascondono i batteri", to:[[422,292]]},
+  {cls:"gtag g4", x:696, y:440, anchor:"end", text:"Osso perso", to:[[440,356]]},
+  {cls:"gtag g5", x:24, y:470, text:"Sondaggio: 8 mm", to:[probeTip(ST.adv)]},
+  {cls:"gtag g5", x:696, y:44, anchor:"end", text:"Il dente si muove", to:[]},
+  {cls:"gtag g5", x:696, y:200, anchor:"end", text:"Gengiva ritirata", sub:"si vede la radice", to:[[434,268]]},
+  {cls:"gtag g5", x:696, y:480, anchor:"end", text:"Osso molto ridotto", to:[[436,436]]}
+];
+function stagesFig(){
+  var q="st-", o=[poreDefs(q), T.stageBg()];
+  o.push('<g class="part g1 g2">'+condition(ST.healthy,q)+'</g>');
+  o.push('<g class="part g3">'+condition(ST.ging,q)+'</g>');
+  o.push('<g class="part g4">'+condition(ST.perio,q)+'</g>');
+  o.push('<g class="part g5">'+condition(ST.adv,q)+'</g>');
+  o.push(T.tooth(C));
+  o.push('<g class="part g2">'+plaque(ST.healthy)+'</g>');
+  o.push('<g class="part g3">'+plaque(ST.ging)+supra(ST.ging)+bleed(ST.ging)+'</g>');
+  o.push('<g class="part g4">'+supra(ST.perio)+sub(ST.perio)+bact(ST.perio)+bleed(ST.perio)+'</g>');
+  o.push('<g class="part g5">'+sub(ST.adv)+bact(ST.adv)+mobility()+'</g>');
+  o.push('<g class="part g1">'+probe(ST.healthy)+'</g><g class="part g3">'+probe(ST.ging)+'</g><g class="part g4">'+probe(ST.perio)+'</g><g class="part g5">'+probe(ST.adv)+'</g>');
+  o.push(T.tags(STAGE_TAGS));
+  return o.join("");
+}
+
+/* ===== Fasi del trattamento ===== */
+var STEPS_ABL=[
+  {short:"Controllo", title:"Controllo e sondaggio", chips:["Pochi minuti"],
+   text:"Si controllano denti e gengive e, con una sonda sottile graduata in millimetri, si misura la profondità del solco intorno ai denti. Così si capisce se basta l'ablazione o se c'è una parodontite.",
+   note:"Ci dica se le gengive sanguinano quando si lava i denti: è un segnale importante.",
+   alt:"Gengiva un po' infiammata con tartaro sopra il bordo; la sonda misura 3 mm."},
+  {short:"Ultrasuoni", title:"Ablazione a ultrasuoni", chips:["Senza anestesia","Punta piezoelettrica"],
+   text:"Una punta a ultrasuoni (Piezon) che vibra, raffreddata da un getto d'acqua, stacca il tartaro dai denti, sopra e appena sotto il bordo della gengiva. Si sente vibrazione e un po' di freddo.",
+   note:"Se i denti sono sensibili, ce lo dica: si può ridurre la potenza e lavorare con più calma.",
+   alt:"La punta a ultrasuoni stacca il tartaro al bordo della gengiva, con un getto d'acqua."},
+  {short:"Lucidatura", title:"Lucidatura", chips:["Coppetta o air-polishing"],
+   text:"Con una coppetta in gomma e una pasta, oppure con un getto di polvere fine e acqua (air-polishing), si tolgono le macchie e la placca rimasta.",
+   note:"Le macchie di caffè, tè e fumo si tolgono, ma tornano se le abitudini restano le stesse.",
+   alt:"Una coppetta in gomma che gira lucida la superficie del dente."},
+  {short:"A casa", title:"Igiene a casa e controlli", chips:["Ogni giorno"],
+   text:"Le mostriamo come lavare i denti con le setole inclinate verso la gengiva e come usare scovolini o filo. Con una buona pulizia la gengiva torna sana in pochi giorni.",
+   note:"La frequenza dei controlli la decidiamo in base alle sue gengive e al suo rischio.",
+   alt:"Gengiva sana; lo spazzolino è inclinato di 45 gradi verso il bordo della gengiva."}
+];
+var STEPS_SRP=[
+  {short:"Visita", title:"Visita parodontale", chips:["Sondaggio di tutti i denti","Radiografie"],
+   text:"Si misura la profondità delle tasche in più punti intorno a ogni dente e si registrano sanguinamento e mobilità in una cartella parodontale. Con le radiografie si vede quanto osso si è perso.",
+   note:"Questa cartella è il punto di partenza: la ripeteremo per vedere i risultati.",
+   alt:"Parodontite: gengiva rossa e gonfia che sanguina, tasca di 6 mm misurata con la sonda, tartaro e batteri sotto la gengiva, osso perso."},
+  {short:"Igiene", title:"Igiene a casa e ablazione", chips:["Prima fase"],
+   text:"Prima si toglie il tartaro visibile e si imposta l'igiene a casa, con spazzolino e scovolini della misura giusta. È la base di tutto il trattamento: senza una buona pulizia quotidiana lo scaling non basta.",
+   note:"Se fuma, è il momento migliore per provare a smettere: il fumo riduce i risultati.",
+   alt:"Il tartaro sopra la gengiva viene tolto con la punta a ultrasuoni; quello dentro la tasca resta."},
+  {short:"Quadranti", title:"Un quadrante alla volta", chips:["30–45 minuti per seduta","Di solito senza anestesia"],
+   text:"La bocca si divide in quattro quadranti e in ogni seduta se ne tratta uno. Di solito non serve anestesia: se una zona è molto sensibile, si appoggia sulla gengiva un batuffolo di cotone con un anestetico spray (lidocaina), che la addormenta in superficie per qualche minuto.",
+   note:"Ci dica se è allergico agli anestetici. Tra una seduta e l'altra continui a pulire anche le zone già trattate.",
+   alt:"Schema dei quattro quadranti della bocca, con il primo evidenziato; un batuffolo di cotone appoggiato sulla gengiva."},
+  {short:"Scaling", title:"Pulizia profonda della radice", chips:["Punta piezoelettrica sottile"],
+   text:"Una punta a ultrasuoni sottile e arrotondata (Piezon) scende fino al fondo della tasca: con la vibrazione e il getto d'acqua stacca tartaro e batteri dalla radice e la lascia liscia e pulita. Una radice pulita permette alla gengiva di sgonfiarsi e di stringersi di nuovo al dente.",
+   note:"Si sente vibrazione e un po' di freddo. Se una zona dà fastidio, ce lo dica: possiamo fermarci o applicare l'anestetico spray.",
+   alt:"La punta sottile entra nella tasca, toglie tartaro e batteri e lascia la radice liscia."},
+  {short:"Guarigione", title:"La gengiva guarisce", chips:["Alcune settimane"],
+   text:"Nelle settimane successive l'infiammazione cala: la gengiva torna rosa, si sgonfia, smette di sanguinare e si stringe alla radice, e le tasche diventano meno profonde. L'osso perso però non ricresce.",
+   note:"Il dente può sembrare più lungo e può aumentare la sensibilità al freddo: di solito migliora col tempo.",
+   alt:"La gengiva torna rosa e si riattacca al dente; la tasca si riduce, l'osso resta più basso."},
+  {short:"Rivalutazione", title:"Rivalutazione", chips:["Dopo alcune settimane"],
+   text:"Quando la gengiva è guarita si ripete il sondaggio e si confronta con la prima cartella. Molte tasche si chiudono; quelle che restano profonde possono richiedere un nuovo trattamento o una chirurgia.",
+   note:"Il risultato dipende molto da quanto bene pulisce a casa.",
+   alt:"Nuovo sondaggio: la tasca ora misura 3 mm."},
+  {short:"Mantenimento", title:"Mantenimento", chips:["Spesso ogni 3–4 mesi"],
+   text:"La parodontite si tiene sotto controllo nel tempo: igiene professionale e controlli regolari, all'inizio spesso ogni 3–4 mesi, poi con la frequenza decisa in base al rischio.",
+   note:"Saltare i controlli è uno dei motivi principali per cui la malattia ritorna.",
+   alt:"Gengiva stabile dopo il trattamento, con lo spazzolino inclinato verso il bordo."}
+];
+function tipAt(s,y){return [edgeL(y)-s.gap*.5-1,y];}
+var P1=ST.ging, P2=ST.perio, P3=ST.healed, PH=ST.healthy;
+var gingTop=[edgeL(P1.my-8)-8, P1.my-8], perioTop=[edgeL(P2.my-8)-8, P2.my-8];
+var perioEnt=tipAt(P2,P2.my), perioDeep=[edgeL(304)-6,304];
+var TAGS=[
+  {cls:"stag xa1", d:1.2, x:24, y:470, text:"Sondaggio: 3 mm", sub:"nessuna tasca", to:[probeTip(P1)]},
+  {cls:"stag xa1", d:.6, x:696, y:110, anchor:"end", text:"Tartaro sopra la gengiva", to:[[446,189]]},
+  {cls:"stag xa1", d:.9, x:696, y:330, anchor:"end", text:"Gengiva un po' infiammata", to:[[466,226]]},
+  {cls:"stag xa2", d:.9, x:24, y:330, text:"Punta a ultrasuoni", sub:"piezoelettrica, con acqua", to:[[190,106]]},
+  {cls:"stag xa2", d:2.4, x:696, y:150, anchor:"end", text:"Il tartaro si stacca", to:[[446,189]]},
+  {cls:"stag xa3", d:.9, x:24, y:330, text:"Coppetta che gira", sub:"oppure air-polishing", to:[[edgeL(170)-20,170]]},
+  {cls:"stag xa3", d:1.2, x:696, y:150, anchor:"end", text:"Via macchie e placca", to:[]},
+  {cls:"stag xa4", d:.6, x:24, y:400, text:"Setole a 45°", sub:"verso il bordo della gengiva", to:[[edgeL(PH.my)-30,PH.my-10]]},
+  {cls:"stag xa4", d:.9, x:696, y:300, anchor:"end", text:"Gengiva sana", sub:"in pochi giorni", to:[[466,230]]},
+  {cls:"stag xr1", d:1.2, x:24, y:470, text:"Sondaggio: 6 mm", to:[probeTip(P2)]},
+  {cls:"stag xr1", d:.5, x:696, y:120, anchor:"end", text:"Gengiva rossa e gonfia", sub:"sanguina al sondaggio", to:[[448,214]]},
+  {cls:"stag xr1", d:.8, x:696, y:300, anchor:"end", text:"Tasca con tartaro e batteri", to:[[422,290]]},
+  {cls:"stag xr1", d:1, x:696, y:440, anchor:"end", text:"Osso perso", to:[[440,356]]},
+  {cls:"stag xr2", d:.9, x:24, y:330, text:"Prima il tartaro visibile", to:[[190,106]]},
+  {cls:"stag xr2", d:2.6, x:696, y:300, anchor:"end", text:"Nella tasca resta", sub:"tartaro con batteri", to:[[426,270]]},
+  {cls:"stag xr3", d:.8, x:24, y:470, text:"Se serve: anestetico spray", sub:"lidocaina su un batuffolo di cotone", to:[cottonPos(P2)]},
+  {cls:"stag xr3", d:.6, x:620, y:200, anchor:"middle", text:"Oggi il quadrante 1", sub:"poi 2, 3 e 4", to:[]},
+  {cls:"stag xr4", d:.9, x:24, y:470, text:"Punta piezo sottile", sub:"fino al fondo della tasca", to:[perioDeep]},
+  {cls:"stag xr4", d:2.6, x:696, y:300, anchor:"end", text:"Via tartaro e batteri", to:[[426,280]]},
+  {cls:"stag xr4", d:3.4, x:696, y:160, anchor:"end", text:"Radice liscia e pulita", to:[[422,250]]},
+  {cls:"stag xr5", d:2.2, x:696, y:180, anchor:"end", text:"Gengiva di nuovo rosa", sub:"si sgonfia e si stringe alla radice", to:[[466,256]]},
+  {cls:"stag xr5", d:2.6, x:696, y:440, anchor:"end", text:"L'osso perso non ricresce", to:[[440,356]]},
+  {cls:"stag xr5", d:2.4, x:24, y:470, text:"Possibile retrazione", sub:"il dente sembra più lungo", to:[[edgeL(P3.my)-14,P3.my+6]]},
+  {cls:"stag xr6", d:1.2, x:24, y:470, text:"Sondaggio: 3 mm", sub:"prima erano 6 mm", to:[probeTip(P3)]},
+  {cls:"stag xr6", d:.8, x:696, y:290, anchor:"end", text:"Tasca chiusa", to:[[424,276]]},
+  {cls:"stag xr7", d:.4, x:696, y:44, anchor:"end", text:"Igiene ogni 3–4 mesi", sub:"poi secondo il rischio", to:[]},
+  {cls:"stag xr7", d:.8, x:696, y:320, anchor:"end", text:"Gengiva stabile", to:[[466,256]]}
+];
+function scene(){
+  var q="sc-", o=[poreDefs(q), T.stageBg()];
+  o.push('<g class="part a1 a2 a3">'+condition(P1,q)+'</g>');
+  o.push('<g class="part a4">'+condition(PH,q)+'</g>');
+  o.push('<g class="part r1 r2 r3 r4 r5"><g class="k-old">'+condition(P2,q)+'</g></g>');
+  o.push('<g class="part r5 r6 r7"><g class="k-new">'+condition(P3,q)+'</g></g>');
+  o.push(T.tooth(C));
+  o.push('<g class="part a1 a2"><g class="k-clean">'+plaque(P1)+supra(P1)+'</g></g>');
+  o.push('<g class="part a1">'+bleed(P1)+'</g>');
+  o.push('<g class="part r1 r2"><g class="k-clean">'+plaque(P2)+supra(P2)+'</g></g>');
+  o.push('<g class="part r1 r2 r3 r4"><g class="k-clean-sub">'+sub(P2)+bact(P2)+'</g></g>');
+  o.push('<g class="part r1 r2">'+bleed(P2)+'</g>');
+  o.push('<g class="part r4"><g class="k-smooth">'+smooth(P2)+'</g></g>');
+  o.push('<g class="part a1"><g class="k-probe">'+probe(P1)+'</g></g>');
+  o.push('<g class="part r1"><g class="k-probe">'+probe(P2)+'</g></g>');
+  o.push('<g class="part r6"><g class="k-probe">'+probe(P3)+'</g></g>');
+  o.push('<g class="part a2"><g class="k-tool">'+usTool("Q"+(gingTop[0]-30)+" "+(gingTop[1]-60)+" "+r1(gingTop[0])+" "+gingTop[1])+drops(gingTop[0]-6,gingTop[1]+4)+'</g></g>');
+  o.push('<g class="part r2"><g class="k-tool">'+usTool("Q"+(perioTop[0]-30)+" "+(perioTop[1]-60)+" "+r1(perioTop[0])+" "+perioTop[1])+drops(perioTop[0]-6,perioTop[1]+4)+'</g></g>');
+  o.push('<g class="part r4"><g class="k-tool">'+usTool("Q262 168 "+r1(perioEnt[0])+" "+perioEnt[1]+" L"+r1(perioDeep[0])+" "+perioDeep[1])+drops(perioEnt[0]-8,perioEnt[1]-6)+'</g></g>');
+  o.push('<g class="part a3"><g class="k-tool">'+cup()+'</g></g>');
+  o.push('<g class="part a4">'+brush(PH)+'</g><g class="part r7">'+brush(P3)+'</g>');
+  o.push('<g class="part r3">'+quadrants()+'<g class="k-tool">'+cotton(P2)+'</g></g>');
+  o.push(T.tags(TAGS));
+  return o.join("");
+}
+var HERO_TAGS=[
+  {x:24, y:44, text:"Ablazione", sub:"sopra e appena sotto la gengiva", to:[[edgeL(P2.my-30)-10,P2.my-30]]},
+  {x:24, y:470, text:"Scaling e root planing", sub:"dentro la tasca, fino al fondo", to:[[edgeL(300)-12,300]]},
+  {x:696, y:300, anchor:"end", text:"Tasca", to:[[422,292]]},
+  {x:696, y:440, anchor:"end", text:"Osso perso", to:[[440,356]]}
+];
+function hero(){
+  var q="hf-", s=P2, zA="", zS="";
+  [mk("L"),mk("R")].forEach(function(X){
+    var a=[],b=[]; for(var y=s.my-70;y<=s.my+16;y+=6) a.push(X(edgeL(y)-8)+" "+y);
+    for(var y2=s.my+20;y2<=s.pb;y2+=6) b.push(X(edgeL(y2)-8)+" "+y2);
+    zA+='<polyline points="'+a.join(" ")+'" class="zone za"/>'; zS+='<polyline points="'+b.join(" ")+'" class="zone zs"/>';
+  });
+  return poreDefs(q)+T.stageBg()+condition(s,q)+T.tooth(C)+supra(s)+sub(s)+'<g class="zone-abl">'+zA+'</g><g class="zone-srp">'+zS+'</g>'+T.tags(HERO_TAGS);
+}
+
+/* ===== Stadi: interazione ===== */
+var stage=1;
+function renderStage(){
+  var s=STAGES[stage-1], fig=document.getElementById("stages");
+  fig.setAttribute("data-stage",stage);
+  document.getElementById("stage-count").textContent="Fase "+stage+" di "+STAGES.length;
+  document.getElementById("stage-title").textContent=s.title;
+  document.getElementById("stage-text").textContent=s.text;
+  document.getElementById("stage-note").textContent=s.note;
+  document.getElementById("stage-chips").innerHTML=s.chips.map(function(c){return '<li class="'+c[1]+'">'+T.esc(c[0])+'</li>';}).join("");
+  document.querySelectorAll("#stage-nav button").forEach(function(b,i){
+    if(i+1===stage) b.setAttribute("aria-current","step"); else b.removeAttribute("aria-current");
+    b.classList.toggle("done", i+1<stage);
+  });
+}
+function initStages(){
+  var nav=document.getElementById("stage-nav");
+  nav.innerHTML=STAGES.map(function(s,i){return '<li><button type="button" data-n="'+(i+1)+'" aria-label="'+T.esc(s.title)+'"><span class="n">'+(i+1)+'</span><span class="lbl">'+T.esc(s.short)+'</span></button></li>';}).join("");
+  nav.addEventListener("click",function(e){var b=e.target.closest("button[data-n]"); if(b){stage=+b.dataset.n; renderStage();}});
+  var fig=document.getElementById("stages"), sx=null;
+  fig.addEventListener("pointerdown",function(e){sx=e.clientX;});
+  fig.addEventListener("pointerup",function(e){ if(sx===null) return; var dx=e.clientX-sx; sx=null; if(Math.abs(dx)>48){ stage=Math.min(5,Math.max(1,stage+(dx<0?1:-1))); renderStage(); } });
+  renderStage();
+}
+
+/* ===== Tipo di trattamento ===== */
+var scene_, heroFig;
+function setType(t){
+  if(!NAMES[t]) return;
+  TYPE=t;
+  scene_.setAttribute("data-type",t); heroFig.setAttribute("data-type",t);
+  document.querySelectorAll(".type-pick button").forEach(function(b){ b.setAttribute("aria-checked",b.dataset.type===t?"true":"false"); b.tabIndex=b.dataset.type===t?0:-1; });
+  var f=FACTS[t];
+  document.getElementById("fact-an").textContent=f.an; document.getElementById("fact-dur").textContent=f.dur;
+  document.getElementById("fact-sed").textContent=f.sed; document.getElementById("fact-poi").textContent=f.poi;
+  document.getElementById("hero-cap").textContent=CAPTIONS[t];
+  var n=document.getElementById("share-type"); if(n) n.innerHTML='La scheda si apre sul trattamento <b>'+LABELS[t]+'</b>. Per cambiarlo, lo scelga nella pagina.';
+  T.setSteps(t==="abl"?STEPS_ABL:STEPS_SRP);
+}
+function wirePickers(){
+  document.querySelectorAll(".type-pick").forEach(function(g){
+    var btns=[].slice.call(g.querySelectorAll("button"));
+    btns.forEach(function(b,i){
+      b.addEventListener("click",function(){ setType(b.dataset.type); });
+      b.addEventListener("keydown",function(e){
+        var j=null; if(e.key==="ArrowRight"||e.key==="ArrowDown") j=(i+1)%btns.length; else if(e.key==="ArrowLeft"||e.key==="ArrowUp") j=(i-1+btns.length)%btns.length;
+        if(j!==null){ e.preventDefault(); setType(btns[j].dataset.type); btns[j].focus(); }
+      });
+    });
+  });
+}
+
+T.init({
+  publicUrl:"https://robbcolo.github.io/trattamenti/parodontale.html",
+  shareText:"Studio Dentistico Colombo – ecco la scheda sul suo trattamento delle gengive:",
+  steps:STEPS_ABL,
+  hashFor:function(target){ return (target?target+"-":"")+NAMES[TYPE]; },
+  scene:{build:scene, tags:TAGS},
+  figures:[{id:"hero-fig", build:hero, tags:HERO_TAGS},{id:"stages", build:stagesFig, tags:STAGE_TAGS}],
+  arrays:[["arr-close",74,"on"]]
+});
+scene_=document.getElementById("scene"); heroFig=document.getElementById("hero-fig");
+var head=document.querySelector("#fasi .sec-head > div");
+var pick=document.querySelector(".pick-label").cloneNode(true);
+pick.querySelector(".label").id="pick-lbl-2"; pick.querySelector(".type-pick").setAttribute("aria-labelledby","pick-lbl-2");
+pick.querySelector(".label").textContent="Fasi per il trattamento";
+head.appendChild(pick);
+var fs=document.querySelector("#share .seg"); var note=document.createElement("p"); note.className="fine"; note.id="share-type"; fs.parentNode.insertBefore(note, fs.nextSibling);
+wirePickers();
+initStages();
+var start="abl", target=null, m=(location.hash||"").replace("#","").match(/^(?:(dopo|fasi)-)?(ablazione|scaling)$/);
+if(m){ target=m[1]||null; start=m[2]==="scaling"?"srp":"abl"; }
+setType(start);
+if(target) setTimeout(function(){ var el=document.getElementById(target); if(el) el.scrollIntoView(); }, 60);
+})();
+
+</script>
+
+</body></html>

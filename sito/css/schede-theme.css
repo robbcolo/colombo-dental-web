@@ -1,0 +1,114 @@
+/* ==========================================================================
+   Schede informative — tema del sito
+   Si carica DOPO lo stile proprio di ogni scheda e lo adatta all'identità
+   del sito (colori, font, barra superiore, invito a prenotare, footer).
+   ========================================================================== */
+:root{
+  --ground:#FBF8F2; --surface:#FFFFFF; --surface-2:#F3ECDD; --ink:#192642; --ink-2:#4A5670; --line:#E4DAC7;
+  --accent:#0A67B0; --accent-ink:#FFFFFF; --accent-soft:#E6F1F9;
+  --stage:#E8F0F6; --outline:#2A3A55;
+  --navy:#192642; --blue-dark:#084E86; --azure:#6FB3DE; --beige:#F1E6D3; --beige-deep:#DEC8A0;
+  --wa:#1B7F50;
+  --font-display:"Newsreader","Newsreader Fallback",Georgia,"Times New Roman",serif;
+  --font-body:"Figtree","Figtree Fallback",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  color-scheme:light;
+}
+[hidden]:not([hidden=until-found i]){display:none!important}
+body.scheda{margin:0;font-size:1.0625rem}
+body.scheda img{max-width:100%}
+
+/* Titoli: serif con peso medio, più elegante del grassetto geometrico originale */
+body.scheda :is(h1,h2,h3,h4,.big){font-weight:540;letter-spacing:-0.012em}
+body.scheda .hero h1{font-weight:520;letter-spacing:-0.02em}
+body.scheda .ttl{font-weight:600}
+body.scheda .brand{font-weight:600}
+body.scheda .contact a{font-weight:600}
+body.scheda .big{font-variant-numeric:lining-nums tabular-nums}
+
+/* Etichette: niente maiuscolo spaziato, più leggibili */
+body.scheda :is(.eyebrow,.label,.facts dt,.alt dt,.step-count){text-transform:none;letter-spacing:.01em;font-size:.9rem;font-weight:700}
+body.scheda .eyebrow{color:var(--accent)}
+
+/* Barra superiore del sito */
+.site-strip{background:var(--navy);color:#E7EDF7;font:600 .9rem/1.2 var(--font-body)}
+.site-strip .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:44px}
+.site-strip a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding-inline:2px}
+.site-strip a:hover{color:#fff}
+.site-strip a:hover span{text-decoration:underline;text-underline-offset:3px}
+.site-strip svg{width:18px;height:18px;flex:none}
+.site-strip .ss-right{display:flex;gap:18px;align-items:center}
+.site-strip .ss-tel{font-variant-numeric:tabular-nums}
+@media (max-width:560px){.site-strip .ss-wa{display:none}}
+
+/* Marchio nella testata della scheda */
+body.scheda .brand img{width:34px;height:34px;flex:none;border-radius:8px}
+body.scheda .brand .long,body.scheda .brand .short{font-family:var(--font-display);font-weight:600;font-size:1.15rem;letter-spacing:-.005em}
+body.scheda .btn{font-family:var(--font-body)}
+@media (max-width:420px) and (min-width:371px){body.scheda .brand .short{display:inline;font-size:1rem}}
+
+/* Invito a prenotare */
+.scheda-cta{background:var(--navy);color:#E7EDF7;position:relative;overflow:hidden;margin-top:0}
+.scheda-cta::before{content:"";position:absolute;right:-120px;top:-160px;width:520px;height:520px;border-radius:50%;
+  border:42px solid transparent;border-top-color:var(--blue-dark);border-right-color:var(--blue-dark);transform:rotate(18deg);opacity:.7;pointer-events:none}
+.scheda-cta::after{content:"";position:absolute;right:20px;top:-60px;width:320px;height:320px;border-radius:50%;
+  border:30px solid transparent;border-left-color:rgba(111,179,222,.4);border-bottom-color:rgba(111,179,222,.4);transform:rotate(-20deg);pointer-events:none}
+.scheda-cta .wrap{position:relative;z-index:1;padding-block:clamp(40px,6vw,72px);display:grid;gap:22px;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:center}
+.scheda-cta h2{color:#fff;font-size:clamp(1.8rem,3.6vw,2.6rem);max-width:20ch}
+.scheda-cta p{color:#C9D4E6;max-width:48ch;margin-top:10px}
+.scheda-cta .cta-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.scheda-cta .cbtn.primary{grid-column:1/-1}
+.scheda-cta .cbtn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font:700 1rem/1 var(--font-body);text-decoration:none;
+  border:1.5px solid rgba(255,255,255,.35);color:#fff;background:transparent;transition:background .2s,color .2s,transform .2s,border-color .2s}
+.scheda-cta .cbtn:hover{background:rgba(255,255,255,.12);border-color:#fff}
+.scheda-cta .cbtn:active{transform:scale(.97)}
+.scheda-cta .cbtn.primary{background:#fff;color:var(--navy);border-color:#fff}
+.scheda-cta .cbtn.primary:hover{background:var(--beige)}
+.scheda-cta .cbtn.wa{background:var(--wa);border-color:var(--wa)}
+.scheda-cta .cbtn.wa:hover{background:#18714a;border-color:#18714a}
+.scheda-cta .cbtn svg{width:20px;height:20px;flex:none}
+.scheda-cta a:focus-visible{outline-color:#fff}
+@media (max-width:820px){.scheda-cta .wrap{grid-template-columns:1fr}}
+@media (max-width:420px){.scheda-cta .cta-row{grid-template-columns:1fr}}
+
+/* Altre schede */
+.scheda-more{padding-block:clamp(40px,6vw,72px);border-top:1px solid var(--line)}
+.scheda-more h2{font-size:clamp(1.5rem,3vw,2rem);margin-bottom:22px}
+.rel-grid{display:grid;gap:16px;grid-template-columns:repeat(3,minmax(0,1fr))}
+.rel-card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;text-decoration:none;color:var(--ink);transition:transform .25s,box-shadow .25s,border-color .25s}
+.rel-card:hover{transform:translateY(-3px);box-shadow:0 14px 34px -18px rgba(25,38,66,.35);border-color:var(--azure)}
+.rel-card img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;background:var(--stage);display:block}
+.rel-card .rc-body{padding:14px 18px 18px;display:grid;gap:4px}
+.rel-card .rc-t{font:540 1.3rem/1.15 var(--font-display)}
+.rel-card .rc-s{font-size:.92rem;color:var(--ink-2)}
+@media (max-width:760px){.rel-grid{grid-template-columns:1fr}}
+
+/* Piè di pagina del sito */
+.site-foot{background:#111B33;color:#B9C5DB;font-size:.95rem}
+.site-foot .wrap{padding-block:34px;display:grid;gap:22px;grid-template-columns:auto 1fr auto;align-items:start}
+.site-foot img{width:52px;height:52px;border-radius:14px;background:var(--ground);padding:6px}
+.site-foot b{color:#fff;font-weight:700}
+.site-foot a{color:#DCE6F5;text-underline-offset:3px}
+.site-foot a:hover{color:#fff}
+.site-foot ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px}
+.site-foot p+p,.site-foot p+ul{margin-top:8px}
+@media (max-width:760px){.site-foot .wrap{grid-template-columns:1fr}}
+
+/* Ripetizione dei link nelle note finali */
+body.scheda .foot a{color:var(--accent)}
+
+/* Versione incorporata nel sito (finestra "vedi la scheda") */
+html.is-embed .site-strip,html.is-embed .scheda-cta,html.is-embed .scheda-more,html.is-embed .site-foot,html.is-embed .skip-link{display:none}
+html.is-embed #btn-share{display:none}
+html.is-embed .top{top:0}
+
+.skip-link{position:absolute;left:12px;top:-60px;background:var(--navy);color:#fff;padding:10px 16px;border-radius:0 0 12px 12px;z-index:100;text-decoration:none;font-weight:700}
+.skip-link:focus{top:0}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{
+  .site-strip,.scheda-cta,.scheda-more,.top .tools,.toc,.skip-link{display:none!important}
+  .site-foot{background:none;color:#000}
+  body.scheda{background:#fff}
+}
+body.scheda .toc a{padding:11px 14px}
+body.scheda .brand{min-height:44px}

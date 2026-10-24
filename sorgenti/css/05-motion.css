@@ -1,0 +1,65 @@
+/* ==========================================================================
+   5 · Movimento durante lo scorrimento
+   Poche idee, tutte legate al logo (tre archi) e tutte spente con
+   "riduci movimento". Le classi sono aggiunte da js/main.js.
+   ========================================================================== */
+@media (prefers-reduced-motion:no-preference){
+
+  /* 1 · Titoli: le parole salgono da una maschera, una dopo l'altra */
+  .js .w-mask{ display:inline-block; overflow:hidden; vertical-align:top; padding-bottom:.14em; margin-bottom:-.14em; }
+  .js .w-mask > span{ display:inline-block; transform:translateY(115%); transition:transform .85s var(--ease-out); transition-delay:calc(var(--wi,0) * 42ms); will-change:transform; }
+  .js [data-split].is-in .w-mask > span{ transform:none; }
+  .js [data-split].is-done .w-mask{ overflow:visible; }
+  .js [data-split].is-done .w-mask > span{ will-change:auto; }
+
+  /* 2 · Sottolineatura a sorriso: tre archi (blu, azzurro, sabbia) che si disegnano */
+  .js .smile path{ stroke-dasharray:1; stroke-dashoffset:1; }
+  .js .is-in > .smile path,.js .smile.is-in path{ stroke-dashoffset:0; transition:stroke-dashoffset 1s var(--ease-out); }
+  .js .smile .s2{ transition-delay:.12s !important; } .js .smile .s3{ transition-delay:.24s !important; }
+
+  /* 3 · Carte e immagini: si aprono a cerchio dal punto dell'icona */
+  .js [data-anim="iris"]{ clip-path:circle(0% at var(--ox,30px) var(--oy,34px)); opacity:.001; transition:clip-path 1s var(--ease-out), opacity .35s var(--ease); transition-delay:calc(var(--i,0) * 70ms); }
+  .js [data-anim="iris"].is-in{ clip-path:circle(150% at var(--ox,30px) var(--oy,34px)); opacity:1; }
+  .js [data-anim="iris"].is-done{ clip-path:none; transition:none; }
+
+  /* 4 · Dissolvenza semplice con piccolissimo scarto, per blocchi di testo */
+  .js [data-anim="fade"]{ opacity:0; transform:translateY(10px); transition:opacity .9s var(--ease), transform .9s var(--ease-out); transition-delay:calc(var(--i,0) * 60ms); }
+  .js [data-anim="fade"].is-in{ opacity:1; transform:none; }
+
+  /* 5 · Linea: si allarga da sinistra */
+  .js [data-anim="line"]{ transform:scaleX(0); transform-origin:left; transition:transform 1.1s var(--ease-out); }
+  .js [data-anim="line"].is-in{ transform:none; }
+
+  /* 6 · Ritratti: i tre archi girano attorno alla foto */
+  .js .portrait circle{ opacity:0; transform:rotate(calc(var(--a) - 110deg)); transition:transform 1.3s var(--ease-out), opacity .5s var(--ease); }
+  .js .portrait .a1{ --a:150deg; } .js .portrait .a2{ --a:-40deg; transition-delay:.1s; } .js .portrait .a3{ --a:60deg; transition-delay:.2s; }
+  .js .portrait.is-in circle{ opacity:1; transform:rotate(var(--a)); }
+  .js .portrait img{ clip-path:circle(0% at 50% 50%); transition:clip-path 1s var(--ease-out); }
+  .js .portrait.is-in img{ clip-path:circle(72% at 50% 50%); }
+  .js .portrait.is-done img{ clip-path:none; }
+
+  /* 7 · Anelli della pagina trattamento: ruotano piano con lo scorrimento */
+  .svc-visual .r1,.svc-visual .r2,.svc-visual .r3{ transform-origin:center; transform-box:fill-box; }
+  .svc-visual .r1{ transform:rotate(calc(var(--spin,0) * 70deg)); }
+  .svc-visual .r2{ transform:rotate(calc(var(--spin,0) * -50deg)); }
+  .svc-visual .r3{ transform:rotate(calc(var(--spin,0) * 95deg)); }
+
+  /* 8 · Sfondo con leggero movimento (parallasse) */
+  [data-parallax]{ transform:translate3d(0,calc(var(--py,0) * 1px),0); will-change:transform; }
+
+  /* 9 · Scorrimento orizzontale: la scheda sotto il dito si ingrandisce di un soffio (solo touch) */
+  @media (hover:none){
+    .schede-rail .scheda-card{ transition:transform .4s var(--ease-out); }
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .js [data-anim],.js .w-mask > span,.js .portrait circle,.js .portrait img{ opacity:1 !important; transform:none !important; clip-path:none !important; transition:none !important; }
+  .js .smile path{ stroke-dashoffset:0 !important; }
+  .dot-open::after{ animation:none; }
+}
+@media print{
+  [data-anim],.w-mask > span{ opacity:1 !important; transform:none !important; clip-path:none !important; }
+  .site-header,.scroll-progress,.wa-float,.to-top,.toast{ display:none !important; }
+  .site-footer{ background:none; color:#000; } .site-footer::before,.site-footer::after{ display:none; }
+}

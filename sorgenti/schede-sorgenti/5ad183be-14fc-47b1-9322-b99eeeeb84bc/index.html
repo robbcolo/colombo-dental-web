@@ -1,0 +1,1153 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Scheda Apicectomia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap">
+<style>
+/* Layout: scheda per il paziente a colonna unica. Le fasi sono un "palco" illustrato con il testo a lato su iPad e sotto su telefono. */
+:root{
+  --ground:#F2F5F4; --surface:#FFFFFF; --surface-2:#E6EDEB; --ink:#13282E; --ink-2:#4B6066; --line:#D2DDDB;
+  --accent:#0B6E69; --accent-ink:#FFFFFF; --accent-soft:#DCEEEB;
+  --warn:#9A4D0C; --warn-soft:#FBEBDC; --alert:#B3261E; --alert-soft:#FBE5E2;
+  --stage:#E3EBE9;
+  --bone:#EBDFC6; --bone-pore:#D9C9A9; --bone-dense:#C8B184;
+  --gum:#E9A3A5; --gum-deep:#D2858A; --lig:#C4887C;
+  --enamel:#FDFCF7; --dentin:#F0E4CD; --pulp:#E29898; --caries:#6E4B2C; --clot:#B4585C;
+  --ti-1:#F0F3F5; --ti-2:#AEB9C0; --ti-3:#66737B; --crown:#FFFFFF; --temp:#F1D6A8; --graft:#FFFDF6; --graft-bg:#E2BFB0; --membrane:#F4EBD2;
+  --nerve:#F1CF6A; --nerve-edge:#C29C36; --outline:#34474D;
+  --qr-bg:#FFFFFF; --qr-fg:#000000;
+  --font-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --font-body:"Atkinson Hyperlegible",Verdana,"Segoe UI",system-ui,sans-serif;
+  --radius:16px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E181B; --surface:#152328; --surface-2:#1C2E33; --ink:#E4EEEC; --ink-2:#9DB2B1; --line:#2A3F44;
+    --accent:#4FC2B8; --accent-ink:#062523; --accent-soft:#143B39;
+    --warn:#F0A35E; --warn-soft:#3A2716; --alert:#FF8A80; --alert-soft:#3D1A18;
+    --stage:#1A2A2F;
+    --bone:#D8CBB0; --bone-pore:#C2B291; --bone-dense:#AE9868;
+    --gum:#D78E92; --gum-deep:#BD7177; --lig:#AE7468;
+    --enamel:#F3F1EA; --dentin:#DED2BA; --pulp:#CC8484; --caries:#5A3D25; --clot:#A04B50;
+    --ti-1:#DCE2E6; --ti-2:#97A3AA; --ti-3:#56636B; --crown:#F7F7F3; --temp:#D9BF8E; --graft:#F3EEE2; --graft-bg:#B98F80; --membrane:#E3D8BC;
+    --nerve:#DDBB55; --nerve-edge:#A8852C; --outline:#0B1214;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E181B; --surface:#152328; --surface-2:#1C2E33; --ink:#E4EEEC; --ink-2:#9DB2B1; --line:#2A3F44;
+  --accent:#4FC2B8; --accent-ink:#062523; --accent-soft:#143B39;
+  --warn:#F0A35E; --warn-soft:#3A2716; --alert:#FF8A80; --alert-soft:#3D1A18;
+  --stage:#1A2A2F;
+  --bone:#D8CBB0; --bone-pore:#C2B291; --bone-dense:#AE9868;
+  --gum:#D78E92; --gum-deep:#BD7177; --lig:#AE7468;
+  --enamel:#F3F1EA; --dentin:#DED2BA; --pulp:#CC8484; --caries:#5A3D25; --clot:#A04B50;
+  --ti-1:#DCE2E6; --ti-2:#97A3AA; --ti-3:#56636B; --crown:#F7F7F3; --temp:#D9BF8E; --graft:#F3EEE2; --graft-bg:#B98F80; --membrane:#E3D8BC;
+  --nerve:#DDBB55; --nerve-edge:#A8852C; --outline:#0B1214;
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:120px}
+body{background:var(--ground);color:var(--ink);font-family:var(--font-body);font-size:1.0625rem;line-height:1.55}
+.wrap{max-width:1140px;margin-inline:auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--font-display);line-height:1.08;letter-spacing:-0.015em;margin:0;text-wrap:balance}
+h2{font-size:clamp(1.75rem,3.4vw,2.4rem);font-weight:720}
+h3{font-size:1.3rem;font-weight:700}
+p{margin:0}
+a{color:var(--accent);text-underline-offset:3px}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:8px}
+.eyebrow{font-size:.8rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
+.muted{color:var(--ink-2)}
+.fine{font-size:.92rem;color:var(--ink-2)}
+.ref{font-size:.72em;font-weight:700;vertical-align:super;line-height:0;text-decoration:none;padding-inline:1px}
+
+/* Header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--ground);background:color-mix(in srgb,var(--ground) 90%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px 6px}
+.brand{font-family:var(--font-display);font-weight:650;font-size:1.05rem;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px;min-width:0}
+.brand-mark{width:28px;height:28px;flex:none}
+.brand .short{display:none}
+.brand span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tools{display:flex;gap:8px;flex:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-weight:700;font-size:.95rem;cursor:pointer;text-decoration:none;white-space:nowrap}
+.btn:hover{border-color:var(--ink-2)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-primary{background:var(--accent);color:var(--accent-ink);border-color:transparent}
+.btn-primary:hover{border-color:transparent;filter:brightness(1.07)}
+.toc{display:flex;gap:2px;overflow-x:auto;padding-block:0 8px;scrollbar-width:none}
+.toc::-webkit-scrollbar{display:none}
+.toc a{flex:none;color:var(--ink-2);text-decoration:none;font-weight:700;font-size:.92rem;padding:6px 12px;border-radius:999px}
+.toc a:hover{background:var(--surface-2);color:var(--ink)}
+@media (max-width:640px){
+  .brand .long{display:none}.brand .short{display:inline}
+  .tools .btn .lbl-long{display:none}
+  .tools .btn{padding:0 12px}
+  #btn-present{width:44px;padding:0}
+  #btn-present > span{display:none}
+}
+
+/* Sezioni */
+main section{padding-block:clamp(48px,7vw,88px);border-top:1px solid var(--line)}
+main section.hero{border-top:0}
+.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px 24px}
+.sec-head > div{display:flex;flex-direction:column;gap:10px;max-width:62ch;min-width:0}
+.sec-intro{font-size:1.125rem;color:var(--ink-2)}
+
+/* Hero */
+.hero{display:grid;gap:36px;padding-block:40px 64px}
+@media (min-width:960px){.hero{grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);align-items:center;gap:56px}}
+.hero-copy{display:flex;flex-direction:column;gap:16px;min-width:0}
+.hero h1{font-size:clamp(2.6rem,6.4vw,4.3rem);font-weight:780;letter-spacing:-0.03em}
+.lead{font-size:1.25rem;line-height:1.5;max-width:40ch}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin:8px 0 0}
+.facts > div{background:var(--surface);padding:14px 16px;min-width:0}
+.facts dt{font-size:.75rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-2)}
+.facts dd{margin:4px 0 0;font-weight:700;font-size:1.05rem;line-height:1.3}
+.compare{margin:0;display:flex;flex-direction:column;gap:14px;min-width:0}
+.compare-stage{background:var(--stage);border-radius:24px;padding:14px 12px 6px}
+.compare svg{display:block;width:100%;height:auto}
+.compare figcaption{font-size:1.02rem;color:var(--ink-2);max-width:62ch}
+
+/* Fasi */
+.stepper{display:grid;gap:24px;margin-top:28px}
+@media (min-width:900px){.stepper{grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);align-items:stretch;gap:36px}}
+.stage{margin:0;background:var(--stage);border-radius:24px;overflow:hidden;touch-action:pan-y;position:relative;min-width:0;user-select:none;-webkit-user-select:none}
+.stage svg{display:block;width:100%;height:auto}
+.step-copy{display:flex;flex-direction:column;gap:14px;min-width:0}
+.step-count{font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-variant-numeric:tabular-nums}
+.step-copy h3{font-size:clamp(1.7rem,3vw,2.2rem);font-weight:740}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0}
+.chips li{background:var(--accent-soft);border-radius:999px;padding:4px 12px;font-size:.92rem;font-weight:700}
+.step-text{font-size:1.15rem;line-height:1.55}
+.step-note{display:flex;flex-direction:column;gap:4px;padding-top:12px;border-top:1px solid var(--line)}
+.label{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.step-ctrl{display:flex;gap:10px;margin-top:auto;padding-top:8px}
+.step-ctrl .btn{min-height:52px;padding:0 22px;font-size:1.02rem}
+.step-ctrl .btn svg{width:22px;height:22px}
+.step-nav{list-style:none;display:grid;grid-template-columns:repeat(var(--n,6),minmax(0,1fr));gap:6px;padding:0;margin:22px 0 0}
+.step-nav button{width:100%;min-height:52px;display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:10px 2px 4px;border:0;border-top:4px solid var(--line);background:none;color:var(--ink-2);font-weight:700;font-size:.9rem;cursor:pointer;text-align:left}
+.step-nav .n{font-size:.78rem;font-variant-numeric:tabular-nums}
+.step-nav button.done{border-top-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.step-nav button[aria-current="step"]{border-top-color:var(--accent);color:var(--ink)}
+@media (max-width:600px){.step-nav .lbl{display:none}.step-nav .n{font-size:.95rem}}
+.stage-foot{font-size:.85rem;color:var(--ink-2);padding:0 4px;margin-top:8px}
+#btn-exit{display:none}
+
+/* Modalità poltrona */
+html.is-present,html.is-present body{overflow:hidden}
+html.is-present #fasi{position:fixed;inset:0;z-index:60;background:var(--ground);overflow:auto;border:0;padding:calc(env(safe-area-inset-top,0px) + 16px) 24px calc(env(safe-area-inset-bottom,0px) + 16px)}
+html.is-present #fasi .wrap{max-width:none;padding-inline:0}
+html.is-present #fasi .sec-intro{display:none}
+html.is-present #btn-exit{display:inline-flex}
+html.is-present .stepper{margin-top:16px}
+html.is-present .step-text{font-size:1.32rem}
+html.is-present .step-copy h3{font-size:clamp(2rem,3.4vw,2.7rem)}
+@media (min-width:900px){html.is-present .stepper{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}html.is-present .stage svg{max-height:calc(100vh - 230px)}}
+
+/* Alternative */
+.alts{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));margin-top:28px}
+.alt{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.alt-head{display:flex;align-items:center;gap:14px}
+.alt-glyph{width:84px;height:56px;flex:none;background:var(--stage);border-radius:12px;padding:4px}
+.alt dl{display:flex;flex-direction:column;gap:12px;margin:0}
+.alt dt{font-size:.75rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-2)}
+.alt dd{margin:2px 0 0;line-height:1.4}
+.alt-none{margin-top:16px;display:grid;gap:8px;padding:18px 20px;border:1px dashed var(--ink-2);border-radius:20px}
+.alt-none p{max-width:75ch}
+.evidence-note{margin-top:14px;max-width:80ch}
+
+/* Durata e rischi */
+.risk-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));margin-top:28px}
+.array-card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.big{font-family:var(--font-display);font-weight:760;font-size:clamp(2.2rem,4vw,2.8rem);line-height:1;letter-spacing:-0.02em;font-variant-numeric:tabular-nums}
+.big small{font-size:.45em;font-weight:650;letter-spacing:0;color:var(--ink-2)}
+.icon-array{display:grid;grid-template-columns:repeat(20,minmax(0,1fr));gap:4px;max-width:420px}
+.icon-array i{display:block;aspect-ratio:1;border-radius:50%;border:1.5px solid var(--line)}
+.icon-array i.on{background:var(--accent);border-color:var(--accent)}
+.icon-array i.warn{background:var(--warn);border-color:var(--warn)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.9rem;color:var(--ink-2);list-style:none;padding:0;margin:0}
+.legend li{display:flex;align-items:center;gap:6px}
+.legend i{width:12px;height:12px;border-radius:50%;border:1.5px solid var(--line);display:inline-block}
+.legend i.on{background:var(--accent);border-color:var(--accent)}
+.legend i.warn{background:var(--warn);border-color:var(--warn)}
+.risks{margin-top:28px;display:grid;gap:12px;max-width:80ch}
+.risks ul{margin:0;padding-left:1.2em;display:grid;gap:8px}
+
+/* Dopo l'intervento */
+.tabs{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-top:28px}
+.tab{min-height:48px;padding:10px 16px;border:0;border-bottom:3px solid transparent;margin-bottom:-1px;background:none;color:var(--ink-2);font-weight:700;font-size:1rem;cursor:pointer}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.tab.tab-alert{color:var(--alert)}
+.tab.tab-alert[aria-selected="true"]{border-bottom-color:var(--alert)}
+.panel{padding-block:24px 8px}
+.do-list{list-style:none;margin:0;padding:0;display:grid;gap:14px;max-width:72ch}
+.do-list li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:baseline;font-size:1.1rem}
+.do-list li::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--accent);transform:translateY(-2px)}
+.do-list b{font-weight:700}
+.alert-box{background:var(--alert-soft);border-radius:20px;padding:20px;display:grid;gap:16px;max-width:820px}
+.alert-box .do-list li::before{background:var(--alert);border-radius:50%}
+.contacts{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.contact{background:var(--surface);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.contact a{font-family:var(--font-display);font-weight:700;font-size:1.35rem;color:var(--ink);text-decoration:none;font-variant-numeric:tabular-nums;user-select:all;-webkit-user-select:all}
+.studio-strip{margin-top:28px;display:flex;flex-wrap:wrap;gap:6px 20px;font-size:.95rem;color:var(--ink-2)}
+.studio-strip b{color:var(--ink)}
+
+/* Domande */
+.faq{margin-top:20px;max-width:80ch}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;font-weight:700;font-size:1.12rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--font-display);font-size:1.6rem;line-height:1;color:var(--accent);flex:none}
+.faq details[open] summary::after{content:"−"}
+.faq details p{padding:0 0 18px;font-size:1.05rem}
+
+/* Footer */
+.foot{border-top:1px solid var(--line);padding-block:40px 56px;display:grid;gap:20px}
+.foot ol{margin:0;padding-left:1.4em;display:grid;gap:10px;font-size:.92rem;color:var(--ink-2);max-width:95ch}
+.foot ol li{overflow-wrap:anywhere}
+.foot ol a{font-weight:700}
+
+/* Pannello di consegna */
+.sheet{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:16px;background:color-mix(in srgb,var(--ink) 48%,transparent)}
+.sheet-card{background:var(--surface);border-radius:24px;width:min(470px,100%);max-height:calc(100% - 24px);overflow:auto;padding:22px;display:flex;flex-direction:column;gap:16px;box-shadow:0 20px 60px color-mix(in srgb,var(--ink) 30%,transparent)}
+.sheet-head{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.icon-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center;cursor:pointer;flex:none}
+.icon-btn svg{width:20px;height:20px}
+.seg{display:grid;gap:6px;border:0;margin:0;padding:0}
+.seg legend{padding:0;margin-bottom:6px}
+.seg label{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;cursor:pointer;font-weight:700}
+.seg label:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+.seg input{accent-color:var(--accent);width:18px;height:18px;margin:0}
+.qr{background:var(--qr-bg);color:var(--qr-fg);padding:12px;border-radius:16px;width:min(230px,100%);margin-inline:auto;aspect-ratio:1;display:grid;place-items:center;text-align:center;font-size:.9rem}
+.qr svg{display:block;width:100%;height:auto}
+.field{display:flex;flex-direction:column;gap:6px}
+.field input{width:100%;min-height:44px;padding:8px 12px;border-radius:12px;border:1px solid var(--line);background:var(--ground);color:var(--ink);font:inherit;font-size:.95rem}
+.sheet-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sheet details summary{cursor:pointer;font-weight:700;font-size:.95rem;color:var(--ink-2)}
+.sheet details[open] summary{margin-bottom:8px}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 20px);transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--ground);padding:10px 18px;border-radius:999px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:90;max-width:calc(100% - 32px);text-align:center}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* Illustrazioni SVG */
+.f-bone{fill:var(--bone)}.f-pore{fill:var(--bone-pore)}.f-dense{fill:var(--bone-dense)}
+.f-gum{fill:var(--gum)}.f-gum-deep{fill:var(--gum-deep)}
+.f-enamel{fill:var(--enamel)}.f-dentin{fill:var(--dentin)}.f-pulp{fill:var(--pulp)}
+.f-caries{fill:var(--caries)}.f-clot{fill:var(--clot)}.f-crown{fill:var(--crown)}
+.f-ti2{fill:var(--ti-2)}.f-ti3{fill:var(--ti-3)}.f-accent{fill:var(--accent)}.f-surface{fill:var(--surface)}
+.f-stage{fill:var(--stage)}
+.o-line{stroke:var(--outline);stroke-opacity:.55;stroke-width:2;stroke-linejoin:round}
+.o-thin{stroke:var(--outline);stroke-opacity:.5;stroke-width:1.2;stroke-linejoin:round}
+.gum-edge{fill:none;stroke:var(--gum-deep);stroke-width:2.5}
+.nerve-out{fill:none;stroke:var(--nerve-edge);stroke-width:30;stroke-linecap:round}
+.nerve-in{fill:none;stroke:var(--nerve);stroke-width:23;stroke-linecap:round}
+.lig{fill:none;stroke:var(--lig);stroke-width:10;stroke-linejoin:round}
+.crack{fill:none;stroke:var(--caries);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.plan-line{fill:var(--accent);fill-opacity:.1;stroke:var(--accent);stroke-width:3;stroke-dasharray:9 7}
+.measure{stroke:var(--accent);stroke-width:3;fill:none}
+.turn{fill:none;stroke:var(--accent);stroke-width:3.5;stroke-linecap:round}
+.beam{fill:var(--accent);fill-opacity:.22}
+.scanner-body{fill:var(--surface);stroke:var(--outline);stroke-opacity:.6;stroke-width:2}
+.scanner-grip{fill:var(--surface-2)}
+.gloss{fill:none;stroke:var(--surface);stroke-opacity:.9;stroke-width:5;stroke-linecap:round}
+.ttl{fill:var(--ink);font:700 25px var(--font-display)}
+.scale-t{fill:var(--ink);font:700 16px var(--font-body)}
+.scale-l{stroke:var(--ink);stroke-width:3}
+.tag .pill{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+.tag .tag-t{fill:var(--ink);font:700 22px var(--font-body);dominant-baseline:central}
+.tag .tag-s{fill:var(--ink-2);font:400 18px var(--font-body);dominant-baseline:central}
+.tag .lead{stroke:var(--ink-2);stroke-width:1.6;fill:none}
+.tag .dot{fill:var(--ink);stroke:var(--surface);stroke-width:2}
+
+.f-temp{fill:var(--temp)}.f-graft-bg{fill:var(--graft-bg)}.f-membrane{fill:var(--membrane)}
+.granule{fill:var(--graft);stroke:var(--bone-dense);stroke-width:1}
+.ghost{fill:none;stroke:var(--ink-2);stroke-width:2;stroke-dasharray:6 6}
+.stump-dash{fill:none;stroke:var(--ink-2);stroke-width:2.2;stroke-dasharray:7 6;stroke-opacity:.8}
+.floss{fill:none;stroke:var(--accent);stroke-width:4.5;stroke-linecap:round;stroke-dasharray:760}
+.suture{fill:none;stroke:var(--ink);stroke-width:2.6;stroke-linecap:round}
+.under-gum{opacity:.6}
+.under-gum path,.under-gum rect{stroke-dasharray:4 3}
+.membrane-line{stroke:var(--outline);stroke-opacity:.45;stroke-width:1.5}
+
+/* Confronto dei tempi */
+.timeline{display:grid;gap:18px;margin-top:28px;max-width:980px}
+.tl-row{display:grid;gap:8px;min-width:0}
+.tl-name{font-weight:700;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+.tl-name span{font-weight:400;color:var(--ink-2);font-size:.92rem}
+.tl-bar{display:flex;gap:4px;min-width:0}
+.tl-seg{flex:var(--w,1) 1 0;min-width:0;padding:8px 10px;border-radius:10px;font-size:.88rem;font-weight:700;line-height:1.25;background:var(--surface-2);color:var(--ink);overflow-wrap:anywhere}
+.tl-seg.op{flex:0 1 auto;background:var(--accent);color:var(--accent-ink)}
+.tl-seg.wait{background:var(--accent-soft)}
+.tl-seg small{display:block;font-weight:400;font-size:.8rem}
+
+/* Rigenerazione ossea */
+.gbr-panels{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));margin-top:28px}
+.gbr-panel{margin:0;background:var(--stage);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--line)}
+.gbr-panel svg{display:block;width:100%;height:auto}
+.gbr-panel figcaption{padding:12px 16px 16px;display:flex;flex-direction:column;gap:2px;background:var(--surface);flex:1}
+.gbr-panel figcaption b{font-size:1.02rem}
+.gbr-facts{display:grid;gap:20px 28px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));margin-top:28px}
+.gbr-facts > div{display:flex;flex-direction:column;gap:6px;min-width:0}
+.gbr-care{margin-top:28px;display:grid;gap:12px}
+.gbr-care h3{font-size:1.15rem}
+
+/* Visibilità delle parti nelle fasi */
+#scene .part,#scene .stag{display:none}
+#scene[data-step="1"] .v1,#scene[data-step="2"] .v2,#scene[data-step="3"] .v3,#scene[data-step="4"] .v4,#scene[data-step="5"] .v5,#scene[data-step="6"] .v6,#scene[data-step="7"] .v7,#scene[data-step="8"] .v8{display:inline}
+#scene[data-step="1"] .s1,#scene[data-step="2"] .s2,#scene[data-step="3"] .s3,#scene[data-step="4"] .s4,#scene[data-step="5"] .s5,#scene[data-step="6"] .s6,#scene[data-step="7"] .s7,#scene[data-step="8"] .s8{display:inline;animation:fadeIn .45s var(--d,.4s) both}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes fadeOut{from{opacity:1}to{opacity:0}}
+@keyframes march{from{stroke-dashoffset:160}to{stroke-dashoffset:0}}
+@keyframes extract{0%{transform:translateY(0);opacity:1}70%{opacity:1}100%{transform:translateY(-250px);opacity:0}}
+@keyframes insert{0%{transform:translateY(-300px);opacity:0}20%{opacity:1}100%{transform:none;opacity:1}}
+@keyframes drop{from{transform:translateY(-90px);opacity:0}to{transform:none;opacity:1}}
+@keyframes seat{from{transform:translateY(-140px);opacity:0}to{transform:none;opacity:1}}
+@keyframes driftL{0%{transform:translateX(0);opacity:0}30%{opacity:1}100%{transform:translateX(14px);opacity:0}}
+@keyframes driftR{0%{transform:translateX(0);opacity:0}30%{opacity:1}100%{transform:translateX(-14px);opacity:0}}
+@keyframes scan{from{transform:translateX(-18px)}to{transform:translateX(18px)}}
+@keyframes sweep{0%{transform:translateX(0);opacity:0}8%{opacity:1}82%{transform:translateX(364px);opacity:1}100%{transform:translateX(364px);opacity:0}}
+@keyframes thread{from{stroke-dashoffset:760}to{stroke-dashoffset:0}}
+@keyframes wiggle{from{transform:translateX(-8px)}to{transform:translateX(8px)}}
+@keyframes pop{0%{transform:scale(.2);opacity:0}100%{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  #scene *,#scene .part{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important}
+  #scene .pl,#scene .pr{animation:none!important;opacity:1}
+  .toast{transition:none}
+}
+@media (max-width:420px){.brand .short{display:none}}
+
+
+:root{--cement:#E6D6A6;--gp:#E58A68;--post:#FBFAF6;--post-line:#C3BBA6;--comp:#D5E5EE;--bio:#F4F3EC;--lesion:#DDA594;--lesion-edge:#B5705F;--instr:#C9D2D8;--instr-dark:#6B7780;--bur:#5E6A72}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--cement:#CDBE8E;--gp:#CF7656;--post:#F1EFE8;--post-line:#ABA390;--comp:#B9CCD7;--bio:#E6E4DA;--lesion:#C08A7A;--lesion-edge:#9A5E50;--instr:#AEB8BF;--instr-dark:#56626A;--bur:#4C575E}}
+:root[data-theme="dark"]{--cement:#CDBE8E;--gp:#CF7656;--post:#F1EFE8;--post-line:#ABA390;--comp:#B9CCD7;--bio:#E6E4DA;--lesion:#C08A7A;--lesion-edge:#9A5E50;--instr:#AEB8BF;--instr-dark:#56626A;--bur:#4C575E}
+.f-cement{fill:var(--cement)}.f-gp{fill:var(--gp)}.f-post{fill:var(--post)}.f-comp{fill:var(--comp)}.f-bio{fill:var(--bio)}.f-void{fill:var(--stage)}.f-instr{fill:var(--instr)}.f-bur{fill:var(--bur)}
+.f-lesion{fill:var(--lesion);fill-opacity:.9;stroke:var(--lesion-edge);stroke-width:2.5;stroke-dasharray:6 5}
+.void-o{fill:var(--stage);stroke:var(--outline);stroke-opacity:.55;stroke-width:4;stroke-linejoin:round}
+.clot-o{fill:var(--clot);stroke:var(--outline);stroke-opacity:.4;stroke-width:4;stroke-linejoin:round}
+.bio-o{fill:var(--bio);stroke:var(--outline);stroke-opacity:.7;stroke-width:3.4;stroke-linejoin:round}
+.post-line{fill:none;stroke:var(--post-line);stroke-width:1.2}
+.cortex{fill:none;stroke:var(--bone-dense);stroke-width:9;stroke-linecap:round;stroke-opacity:.8}
+.instr-body{fill:none;stroke:var(--instr);stroke-width:24;stroke-linecap:round}
+.instr-body-o{fill:none;stroke:var(--instr-dark);stroke-width:28;stroke-linecap:round}
+.utip{fill:none;stroke:var(--instr-dark);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.go-arrow{fill:none;stroke:var(--accent);stroke-width:7;stroke-linecap:round;stroke-dasharray:14 9}
+.retractor{fill:none;stroke:var(--instr-dark);stroke-width:12;stroke-linecap:round;stroke-linejoin:round}
+
+#scene .k-flapopen,#scene .k-flapshut,#scene .flap-open,.flap-open{transform-box:fill-box;transform-origin:20% 100%}
+.flap-open{transform:rotate(-22deg)}
+#scene .k-flapopen{animation:flapOpen 1.1s cubic-bezier(.3,.7,.3,1) .4s both}
+#scene .k-flapshut{animation:flapOpen 1.1s cubic-bezier(.3,.7,.3,1) .3s reverse both}
+#scene .k-retr{animation:fadeIn .5s 1.4s both}
+#scene .k-drill{animation:toolIn .9s cubic-bezier(.2,.8,.2,1) .2s both}
+#scene .k-buzz{animation:buzz .12s linear 1s 14}
+#scene .k-win{animation:fadeIn 1s 1.1s both}
+#scene .k-lesout{animation:fadeOut 1.2s 2.2s both}
+#scene .k-cryptin{animation:fadeIn 1.2s 2.2s both}
+#scene .k-cutbur{animation:toolIn .8s cubic-bezier(.2,.8,.2,1) .2s both}
+#scene .k-cutmove{animation:cutMove 1.2s ease-in-out 1s both}
+#scene .k-tipout{animation:tipOut 1.1s cubic-bezier(.5,0,.7,.4) 2.3s both}
+#scene .k-cutline{animation:fadeIn .4s 2.3s both}
+#scene .k-retro{animation:fadeIn 1s 1.6s both}
+#scene .k-fill{animation:fadeIn 1s 1.3s both}
+#scene .k-clot{animation:fadeIn 1s 1.2s both}
+#scene .k-sut{animation:pop .5s 1.6s both;transform-box:fill-box;transform-origin:50% 50%}
+#scene .k-heal{animation:fadeOut 2.4s .8s both}
+@keyframes flapOpen{from{transform:none}to{transform:rotate(-22deg)}}
+@keyframes toolIn{from{transform:translate(-70px,50px);opacity:0}to{transform:none;opacity:1}}
+@keyframes buzz{0%,100%{transform:translate(0,0)}25%{transform:translate(1.4px,-1px)}75%{transform:translate(-1.4px,1px)}}
+@keyframes cutMove{from{transform:none}to{transform:translateX(34px)}}
+@keyframes tipOut{0%{transform:none;opacity:1}100%{transform:translate(-90px,60px) rotate(-18deg);opacity:0}}
+@media (prefers-reduced-motion:reduce){#scene .k-buzz{animation:none!important}}
+
+.quando-grid{display:grid;gap:28px;margin-top:28px}
+@media (min-width:900px){.quando-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}}
+.duo{display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.duo .gbr-panel figcaption .fine{font-size:.85rem}
+.quando-grid .gbr-facts{margin-top:0;grid-template-columns:1fr}
+
+</style>
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="#cose"><svg class="brand-mark" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" class="f-accent"/><path d="M8 9.5c0-2 1.6-3 3-3 1.2 0 1.9.7 3 .7s1.8-.7 3-.7c1.4 0 3 1 3 3 0 2.4-1 3.6-1.4 6-.4 2.4-.6 6-1.9 6-1.4 0-1.2-4.6-2.7-4.6S12.6 21.5 11.2 21.5c-1.3 0-1.5-3.6-1.9-6C8.9 13.1 8 11.9 8 9.5Z" class="f-surface"/></svg><span class="long">Studio Dentistico Colombo</span><span class="short">Studio Colombo</span></a>
+    <div class="tools">
+      <button class="btn" id="btn-present" type="button" aria-label="Mostra le fasi a schermo intero">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M10 9.5v4l3.5-2z"/><path d="M8 21h8"/></svg>
+        <span>In poltrona</span>
+      </button>
+      <button class="btn btn-primary" id="btn-share" type="button" aria-label="Consegna la scheda al paziente con QR o link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg>
+        <span>Consegna<span class="lbl-long"> al paziente</span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="wrap toc" aria-label="Sezioni della scheda">
+    <a href="#cose">Cos'è</a> <a href="#quando">Quando serve</a> <a href="#fasi">Le fasi</a> <a href="#alternative">Alternative</a> <a href="#durata">Risultati e rischi</a> <a href="#dopo">Dopo l'intervento</a> <a href="#domande">Domande</a>
+  </nav>
+</header>
+
+<main>
+  <section class="wrap hero" id="cose">
+    <div class="hero-copy">
+      <p class="eyebrow">Scheda informativa · Chirurgia endodontica</p>
+      <h1>L'apicectomia</h1>
+      <p class="lead">Quando dopo una cura canalare l'infezione alla punta della radice non guarisce, la si può raggiungere dal lato, attraverso la gengiva e l'osso. Si toglie il tessuto infiammato, si tagliano circa 3 mm della punta della radice e si sigilla il canale dal basso. Corona e perno restano al loro posto.</p>
+      <dl class="facts">
+        <div><dt>Anestesia</dt><dd>Locale</dd></div>
+        <div><dt>Durata</dt><dd>Circa 30–90 minuti</dd></div>
+        <div><dt>Punti</dt><dd>Si tolgono dopo pochi giorni</dd></div>
+        <div><dt>Guarigione dell'osso</dt><dd>Alcuni mesi; controllo a circa un anno</dd></div>
+      </dl>
+      <p class="fine">Valori indicativi: dipendono dal dente e dalla posizione della radice.</p>
+    </div>
+    <figure class="compare">
+      <div class="compare-stage">
+        <svg id="anatomy" viewBox="0 0 720 540" role="img" aria-label="Dente con corona e perno in sezione durante l'apicectomia: la gengiva è sollevata, una piccola finestra nell'osso raggiunge la punta della radice, tagliata e sigillata con un cemento bioceramico."></svg>
+      </div>
+      <figcaption>La gengiva si solleva, si apre una piccola finestra nell'osso e si lavora sulla punta della radice. Il resto del dente, con la sua corona, non si tocca.</figcaption>
+    </figure>
+  </section>
+
+  <section id="quando">
+    <div class="wrap">
+      <div class="sec-head"><div>
+        <p class="eyebrow">Quando serve</p>
+        <h2>Dall'alto o dal lato</h2>
+        <p class="sec-intro">Se una cura canalare non ha fatto guarire l'infezione, le strade per conservare il dente sono due: rifare la cura dall'alto (ritrattamento) oppure intervenire dal lato con l'apicectomia.</p>
+      </div></div>
+      <div class="quando-grid">
+        <div class="duo">
+          <figure class="gbr-panel"><svg id="q-re" viewBox="150 20 420 520" role="img" aria-label="Ritrattamento: si entra dall'alto, attraverso la corona, fino al canale"></svg><figcaption><span class="label">Ritrattamento</span><b>Dall'alto, attraverso il dente</b><span class="fine">Si tolgono corona e perno, si ripulisce e si richiude il canale.</span></figcaption></figure>
+          <figure class="gbr-panel"><svg id="q-ap" viewBox="150 20 420 520" role="img" aria-label="Apicectomia: si entra dal lato, attraverso gengiva e osso, fino alla punta della radice"></svg><figcaption><span class="label">Apicectomia</span><b>Dal lato, attraverso la gengiva</b><span class="fine">Si raggiunge la punta della radice senza toccare corona e perno.</span></figcaption></figure>
+        </div>
+        <div class="gbr-facts">
+          <div><h3>Quando si preferisce l'apicectomia</h3><p>Quando il dente ha una corona e un perno ben fatti che sarebbe rischioso togliere, quando il canale è bloccato o contiene un frammento di strumento, o quando un ritrattamento non ha funzionato.</p></div>
+          <div><h3>Quando non è indicata</h3><p>Se la radice è incrinata in verticale, se intorno al dente si è perso molto osso o se la radice è troppo corta. In questi casi di solito il dente va estratto.</p></div>
+          <div><h3>Cosa dicono gli studi</h3><p>Le due strade danno risultati simili, ma gli studi di confronto sono di qualità molto bassa. Dopo l'apicectomia il dolore nella prima settimana è più frequente.<a class="ref" href="#f1">1</a></p></div>
+          <div><h3>Prima dell'intervento</h3><p>Oltre alla radiografia, spesso si fa una TAC 3D a basso dosaggio (cone beam), che mostra la forma della radice, lo spessore dell'osso e la posizione di nervi e seno mascellare.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fasi">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Passo per passo</p>
+          <h2>Le fasi del trattamento</h2>
+          <p class="sec-intro">Usi le frecce o scorra l'immagine con il dito. Ogni fase mostra cosa succede nella bocca.</p>
+        </div>
+        <button class="btn" id="btn-exit" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>Chiudi</button>
+      </div>
+      <div class="stepper">
+        <div>
+          <figure class="stage" id="stage"><svg id="scene" viewBox="0 0 720 540" data-step="1" role="img" aria-labelledby="step-title"></svg></figure>
+          <p class="stage-foot">Schema semplificato di un dente con corona e perno, in sezione: a sinistra il lato verso la guancia, a destra quello verso la lingua.</p>
+        </div>
+        <div class="step-copy" aria-live="polite">
+          <p class="step-count" id="step-count">Fase 1</p>
+          <h3 id="step-title"></h3>
+          <ul class="chips" id="step-chips"></ul>
+          <p class="step-text" id="step-text"></p>
+          <div class="step-note"><span class="label">Da sapere</span><p id="step-note"></p></div>
+          <div class="step-ctrl">
+            <button class="btn" id="prev" type="button" aria-label="Fase precedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Indietro</button>
+            <button class="btn btn-primary" id="next" type="button" aria-label="Fase successiva"><span id="next-lbl">Avanti</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <ol class="step-nav" id="step-nav" aria-label="Vai a una fase"></ol>
+    </div>
+  </section>
+
+
+  <section id="alternative">
+    <div class="wrap">
+      <div class="sec-head"><div>
+        <p class="eyebrow">Le possibilità</p>
+        <h2>Le alternative all'apicectomia</h2>
+        <p class="sec-intro">La scelta dipende dal dente, dalla corona e dal perno, dalla quantità di osso e dalle sue preferenze.</p>
+      </div></div>
+      <div class="alts">
+        <article class="alt">
+          <h3>Ritrattamento canalare</h3>
+          <dl>
+            <div><dt>Dove si lavora</dt><dd>Dall'alto, attraverso il dente</dd></div>
+            <div><dt>Corona e perno</dt><dd>Di solito vanno tolti e poi rifatti</dd></div>
+            <div><dt>Intervento chirurgico</dt><dd>No</dd></div>
+            <div><dt>Risultati negli studi</dt><dd>Simili a quelli dell'apicectomia, con evidenze di qualità molto bassa<a class="ref" href="#f1">1</a></dd></div>
+          </dl>
+        </article>
+        <article class="alt">
+          <div class="alt-head"><svg class="alt-glyph" data-glyph="impianto" viewBox="0 0 96 64" aria-hidden="true"></svg><h3>Estrazione e impianto</h3></div>
+          <dl>
+            <div><dt>Il suo dente</dt><dd>Viene estratto</dd></div>
+            <div><dt>Intervento chirurgico</dt><dd>Sì, in anestesia locale</dd></div>
+            <div><dt>Tempo per finire</dt><dd>Alcuni mesi</dd></div>
+            <div><dt>Durata negli studi</dt><dd>Circa 95 impianti su 100 ancora in bocca dopo 10 anni<a class="ref" href="#f2">2</a></dd></div>
+          </dl>
+        </article>
+      </div>
+      <div class="alt-none">
+        <h3>Se non si fa nulla</h3>
+        <p>L'infezione alla punta della radice può restare silenziosa anche per anni, ma può riacutizzarsi con dolore e gonfiore e, nel tempo, distruggere altro osso intorno al dente.</p>
+      </div>
+      <p class="fine evidence-note">I numeri vengono da revisioni diverse, non da un confronto diretto tra i trattamenti. Indicano un ordine di grandezza e non sono una garanzia per il singolo caso.</p>
+    </div>
+  </section>
+
+  <section id="durata">
+    <div class="wrap">
+      <div class="sec-head"><div>
+        <p class="eyebrow">Cosa dicono gli studi</p>
+        <h2>Risultati e rischi</h2>
+        <p class="sec-intro">Ogni pallino è un dente su cento, secondo gli studi sulla tecnica moderna, con ingrandimento e punte a ultrasuoni.</p>
+      </div></div>
+      <div class="risk-grid">
+        <div class="array-card">
+          <p class="big">89 <small>su 100</small></p>
+          <p>Denti guariti un anno dopo l'apicectomia.<a class="ref" href="#f3">3</a></p>
+          <div class="icon-array" id="arr-heal" role="img" aria-label="89 pallini pieni su 100: denti guariti un anno dopo l'apicectomia"></div>
+          <ul class="legend"><li><i class="on"></i>Guariti</li><li><i></i>Non guariti</li></ul>
+          <p class="fine">Con la tecnica tradizionale, senza ingrandimento né ultrasuoni, i risultati erano molto più bassi: circa 59 su 100 contro 94.<a class="ref" href="#f4">4</a></p>
+        </div>
+        <div class="array-card">
+          <p class="big">82 <small>su 100</small></p>
+          <p>Denti ancora guariti 10 anni dopo, in uno studio di lungo periodo.<a class="ref" href="#f5">5</a></p>
+          <div class="icon-array" id="arr-long" role="img" aria-label="82 pallini pieni su 100: denti ancora guariti dopo 10 anni"></div>
+          <ul class="legend"><li><i class="on"></i>Ancora guariti</li><li><i></i>Non guariti o estratti</li></ul>
+          <p class="fine">Molti pazienti non sono tornati al controllo, quindi il dato è incerto. La guarigione è più probabile con lesioni piccole, fino a 5 mm, al primo intervento e senza dolore prima dell'intervento.<a class="ref" href="#f6">6</a></p>
+        </div>
+      </div>
+      <div class="risks">
+        <h3>Altri problemi possibili</h3>
+        <ul>
+          <li>Dolore e gonfiore sono massimi nei primi 2 giorni. Dopo 5 giorni la maggior parte delle persone ha un dolore lieve o nessun dolore.<a class="ref" href="#f7">7</a></li>
+          <li>Un livido sulla guancia o sul labbro, che sparisce da solo in alcuni giorni.</li>
+          <li>La gengiva può ritirarsi un poco dove è stata incisa, in media meno di mezzo millimetro.<a class="ref" href="#f8">8</a></li>
+          <li>Negli interventi sui premolari e molari inferiori: formicolio o ridotta sensibilità del labbro o del mento. In uno studio è successo a circa 13 persone su 100, sempre in modo passeggero, in media per circa 3 settimane.<a class="ref" href="#f9">9</a></li>
+          <li>Nei denti superiori posteriori si può aprire una piccola comunicazione con il seno mascellare: di solito guarisce senza conseguenze.<a class="ref" href="#f10">10</a></li>
+          <li>Infezione della ferita: rara.</li>
+          <li>Se l'infezione non guarisce, si può valutare un nuovo intervento oppure l'estrazione.</li>
+        </ul>
+        <p class="fine">Il consenso informato le spiega nel dettaglio rischi e alternative per il suo caso.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="dopo">
+    <div class="wrap">
+      <div class="sec-head"><div>
+        <p class="eyebrow">Istruzioni dopo l'intervento</p>
+        <h2>Come comportarsi</h2>
+        <p class="sec-intro">Sono le indicazioni standard dello studio. Se il dentista le ha dato istruzioni diverse, segua quelle.</p>
+      </div></div>
+      <div class="tabs" role="tablist" aria-label="Istruzioni per periodo">
+        <button class="tab" role="tab" id="tab-oggi" aria-controls="p-oggi" aria-selected="true" type="button">Il primo giorno</button>
+        <button class="tab" role="tab" id="tab-sett" aria-controls="p-sett" aria-selected="false" tabindex="-1" type="button">Nei giorni dopo</button>
+        <button class="tab" role="tab" id="tab-tempo" aria-controls="p-tempo" aria-selected="false" tabindex="-1" type="button">Nel tempo</button>
+        <button class="tab tab-alert" role="tab" id="tab-call" aria-controls="p-call" aria-selected="false" tabindex="-1" type="button">Quando chiamarci</button>
+      </div>
+      <div class="panel" role="tabpanel" id="p-oggi" aria-labelledby="tab-oggi">
+        <ul class="do-list">
+          <li><span><b>Impacchi freddi</b> sulla guancia nelle prime ore, avvolti in un panno: 10 minuti sì e 10 no.</span></li>
+          <li><span><b>Non sollevi il labbro</b> per guardare la ferita: tira i punti e può riaprirla.</span></li>
+          <li><span><b>Non sciacqui e non sputi</b> con forza, e non usi cannucce.</span></li>
+          <li><span><b>Cibi morbidi</b>, tiepidi o freddi. Mastichi dal lato opposto.</span></li>
+          <li><span><b>Non fumi e non beva alcolici.</b> Il fumo rallenta la guarigione.</span></li>
+          <li><span><b>Farmaci</b>: prenda quelli prescritti agli orari indicati, senza saltare dosi.</span></li>
+          <li><span><b>Riposo</b>: niente sport o sforzi intensi per 2–3 giorni. Di notte tenga la testa un po' sollevata.</span></li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="p-sett" aria-labelledby="tab-sett" hidden>
+        <ul class="do-list">
+          <li><span><b>Dal giorno dopo</b> lavi normalmente gli altri denti. Vicino alla ferita usi uno spazzolino morbido, con delicatezza e senza toccare i punti.</span></li>
+          <li><span><b>Collutorio</b> alla clorexidina solo se prescritto, come indicato.</span></li>
+          <li><span><b>Il gonfiore</b> è massimo nei primi 2 giorni, poi cala. Un livido sulla guancia o sul labbro è normale.</span></li>
+          <li><span><b>Cibi morbidi</b> per qualche giorno, poi torni gradualmente alla dieta normale.</span></li>
+          <li><span><b>I punti</b> si tolgono dopo pochi giorni, all'appuntamento di controllo.</span></li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="p-tempo" aria-labelledby="tab-tempo" hidden>
+        <ul class="do-list">
+          <li><span><b>Radiografia di controllo</b> dopo circa un anno, a volte anche prima: l'osso si riforma lentamente.</span></li>
+          <li><span><b>Il dente si usa normalmente</b> una volta passato il fastidio dei primi giorni.</span></li>
+          <li><span><b>Controlli e igiene professionale</b> con la frequenza decisa per il suo caso.</span></li>
+          <li><span><b>Se la corona si stacca o si rompe</b>, ce lo dica subito: un buon sigillo dall'alto protegge anche la radice.</span></li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="p-call" aria-labelledby="tab-call" hidden>
+        <div class="alert-box">
+          <ul class="do-list">
+            <li><span>Sanguinamento che non si ferma dopo 30 minuti di pressione con una garza.</span></li>
+            <li><span>Febbre oltre 38 °C.</span></li>
+            <li><span>Dolore o gonfiore che aumentano dopo il terzo giorno invece di calare.</span></li>
+            <li><span>Labbro, mento o lingua ancora addormentati il giorno dopo l'intervento.</span></li>
+            <li><span>La ferita si apre o ne esce pus.</span></li>
+          </ul>
+          <div class="contacts">
+            <div class="contact"><span class="label">Telefono dello studio</span><a href="tel:+39094122749">0941 22749</a></div>
+            <div class="contact"><span class="label">WhatsApp</span><a href="https://wa.me/393791523085" target="_blank" rel="noopener">+39 379 152 3085</a></div>
+          </div>
+          <p class="fine">Se ha difficoltà a respirare o a deglutire, o un gonfiore che si estende rapidamente, chiami subito il 118.</p>
+        </div>
+      </div>
+      <p class="studio-strip"><b>Studio Dentistico Colombo</b><span>Tel. 0941 22749</span><span>Lun–gio 8:30–12:30 e 16:00–20:00</span><span>Ven 8:30–12:30</span></p>
+    </div>
+  </section>
+
+  <section id="domande">
+    <div class="wrap">
+      <div class="sec-head"><div>
+        <p class="eyebrow">Domande frequenti</p>
+        <h2>Le domande che ci fanno più spesso</h2>
+      </div></div>
+      <div class="faq">
+        <details><summary>Fa male?</summary><p>L'intervento si fa in anestesia locale: si sentono pressione e vibrazioni, non dolore. Nei primi 2 giorni dolore e gonfiore sono i più forti e si controllano con gli antidolorifici prescritti; poi calano.<a class="ref" href="#f7">7</a></p></details>
+        <details><summary>Perché non rifare la cura canalare?</summary><p>A volte è proprio la scelta migliore. L'apicectomia si preferisce quando togliere corona e perno sarebbe rischioso, quando il canale è bloccato o quando un ritrattamento non ha funzionato. Negli studi le due strade danno risultati simili.<a class="ref" href="#f1">1</a></p></details>
+        <details><summary>Perché si toglie proprio la punta della radice?</summary><p>Negli ultimi 3 mm della radice si concentrano piccole ramificazioni del canale dove i batteri restano nascosti. Studi sull'anatomia dei denti indicano che togliendo 3 mm si elimina la gran parte di queste ramificazioni.<a class="ref" href="#f11">11</a></p></details>
+        <details><summary>Il dente diventa più debole?</summary><p>La radice si accorcia di circa 3 mm. Di solito questo non cambia la stabilità del dente; se la radice è già corta o c'è poco osso, il dentista lo valuta prima e può sconsigliare l'intervento.</p></details>
+        <details><summary>Servono antibiotici?</summary><p>Non di routine. In uno studio controllato un antibiotico preso prima dell'intervento non ha ridotto in modo significativo le infezioni, che erano rare in entrambi i gruppi.<a class="ref" href="#f12">12</a> Il dentista li prescrive se servono nel suo caso.</p></details>
+        <details><summary>Potrò lavorare il giorno dopo?</summary><p>Molte persone tornano alle attività normali il giorno dopo. Eviti sport e sforzi per 2–3 giorni. Il gonfiore o un livido possono essere visibili per qualche giorno.</p></details>
+        <details><summary>Resta una cicatrice?</summary><p>Sulla gengiva può restare una linea sottile, di solito poco visibile.</p></details>
+        <details><summary>E se non guarisce?</summary><p>Si può valutare un secondo intervento, che però ha meno probabilità di successo del primo,<a class="ref" href="#f6">6</a> oppure l'estrazione e la sostituzione del dente.</p></details>
+        <details><summary>Quanto costa?</summary><p>Dipende dal dente e dalla complessità dell'intervento. Riceve un preventivo scritto prima di iniziare.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <div><p class="label">Fonti</p></div>
+  <ol>
+    <li id="f1">Del Fabbro M, Corbella S, Sequeira-Byron P, et al. Endodontic procedures for retreatment of periapical lesions. <i>Cochrane Database Syst Rev</i> 2016;10:CD005511. <a href="https://doi.org/10.1002/14651858.CD005511.pub3" target="_blank" rel="noopener">Articolo</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Del+Fabbro+endodontic+procedures+for+retreatment+of+periapical+lesions+2016" target="_blank" rel="noopener">PubMed</a></li>
+    <li id="f2">Jung RE, Zembic A, Pjetursson BE, Zwahlen M, Thoma DS. Systematic review of the survival rate and the incidence of biological, technical, and aesthetic complications of single crowns on implants reported in longitudinal studies with a mean follow-up of 5 years. <i>Clin Oral Implants Res</i> 2012;23 Suppl 6:2–21. <a href="https://doi.org/10.1111/j.1600-0501.2012.02547.x" target="_blank" rel="noopener">Articolo</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Jung+Zembic+Pjetursson+Zwahlen+Thoma+2012+single+crowns+on+implants" target="_blank" rel="noopener">PubMed</a></li>
+    <li id="f3">Tsesis I, Rosen E, Taschieri S, Telishevsky Strauss Y, Ceresoli V, Del Fabbro M. Outcomes of surgical endodontic treatment performed by a modern technique: an updated meta-analysis of the literature. <i>J Endod</i> 2013;39(3):332–339. <a href="https://doi.org/10.1016/j.joen.2012.11.044" target="_blank" rel="noopener">Articolo</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/23402503/" target="_blank" rel="noopener">PubMed</a></li>
+    <li id="f4">Setzer FC, Shah SB, Kohli MR, Karabucak B, Kim S. Outcome of endodontic surgery: a meta-analysis of the literature — part 1: comparison of traditional root-end surgery and endodontic microsurgery. <i>J Endod</i> 2010;36(11):1757–1765. <a href="https://doi.org/10.1016/j.joen.2010.08.007" target="_blank" rel="noopener">Articolo</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/21496650/" target="_blank" rel="noopener">PubMed</a></li>
+    <li id="f5">von Arx T, Jensen SS, Janner SFM, Hänni S, Bornstein MM. Studio a 10 anni su 119 denti trattati con apicectomia e otturazione retrograda in MTA. <i>J Endod</i> 2019;45(4):394–401. <a href="https://doi.org/10.1016/j.joen.2018.12.015" target="_blank" rel="noopener">Articolo</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/?term=von+Arx+Jensen+Janner+Hanni+Bornstein+2019+apical+surgery+10-year" target="_blank" rel="noopener">PubMed</a></li>
+    <li id="f6">von Arx T, Peñarrocha M, Jensen S. Prognostic factors in apical surgery with root-end filling: a meta-analysis. <i>J Endod</i> 2010;36(6):957–973. <a href="https://doi.org/10.1016/j.joen.2010.02.026" target="_blank" rel="noopener">Articolo</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/20478447/" target="_blank" rel="noopener">PubMed</a></li>
+    <li id="f7">Malagise CJ, et al. Studio prospettico sul dolore dopo chirurgia endodontica (173 pazienti). <i>J Endod</i> 2021;47(3):409–414. <a href="https://doi.org/10.1016/j.joen.2020.12.012" target="_blank" rel="noopener">Articolo</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/33359530/" target="_blank" rel="noopener">PubMed</a></li>
+    <li id="f8">Alamoudi R, et al. Revisione sistematica sulle incisioni della gengiva nella chirurgia endodontica e sulla retrazione gengivale. <i>Oral Health Prev Dent</i> 2021. <a href="https://doi.org/10.3290/j.ohpd.b1176847" target="_blank" rel="noopener">Articolo</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/33829721/" target="_blank" rel="noopener">PubMed</a></li>
+    <li id="f9">von Arx T, Bolt S, Bornstein MM. Disturbi della sensibilità dopo apicectomia su premolari e molari inferiori (249 interventi). <i>Eur Endod J</i> 2021;6(3):247–253. <a href="https://doi.org/10.14744/eej.2021.64326" target="_blank" rel="noopener">Articolo</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/34967339/" target="_blank" rel="noopener">PubMed</a></li>
+    <li id="f10">Taschieri S, et al. Perforazione del seno mascellare durante la chirurgia endodontica e guarigione. <i>BMC Oral Health</i> 2021;21:252. <a href="https://doi.org/10.1186/s12903-021-01610-3" target="_blank" rel="noopener">Articolo</a></li>
+    <li id="f11">Kim S, Kratchman S. Modern endodontic surgery concepts and practice: a review. <i>J Endod</i> 2006;32(7):601–623. <a href="https://doi.org/10.1016/j.joen.2005.12.010" target="_blank" rel="noopener">Articolo</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Kim+Kratchman+modern+endodontic+surgery+concepts+and+practice+2006" target="_blank" rel="noopener">PubMed</a></li>
+    <li id="f12">Lindeboom JA, Frenken JW, Valkenburg P, van den Akker HP. The role of preoperative prophylactic antibiotic administration in periapical endodontic surgery: a randomized, prospective double-blind placebo-controlled study. <i>Int Endod J</i> 2005;38(12):877–881. <a href="https://doi.org/10.1111/j.1365-2591.2005.01030.x" target="_blank" rel="noopener">Articolo</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/16343114/" target="_blank" rel="noopener">PubMed</a></li>
+  </ol>
+  <p class="fine">Questa scheda spiega il trattamento in generale e non sostituisce la visita né il consenso informato, in cui il dentista le illustra rischi, alternative e costi del suo caso. Le illustrazioni sono schemi semplificati. Aggiornata a ottobre 2026.</p>
+</footer>
+<div class="sheet" id="share" hidden>
+  <div class="sheet-card" role="dialog" aria-modal="true" aria-labelledby="share-title">
+    <div class="sheet-head">
+      <div><p class="eyebrow">Per lo studio</p><h2 id="share-title" style="font-size:1.6rem">Consegna al paziente</h2></div>
+      <button class="icon-btn" id="share-close" type="button" aria-label="Chiudi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <fieldset class="seg">
+      <legend class="label">La pagina si apre su</legend>
+      <label><input type="radio" name="target" id="t-all" value="" checked>Scheda completa</label>
+      <label><input type="radio" name="target" id="t-dopo" value="dopo">Istruzioni dopo l'intervento</label>
+      <label><input type="radio" name="target" id="t-fasi" value="fasi">Le fasi del trattamento</label>
+    </fieldset>
+    <div class="qr" id="qr" aria-label="Codice QR del link"></div>
+    <div class="field"><label class="label" for="share-url">Link per il paziente</label><input id="share-url" type="text" readonly></div>
+    <div class="sheet-actions">
+      <button class="btn" id="copy-url" type="button">Copia link</button>
+      <a class="btn btn-primary" id="wa-url" href="#" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <details>
+      <summary>Indirizzo pubblico della pagina</summary>
+      <div class="field">
+        <label class="label" for="base-url">Dove è pubblicata la scheda</label>
+        <input id="base-url" type="url" inputmode="url" autocomplete="off">
+        <p class="fine">Il QR e il link puntano a questo indirizzo. Aggiornalo quando pubblichi la pagina su GitHub Pages o sul sito dello studio.</p>
+      </div>
+    </details>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script>
+/* Schede trattamenti · Studio Dentistico Colombo
+   Codice in comune: geometria dei disegni, etichette, fasi, consegna al paziente. */
+(function(){
+"use strict";
+document.documentElement.lang = "it";
+var T = window.T = {};
+
+/* ===== Geometria (coordinate della scena 720 × 540, circa 18 unità = 1 mm) ===== */
+function crownTop(c){return "M"+(c-62)+" 240 C"+(c-80)+" 206 "+(c-88)+" 160 "+(c-82)+" 130 C"+(c-78)+" 108 "+(c-62)+" 96 "+(c-42)+" 96 C"+(c-24)+" 96 "+(c-14)+" 112 "+c+" 112 C"+(c+14)+" 112 "+(c+24)+" 96 "+(c+42)+" 96 C"+(c+62)+" 96 "+(c+78)+" 108 "+(c+82)+" 130 C"+(c+88)+" 160 "+(c+80)+" 206 "+(c+62)+" 240 ";}
+function rootDown(c){return "C"+(c+56)+" 310 "+(c+40)+" 400 "+(c+18)+" 448 C"+(c+10)+" 462 "+(c-10)+" 462 "+(c-18)+" 448 C"+(c-40)+" 400 "+(c-56)+" 310 ";}
+T.toothBody=function(c){return crownTop(c)+rootDown(c)+(c-62)+" 240 Z";};
+T.crownCap=function(c){return crownTop(c)+"C"+(c+30)+" 230 "+(c-30)+" 230 "+(c-62)+" 240 Z";};
+T.pontic=function(c){return crownTop(c)+"C"+(c+30)+" 254 "+(c-30)+" 254 "+(c-62)+" 240 Z";};
+T.crownCore=function(c){return "M"+(c-52)+" 246 C"+(c-66)+" 210 "+(c-72)+" 168 "+(c-68)+" 142 C"+(c-64)+" 124 "+(c-52)+" 114 "+(c-36)+" 114 C"+(c-22)+" 114 "+(c-12)+" 126 "+c+" 126 C"+(c+12)+" 126 "+(c+22)+" 114 "+(c+36)+" 114 C"+(c+52)+" 114 "+(c+64)+" 124 "+(c+68)+" 142 C"+(c+72)+" 168 "+(c+66)+" 210 "+(c+52)+" 246 Z";};
+T.pulp=function(c){return "M"+(c-28)+" 152 C"+(c-32)+" 134 "+(c-20)+" 128 "+(c-12)+" 136 C"+(c-6)+" 142 "+(c+6)+" 142 "+(c+12)+" 136 C"+(c+20)+" 128 "+(c+32)+" 134 "+(c+28)+" 152 C"+(c+24)+" 182 "+(c+16)+" 212 "+(c+10)+" 242 C"+(c+7)+" 320 "+(c+5)+" 390 "+(c+3)+" 440 L"+(c-3)+" 440 C"+(c-5)+" 390 "+(c-7)+" 320 "+(c-10)+" 242 C"+(c-16)+" 212 "+(c-24)+" 182 "+(c-28)+" 152 Z";};
+T.pulpPrep=function(c){return "M"+(c-20)+" 178 C"+(c-22)+" 164 "+(c-14)+" 160 "+(c-8)+" 166 C"+(c-4)+" 170 "+(c+4)+" 170 "+(c+8)+" 166 C"+(c+14)+" 160 "+(c+22)+" 164 "+(c+20)+" 178 C"+(c+18)+" 198 "+(c+14)+" 218 "+(c+10)+" 242 C"+(c+7)+" 320 "+(c+5)+" 390 "+(c+3)+" 440 L"+(c-3)+" 440 C"+(c-5)+" 390 "+(c-7)+" 320 "+(c-10)+" 242 C"+(c-14)+" 218 "+(c-18)+" 198 "+(c-20)+" 178 Z";};
+T.stump=function(c){return "M"+(c-58)+" 242 L"+(c-50)+" 140 C"+(c-49)+" 128 "+(c-40)+" 122 "+(c-28)+" 122 L"+(c+28)+" 122 C"+(c+40)+" 122 "+(c+49)+" 128 "+(c+50)+" 140 L"+(c+58)+" 242";};
+T.preparedBody=function(c){return "M"+(c-60)+" 244 L"+(c-50)+" 140 C"+(c-49)+" 128 "+(c-40)+" 122 "+(c-28)+" 122 L"+(c+28)+" 122 C"+(c+40)+" 122 "+(c+49)+" 128 "+(c+50)+" 140 L"+(c+60)+" 244 C"+(c+56)+" 310 "+(c+40)+" 400 "+(c+18)+" 448 C"+(c+10)+" 462 "+(c-10)+" 462 "+(c-18)+" 448 C"+(c-40)+" 400 "+(c-56)+" 310 "+(c-60)+" 244 Z";};
+T.rootLine=function(c){return "M"+(c-62)+" 240 "+rootDown(c)+(c-62)+" 240";};
+T.socket=function(c){return "M"+(c-60)+" 266 C"+(c-54)+" 330 "+(c-40)+" 400 "+(c-18)+" 448 C"+(c-10)+" 462 "+(c+10)+" 462 "+(c+18)+" 448 C"+(c+40)+" 400 "+(c+54)+" 330 "+(c+60)+" 266 Z";};
+T.gloss=function(c){return "M"+(c-60)+" 150 C"+(c-60)+" 130 "+(c-52)+" 116 "+(c-38)+" 112";};
+T.IMPLANT={top:272,len:180,r:36};
+T.implant=function(c,o){
+  o=o||T.IMPLANT; var top=o.top, len=o.len, r=o.r, pitch=14, pts=[[c+r,top],[c+r,top+8]], y=top+14;
+  while(y < top+len-30){var t=(y-top)/len, ro=r+3-t*10, ri=ro-7; pts.push([c+ro,y]); pts.push([c+ri,y+pitch/2]); y+=pitch;}
+  var last=pts[pts.length-1], rr=last[0]-c, ly=last[1];
+  var d="M"+(c-r)+" "+top+" ";
+  pts.forEach(function(p){d+="L"+p[0].toFixed(1)+" "+p[1]+" ";});
+  d+="C"+(c+rr).toFixed(1)+" "+(ly+16)+" "+(c+12)+" "+(top+len)+" "+c+" "+(top+len)+" C"+(c-12)+" "+(top+len)+" "+(c-rr).toFixed(1)+" "+(ly+16)+" "+(c-rr).toFixed(1)+" "+ly+" ";
+  for(var i=pts.length-2;i>=0;i--){d+="L"+(2*c-pts[i][0]).toFixed(1)+" "+pts[i][1]+" ";}
+  return d+"Z";
+};
+T.halo=function(c,o){o=o||T.IMPLANT; var t=o.top+4,b=o.top+o.len,r=o.r,e=13,m=(t+b)/2;return "M"+(c-r-e)+" "+t+" L"+(c+r+e)+" "+t+" C"+(c+r+e)+" "+m+" "+(c+r+e-6)+" "+(b-20)+" "+(c+r-4)+" "+(b+8)+" C"+(c+14)+" "+(b+e+4)+" "+(c-14)+" "+(b+e+4)+" "+(c-r+4)+" "+(b+8)+" C"+(c-r-e+6)+" "+(b-20)+" "+(c-r-e)+" "+m+" "+(c-r-e)+" "+t+" Z";};
+T.abutment=function(c,top){top=top||272;return "M"+(c-34)+" "+top+" C"+(c-38)+" "+(top-10)+" "+(c-40)+" "+(top-20)+" "+(c-36)+" "+(top-30)+" L"+(c-28)+" 186 C"+(c-27)+" 178 "+(c-20)+" 174 "+(c-12)+" 174 L"+(c+12)+" 174 C"+(c+20)+" 174 "+(c+27)+" 178 "+(c+28)+" 186 L"+(c+36)+" "+(top-30)+" C"+(c+40)+" "+(top-20)+" "+(c+38)+" "+(top-10)+" "+(c+34)+" "+top+" Z";};
+T.healScrew=function(c,top){top=top||272;return "M"+(c-28)+" "+top+" L"+(c-30)+" 238 C"+(c-30)+" 230 "+(c-26)+" 226 "+(c-18)+" 226 L"+(c+18)+" 226 C"+(c+26)+" 226 "+(c+30)+" 230 "+(c+30)+" 238 L"+(c+28)+" "+top+" Z";};
+T.gumOpening=function(c){return "M"+(c-56)+" 232 C"+(c-30)+" 243 "+(c+30)+" 243 "+(c+56)+" 232 L"+(c+60)+" 286 L"+(c-60)+" 286 Z";};
+T.membrane=function(c){return "M"+(c-66)+" 234 C"+(c-30)+" 250 "+(c+30)+" 250 "+(c+66)+" 234 L"+(c+66)+" 226 C"+(c+30)+" 242 "+(c-30)+" 242 "+(c-66)+" 226 Z";};
+T.GUM="M0 228 C60 226 120 238 178 238 C228 238 250 208 269 208 C288 208 312 240 360 240 C408 240 432 208 451 208 C470 208 492 238 542 238 C600 238 660 226 720 228 L720 284 L0 284 Z";
+T.GUM_TOP="M0 228 C60 226 120 238 178 238 C228 238 250 208 269 208 C288 208 312 240 360 240 C408 240 432 208 451 208 C470 208 492 238 542 238 C600 238 660 226 720 228";
+T.BONE="M0 274 L720 274 L720 540 L0 540 Z";
+
+/* ===== Pezzi di disegno ===== */
+T.defs=function(p){
+  return '<defs>'+
+   '<pattern id="'+p+'pores" width="46" height="38" patternUnits="userSpaceOnUse"><ellipse cx="8" cy="9" rx="5" ry="3.5" class="f-pore"/><ellipse cx="30" cy="6" rx="3" ry="2.2" class="f-pore"/><ellipse cx="22" cy="24" rx="6" ry="4" class="f-pore"/><ellipse cx="41" cy="30" rx="3.6" ry="2.6" class="f-pore"/><ellipse cx="5" cy="31" rx="2.6" ry="2" class="f-pore"/></pattern>'+
+   '<pattern id="'+p+'graft" width="22" height="20" patternUnits="userSpaceOnUse"><rect width="22" height="20" class="f-graft-bg"/><circle cx="5" cy="5" r="3.6" class="granule"/><circle cx="15" cy="7" r="2.8" class="granule"/><circle cx="10" cy="15" r="3.3" class="granule"/><circle cx="19" cy="17" r="2.3" class="granule"/><circle cx="2" cy="16" r="1.9" class="granule"/></pattern>'+
+   '<pattern id="'+p+'graft2" width="30" height="28" patternUnits="userSpaceOnUse"><circle cx="6" cy="6" r="3" class="granule"/><circle cx="20" cy="15" r="2.4" class="granule"/><circle cx="9" cy="22" r="2" class="granule"/></pattern>'+
+   '<linearGradient id="'+p+'ti" x1="0" x2="1"><stop offset="0" style="stop-color:var(--ti-3)"/><stop offset=".35" style="stop-color:var(--ti-1)"/><stop offset=".7" style="stop-color:var(--ti-2)"/><stop offset="1" style="stop-color:var(--ti-3)"/></linearGradient>'+
+   '<linearGradient id="'+p+'ab" x1="0" x2="1"><stop offset="0" style="stop-color:var(--ti-2)"/><stop offset=".4" style="stop-color:var(--ti-1)"/><stop offset="1" style="stop-color:var(--ti-3)"/></linearGradient>'+
+   '<marker id="'+p+'arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="f-accent"/></marker>'+
+  '</defs>';
+};
+T.stageBg=function(){return '<rect x="-400" y="-400" width="1520" height="1340" class="f-stage"/>';};
+T.bone=function(p){return '<path d="'+T.BONE+'" class="f-bone"/><path d="'+T.BONE+'" fill="url(#'+p+'pores)"/>';};
+T.gum=function(){return '<path d="'+T.GUM+'" class="f-gum"/><path d="'+T.GUM_TOP+'" class="gum-edge"/>';};
+T.nerve=function(){return '<path d="M-10 500 C180 494 520 494 730 502" class="nerve-out"/><path d="M-10 500 C180 494 520 494 730 502" class="nerve-in"/>';};
+T.tooth=function(c,extra){
+  return '<path d="'+T.toothBody(c)+'" class="f-dentin o-line"/><path d="'+T.crownCap(c)+'" class="f-enamel o-line"/><path d="'+T.crownCore(c)+'" class="f-dentin"/><path d="'+T.pulp(c)+'" class="f-pulp"/>'+(extra||"");
+};
+T.damagedTooth=function(c){return T.tooth(c,'<ellipse cx="'+(c+32)+'" cy="134" rx="17" ry="13" class="f-caries"/><path d="M'+(c-14)+' 114 L'+(c-6)+' 140 L'+(c-16)+' 162 L'+(c-4)+' 196" class="crack"/>');};
+T.prepared=function(c){return '<path d="'+T.preparedBody(c)+'" class="f-dentin o-line"/><path d="'+T.pulpPrep(c)+'" class="f-pulp"/>';};
+T.bridge=function(cls){
+  return '<rect x="246" y="148" width="50" height="56" rx="16" class="'+cls+' o-line"/><rect x="424" y="148" width="50" height="56" rx="16" class="'+cls+' o-line"/>'+
+    '<path d="'+T.crownCap(178)+'" class="'+cls+' o-line"/><path d="'+T.crownCap(542)+'" class="'+cls+' o-line"/><path d="'+T.pontic(360)+'" class="'+cls+' o-line"/>';
+};
+T.bridgeGloss=function(){return '<path d="'+T.gloss(178)+'" class="gloss"/><path d="'+T.gloss(360)+'" class="gloss"/><path d="'+T.gloss(542)+'" class="gloss"/>';};
+T.implantG=function(p,c,o){return '<path d="'+T.implant(c,o)+'" fill="url(#'+p+'ti)" class="o-line"/>';};
+T.coverScrew=function(c,top,ghost){top=top||272;return '<g'+(ghost?' class="under-gum"':'')+'><rect x="'+(c-31)+'" y="'+(top-9)+'" width="62" height="11" rx="4" class="f-ti2 o-line"/><rect x="'+(c-7)+'" y="'+(top-7)+'" width="14" height="4" rx="1.5" class="f-ti3"/></g>';};
+T.healG=function(p,c,top){return '<path d="'+T.healScrew(c,top)+'" fill="url(#'+p+'ab)" class="o-line"/><rect x="'+(c-9)+'" y="228" width="18" height="6" rx="2" class="f-ti3"/>';};
+T.abutG=function(p,c,top){return '<path d="'+T.abutment(c,top)+'" fill="url(#'+p+'ab)" class="o-line"/>';};
+T.crownG=function(c,cls){return '<path d="'+T.crownCap(c)+'" class="'+(cls||"f-crown")+' o-line"/>'+(cls&&cls!=="f-crown"?'':'<path d="'+T.gloss(c)+'" class="gloss"/>');};
+T.sutures=function(c){
+  var s=""; [c-28,c+28].forEach(function(x){s+='<path d="M'+(x-9)+' 230 L'+(x+9)+' 248 M'+(x+9)+' 230 L'+(x-9)+' 248" class="suture"/>';});
+  return s;
+};
+T.membraneG=function(c){return '<path d="'+T.membrane(c)+'" class="f-membrane membrane-line"/>';};
+T.scanner=function(x0,by,hw){
+  var h=x0+43;
+  return '<path d="M'+(x0+16)+' 68 L'+(x0+70)+' 68 L'+(h+hw)+' '+by+' L'+(h-hw)+' '+by+' Z" class="beam"/>'+
+    '<rect x="'+x0+'" y="22" width="330" height="46" rx="23" class="scanner-body"/><rect x="'+(x0+206)+'" y="28" width="118" height="34" rx="17" class="scanner-grip"/><rect x="'+(x0+14)+'" y="62" width="58" height="8" rx="3" class="f-accent"/>';
+};
+T.particles=function(c,o){
+  o=o||T.IMPLANT; var b=o.top+o.len, s="";
+  var pts=[[c-54,o.top+40,"pl",0],[c-62,o.top+78,"pl",.6],[c-52,o.top+120,"pl",1.2],[c-60,b-22,"pl",.3],[c+54,o.top+50,"pr",.9],[c+62,o.top+90,"pr",.2],[c+50,o.top+132,"pr",1.5],[c+60,b-14,"pr",.7],[c-14,b+18,"pl",1.1],[c+16,b+18,"pr",.4]];
+  pts.forEach(function(q){s+='<circle cx="'+q[0]+'" cy="'+q[1]+'" r="4" class="f-dense '+q[2]+'" style="animation-delay:'+q[3]+'s"/>';});
+  return s;
+};
+T.scaleBar=function(){return '<g><rect x="16" y="512" width="150" height="24" rx="12" class="f-surface" opacity=".92"/><line x1="30" y1="524" x2="120" y2="524" class="scale-l"/><line x1="30" y1="518" x2="30" y2="530" class="scale-l"/><line x1="120" y1="518" x2="120" y2="530" class="scale-l"/><text x="128" y="530" class="scale-t">5 mm</text></g>';};
+
+/* ===== Etichette (pillole con linea guida) ===== */
+var canvas=document.createElement("canvas"), ctx=canvas.getContext("2d");
+var BODY='"Atkinson Hyperlegible", Verdana, sans-serif';
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");}
+T.esc=esc;
+T.tags=function(list){
+  return '<g class="tags">'+list.map(function(t){
+    var leads="", dots="";
+    (t.to||[]).forEach(function(p){leads+='<path class="lead"/>'; dots+='<circle class="dot" cx="'+p[0]+'" cy="'+p[1]+'" r="4.5"/>';});
+    return '<g class="tag '+(t.cls||"")+'" style="--d:'+(t.d||0)+'s">'+leads+dots+'<rect class="pill" rx="'+(t.sub?16:19)+'"/><text class="tag-t">'+esc(t.text)+'</text>'+(t.sub?'<text class="tag-s">'+esc(t.sub)+'</text>':'')+'</g>';
+  }).join("")+'</g>';
+};
+function layoutTags(svg,tags){
+  if(!svg||!tags) return;
+  svg.querySelectorAll(".tags .tag").forEach(function(g,i){
+    var t=tags[i]; if(!t) return;
+    ctx.font="700 22px "+BODY; var w1=ctx.measureText(t.text).width;
+    var w2=0; if(t.sub){ctx.font="400 18px "+BODY; w2=ctx.measureText(t.sub).width;}
+    var w=Math.ceil(Math.max(w1,w2)+30), h=t.sub?64:40;
+    var x0=t.anchor==="end"?t.x-w:t.anchor==="middle"?t.x-w/2:t.x, y0=t.y-h/2;
+    var r=g.querySelector(".pill"); r.setAttribute("x",x0); r.setAttribute("y",y0); r.setAttribute("width",w); r.setAttribute("height",h);
+    var tt=g.querySelector(".tag-t"); tt.setAttribute("x",x0+15); tt.setAttribute("y",t.sub?y0+22:t.y+1);
+    var ts=g.querySelector(".tag-s"); if(ts){ts.setAttribute("x",x0+15); ts.setAttribute("y",y0+45);}
+    g.querySelectorAll(".lead").forEach(function(l,k){
+      var p=t.to[k], sx, sy;
+      if(p[0]<x0){sx=x0; sy=t.y;} else if(p[0]>x0+w){sx=x0+w; sy=t.y;}
+      else {sx=Math.min(Math.max(p[0],x0+16),x0+w-16); sy=p[1]<y0?y0:y0+h;}
+      l.setAttribute("d","M"+sx+" "+sy+" L"+p[0]+" "+p[1]);
+    });
+  });
+}
+
+/* ===== Piccoli schemi delle alternative ===== */
+function mini(x,cls){return '<path d="M'+x+' 34 C'+(x-2)+' 25 '+(x-2)+' 15 '+(x+3)+' 12 C'+(x+7)+' 10 '+(x+9)+' 14 '+(x+12)+' 14 C'+(x+15)+' 14 '+(x+17)+' 10 '+(x+21)+' 12 C'+(x+26)+' 15 '+(x+26)+' 25 '+(x+24)+' 34 Z" class="'+cls+' o-thin"/>';}
+function miniRoot(x){return '<path d="M'+(x+1)+' 34 C'+(x+3)+' 47 '+(x+8)+' 57 '+(x+12)+' 59 C'+(x+16)+' 57 '+(x+21)+' 47 '+(x+23)+' 34 Z" class="f-dentin o-thin"/>';}
+var GLYPH_BASE='<rect x="0" y="40" width="96" height="24" class="f-bone"/>';
+var GLYPH_GUM='<path d="M0 32 C10 32 14 38 18 38 C24 38 26 33 34 33 L62 33 C70 33 72 38 78 38 C82 38 86 32 96 32 L96 44 L0 44 Z" class="f-gum"/>';
+var GLYPHS={
+  impianto: GLYPH_BASE+miniRoot(6)+miniRoot(66)+'<path d="M42 36 L54 36 L53 56 Q48 62 43 56 Z" class="f-ti2 o-thin"/><path d="M42 41 h12 M42 46 h12 M43 51 h10" style="stroke:var(--ti-3)" stroke-width="1.2"/>'+GLYPH_GUM+mini(6,"f-enamel")+mini(66,"f-enamel")+'<rect x="45" y="30" width="6" height="6" class="f-ti2"/>'+mini(36,"f-crown"),
+  ponte: GLYPH_BASE+miniRoot(6)+miniRoot(66)+GLYPH_GUM+'<rect x="18" y="18" width="60" height="10" rx="3" class="f-crown o-thin"/>'+mini(6,"f-crown")+mini(66,"f-crown")+'<path d="M36 33 C34 25 34 15 39 12 C43 10 45 14 48 14 C51 14 53 10 57 12 C62 15 62 25 60 33 Q48 37 36 33 Z" class="f-crown o-thin"/>',
+  mobile: GLYPH_BASE+miniRoot(6)+miniRoot(66)+GLYPH_GUM+mini(6,"f-enamel")+mini(66,"f-enamel")+'<path d="M31 30 Q48 26 65 30 L64 39 Q48 42 32 39 Z" class="f-gum-deep o-thin"/>'+mini(36,"f-crown")+'<path d="M62 30 C66 24 70 22 74 24" fill="none" style="stroke:var(--accent)" stroke-width="2.4" stroke-linecap="round"/>'
+};
+function buildGlyphs(){
+  document.querySelectorAll("svg[data-glyph]").forEach(function(s){ s.innerHTML=GLYPHS[s.getAttribute("data-glyph")]||""; });
+}
+
+/* ===== Fasi ===== */
+var P, step=1, scene;
+function renderStep(){
+  var s=P.steps[step-1]; if(P.resolve) s=P.resolve(s);
+  scene.setAttribute("data-step",step);
+  scene.setAttribute("aria-label","Illustrazione della fase "+step+": "+s.alt);
+  document.getElementById("step-count").textContent="Fase "+step+" di "+P.steps.length;
+  document.getElementById("step-title").textContent=s.title;
+  document.getElementById("step-text").textContent=s.text;
+  document.getElementById("step-note").textContent=s.note;
+  document.getElementById("step-chips").innerHTML=s.chips.map(function(c){return "<li>"+esc(c)+"</li>";}).join("");
+  document.getElementById("next-lbl").textContent=step===P.steps.length?"Ricomincia":"Avanti";
+  document.querySelectorAll("#step-nav button").forEach(function(b,i){
+    var n=i+1;
+    if(n===step) b.setAttribute("aria-current","step"); else b.removeAttribute("aria-current");
+    b.classList.toggle("done",n<step);
+  });
+}
+function go(n){ if(n<1) n=1; if(n>P.steps.length) n=1; step=n; renderStep(); }
+function buildNav(){
+  var nav=document.getElementById("step-nav");
+  nav.style.setProperty("--n",P.steps.length);
+  nav.innerHTML=P.steps.map(function(s,i){
+    return '<li><button type="button" data-n="'+(i+1)+'" aria-label="Fase '+(i+1)+': '+esc(s.title)+'"><span class="n">'+(i+1)+'</span><span class="lbl">'+esc(s.short)+'</span></button></li>';
+  }).join("");
+}
+
+/* ===== Modalità poltrona ===== */
+var wakeLock=null;
+function setPresent(on){
+  document.documentElement.classList.toggle("is-present",on);
+  if(on){
+    try{ var r=document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen(); if(r&&r.catch) r.catch(function(){}); }catch(e){}
+    try{ if(navigator.wakeLock) navigator.wakeLock.request("screen").then(function(l){wakeLock=l;}).catch(function(){}); }catch(e){}
+    document.getElementById("next").focus();
+  } else {
+    try{ if(document.fullscreenElement&&document.exitFullscreen) document.exitFullscreen().catch(function(){}); }catch(e){}
+    try{ if(wakeLock){ wakeLock.release(); wakeLock=null; } }catch(e){}
+    document.getElementById("btn-present").focus();
+  }
+}
+
+/* ===== Schede delle istruzioni ===== */
+function initTabs(){
+  var tabs=[].slice.call(document.querySelectorAll('[role="tab"]'));
+  function select(t){
+    tabs.forEach(function(x){
+      var on=x===t;
+      x.setAttribute("aria-selected",on?"true":"false");
+      x.tabIndex=on?0:-1;
+      document.getElementById(x.getAttribute("aria-controls")).hidden=!on;
+    });
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener("click",function(){select(t);});
+    t.addEventListener("keydown",function(e){
+      var k=e.key, j=null;
+      if(k==="ArrowRight") j=(i+1)%tabs.length; else if(k==="ArrowLeft") j=(i-1+tabs.length)%tabs.length;
+      else if(k==="Home") j=0; else if(k==="End") j=tabs.length-1;
+      if(j!==null){ e.preventDefault(); tabs[j].focus(); select(tabs[j]); }
+    });
+  });
+}
+
+/* ===== Matrici di pallini ===== */
+function iconArray(id,n,cls){
+  var el=document.getElementById(id); if(!el) return;
+  var h=""; for(var i=0;i<100;i++) h+='<i'+(i<n?' class="'+cls+'"':'')+'></i>';
+  el.innerHTML=h;
+}
+
+/* ===== Consegna al paziente ===== */
+var toastT;
+function toast(msg){
+  var t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show");
+  clearTimeout(toastT); toastT=setTimeout(function(){t.classList.remove("show");},2200);
+}
+function defaultBase(){
+  var here=location.href.split("#")[0];
+  if(/^https?:/.test(here)&&/github\.io$|colombo/i.test(location.hostname)) return here;
+  return P.publicUrl;
+}
+function currentUrl(){
+  var base=(document.getElementById("base-url").value||P.publicUrl).trim();
+  var target=(document.querySelector('input[name="target"]:checked')||{}).value||"";
+  var h=P.hashFor?P.hashFor(target):target;
+  return base.split("#")[0]+(h?"#"+h:"");
+}
+function refreshShare(){
+  var url=currentUrl();
+  document.getElementById("share-url").value=url;
+  document.getElementById("wa-url").href="https://wa.me/?text="+encodeURIComponent(P.shareText+" "+url);
+  var box=document.getElementById("qr");
+  if(typeof window.qrcode!=="function"){ box.textContent="Il codice QR non è disponibile senza connessione. Usi il link qui sotto."; return; }
+  try{ var q=window.qrcode(0,"M"); q.addData(url); q.make(); box.innerHTML=q.createSvgTag({cellSize:4,margin:2,scalable:true}); }
+  catch(e){ box.textContent="Link troppo lungo per il QR."; }
+}
+var lastFocus=null;
+function openShare(){ lastFocus=document.activeElement; document.getElementById("share").hidden=false; refreshShare(); document.getElementById("share-close").focus(); }
+function closeShare(){ document.getElementById("share").hidden=true; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+function copyUrl(){
+  var input=document.getElementById("share-url"), url=input.value;
+  function fallback(){ input.focus(); input.select(); toast("Link selezionato: copialo con Copia"); }
+  try{
+    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(function(){toast("Link copiato");},fallback);
+    else fallback();
+  }catch(e){ fallback(); }
+}
+
+/* ===== Avvio ===== */
+T.init=function(page){
+  P=page;
+  scene=document.getElementById("scene");
+  scene.innerHTML=P.scene.build();
+  (P.figures||[]).forEach(function(f){ var el=document.getElementById(f.id); if(el) el.innerHTML=f.build(); });
+  buildGlyphs(); buildNav();
+  T.refresh=renderStep;
+  T.setSteps=function(arr){ P.steps=arr; step=1; buildNav(); renderStep(); };
+  document.getElementById("step-nav").addEventListener("click",function(e){ var b=e.target.closest("button[data-n]"); if(b) go(+b.dataset.n); });
+  T.layoutTags=layoutTags;
+  function relayout(){
+    layoutTags(scene,P.scene.tags);
+    (P.figures||[]).forEach(function(f){ if(f.tags) layoutTags(document.getElementById(f.id),f.tags); });
+  }
+  relayout();
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(relayout);
+  renderStep();
+  (P.arrays||[]).forEach(function(a){ iconArray(a[0],a[1],a[2]); });
+  initTabs();
+
+  document.getElementById("next").addEventListener("click",function(){ go(step+1); });
+  document.getElementById("prev").addEventListener("click",function(){ go(step-1); });
+  document.getElementById("btn-present").addEventListener("click",function(){ setPresent(true); });
+  document.getElementById("btn-exit").addEventListener("click",function(){ setPresent(false); });
+  document.getElementById("btn-share").addEventListener("click",openShare);
+  document.getElementById("share-close").addEventListener("click",closeShare);
+  document.getElementById("share").addEventListener("click",function(e){ if(e.target===this) closeShare(); });
+  document.querySelectorAll('input[name="target"]').forEach(function(r){ r.addEventListener("change",refreshShare); });
+  document.getElementById("base-url").value=defaultBase();
+  document.getElementById("base-url").addEventListener("input",refreshShare);
+  document.getElementById("copy-url").addEventListener("click",copyUrl);
+
+  var stage=document.getElementById("stage"), sx=null, sy=null;
+  stage.addEventListener("pointerdown",function(e){ sx=e.clientX; sy=e.clientY; });
+  stage.addEventListener("pointerup",function(e){
+    if(sx===null) return;
+    var dx=e.clientX-sx, dy=e.clientY-sy; sx=null;
+    if(Math.abs(dx)>48&&Math.abs(dx)>Math.abs(dy)) go(step+(dx<0?1:-1));
+  });
+  stage.addEventListener("pointercancel",function(){ sx=null; });
+
+  document.addEventListener("keydown",function(e){
+    var tag=(e.target.tagName||"").toLowerCase();
+    if(tag==="input"||tag==="textarea"||e.target.getAttribute("role")==="tab") return;
+    if(!document.getElementById("share").hidden){ if(e.key==="Escape") closeShare(); return; }
+    var present=document.documentElement.classList.contains("is-present");
+    var inFasi=document.getElementById("fasi").contains(document.activeElement);
+    if(e.key==="Escape"&&present){ setPresent(false); return; }
+    if(!(present||inFasi)) return;
+    if(e.key==="ArrowRight"){ e.preventDefault(); go(step+1); }
+    else if(e.key==="ArrowLeft"){ e.preventDefault(); go(step-1); }
+  });
+};
+})();
+
+</script>
+<script>
+
+(function(){
+var C=360, K=1.1, OY=59.64;
+function r1(v){return Math.round(v*10)/10;}
+function S(p){return [r1(360+(p[0]-360)*K), r1((p[1]-OY)*K)];}
+function G(s){return '<g transform="translate(360 0) scale('+K+') translate(-360 -'+OY+')">'+s+'</g>';}
+
+/* ===== Geometria: sezione vestibolo-linguale (~18 unità = 1 mm) ===== */
+function canal(y0,w0,y1,w1,flat){
+  var tip=flat?"L"+r1(C+w1)+" "+y1:"Q"+C+" "+r1(y1+w1*2.2)+" "+r1(C+w1)+" "+y1;
+  return "M"+r1(C-w0)+" "+y0+" L"+r1(C-w1)+" "+y1+" "+tip+" L"+r1(C+w0)+" "+y0+" Z";
+}
+function hw(y){return 15+(3.6-15)*(y-200)/246;}
+var CUT=404;
+var GP=canal(302,hw(302),446,3.6), CEM=canal(200,15,302,hw(302),true);
+var POST="M"+(C-8)+" 152 Q"+C+" 141 "+(C+8)+" 152 L"+(C+5.5)+" 298 Q"+C+" 303 "+(C-5.5)+" 298 Z";
+var POST_LINES='<path d="M'+(C-3)+' 158 L'+(C-2)+' 292 M'+C+' 154 L'+C+' 294 M'+(C+3)+' 158 L'+(C+2)+' 292" class="post-line"/>';
+var CORE="M"+(C-60)+" 100 L"+(C+60)+" 100 L"+(C+60)+" 140 C"+(C+50)+" 152 "+(C+30)+" 156 "+(C+10)+" 156 L"+(C-14)+" 156 C"+(C-34)+" 154 "+(C-50)+" 148 "+(C-60)+" 136 Z";
+var RETRO="M"+(C-8.5)+" 350 L"+(C+8.5)+" 350 L"+(C+7)+" "+CUT+" L"+(C-7)+" "+CUT+" Z";
+var BONE="M"+(C-64)+" 262 C"+(C-82)+" 330 "+(C-98)+" 420 "+(C-116)+" 570 L"+(C+116)+" 570 C"+(C+98)+" 420 "+(C+82)+" 330 "+(C+64)+" 262 Z";
+var CORT_L="M"+(C-64)+" 262 C"+(C-82)+" 330 "+(C-98)+" 420 "+(C-116)+" 570", CORT_R="M"+(C+64)+" 262 C"+(C+82)+" 330 "+(C+98)+" 420 "+(C+116)+" 570";
+var FLAP="M"+(C-66)+" 224 C"+(C-96)+" 236 "+(C-114)+" 330 "+(C-130)+" 430 L"+(C-146)+" 570 L"+(C-116)+" 570 C"+(C-98)+" 420 "+(C-82)+" 330 "+(C-64)+" 262 L"+(C-63)+" 240 Z";
+var FLAP_EDGE="M"+(C-66)+" 224 C"+(C-96)+" 236 "+(C-114)+" 330 "+(C-130)+" 430 L"+(C-146)+" 570";
+var GUM_R="M"+(C+66)+" 224 C"+(C+96)+" 236 "+(C+114)+" 330 "+(C+130)+" 430 L"+(C+146)+" 570 L"+(C+116)+" 570 C"+(C+98)+" 420 "+(C+82)+" 330 "+(C+64)+" 262 L"+(C+63)+" 240 Z";
+var GUM_R_EDGE="M"+(C+66)+" 224 C"+(C+96)+" 236 "+(C+114)+" 330 "+(C+130)+" 430 L"+(C+146)+" 570";
+var LESION='<ellipse cx="'+C+'" cy="464" rx="48" ry="38" class="f-lesion"/>';
+var CRYPT="M"+(C-48)+" 464 A48 38 0 1 0 "+(C+48)+" 464 A48 38 0 1 0 "+(C-48)+" 464 Z";
+var WIN="M"+(C-122)+" 444 A56 50 0 1 0 "+(C-10)+" 444 A56 50 0 1 0 "+(C-122)+" 444 Z";
+
+function clips(q){
+  return '<defs><clipPath id="'+q+'pc"><path d="'+T.preparedBody(C)+'"/></clipPath><clipPath id="'+q+'tc"><path d="'+T.toothBody(C)+'"/></clipPath><clipPath id="'+q+'bn"><path d="'+BONE+'"/></clipPath>'+
+    '<clipPath id="'+q+'ka"><rect x="-200" y="-200" width="1120" height="'+(CUT+200)+'"/></clipPath><clipPath id="'+q+'kb"><rect x="-200" y="'+CUT+'" width="1120" height="400"/></clipPath></defs>';
+}
+function union(paths,fill,outline){
+  return paths.map(function(d){return '<path d="'+d+'" class="'+outline+'"/>';}).join("")+paths.map(function(d){return '<path d="'+d+'" class="'+fill+'"/>';}).join("");
+}
+function bone(q){return '<path d="'+BONE+'" class="f-bone"/><path d="'+BONE+'" fill="url(#'+q+'pores)"/><path d="'+CORT_L+'" class="cortex"/><path d="'+CORT_R+'" class="cortex"/>';}
+function gumR(){return '<path d="'+GUM_R+'" class="f-gum"/><path d="'+GUM_R_EDGE+'" class="gum-edge"/>';}
+function flap(){return '<path d="'+FLAP+'" class="f-gum"/><path d="'+FLAP_EDGE+'" class="gum-edge"/>';}
+function tooth(q){
+  return '<path d="'+T.crownCap(C)+'" class="f-crown o-line"/><path d="'+T.gloss(C)+'" class="gloss"/><path d="'+T.preparedBody(C)+'" class="f-dentin o-line"/>'+
+    '<g clip-path="url(#'+q+'pc)">'+union([CORE],"f-comp","f-comp")+'<path d="'+CEM+'" class="f-cement"/><path d="'+GP+'" class="f-gp"/><path d="'+POST+'" class="f-post o-thin"/>'+POST_LINES+'</g>';
+}
+function toothAbove(q,extra){return '<g clip-path="url(#'+q+'ka)">'+tooth(q)+'</g>'+'<g clip-path="url(#'+q+'tc)"><path d="M'+(C-70)+' '+CUT+' L'+(C+70)+' '+CUT+'" class="o-line"/>'+(extra||"")+'</g>';}
+function voids(q){return '<g clip-path="url(#'+q+'bn)">'+union([WIN,CRYPT],"f-void","void-o")+'</g>';}
+function clot(q){return '<g clip-path="url(#'+q+'bn)">'+union([WIN,CRYPT],"f-clot","clot-o")+'</g>';}
+
+/* ===== Strumenti ===== */
+function drill(){
+  return '<path d="M-40 640 L'+(C-176)+' 470" class="instr-body-o"/><path d="M-40 640 L'+(C-176)+' 470" class="instr-body"/>'+
+    '<rect x="'+(C-196)+'" y="452" width="34" height="30" rx="10" class="f-instr o-line"/><rect x="'+(C-164)+'" y="463" width="44" height="5" class="f-instr"/><circle cx="'+(C-114)+'" cy="465" r="9" class="f-bur"/>';
+}
+function cutBur(){
+  return '<path d="M-40 600 L'+(C-170)+' 418" class="instr-body-o"/><path d="M-40 600 L'+(C-170)+' 418" class="instr-body"/>'+
+    '<rect x="'+(C-190)+'" y="398" width="34" height="30" rx="10" class="f-instr o-line"/><rect x="'+(C-158)+'" y="401" width="90" height="5" class="f-instr"/><rect x="'+(C-72)+'" y="398" width="30" height="11" rx="3" class="f-bur"/>';
+}
+function usTip(){
+  return '<path d="M-40 640 L'+(C-170)+' 486" class="instr-body-o"/><path d="M-40 640 L'+(C-170)+' 486" class="instr-body"/>'+
+    '<path d="M'+(C-170)+' 486 L'+(C-46)+' 440 Q'+(C-4)+' 426 '+(C-1)+' '+CUT+' L'+C+' 356" class="utip"/>';
+}
+function plugger(){
+  return '<path d="M-40 640 L'+(C-170)+' 486" class="instr-body-o"/><path d="M-40 640 L'+(C-170)+' 486" class="instr-body"/>'+
+    '<path d="M'+(C-170)+' 486 L'+(C-46)+' 442 Q'+(C-4)+' 432 '+(C-1)+' 412" class="utip" style="stroke-width:7"/>';
+}
+function retractor(){return '<path d="M20 286 L'+(C-212)+' 336 L'+(C-206)+' 372" class="retractor"/>';}
+function suture(){var x=C-71,y=229;return '<g class="k-sut"><path d="M'+(x-10)+' '+(y-10)+' L'+(x+10)+' '+(y+10)+' M'+(x+10)+' '+(y-10)+' L'+(x-10)+' '+(y+10)+'" class="suture"/></g>';}
+function retroVoid(){return '<path d="'+RETRO+'" class="void-o"/>';}
+function retroFill(){return '<path d="'+RETRO+'" class="bio-o"/>';}
+
+/* ===== Fasi ===== */
+var STEPS=[
+  {short:"Visita", title:"Visita e TAC 3D", chips:["Radiografia","TAC 3D a basso dosaggio"],
+   text:"Il dentista controlla il dente, la corona e la radiografia: l'infezione alla punta della radice non è guarita dopo la cura canalare. Spesso si fa una TAC 3D (cone beam) per vedere la forma della radice, lo spessore dell'osso e la distanza da nervi e seno mascellare.",
+   note:"Insieme si decide se rifare la cura dall'alto, intervenire con l'apicectomia o estrarre il dente.",
+   alt:"Dente con corona e perno, in sezione. Alla punta della radice, nell'osso, una zona di infezione."},
+  {short:"Lembo", title:"Anestesia e lembo della gengiva", chips:["Anestesia locale","Incisione della gengiva"],
+   text:"Dopo l'anestesia locale si fa un'incisione nella gengiva e la si solleva con delicatezza insieme al rivestimento dell'osso, come una piccola porta. Un divaricatore la tiene da parte per tutto l'intervento.",
+   note:"Durante l'intervento si sentono pressione e vibrazioni, ma non dolore. Se ha bisogno di una pausa, alzi la mano.",
+   alt:"La gengiva sul lato della guancia viene sollevata e tenuta da parte: si vede l'osso sopra la radice."},
+  {short:"Pulizia", title:"Finestra nell'osso e pulizia", chips:["Fresa sottile","Ingrandimento"],
+   text:"Con una fresa sottile si apre nell'osso una piccola finestra, di pochi millimetri, in corrispondenza della punta della radice. Da lì si toglie tutto il tessuto infiammato che circonda la radice.",
+   note:"Se serve, il tessuto tolto viene inviato a un laboratorio per l'esame al microscopio.",
+   alt:"Una piccola fresa apre una finestra nell'osso; il tessuto infiammato intorno alla punta della radice viene tolto."},
+  {short:"Taglio", title:"Taglio della punta della radice", chips:["Circa 3 mm"],
+   text:"Si tagliano circa 3 mm della punta della radice. È la parte in cui il canale si divide in piccole ramificazioni, dove i batteri restano nascosti anche dopo una buona cura canalare.",
+   note:"La radice diventa un po' più corta, ma di solito questo non cambia la stabilità del dente.",
+   alt:"Una fresa taglia la punta della radice, che viene tolta."},
+  {short:"Ultrasuoni", title:"Pulizia del canale dal basso", chips:["Punta a ultrasuoni","Circa 3 mm"],
+   text:"Con una punta sottile a ultrasuoni si pulisce l'ultimo tratto del canale, per circa 3 mm, partendo dalla superficie tagliata. Si lavora con l'ingrandimento, per vedere bene il canale e le sue ramificazioni.",
+   note:"Le punte a ultrasuoni seguono la direzione del canale e tolgono poco dente: è uno dei motivi per cui la tecnica moderna funziona meglio di quella del passato.",
+   alt:"Una punta a ultrasuoni entra dal basso nel canale e lo pulisce per alcuni millimetri."},
+  {short:"Sigillo", title:"Otturazione retrograda", chips:["Cemento bioceramico"],
+   text:"Il tratto di canale appena pulito si riempie con un cemento bioceramico, che sigilla il canale dal basso e su cui l'osso e i tessuti intorno alla radice possono guarire.",
+   note:"Il sigillo dal basso si aggiunge a quello della vecchia cura: insieme chiudono il canale ai batteri.",
+   alt:"Il canale viene sigillato dal basso con un cemento bioceramico chiaro."},
+  {short:"Punti", title:"Chiusura con i punti", chips:["Punti di sutura"],
+   text:"La gengiva si riporta nella sua posizione e si chiude con alcuni punti. Lo spazio nell'osso si riempie di sangue, da cui nelle settimane successive inizia a formarsi osso nuovo.",
+   note:"I punti si tolgono dopo pochi giorni, all'appuntamento di controllo.",
+   alt:"La gengiva torna al suo posto ed è chiusa con un punto; lo spazio nell'osso è pieno di sangue."},
+  {short:"Guarigione", title:"Guarigione e controllo", chips:["Alcuni mesi","Radiografia dopo circa un anno"],
+   text:"L'osso si riforma lentamente, nel giro di alcuni mesi. Una radiografia di controllo, di solito dopo circa un anno, mostra se la zona è guarita.",
+   note:"Il dente si usa normalmente. Una corona ben sigillata e i controlli regolari proteggono il risultato nel tempo.",
+   alt:"L'osso intorno alla punta della radice è guarito; la radice è più corta e sigillata dal basso."}
+];
+var TAGS=[
+  {cls:"stag s1", d:.5, x:696, y:44, anchor:"end", text:"Corona e perno", sub:"difficili da togliere", to:[S([C+50,110])]},
+  {cls:"stag s1", d:1, x:696, y:440, anchor:"end", text:"Infezione all'apice", sub:"non guarita dopo la cura", to:[S([C+36,470])]},
+  {cls:"stag s1", d:1.4, x:24, y:80, text:"TAC 3D", sub:"radice, osso e nervi", to:[]},
+  {cls:"stag s2", d:1.6, x:24, y:150, text:"Lembo di gengiva", sub:"sollevato con cura", to:[S([C-195,306])]},
+  {cls:"stag s2", d:2, x:24, y:500, text:"Osso", sub:"sopra la punta della radice", to:[S([C-100,430])]},
+  {cls:"stag s2", d:.4, x:696, y:440, anchor:"end", text:"Anestesia locale", to:[]},
+  {cls:"stag s3", d:1.6, x:24, y:300, text:"Finestra nell'osso", sub:"di pochi millimetri", to:[S([C-96,428])]},
+  {cls:"stag s3", d:2.8, x:696, y:440, anchor:"end", text:"Tessuto infiammato", sub:"tolto con cura", to:[S([C+30,470])]},
+  {cls:"stag s4", d:2.4, x:696, y:330, anchor:"end", text:"Circa 3 mm", sub:"di punta della radice", to:[S([C+38,CUT])]},
+  {cls:"stag s5", d:1.2, x:696, y:300, anchor:"end", text:"Punta a ultrasuoni", sub:"pulisce 3 mm di canale", to:[S([C,378])]},
+  {cls:"stag s5", d:.6, x:24, y:80, text:"Con ingrandimento", to:[]},
+  {cls:"stag s6", d:1.6, x:696, y:300, anchor:"end", text:"Cemento bioceramico", sub:"sigilla il canale dal basso", to:[S([C+3,380])]},
+  {cls:"stag s7", d:1.8, x:24, y:200, text:"Punti di sutura", sub:"tolti dopo pochi giorni", to:[S([C-71,229])]},
+  {cls:"stag s7", d:1.4, x:696, y:440, anchor:"end", text:"Coagulo", sub:"diventerà osso nuovo", to:[S([C+30,470])]},
+  {cls:"stag s8", d:1.6, x:696, y:440, anchor:"end", text:"Osso guarito", sub:"in alcuni mesi", to:[S([C+30,470])]},
+  {cls:"stag s8", d:2.2, x:696, y:220, anchor:"end", text:"Controllo a un anno", sub:"con una radiografia", to:[]}
+];
+function scene(){
+  var q="sc-", s=[gumR(), bone(q)];
+  s.push('<g class="part v1 v2">'+LESION+'</g>');
+  s.push('<g class="part v3"><g class="k-lesout">'+LESION+'</g><g class="k-win"><g clip-path="url(#'+q+'bn)">'+union([WIN],"f-void","void-o")+'</g></g><g class="k-cryptin">'+voids(q)+'</g></g>');
+  s.push('<g class="part v4 v5 v6">'+voids(q)+'</g>');
+  s.push('<g class="part v7">'+voids(q)+'<g class="k-clot">'+clot(q)+'</g></g>');
+  s.push('<g class="part v8"><g class="k-heal">'+clot(q)+'</g></g>');
+  s.push('<g class="part v1"><g>'+flap()+'</g></g>');
+  s.push('<g class="part v2"><g class="k-flapopen">'+flap()+'</g></g>');
+  s.push('<g class="part v3 v4 v5 v6"><g class="flap-open">'+flap()+'</g></g>');
+  s.push('<g class="part v7"><g class="k-flapshut">'+flap()+'</g></g>');
+  s.push('<g class="part v8">'+flap()+'</g>');
+  s.push('<g class="part v1 v2 v3">'+tooth(q)+'</g>');
+  s.push('<g class="part v4">'+toothAbove(q)+'<g class="k-tipout"><g clip-path="url(#'+q+'kb)">'+tooth(q)+'</g></g></g>');
+  s.push('<g class="part v5">'+toothAbove(q,'<g class="k-retro">'+retroVoid()+'</g>')+'</g>');
+  s.push('<g class="part v6">'+toothAbove(q,retroVoid()+'<g class="k-fill">'+retroFill()+'</g>')+'</g>');
+  s.push('<g class="part v7 v8">'+toothAbove(q,retroFill())+'</g>');
+  s.push('<g class="part v2"><g class="k-retr">'+retractor()+'</g></g><g class="part v3 v4 v5 v6">'+retractor()+'</g>');
+  s.push('<g class="part v3"><g class="k-drill"><g class="k-buzz">'+drill()+'</g></g></g>');
+  s.push('<g class="part v4"><g class="k-cutbur"><g class="k-cutmove">'+cutBur()+'</g></g></g>');
+  s.push('<g class="part v5"><g class="k-drill"><g class="k-buzz">'+usTip()+'</g></g></g>');
+  s.push('<g class="part v6"><g class="k-drill">'+plugger()+'</g></g>');
+  s.push('<g class="part v7">'+suture()+'</g>');
+  return T.defs(q)+clips(q)+T.stageBg()+G(s.join(""))+T.tags(TAGS);
+}
+
+/* ===== Figura iniziale ===== */
+var HERO_TAGS=[
+  {x:24, y:150, text:"Si entra dal lato", sub:"dalla gengiva", to:[S([C-195,306])]},
+  {x:696, y:44, anchor:"end", text:"Corona e perno", sub:"restano al loro posto", to:[S([C+50,110])]},
+  {x:696, y:330, anchor:"end", text:"Punta sigillata", sub:"con cemento bioceramico", to:[S([C+3,385])]},
+  {x:696, y:440, anchor:"end", text:"Infezione rimossa", sub:"poi l'osso guarisce", to:[S([C+30,470])]}
+];
+function hero(){
+  var q="an-";
+  return T.defs(q)+clips(q)+T.stageBg()+G(gumR()+bone(q)+voids(q)+'<g class="flap-open">'+flap()+'</g>'+toothAbove(q,retroFill())+retractor())+T.tags(HERO_TAGS);
+}
+
+/* ===== Quando serve: due vie ===== */
+function way(kind){
+  var q="w"+kind+"-", o=[T.defs(q),clips(q),T.stageBg(),gumR(),bone(q),LESION,flap(),tooth(q)];
+  if(kind==="re") o.push('<path d="M'+C+' 22 L'+C+' 196" class="go-arrow" marker-end="url(#'+q+'arr)"/>');
+  else o.push('<path d="M160 470 L'+(C-62)+' 464" class="go-arrow" marker-end="url(#'+q+'arr)"/>');
+  return o.join("");
+}
+
+T.init({
+  publicUrl:"https://robbcolo.github.io/trattamenti/apicectomia.html",
+  shareText:"Studio Dentistico Colombo – ecco la scheda sul suo intervento di apicectomia:",
+  steps:STEPS,
+  scene:{build:scene, tags:TAGS},
+  figures:[{id:"anatomy", build:hero, tags:HERO_TAGS},{id:"q-re", build:function(){return way("re");}},{id:"q-ap", build:function(){return way("ap");}}],
+  arrays:[["arr-heal",89,"on"],["arr-long",82,"on"]]
+});
+})();
+
+</script>
+
+</body></html>

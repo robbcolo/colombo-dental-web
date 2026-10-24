@@ -1,0 +1,44 @@
+name: Pubblica su GitHub Pages
+
+# Ad ogni modifica della cartella "sito" su main, la copia pubblicata su
+# GitHub Pages (ramo gh-pages) viene aggiornata automaticamente.
+# Il sito definitivo è pensato per l'hosting Aruba: questa è la copia di anteprima.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sito/**'
+      - '.github/workflows/pubblica.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pubblica-pages
+  cancel-in-progress: true
+
+jobs:
+  pubblica:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepara la copia per GitHub Pages
+        run: |
+          mkdir _pages
+          cp -a sito/. _pages/
+          # la pagina 404 usa percorsi dalla radice: su Pages il sito vive in /nome-repository/
+          sed -i -E "s#(href|src|action)=\"/#\1=\"/${GITHUB_REPOSITORY#*/}/#g" _pages/404.html
+          touch _pages/.nojekyll
+
+      - name: Pubblica sul ramo gh-pages
+        run: |
+          cd _pages
+          git init -q -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Pubblicazione del sito (${GITHUB_SHA::7})"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" gh-pages
